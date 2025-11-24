@@ -1,0 +1,422 @@
+<html>
+
+<head>
+  <style>
+    td {
+      font-family: verdana, arial;
+      font-size: 7pt;
+    }
+
+    .colorp {
+      background: #e389fa;
+      -webkit-print-color-adjust: exact;
+      color: white;
+    }
+
+    .colors {
+      background: #f4e9b2;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .ad {
+      width: 100px;
+
+
+    }
+
+    .tabla-imagenes {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .tabla-imagenes td {
+      border: 1px solid black;
+      width: 50%;
+      height: 200px;
+      text-align: center;
+      vertical-align: middle;
+      position: relative;
+      cursor: pointer;
+    }
+
+
+    .tabla-imagenes img {
+      width: 100%;
+      /* ocupa todo el ancho del td */
+      height: 100%;
+      /* ocupa todo el alto del td */
+      object-fit: cover;
+      /* recorta sin deformar */
+      border: 1px solid #999;
+      display: block;
+      background-color: #f0f0f0;
+    }
+
+    .tabla-imagenes input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+    }
+
+    .contenedor-principal {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #f1f1f1;
+      z-index: 1;
+      font-weight: normal;
+      font-size: 14px;
+      text-align: left;
+      padding: 8px;
+    }
+
+    select {
+      width: 90%;
+    }
+
+    .btn-todo {
+      background-color: #88aaff;
+      padding: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #tablaSecundaria {
+      border: none !important;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    #tablaSecundaria th,
+    #tablaSecundaria td {
+      border: none !important;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    #tbody,
+    #tbody th,
+    #tbody td {
+      border: none !important;
+      border-collapse: collapse;
+    }
+
+    .td-vacia {
+      visibility: hidden;
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+  </style>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<body>
+  <div id="contenidoParaPDF">
+    <form id="control" method="POST" enctype="multipart/form-data">
+      <table style="width: 100%; border-collapse: collapse;" border="1">
+        <tr class="colorp">
+          <td colspan="2" style="text-align: center;"><b>CONTROL</b></td>
+        </tr>
+        <tr>
+          <!-- Primera tabla (lado izquierdo) -->
+          <td style="width: 50%; vertical-align: top;">
+            <table style="width: 100%;" border="1">
+              <tr>
+                <td><b>FECHA</b></td>
+                <td><input type="date" name="FECHA" id="FECHA"></td>
+              </tr>
+              <tr>
+                <td><b>NOMBRE DE LA PERSONA</b></td>
+                <td>
+                  <select name="NOMBRES" id="NOMBRES" style="display: inline-block; margin-right: 10px;">
+                    <option value="">--Seleccionar--</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" align="left"><label>OBSERVACION:</label></td>
+              </tr>
+              <tr>
+                <td colspan="2"><textarea id="OBSERVACION" name="OBSERVACION" rows="20" cols="100"></textarea></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="left"><label>RECOMENDACION:</label></td>
+              </tr>
+              <tr>
+                <td colspan="2"><textarea id="RECOMENDACION" name="RECOMENDACION" rows="20" cols="100"></textarea></td>
+              </tr>
+            </table>
+          </td>
+          <td style="width: 50%; vertical-align: top;">
+            <table style="width: 100%;">
+              <tr>
+                <td colspan="2"><label>AREA</label></td>
+                <td colspan="2"><label>EVENTO</label></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="width: 50%;">
+                  <select name="AREA" id="AREA" style="display: inline-block; margin-right: 10px;">
+                    <option value="">--Seleccionar--</option>
+                  </select>
+                </td>
+                <td><input type="text" name="EVENTO" id="EVENTO" style="width: 100%;"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="mensaje" style="margin-top: 10px; font-weight: bold;"></div>
+          </td>
+          <td>
+            <div style="display: flex; justify-content: space-between; padding: 10px;">
+              <button type="button" onclick="borrarTodo()">Borrar Todo</button>
+
+              <!--<button onclick="guardarTodo()">Guardar Todo</button>-->
+              <button type="submit"
+                style="background-color: #007BFF;color: white;border: none;padding: 10px 20px;font-size: 16px;border-radius: 8px;cursor: pointer;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                Enviar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <script>
+    //insert al sheets 
+    document.getElementById('control').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+      const mensajeDiv = document.getElementById('mensaje');
+
+
+      const fecha = document.getElementById('FECHA').value.trim();
+      const nombres = document.getElementById('NOMBRES').value.trim();
+      const area = document.getElementById('AREA').value.trim();
+      const evento = document.getElementById('EVENTO').value.trim();
+      const observacion = document.getElementById('OBSERVACION').value.trim();
+      const recomendacion = document.getElementById('RECOMENDACION').value.trim();
+
+      // Validar campos obligatorios
+      if (!fecha || !nombres || !area || !evento || !observacion || !recomendacion) {
+        mensajeDiv.style.color = "red";
+        mensajeDiv.innerText = "Por favor completa todos los campos obligatorios.";
+        return;
+      }
+
+      mensajeDiv.style.color = "blue";
+      mensajeDiv.innerText = "⏳ Procesando... por favor espera";
+
+      fetch('https://script.google.com/macros/s/AKfycbzro6MMny6p5pJerZOfu2YAnek3mDw0DDi86nNF4Q5ZJfse9Lm6bGvQvKPFWFAxTGuaiQ/exec', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          mensajeDiv.innerText = "";
+
+          if (data.result === "success") {
+            alert("¡Registro exitoso! Fila número: " + data.row);
+            generarPDFDesdeFormulario();
+
+            setTimeout(() => {
+              form.reset();
+            }, 1000);
+          } else {
+            alert("Algo salió mal. Intenta nuevamente.");
+          }
+        })
+        .catch(error => {
+          mensajeDiv.innerText = "";
+          alert("Error en la conexión o envío.");
+        });
+    });
+
+    function borrarTodo() {
+      const formulario = document.getElementById("control");
+      if (formulario) {
+        formulario.reset();
+      }
+      const mensaje = document.getElementById("mensaje");
+      if (mensaje) {
+        mensaje.textContent = "";
+      }
+    }
+
+    async function generarPDFDesdeFormulario() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+
+      const fecha = document.getElementById('FECHA').value || "-";
+      const nombres = document.getElementById('NOMBRES').value || "-";
+      const area = document.getElementById('AREA').value || "-";
+      const evento = document.getElementById('EVENTO').value || "-";
+      const observacion = document.getElementById('OBSERVACION').value || "-";
+      const recomendacion = document.getElementById('RECOMENDACION').value || "-";
+
+      let y = 20;
+
+      doc.setFontSize(18);
+      doc.text("CONTROL DE EVENTO", 105, y, null, null, 'center');
+
+      y += 15;
+      doc.setFontSize(12);
+      doc.text(`Fecha: ${fecha}`, 20, y);
+
+      y += 10;
+      doc.text(`Nombre de la persona: ${nombres}`, 20, y);
+
+      y += 10;
+      doc.text(`Área: ${area}`, 20, y);
+
+      y += 10;
+      doc.text(`Evento: ${evento}`, 20, y);
+
+      y += 15;
+      doc.setFont(undefined, 'bold');
+      doc.text("Observación:", 20, y);
+      doc.setFont(undefined, 'normal');
+      y += 8;
+
+      // Añadir texto largo (observación)
+      let splitObservacion = doc.splitTextToSize(observacion, 170);
+      doc.text(splitObservacion, 20, y);
+      y += splitObservacion.length * 7;
+
+      y += 8;
+      doc.setFont(undefined, 'bold');
+      doc.text("Recomendación:", 20, y);
+      doc.setFont(undefined, 'normal');
+      y += 8;
+
+      // Añadir texto largo (recomendación)
+      let splitRecomendacion = doc.splitTextToSize(recomendacion, 170);
+      doc.text(splitRecomendacion, 20, y);
+      y += splitRecomendacion.length * 7;
+
+      // Guardar el PDF
+      doc.save(`control_evento_${new Date().toISOString().slice(0, 10)}.pdf`);
+    }
+
+    function generarPDF() {
+      const element = document.getElementById('contenidoParaPDF');
+
+      const options = {
+        margin: [10, 10, 10, 10], // margen en mm
+        filename: 'registro_control_' + new Date().toISOString().slice(0, 10) + '.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 1,
+          useCORS: true,
+          width: 794
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: 'a4',
+          orientation: 'portrait'
+        }
+      };
+
+      html2pdf().set(options).from(element).save();
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+      //traer las areas
+      /*const urlFacturas = 'https://script.google.com/macros/s/AKfycbzro6MMny6p5pJerZOfu2YAnek3mDw0DDi86nNF4Q5ZJfse9Lm6bGvQvKPFWFAxTGuaiQ/exec?func=area';
+
+      fetch(urlFacturas)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('AREA');
+          if (!select) return console.error("Elemento AREA no encontrado");
+
+          data.forEach(facturas => {
+            //console.log(data);
+            const option = document.createElement('option');
+            option.value = facturas;
+            option.textContent = facturas;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar el area:', error);
+        });*/
+
+      //traer los nombres
+      const urlNombres = 'https://script.google.com/macros/s/AKfycbzro6MMny6p5pJerZOfu2YAnek3mDw0DDi86nNF4Q5ZJfse9Lm6bGvQvKPFWFAxTGuaiQ/exec?func=nombre';
+      fetch(urlNombres)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('NOMBRES');
+          if (!select) return console.error("Elemento NOMBRES no encontrado");
+
+          data.forEach(nombre => {
+            //console.log(data);
+            const option = document.createElement('option');
+            option.value = nombre;
+            option.textContent = nombre;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar los nombres:', error);
+        });
+    });
+
+    document.getElementById('NOMBRES').addEventListener('change', function () {
+      const nombreSeleccionado = this.value.trim();
+      const urlBase = 'https://script.google.com/macros/s/AKfycbzro6MMny6p5pJerZOfu2YAnek3mDw0DDi86nNF4Q5ZJfse9Lm6bGvQvKPFWFAxTGuaiQ/exec';
+      const url = `${urlBase}?func=areanombres&nombre=${encodeURIComponent(nombreSeleccionado)}`;
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const selectArea = document.getElementById('AREA');
+          if (!selectArea) return console.error("Elemento AREA no encontrado");
+
+          // Limpiar opciones anteriores
+          selectArea.innerHTML = '<option value="">Seleccione un área</option>';
+          data.forEach(area => {
+            const option = document.createElement('option');
+            option.value = area;
+            option.textContent = area;
+            selectArea.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar las áreas:', error);
+        });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,875 @@
+<html>
+
+<head>
+  <style>
+    /*TABLA COLABORADORES*/
+
+    #tablaColaboradores {
+      width: 100%;
+      max-width: 400px;
+      /* Limita el ancho total de la tabla */
+      table-layout: fixed;
+      border-collapse: collapse;
+      font-size: 14px;
+      /* Reduce el tamaño del texto */
+    }
+
+    #tablaColaboradores th,
+    #tablaColaboradores td {
+      border: 1px solid #ccc;
+      padding: 6px;
+      text-align: center;
+      vertical-align: middle;
+      word-wrap: break-word;
+    }
+
+    /* Ajuste de anchos más razonables */
+    #tablaColaboradores td:nth-child(1),
+    #tablaColaboradores th:nth-child(1) {
+      width: 90px;
+      /* ancho para foto */
+    }
+
+    #tablaColaboradores td:nth-child(2),
+    #tablaColaboradores th:nth-child(2) {
+      width: 150px;
+      /* nombre */
+    }
+
+    #tablaColaboradores td:nth-child(3),
+    #tablaColaboradores th:nth-child(3) {
+      width: 50px;
+      /* checkbox */
+    }
+
+    #tablaColaboradores img {
+      max-width: 80px;
+      max-height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+
+    td {
+      font-family: verdana, arial;
+      font-size: 7pt;
+    }
+
+    .colorp {
+      background: #6431F7;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      color: white;
+    }
+
+    .colors {
+      background: #f4e9b2;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .ad {
+      width: 100px;
+    }
+
+    .tabla-imagenes {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .tabla-imagenes td {
+      border: 1px solid black;
+      width: 50%;
+      height: 200px;
+      text-align: center;
+      vertical-align: middle;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .tabla-imagenes img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 1px solid #999;
+      display: block;
+      background-color: #f0f0f0;
+    }
+
+    .tabla-imagenes input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+    }
+
+    .contenedor-principal {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    th,
+    td {
+      border: 0px solid #ccc;
+      padding: 5px;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #f1f1f1;
+      z-index: 1;
+      font-weight: normal;
+      font-size: 11px;
+      text-align: center;
+      padding: 8px;
+    }
+
+    select {
+      width: 90%;
+    }
+
+    .btn-todo {
+      background-color: #88aaff;
+      padding: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    /*DISEÑO PARA LA TABLA SECUNDARIA*/
+    .loading-row {
+      text-align: center;
+      background-color: #ffffff;
+      font-weight: bold;
+      color: #555;
+      font-size: 1.2em;
+      padding: 20px;
+      height: 80px;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 4px solid #ccc;
+      border-top-color: #6431F7;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      vertical-align: middle;
+      margin-right: 12px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    #tablaSecundaria {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+
+    #tablaSecundaria th,
+    #tablaSecundaria td {
+      border: none;
+      padding: 8px;
+    }
+
+    #tablaSecundaria tbody tr {
+      border-bottom: 1px solid #6431F7;
+    }
+
+    #tbody,
+    #tbody th,
+    #tbody td {
+      border: none !important;
+      border-collapse: collapse;
+    }
+
+    .td-vacia {
+      visibility: hidden;
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+
+    /*PONER DISEÑO A LOS BOTONES*/
+    .btn-estilo {
+      border: 0;
+      border-radius: 12px;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.5;
+      outline: transparent;
+      padding: 0 1.5rem;
+      text-align: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease-in-out;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to bottom right, #007BFF, #0056b3);
+    }
+
+    .btn-warning {
+      background: linear-gradient(to bottom right, #6c757d, #495057);
+    }
+
+    .btn-success {
+      background: linear-gradient(to bottom right, #4CAF50, #43A047);
+    }
+
+    .btn-danger {
+      background: linear-gradient(to bottom right, #f44336, #e53935);
+    }
+
+    .btn-estilo:hover,
+    .btn-estilo:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.4),
+        -.125rem -.125rem 1rem rgba(0, 0, 0, 0.08),
+        .125rem .125rem 1rem rgba(0, 0, 0, 0.08);
+    }
+  </style>
+</head>
+
+<body>
+  <form id="idpreguntas" method="POST" enctype="multipart/form-data">
+    <table style=" width: 100%; text-align: justify; height: 100%;">
+      <tr>
+        <td style="text-align: center; font-weight: bold; vertical-align: top;">
+          <table style=" width: 100%;">
+            <tr class="colorp">
+              <td colspan="7"><b>EVALUACION</b></td>
+            </tr>
+            <tr>
+              <td><b>NOMBRE DE LA PERSONA</b></td>
+              <td>
+                <select name="NOMBRE" id="NOMBRE" style="width: 100%; margin-right: 10px;"
+                  onchange="cargarDepartamento()">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+              <td><b>FECHA</b></td>
+              <td>
+                <input type="date" name="FECHA" id="fecha" style="width: 100%;">
+              </td>
+              <td><b>CLUB</b></td>
+              <td>
+                <select name="CLUB" id="CLUB" style="width: 100%; margin-right: 10px;">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr style="border-bottom: 2px solid #6431F7;">
+              <td><b>AREA</b></td>
+              <td>
+                <input type="text" name="AREA" id="AREA" style="width: 100%; margin-right: 10px;" readonly>
+              </td>
+              <td><b>NUMERO CEDULA</b></td>
+              <td>
+                <input type="text" name="CEDULA" id="CEDULA" style="width: 100%; margin-right: 10px;"
+                  placeholder="Ingrese número de cédula" required>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="7" style="text-align: center; font-weight: bold; vertical-align: top; width: 50%;">
+                <div style="max-height: 650px; overflow-y: auto; margin-top: 10px;">
+                  <table id="tablaResultado" style="width: 100%;">
+                    <!-- Aquí van los datos dinámicos -->
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <div style="max-height: 700px; overflow: auto; border: 0px solid #ccc;">
+            <table id="tablaSecundaria" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>AREA</th>
+                  <th>NOMBRE</th>
+                  <th>MODO</th>
+                  <th>P1</th>
+                  <th>P2</th>
+                  <th>P3</th>
+                  <th>P4</th>
+                  <th>P5</th>
+                  <th>P6</th>
+                  <th>P7</th>
+                  <th>P8</th>
+                  <th>P9</th>
+                  <th>P10</th>
+                  <th>P11</th>
+                  <th>P12</th>
+                  <th>P13</th>
+                  <th>P14</th>
+                </tr>
+              </thead>
+              <tbody id="tbodySecundario">
+                <tr id="cargaDatos" class="loading-row">
+                  <td><button type="button" disabled style="opacity: 0.5;">X</button></td>
+                  <td><input type="text" value="Área" disabled style="width: 100%; opacity: 0.5;"></td>
+                  <td><input type="text" value="Nombre" disabled style="width: 100%; opacity: 0.5;"></td>
+                  <td>
+                    <select disabled style="width: 100%; opacity: 0.5;">
+                      <option>--</option>
+                    </select>
+                  </td>
+                  <!-- Simulamos 14 preguntas -->
+                  <!--<td colspan="14" style="text-align: center; color: gray;">Cargando estructura de preguntas...</td>-->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </td>
+        <td style="width: 20%; text-align: center; font-weight: bold; vertical-align: top; border-left: 2px solid #6431F7;">
+          <table id="tablaColaboradores">
+            <thead>
+              <tr class="colorp">
+                <td><b>AREA</b></td>
+                <td colspan="2">
+                  <select name="AREA1" id="AREA1" style="display: inline-block; margin-right: 10px;">
+                    <option value="">--Seleccionar--</option>
+                  </select>
+                  <input type="hidden" id="area" name="area">
+                  <input type="hidden" id="colaborador" name="colaborador">
+                </td>
+              </tr>
+              <tr>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th>Seleccionar</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              <!-- filas dinámicas -->
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="mensaje" style="margin-top: 10px; font-weight: bold;"></div>
+        </td>
+        <td style="border-left: 2px solid #6431F7;">
+          <div style="display: flex; justify-content: space-between; padding: 10px;">
+            <button type="button" onclick="borrarTodo()" class="btn-estilo btn-warning">
+              Borrar Todo
+            </button>
+            <button type="submit" id="btnGuardarEvaluacion" class="btn-estilo btn-primary">
+              Enviar
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <div id="resultados"></div>
+  <!-- Modal para las preguntas -->
+  <div id="modalDescripcion"
+    style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%); background:white; padding:20px; border:1px solid #ccc; z-index:1000; max-width:800px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.2);">
+    <p id="contenidoDescripcion" style="margin-bottom: 15px;"></p>
+    <label style="font-weight: bold;">Seleccione una respuesta:</label>
+    <div style="line-height: 1.8;">
+      <input type="checkbox" name="respuestaModal" value="1"> 1<br>
+      <input type="checkbox" name="respuestaModal" value="2"> 2<br>
+      <input type="checkbox" name="respuestaModal" value="3"> 3<br>
+      <input type="checkbox" name="respuestaModal" value="4"> 4
+    </div>
+    <div style="text-align: center; margin-top: 15px;">
+      <button id="guardarRespuesta" class="btn-estilo btn-success">Guardar</button>
+      <button onclick="document.getElementById('modalDescripcion').style.display='none'"
+        class="btn-estilo btn-danger">Cerrar</button>
+    </div>
+  </div>
+  <script>
+    //url para consumir los datos
+    const url = 'https://script.google.com/macros/s/AKfycbwHC5xIMuOIc5jymyS91vgYIe2G34IsdW2VlB5WXplN3WL-_SdIzWJIdFC2tBbZyL9eHA/exec';
+    //url de las imagenes de los empleados
+    const urlImagen = 'https://drive.google.com/thumbnail';
+
+    document.getElementById('idpreguntas').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const mensajeDiv = document.getElementById('mensaje');
+      const botonGuardar = document.getElementById('btnGuardarEvaluacion');
+
+      const clubInput = document.getElementById("CLUB");
+      const club = clubInput.value.trim();
+      clubInput.style.border = '';
+      if (!club) {
+        clubInput.style.border = '2px solid #6431F7';
+        alert("Debes seleccionar un CLUB antes de guardar.");
+        mensajeDiv.innerText = "";
+        botonGuardar.disabled = false;
+        botonGuardar.textContent = "Guardar";
+        return;
+      }
+      //comienza a guardar 
+      botonGuardar.disabled = true;
+      botonGuardar.textContent = "Guardando...";
+      mensajeDiv.style.color = "blue";
+      mensajeDiv.innerText = "⏳ Procesando... por favor espera";
+      const filas = document.querySelectorAll("#tablaSecundaria tbody tr");
+      let successCount = 0;
+      let errorCount = 0;
+      for (let i = 0; i < filas.length; i++) {
+        const fila = filas[i];
+        const formData = new FormData();
+
+        const areaInput = fila.querySelector('input[name="AREA_N"]');
+        const nombreInput = fila.querySelector('input[name="NOMBRE_PERSONA"]');
+        const modoInput = fila.querySelector('select[name="EVALUACION"]');
+
+        const area = areaInput?.value.trim();
+        const nombre = nombreInput?.value.trim();
+        const modo = modoInput?.value.trim();
+
+        // Limpia estilos anteriores
+        areaInput.style.border = '';
+        nombreInput.style.border = '';
+        modoInput.style.border = '';
+
+        if (!area || !nombre || !modo) {
+          if (!area) areaInput.style.border = '2px solid #6431F7';
+          if (!nombre) nombreInput.style.border = '2px solid #6431F7';
+          if (!modo) modoInput.style.border = '2px solid #6431F7';
+
+          alert(` Datos incompletos en la evaluación de ${nombre || '(sin nombre)'}. Por favor completa todos los campos antes de continuar.`);
+          mensajeDiv.innerText = "";
+          botonGuardar.disabled = false;
+          botonGuardar.textContent = "Guardar";
+          return;
+        }
+
+        formData.append("AREA_N", area);
+        formData.append("NOMBRE_PERSONA", nombre);
+        formData.append("EVALUACION", modo);
+        formData.append("NOMBRE", document.getElementById("NOMBRE").value.trim());
+        formData.append("FECHA", document.getElementById("fecha").value.trim());
+        formData.append("CLUB", document.getElementById("CLUB").value.trim());
+        formData.append("AREA", document.getElementById("AREA").value.trim());
+        formData.append("CEDULA", document.getElementById("CEDULA").value.trim());
+
+        const inputsRespuestas = fila.querySelectorAll('input[type="text"]');
+        let hayVacio = false;
+
+        inputsRespuestas.forEach((input, idx) => {
+          const valor = input.value.trim();
+          input.style.border = '';
+          if (!valor) {
+            hayVacio = true;
+            input.style.border = '2px solid #6431F7';
+          }
+          formData.append(`P${idx + 1}`, valor);
+        });
+
+        if (hayVacio) {
+          alert(` Faltan respuestas en la evaluación de ${nombre}. Completa todas las respuestas antes de enviar.`);
+          mensajeDiv.innerText = "";
+          botonGuardar.disabled = false;
+          botonGuardar.textContent = "Guardar";
+          return;
+        }
+        try {
+          const response = await fetch(url, {
+            method: 'POST',
+            body: formData
+          });
+          const data = await response.json();
+          if (data.result === "success") {
+            successCount++;
+          } else {
+            errorCount++;
+          }
+        } catch (error) {
+          errorCount++;
+        }
+      }
+      mensajeDiv.innerText = "";
+      alert(`Evaluaciones registradas con éxito...`);
+      botonGuardar.disabled = false;
+      botonGuardar.textContent = "Guardar";
+      window.location.reload(true);
+    });
+
+    document.getElementById("AREA1").addEventListener("change", function () {
+      const valor = this.value;
+      const [area, colaborador] = valor.split("-");
+
+      document.getElementById("area").value = area || "";
+      document.getElementById("colaborador").value = colaborador || "";
+    });
+
+    //TRAER EL DEPARTAMENTO
+    function cargarDepartamento() {
+      const nombre = document.getElementById('NOMBRE').value.trim();
+      if (!nombre) return; // No hacer nada si no se ha seleccionado
+      const urlFacturas = `${url}?func=area&nombre=${encodeURIComponent(nombre)}`;
+
+      fetch(urlFacturas)
+        .then(response => response.json())
+        .then(data => {
+          const inputArea = document.getElementById('AREA');
+          if (!inputArea) return console.error("Elemento AREA no encontrado");
+
+          if (data.departamento) {
+            inputArea.value = data.departamento;
+
+          } else if (data.error) {
+            console.error("Error del servidor:", data.error);
+            alert(data.error);
+            inputArea.value = ''; // Limpia el campo si hay error
+          }
+        })
+        .catch(error => {
+          console.error('Error al cargar el área:', error);
+        });
+
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      //TRAER LOS NOMBRES
+      const urlNombres = `${url}?func=nombre`;
+      fetch(urlNombres)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('NOMBRE');
+          if (!select) return console.error("Elemento NOMBRE no encontrado");
+
+          data.forEach(nombre => {
+            //console.log(data);
+            const option = document.createElement('option');
+            option.value = nombre;
+            option.textContent = nombre;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar los nombres:', error);
+        });
+      let opcionesEvaluacion = [];
+
+      const urlEvaluacion = `${url}?func=evaluacion`;
+      fetch(urlEvaluacion)
+        .then(response => response.json())
+        .then(data => {
+          opcionesEvaluacion = data;
+        })
+        .catch(error => {
+          console.error('Error al cargar los tipos de evaluacion:', error);
+        });
+      //TRAER EL NOMBRE DEL CLUB
+      const urlClub = `${url}?func=equipo`;
+      fetch(urlClub)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('CLUB');
+          if (!select) return console.error("Elemento CLUB no encontrado");
+
+          data.forEach(club => {
+            //console.log(data);
+            const option = document.createElement('option');
+            option.value = club;
+            option.textContent = club;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar los tipos de evaluacion:', error);
+        });
+    });
+    //AREAS FILTRADO POR EL NOMBRE
+    document.getElementById('NOMBRE').addEventListener('change', function () {
+      const nombreSeleccionado = this.value.trim();
+      const urlBase = `${url}`;
+      const urlarea = `${urlBase}?func=areanombres&nombre=${encodeURIComponent(nombreSeleccionado)}`;
+
+      fetch(urlarea)
+        .then(response => response.json())
+        .then(data => {
+          const selectArea = document.getElementById('AREA1');
+          if (!selectArea) return console.error("Elemento AREA no encontrado");
+
+          // Limpiar opciones anteriores
+          selectArea.innerHTML = '<option value="">Seleccione un área</option>';
+          data.forEach(area => {
+            const option = document.createElement('option');
+            option.value = area;
+            option.textContent = area;
+            selectArea.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar las áreas:', error);
+        });
+    });
+
+    function getDriveImageUrl(driveUrl) {
+      const match = driveUrl.match(/\/d\/([a-zA-Z0-9_-]+)\//);
+      if (match && match[1]) {
+        return `${urlImagen}?id=${match[1]}`;
+      }
+      return driveUrl;
+    }
+
+    document.getElementById('AREA1').addEventListener('change', function () {
+      const area = this.value.trim();
+      const area1 = document.getElementById('area').value.trim();
+
+      if (!area) return;
+      const urlBase = `${url}`;
+
+      const urld = `${urlBase}?func=fotoinfo&area=${encodeURIComponent(area1)}`;
+
+      fetch(urld)
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.getElementById("tbody");
+          tbody.innerHTML = "";
+
+          if (data.error) {
+            alert(data.error);
+            return;
+          }
+
+          data.colaboradores.forEach(colab => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `<td><img src="${getDriveImageUrl(colab.foto)}" alt="Foto" width="100" height="100" style="border-radius: 8px;"></td>
+                            <td>${colab.nombre}</td>
+                            <td><input type="checkbox" name="check_colaborador" value="${colab.nombre}"></td>`;
+            tbody.appendChild(tr);
+          });
+        })
+        .catch(err => {
+          alert("Error al obtener datos del colaborador: " + err);
+        });
+    });
+    //armar la tabla
+    let opcionesEvaluacion = [];
+    // Cargar opciones de evaluación al iniciar
+    fetch(`${url}?func=evaluacion`)
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          opcionesEvaluacion = data;
+        } else {
+          console.error("Las opciones de evaluación no están en formato de array:", data);
+        }
+      })
+      .catch(error => {
+        console.error("Error al cargar opciones de evaluación:", error);
+      });
+
+    let contadorEvaluaciones = 0;
+    let maxPreguntasGlobal = 0;
+
+    document.addEventListener("change", function (e) {
+
+      function insertarAgrupadoPorArea(tbody, area, fila) {
+        const filas = Array.from(tbody.querySelectorAll("tr"));
+        let insertIndex = -1;
+
+        for (let i = filas.length - 1; i >= 0; i--) {
+          const inputArea = filas[i].querySelector('input[name="AREA_N"]');
+          if (inputArea && inputArea.value === area) {
+            insertIndex = i + 1;
+            break;
+          }
+        }
+
+        if (insertIndex >= 0 && insertIndex < tbody.children.length) {
+          const refNode = tbody.children[insertIndex];
+          tbody.insertBefore(fila, refNode);
+        } else {
+          tbody.appendChild(fila);
+        }
+      }
+
+      if (e.target.name === "check_colaborador" && e.target.checked) {
+        const nombre = e.target.value;
+        const area = document.getElementById('area').value.trim();
+
+        if (!area || !nombre) return;
+
+        const urlpreg = `${url}?func=preguntas&area=${encodeURIComponent(area)}`;
+        fetch(urlpreg)
+          .then(res => res.json())
+          .then(data => {
+            if (data.error) {
+              alert(data.error);
+              return;
+            }
+
+            //quitar el mensaje
+            const filaCarga = document.getElementById("cargaDatos");
+            if (filaCarga) filaCarga.remove();
+
+            const preguntasValidas = (data.preguntas || []).filter(p => p.pregunta && p.pregunta.trim() !== "");
+
+            if (preguntasValidas.length > maxPreguntasGlobal) {
+              maxPreguntasGlobal = preguntasValidas.length;
+            }
+
+            const tabla = document.getElementById("tablaSecundaria");
+
+            let thead = tabla.querySelector("thead");
+            if (!thead) {
+              thead = document.createElement("thead");
+              const filaCabecera = document.createElement("tr");
+              ["", "AREA", "NOMBRE", "MODO"].forEach(col => {
+                const th = document.createElement("th");
+                th.textContent = col;
+                filaCabecera.appendChild(th);
+              });
+              for (let i = 0; i < maxPreguntasGlobal; i++) {
+                const th = document.createElement("th");
+                th.textContent = `P${i + 1}`;
+                filaCabecera.appendChild(th);
+              }
+              thead.appendChild(filaCabecera);
+              tabla.appendChild(thead);
+            } else {
+              const filaCabecera = thead.querySelector("tr");
+              const columnasFijas = 4;
+              const columnasActuales = filaCabecera.children.length - columnasFijas;
+              if (maxPreguntasGlobal > columnasActuales) {
+                for (let i = columnasActuales + 1; i <= maxPreguntasGlobal; i++) {
+                  const th = document.createElement("th");
+                  th.textContent = `P${i}`;
+                  filaCabecera.appendChild(th);
+                }
+              }
+            }
+
+            let tbody = tabla.querySelector("tbody");
+            if (!tbody) {
+              tbody = document.createElement("tbody");
+              tabla.appendChild(tbody);
+            }
+
+            let selectModo = `<select name="EVALUACION" class="modo-select" style="display: inline-block; margin-right: 10px; width: 100%;">
+              <option value="">--Seleccionar--</option>`;
+            opcionesEvaluacion.forEach(op => {
+              selectModo += `<option value="${op}">${op}</option>`;
+            });
+            selectModo += `</select>`;
+
+            const filaCompleta = document.createElement("tr");
+            const btnEliminarHTML = `<button type="button" class="btn-eliminar" title="Eliminar fila">X</button>`;
+
+            let celdasFila = `<td>${btnEliminarHTML}</td>
+             <td>${area}<input type="hidden" name="AREA_N" value="${area}"></td>
+             <td>${nombre}<input type="hidden" name="NOMBRE_PERSONA" value="${nombre}"></td>
+             <td>${selectModo}</td>`;
+
+            for (let i = 0; i < preguntasValidas.length; i++) {
+              const pregunta = preguntasValidas[i];
+              const preguntaTexto = pregunta.pregunta?.trim() || "";
+              const descripcion = pregunta.descripcion?.trim() || "";
+              const inputId = `respuesta-${area}-${nombre}-p${i + 1}`.replace(/\s+/g, '');
+
+              const descripcionFormateada = descripcion
+                .replace(/\[1\]/g, '<br>[1]')
+                .replace(/\[2\]/g, '<br>[2]')
+                .replace(/\[3\]/g, '<br>[3]')
+                .replace(/\[4\]/g, '<br>[4]')
+                .replace(/\[5\]/g, '<br>[5]');
+
+              const contenidoCompleto = `<span style='color: blue;'><b>${preguntaTexto}</b></span>${descripcion ? `<br>${descripcionFormateada}` : ""}`;
+
+              celdasFila += `<td>
+             <div><b>Pregunta ${i + 1}</b></div>
+              ${preguntaTexto ? `<a href="#" class="mas-info" data-descripcion="${encodeURIComponent(contenidoCompleto)}" data-input-id="${inputId}"><b>Más info</b></a><br><br>` : ""}
+             <input type="text" name="P${i + 1}" id="${inputId}" readonly style="width: 25px;">
+             </td>`;
+            }
+            filaCompleta.innerHTML = celdasFila;
+            // Insertar agrupado por área
+            insertarAgrupadoPorArea(tbody, area, filaCompleta);
+            // Botón eliminar
+            const botonEliminar = filaCompleta.querySelector('.btn-eliminar');
+            botonEliminar.addEventListener('click', function () {
+              filaCompleta.remove();
+              document.querySelectorAll('input[name="check_colaborador"]').forEach(chk => {
+                if (chk.value === nombre) chk.checked = false;
+              });
+            });
+            // Activar "Más info"
+            setTimeout(() => {
+              document.querySelectorAll('.mas-info').forEach(el => {
+                el.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  const descripcion = decodeURIComponent(this.dataset.descripcion);
+                  inputTargetId = this.dataset.inputId;
+                  mostrarDescripcion(descripcion);
+                });
+              });
+            }, 0);
+          })
+          .catch(error => {
+            alert("Error al cargar preguntas.");
+          });
+      }
+    });
+    // Funciones relacionadas al modal
+    let inputTargetId = null;
+    function mostrarDescripcion(texto) {
+      document.getElementById('contenidoDescripcion').innerHTML = texto;
+      document.querySelectorAll('input[name="respuestaModal"]').forEach(chk => chk.checked = false);
+      document.getElementById('modalDescripcion').style.display = 'block';
+    }
+    function cerrarModal() {
+      document.getElementById('modalDescripcion').style.display = 'none';
+      inputTargetId = null;
+    }
+    document.getElementById("guardarRespuesta").addEventListener("click", function () {
+      const checkboxSeleccionado = document.querySelector('input[name="respuestaModal"]:checked');
+
+      if (checkboxSeleccionado && inputTargetId) {
+        const inputHidden = document.getElementById(inputTargetId);
+        if (inputHidden) {
+          inputHidden.value = checkboxSeleccionado.value;
+        }
+      }
+      cerrarModal();
+    });
+    // Limitar a solo un checkbox seleccionado
+    document.querySelectorAll('input[name="respuestaModal"]').forEach(cb => {
+      cb.addEventListener('change', function () {
+        if (this.checked) {
+          document.querySelectorAll('input[name="respuestaModal"]').forEach(otro => {
+            if (otro !== this) {
+              otro.checked = false;
+            }
+          });
+        }
+      });
+    });
+    //para resetear todo el formulario
+    function borrarTodo() {
+      window.location.reload(true);
+    }
+  </script>
+</body>
+
+</html>

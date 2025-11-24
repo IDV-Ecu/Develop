@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Gráfica</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <!--LIBRERIAS DEL CALENDARIO-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1/daterangepicker.min.js"></script>
+</head>
+
+<body style="max-width: 95%; margin: auto;" onload="cargarDatos()">
+  <div class="row x_title" style="margin-top: 30px;">
+    <div class="col-md-12">
+      <h3>GRAFICA</h3>
+      <div
+        style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; width: 100%; margin-top: 10px;">
+        <div id="filters"
+          style="flex: 1; background: #fff; padding: 10px; border: 0px solid #ccc; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+          <select id="positionSelect" class="form-control" style="width: 150px;">
+            <option value="">Seleccione una posición</option>
+          </select>
+          <select id="elapsedInput" class="form-control" style="width: 150px;">
+            <option value="">Seleccione un tiempo</option>
+          </select>
+          <select id="nombres" class="form-control" style="width: 150px;">
+            <option value="">Seleccione un nombre</option>
+          </select>
+          <!-- Botones -->
+          <button onclick="cargarDatos()" class="btn btn-primary">Buscar</button>
+          <button onclick="descargarPDF()" class="btn btn-primary">Descargar</button>
+
+          <input type="text" id="rangoFechas" class="form-control" style="width: 250px; margin-left: auto;"
+            placeholder="Seleccione rango de fechas" readonly />
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-md-12">
+      <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+        <div id="dateContainer"
+          style="width: 300px; background: #fff; padding: 10px; border: 0px solid #ccc; max-height: 325px; overflow-y: auto;">
+        </div>
+        <div id="grafica-container"
+          style="flex: 1; background: #fff; padding: 10px; border: 0px solid #ccc; overflow-x: auto;">
+          <div id="grafica-wrapper">
+            <canvas id="grafica" height="400"></canvas>
+          </div>
+        </div>
+        <div id="grafica2-container" style="flex: 1; background: #fff; padding: 10px; overflow-x: auto;">
+          <div id="grafica2-wrapper">
+            <canvas id="grafica2" height="400"></canvas>
+          </div>
+        </div>
+      </div>
+      <!--<div style="background: #fff; padding: 10px; border: 0px solid #ccc;">
+        <canvas id="grafica3" height="400"></canvas>
+      </div>-->
+      <div id="grafica3-container" style="flex: 1; background: #fff; padding: 10px; overflow-x: auto;">
+          <div id="grafica3-wrapper">
+            <canvas id="grafica3" height="400"></canvas>
+          </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    /*inicializar el calendario*/
+    $(function () {
+      $('#rangoFechas').daterangepicker({
+        opens: 'right',
+        autoUpdateInput: false,
+        showDropdowns: true,
+        locale: {
+          cancelLabel: 'Limpiar',
+          applyLabel: 'Aplicar',
+          format: 'YYYY-MM-DD',
+          daysOfWeek: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+          monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+        }
+      });
+
+      $('#rangoFechas').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD') + ' – ' + picker.endDate.format('YYYY-MM-DD'));
+        window.fechaInicio = picker.startDate.format('YYYY-MM-DD');
+        window.fechaFin = picker.endDate.format('YYYY-MM-DD');
+        cargarDatosGrafica2();
+      });
+
+      $('#rangoFechas').on('cancel.daterangepicker', function (ev, picker) {
+        $(this).val('');
+        window.fechaInicio = '';
+        window.fechaFin = '';
+        cargarDatosGrafica2();
+      });
+    });
+    //document.getElementById('positionSelect').addEventListener('change', cargarDatos);
+    //document.getElementById('elapsedInput').addEventListener('change', cargarDatos);
+    //document.getElementById('nombres').addEventListener('change', cargarDatos);
+    const positionSelect = document.getElementById('positionSelect');
+    positionSelect.addEventListener('change', cargarDatos);
+    positionSelect.addEventListener('change', cargarDatosGrafica3);
+    /*SEGUNDO FILTRO*/
+    const elapsedInput = document.getElementById('elapsedInput');
+    elapsedInput.addEventListener('change', cargarDatos);
+    elapsedInput.addEventListener('change', cargarDatosGrafica3);
+    const selectNombres = document.getElementById('nombres');
+    selectNombres.addEventListener('change', cargarDatos);
+    selectNombres.addEventListener('change', cargarDatosGrafica2);
+    const urlBase = 'https://script.google.com/macros/s/AKfycbxLsG85671QwjExkphPi6vuyZQjJSgrDl22QrZrWrxGeIP4WJsFOaCU5ne_ZKCrNswCcw/exec';
+    document.addEventListener("DOMContentLoaded", function () {
+      const urlNombres = `${urlBase}?func=posiciones`;
+      fetch(urlNombres)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('positionSelect');
+          if (!select) return console.error("Elemento POSICION no encontrado");
+
+          data.forEach(nombre => {
+            //console.log(data);
+            const option = document.createElement('option');
+            option.value = nombre;
+            option.textContent = nombre;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar los nombres:', error);
+        });
+
+      //traer filtro del tiempo
+      const urltiempo = `${urlBase}?func=tiempo`;
+      fetch(urltiempo)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('elapsedInput');
+          if (!select) return console.error("Elemento TIEMPO no encontrado");
+
+          data.forEach(nombre => {
+            //console.log(data);
+            const option = document.createElement('option');
+            option.value = nombre;
+            option.textContent = nombre;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar los nombres:', error);
+        });
+
+      //traer los nombres
+      const urlnombres = `${urlBase}?func=nombres`;
+      fetch(urlnombres)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('nombres');
+          if (!select) return console.error("Elemento NOMBRES no encontrado");
+
+          data.forEach(nombre => {
+            //console.log(data);
+            const option = document.createElement('option');
+            option.value = nombre;
+            option.textContent = nombre;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar los nombres:', error);
+        });
+      //traer el data
+      const urldata = `${urlBase}?func=date`;
+      fetch(urldata)
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById('dateContainer');
+          if (!container) return console.error("Contenedor 'dateContainer' no encontrado");
+
+          container.innerHTML = '';
+
+          container.style.display = 'flex';
+          container.style.gap = '10px';
+
+          const endContainer = document.createElement('div');
+          endContainer.style.flex = '1';
+          endContainer.style.border = '0px solid #ccc';
+          endContainer.style.padding = '10px';
+          endContainer.style.color = 'blue';
+
+          const normalContainer = document.createElement('div');
+          normalContainer.style.flex = '1';
+          normalContainer.style.border = '0px solid #ccc';
+          normalContainer.style.padding = '10px';
+
+          data.forEach(fecha => {
+            const label = document.createElement('label');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.name = 'fechaFiltro[]';
+            checkbox.value = fecha;
+
+            label.style.display = 'block';
+            label.style.marginBottom = '4px';
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(" " + fecha));
+
+            //consulta automaticamente
+            //checkbox.addEventListener('change', cargarDatos);
+            checkbox.addEventListener('change', () => {
+              cargarDatos();
+              cargarDatosGrafica3();
+            });
+
+
+            if (fecha.toUpperCase().startsWith('ENT')) {
+              endContainer.appendChild(label);
+            } else {
+              normalContainer.appendChild(label);
+            }
+          });
+
+          container.appendChild(endContainer);
+          container.appendChild(normalContainer);
+        })
+        .catch(error => {
+          console.error('Error al cargar las fechas:', error);
+        });
+    });
+
+    async function cargarDatos() {
+      const position = document.getElementById('positionSelect').value;
+      const elapsed = document.getElementById('elapsedInput').value;
+      const name = document.getElementById('nombres').value;
+
+      const checkboxes = document.querySelectorAll('#dateContainer input[type="checkbox"]:checked');
+      const fechasSeleccionadas = Array.from(checkboxes).map(cb => cb.value);
+      const date = fechasSeleccionadas.join(',');
+
+      const url = `${urlBase}?position=${encodeURIComponent(position)}&elapsed=${encodeURIComponent(elapsed)}&name=${encodeURIComponent(name)}&date=${encodeURIComponent(date)}`;
+
+      try {
+        const response = await fetch(url);
+        const datos = await response.json();
+
+        if (!Array.isArray(datos)) {
+          throw new Error('Respuesta inválida del servidor');
+        }
+
+        const conjunto = datos.map(row => {
+          const rawLabel = row[2]; //variable numero 1
+          const match = rawLabel.match(/\((\d+)\)/);
+          const num = match ? parseInt(match[1], 10) : 0;
+
+          const val1 = (() => {
+            const n = parseFloat(row[27]); //variable 2
+            return isNaN(n) ? 0 : +n.toFixed(2);
+          })();
+          const val2 = (() => {
+            const n = parseFloat(row[4]); //variable 3
+            return isNaN(n) ? 0 : +n.toFixed(2);
+          })();
+
+          return { rawLabel, num, val1, val2 };
+        });
+
+        conjunto.sort((a, b) => a.num - b.num);
+
+        const labels = conjunto.map(o => o.rawLabel);
+        const valores = conjunto.map(o => o.val1);
+        const valoresn = conjunto.map(o => o.val2);
+
+        graficar(labels, valores, valoresn);
+        cargarDatosGrafica2();
+        cargarDatosGrafica3();
+
+      } catch (err) {
+        alert('Error cargando datos: ' + err.message);
+      }
+    }
+
+    async function cargarDatosGrafica2() {
+      const name = document.getElementById('nombres').value;
+      const rango = document.getElementById('rangoFechas').value;
+      let startDate = '', endDate = '';
+      if (rango) {
+        [startDate, endDate] = rango.split(' – ').map(s => s.trim());
+      }
+      const params = new URLSearchParams({
+        func: 'grafica',
+        name: name,
+        startDate: startDate,
+        endDate: endDate
+      });
+      const url = `${urlBase}?${params.toString()}`;
+      try {
+        const response = await fetch(url);
+        const datos = await response.json();
+        if (!Array.isArray(datos)) {
+          throw new Error('Respuesta inválida del servidor');
+        }
+        const labels = datos.map(row => row[2].split('T')[0]); //variable numero 1 
+
+        const valores = datos.map(row => {
+          const num = parseFloat(row[27]); // variable numero 2
+          return isNaN(num) ? 0 : +num.toFixed(2);
+        });
+
+        const valoresn = datos.map(row => {
+          const num = parseFloat(row[4]); //variable numero 3
+          return isNaN(num) ? 0 : +num.toFixed(2);
+        });
+
+        graficar2(labels, valores, valoresn);
+
+      } catch (err) {
+        alert('Error cargando datos: ' + err.message);
+      }
+    }
+    async function cargarDatosGrafica3() {
+      const position = document.getElementById('positionSelect').value;
+      const elapsed = document.getElementById('elapsedInput').value;
+      const name = document.getElementById('nombres').value;
+
+      const checkboxes = document.querySelectorAll('#dateContainer input[type="checkbox"]:checked');
+      const fechasSeleccionadas = Array.from(checkboxes).map(cb => cb.value);
+      const date = fechasSeleccionadas.join(',');
+
+      const url = `${urlBase}?func=grafica3&position=${encodeURIComponent(position)}&elapsed=${encodeURIComponent(elapsed)}&name=${encodeURIComponent(name)}&date=${encodeURIComponent(date)}`;
+
+      try {
+        const response = await fetch(url);
+        const datos = await response.json();
+
+        if (!Array.isArray(datos)) {
+          throw new Error('Respuesta inválida del servidor');
+        }
+
+        const conjunto = datos.map(row => {
+          //const rawLabel = row[0];
+          //jugador
+          const jugador = row[0];
+          //entreno
+          const entreno = row[2];
+
+          const val1 = (() => {
+            const n1 = parseFloat(row[10]); //variable 1
+            const n2 = parseFloat(row[11]); //variable 2
+            const suma = (isNaN(n1) ? 0 : n1) + (isNaN(n2) ? 0 : n2);
+            return +suma.toFixed(2);
+          })();
+
+          //concatenar las dos variables
+          const rawLabel = entreno + ' - ' + val1; //variable 3 concatenada los nombres
+          const match = rawLabel.match(/\((\d+)\)/);
+          const num = match ? parseInt(match[1], 10) : 0;
+
+          const val2 = (() => {
+            const n = parseFloat(row[4]);
+            return isNaN(n) ? 0 : +n.toFixed(2);
+          })();
+
+          return { rawLabel, num, val1, val2 };
+        });
+
+        const puntosXY = conjunto
+          .sort((a, b) => a.val2 - b.val2)
+          .map(o => ({
+            x: o.val2,
+            y: o.val1,
+            label: o.rawLabel
+          }));
+        graficar3(puntosXY);
+
+      } catch (err) {
+        alert('Error cargando datos: ' + err.message);
+      }
+    }
+
+    let chartInstance = null;
+    function graficar(labels, data1, data2) {
+      const ctx = document.getElementById('grafica').getContext('2d');
+      const wrapper = document.getElementById('grafica-wrapper');
+      const minWidthPerLabel = 50;
+      const totalWidth = Math.max(labels.length * minWidthPerLabel, 600);
+      wrapper.style.width = totalWidth + 'px';
+
+      if (chartInstance) chartInstance.destroy();
+
+      chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: 'AVG TOTAL DISTANCE (M)',
+              data: data1,
+              fill: false,
+              borderColor: 'rgba(140, 239, 125, 0.9)',
+              pointBackgroundColor: 'rgba(140, 239, 125, 0.6)',
+              tension: 0.3,
+              pointRadius: 4,
+              yAxisID: 'y1',
+              datalabels: {
+                align: 'top',
+                anchor: 'end',
+                font: { size: 7.5 },
+                color: '#000',
+                formatter: v => v
+              }
+            },
+            {
+              label: 'TOTAL DISTANCE (M)',
+              data: data2,
+              fill: false,
+              borderColor: 'rgba(54, 162, 235, 1)',
+              pointBackgroundColor: 'rgba(0, 90, 200, 1)', // Azul más fuerte
+              tension: 0.3,
+              pointRadius: 4,
+              yAxisID: 'y2',
+              datalabels: {
+                align: 'bottom',
+                anchor: 'start',
+                font: { size: 7.5 },
+                color: '#000',
+                formatter: v => v
+              }
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top' }
+          },
+          scales: {
+            y1: {
+              beginAtZero: true,
+              position: 'left',
+              title: { display: true, text: 'AVG TOTAL DISTANCE (M)' }
+            },
+            y2: {
+              beginAtZero: true,
+              position: 'right',
+              title: { display: true, text: 'TOTAL DISTANCE (M)' },
+              grid: { drawOnChartArea: false }
+            }
+          }
+        },
+        plugins: [ChartDataLabels]
+      });
+    }
+    //grafica numero 2
+    let chartInstance2 = null;
+    function graficar2(labels, data1, data2) {
+      const ctx = document.getElementById('grafica2').getContext('2d');
+
+      const wrapper = document.getElementById('grafica2-wrapper');
+      const minWidthPerLabel = 50; // píxeles por punto
+      const totalWidth = Math.max(labels.length * minWidthPerLabel, 600); // mínimo 600px
+      wrapper.style.width = totalWidth + 'px';
+
+      if (chartInstance2) chartInstance2.destroy();
+
+      chartInstance2 = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: 'AVG TOTAL DISTANCE (M)',
+              data: data1,
+              fill: false,
+              borderColor: 'rgba(140, 239, 125, 1)',
+              pointBackgroundColor: 'rgba(140, 239, 125, 1)',
+              tension: 0.3,
+              pointRadius: 4,
+              yAxisID: 'y1',
+              datalabels: {
+                align: 'top',
+                anchor: 'end',
+                font: { size: 8 },
+                color: '#000',
+                formatter: v => v
+              }
+            },
+            {
+              label: 'TOTAL DISTANCE (M)',
+              data: data2,
+              fill: false,
+              borderColor: 'rgba(54, 162, 235, 1)',
+              pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+              tension: 0.3,
+              pointRadius: 4,
+              yAxisID: 'y2',
+              datalabels: {
+                align: 'bottom',
+                anchor: 'start',
+                font: { size: 8 },
+                color: '#000',
+                formatter: v => v
+              }
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top' }
+          },
+          scales: {
+            y1: {
+              beginAtZero: true,
+              position: 'left',
+              title: { display: true, text: 'AVG TOTAL DISTANCE (M)' }
+            },
+            y2: {
+              beginAtZero: true,
+              position: 'right',
+              title: { display: true, text: 'TOTAL DISTANCE (M)' },
+              grid: { drawOnChartArea: false }
+            }
+          }
+        },
+        plugins: [ChartDataLabels]
+      });
+    }
+    /*TRAER LA GRAFICA 3*/
+
+    let chartInstance3 = null;
+
+    function graficar3(puntosXY) {
+      const ctx = document.getElementById('grafica3').getContext('2d');
+
+      if (chartInstance3) chartInstance3.destroy();
+
+      chartInstance3 = new Chart(ctx, {
+        type: 'line',
+        data: {
+          datasets: [
+            {
+              label: 'Entrenos: Velocity vs Distance',
+              data: puntosXY,
+              borderColor: 'rgba(0, 123, 255, 0.5)',
+              backgroundColor: 'rgba(0, 123, 255, 0.3)',
+              pointBackgroundColor: '#007bff',
+              pointBorderColor: '#fff',
+              pointRadius: 6,
+              pointHoverRadius: 8,
+              borderWidth: 3,
+              showLine: true,
+              fill: false,
+              tension: 0.4,
+              datalabels: {
+                align: 'top',
+                anchor: 'center',
+                font: { size: 9 },
+                color: '#111',
+                formatter: v => v.label
+              }
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              type: 'linear',
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'TOTAL DISTANCE (M)'
+              },
+              grid: {
+                color: 'rgba(0, 0, 0, 0.05)'
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'TOTAL VELOCITY 5 Y 6 (M)'
+              },
+              grid: {
+                color: 'rgba(0, 0, 0, 0.05)'
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                font: { size: 12 }
+              }
+            }
+          }
+        },
+        plugins: [ChartDataLabels]
+      });
+
+    }
+
+    //guardar con pdf
+    async function descargarPDF() {
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF();
+
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const margin = 10;
+
+      function addCanvasToPdf(canvas, yStart) {
+        const dataUrl = canvas.toDataURL('image/png', 1.0);
+        const imgProps = pdf.getImageProperties(dataUrl);
+        const imgWidth = pageWidth - margin * 2;
+        const imgHeight = (imgProps.height * imgWidth) / imgProps.width;
+
+        if (yStart + imgHeight + margin > pageHeight) {
+          pdf.addPage();
+          yStart = margin;
+        }
+
+        pdf.addImage(dataUrl, 'PNG', margin, yStart, imgWidth, imgHeight);
+        return yStart + imgHeight + margin;
+      }
+
+      let cursorY = margin;
+
+      const canvas1 = document.getElementById('grafica');
+      if (canvas1) cursorY = addCanvasToPdf(canvas1, cursorY);
+
+      const canvas2 = document.getElementById('grafica2');
+      if (canvas2) cursorY = addCanvasToPdf(canvas2, cursorY);
+
+      const canvas3 = document.getElementById('grafica3');
+      if (canvas3) cursorY = addCanvasToPdf(canvas3, cursorY);
+
+      pdf.save('graficas.pdf');
+    }
+
+  </script>
+</body>
+
+</html>

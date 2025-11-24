@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <style>
+    .colorp {
+      background: #6431F7;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      /* estándar */
+      color: white;
+    }
+
+    .colors {
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+
+
+    }
+
+    /* Para Chrome, Safari, Edge, Opera */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Para Firefox */
+    input[type=number] {
+      appearance: textfield;
+    }
+
+    .border-bottom-morado {
+      border-bottom: 2px solid #6431F7 !important;
+    }
+
+    /*diseño para el boton principal*/
+    .btn-morado {
+      background-color: #6431F7;
+      /* morado */
+      color: #fff;
+      /* texto blanco */
+      border: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      /* espacio entre texto e icono */
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-morado i {
+      font-size: 18px;
+    }
+
+    .btn-morado:hover {
+      transform: scale(1.08);
+      /* efecto agrandado */
+      box-shadow: 0 4px 12px rgba(100, 49, 247, 0.5);
+      /* sombra morada */
+      cursor: pointer;
+    }
+
+    /* Botón secundario (outline morado) */
+    .btn-morado-secundario {
+      background-color: transparent;
+      color: #6431F7;
+      border: 1px solid #6431F7;
+      padding: 2px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .btn-morado-secundario:hover {
+      background-color: #6431F7;
+      color: white;
+      transform: scale(1.08);
+      box-shadow: 0px 4px 12px rgba(100, 49, 247, 0.4);
+    }
+
+    .btn-morado-secundario:active {
+      transform: scale(0.95);
+    }
+
+    /*estilo para el boton de retroceder*/
+    .btn-morado-secundario.invertido {
+      background-color: transparent;
+      color: #fff;
+      /* Texto blanco */
+      border: 1px solid #fff;
+      /* Borde blanco */
+      padding: 1px 12px;
+      border-radius: 12px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .btn-morado-secundario.invertido:hover {
+      background-color: #fff;
+      /* Se rellena blanco */
+      color: #6431F7;
+      /* Texto morado */
+      transform: scale(1.08);
+      box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-morado-secundario.invertido:active {
+      transform: scale(0.95);
+    }
+
+    /* Botón con borde morado */
+    .btn-outline-morado {
+      border: 1px solid #6431F7;
+      color: #6431F7;
+      background-color: transparent;
+      transition: all 0.3s ease;
+      border-radius: 50%;
+      /* que se vea más redondito */
+      font-weight: bold;
+    }
+
+    /* Hover efecto */
+    .btn-outline-morado:hover {
+      background-color: #6431F7;
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(100, 49, 247, 0.3);
+    }
+
+    /* Tamaño pequeño para iconos */
+    .btn-icon {
+      width: 35px;
+      height: 35px;
+      font-size: 18px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /*nombre del titulo de la doferentes secciones*/
+    .titulo::after {
+      content: "FORMULARIO DE CONTROL";
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    body,
+    input,
+    select,
+    button,
+    label,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Poppins', sans-serif !important;
+      letter-spacing: 0.1px;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  <!-- Librerias para control de campo hora -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <!-- jQuery (requerido por Select2) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- JS Select2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <!--diseño para el boton principal-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!--libreria para hacer la grafica-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!--librerias para poner los rangos de fechas-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!--TIPO DE LETRA-->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <form id="control_idv" method="POST" enctype="multipart/form-data" class="container-fluid mt-3">
+    <!-- Paso 1 -->
+    <div class="form-step active" id="step1">
+      <h2 class="titulo"
+        style="background-color: #6431F7; color: white; padding: 10px; border-radius: 6px; text-align: center;"></h2>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label class="form-label fw-bold small">ID</label>
+          <input type="text" name="ID" id="ID" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-bold small">FECHA</label>
+          <input type="date" name="FECHA" id="FECHA" class="form-control">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-bold small">EQUIPO</label>
+          <div class="btn-group w-100" role="group" aria-label="Seleccionar equipo">
+            <input type="radio" class="btn-check" name="EQUIPO" id="profesional" value="PROFESIONAL" autocomplete="off"
+              checked>
+            <label class="btn btn-outline-dark"
+              style="--bs-btn-active-bg:#7B2FFF; --bs-btn-active-border-color:#7B2FFF;"
+              for="profesional">PROFESIONAL</label>
+            <input type="radio" class="btn-check" name="EQUIPO" id="formativas" value="FORMATIVAS" autocomplete="off">
+            <label class="btn btn-outline-dark"
+              style="--bs-btn-active-bg:#7B2FFF; --bs-btn-active-border-color:#7B2FFF;"
+              for="formativas">FORMATIVAS</label>
+          </div>
+        </div>
+        <!-- CATEGORIA -->
+        <div class="col-md-3">
+          <label class="form-label fw-bold small">CATEGORIA</label>
+          <select name="CATEGORY" id="CATEGORY" class="form-select">
+            <option value="">--Seleccionar--</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="NOMBRES" class="form-label fw-bold small">NOMBRES</label>
+          <div class="position-relative">
+            <select name="NOMBRES" id="NOMBRES" class="form-select" disabled>
+              <option value="">Seleccione un nombre...</option>
+            </select>
+            <!-- Spinner alineado -->
+            <span id="spinnerNombres" class="position-absolute top-50 end-0 translate-middle-y pe-2 d-none">
+              <div class="spinner-border spinner-border-sm text-primary"></div>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <!--<label class="form-label fw-bold small">DEMARCACION</label>-->
+          <input type="hidden" name="DEMARCACION" id="DEMARCACION" class="form-control" readonly>
+        </div>
+        <!--PARTE DE BASIC-->
+        <div class="row g-2" id="vars-profesional">
+          <div class="col-12 mt-4">
+            <h6 class="fw-bold border-bottom-morado pb-2">BASIC</h6>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label fw-bold small">VAR 1</label>
+            <div class="input-group input-group-sm">
+              <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+                onfocus="this.dataset.oldValue = this.value; this.value='';"
+                onblur="if(this.value=='') this.value='0.00';">
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label fw-bold small">VAR 2</label>
+            <div class="input-group input-group-sm">
+              <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+                onfocus="this.dataset.oldValue = this.value; this.value='';"
+                onblur="if(this.value=='') this.value='0.00';">
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label fw-bold small">VAR 3</label>
+            <div class="input-group input-group-sm">
+              <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+                onfocus="this.dataset.oldValue = this.value; this.value='';"
+                onblur="if(this.value=='') this.value='0.00';">
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label fw-bold small">VAR 4</label>
+            <div class="input-group input-group-sm">
+              <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+                onfocus="this.dataset.oldValue = this.value; this.value='';"
+                onblur="if(this.value=='') this.value='0.00';">
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+            </div>
+          </div>
+        </div>
+        <!--PARTE DE DIAM-->
+        <div class="row g-2" id="peri-formativas" style="display:none;">
+          <div class="col-12 mt-4">
+            <h6 class="fw-bold border-bottom-morado pb-2">DIAM</h6>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label fw-bold small">VAR 5</label>
+            <div class="input-group input-group-sm">
+              <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+                onfocus="this.dataset.oldValue = this.value; this.value='';"
+                onblur="if(this.value=='') this.value='0.00';">
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label fw-bold small">VAR 6</label>
+            <div class="input-group input-group-sm">
+              <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+                onfocus="this.dataset.oldValue = this.value; this.value='';"
+                onblur="if(this.value=='') this.value='0.00';">
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label fw-bold small">VAR 7</label>
+            <div class="input-group input-group-sm">
+              <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+                onfocus="this.dataset.oldValue = this.value; this.value='';"
+                onblur="if(this.value=='') this.value='0.00';">
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label fw-bold small">VAR 8</label>
+            <div class="input-group input-group-sm">
+              <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+                onfocus="this.dataset.oldValue = this.value; this.value='';"
+                onblur="if(this.value=='') this.value='0.00';">
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label fw-bold small">VAR 9</label>
+            <div class="input-group input-group-sm">
+              <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+                onfocus="this.dataset.oldValue = this.value; this.value='';"
+                onblur="if(this.value=='') this.value='0.00';">
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label fw-bold small">VAR 10</label>
+            <div class="input-group input-group-sm">
+              <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+                onfocus="this.dataset.oldValue = this.value; this.value='';"
+                onblur="if(this.value=='') this.value='0.00';">
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label fw-bold small">VAR 11</label>
+            <div class="input-group input-group-sm">
+              <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+                onfocus="this.dataset.oldValue = this.value; this.value='';"
+                onblur="if(this.value=='') this.value='0.00';">
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+              <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div class="col-12 d-flex justify-content-center mt-3">
+        <button type="button" class="btn-morado-secundario me-2" onclick="showSection('listar')">
+          <i class="bi bi-list"></i>Listar
+        </button>
+        <button type="button" class="btn-morado" onclick="continuar()">
+          Continuar <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Pantalla 2 (PERI) -->
+    <div class="form-step" id="step2" style="display: none;">
+      <div class="d-flex align-items-center justify-content-between"
+        style="background-color: #6431F7; color: white; padding: 10px; border-radius: 6px;">
+        <button type="button" class="btn-morado-secundario invertido" onclick="atras()">
+          <i class="bi bi-arrow-left fs-3"></i>
+        </button>
+        <h2 class="titulo"></h2>
+        <div style="width:70px"></div>
+      </div>
+      <div class="row g-2" id="vars-formativas" style="display:none;">
+        <div class="col-12 mt-4">
+          <h6 class="fw-bold border-bottom-morado pb-2">PERI</h6>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 12</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 13</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 14</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 15</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label for="VAR16" class="form-label fw-bold small">VAR 16</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 17</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 18</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 19</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 20</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 21</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 d-flex justify-content-center mt-4">
+        <button type="button" class="btn-morado" onclick="continuar()">
+          Continuar <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+    <!-- Pantalla 3 (skin) -->
+    <div class="form-step" id="step3" style="display: none;">
+      <div class="d-flex align-items-center justify-content-between"
+        style="background-color: #6431F7; color: white; padding: 10px; border-radius: 6px;">
+        <button type="button" class="btn-morado-secundario invertido" onclick="atras()">
+          <i class="bi bi-arrow-left fs-3"></i>
+        </button>
+        <h2 class="titulo"></h2>
+        <div style="width:70px"></div>
+      </div>
+      <div class="col-12 mt-4">
+        <h6 class="fw-bold border-bottom-morado pb-2">SKIN</h6>
+      </div>
+      <div class="row g-2">
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 22</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 23</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 24</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 25</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 26</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 27</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 28</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <label class="form-label fw-bold small">VAR 29</label>
+          <div class="input-group input-group-sm">
+            <input type="number" step="0.01" class="form-control text-center" id="" name="" value="0.00"
+              onfocus="this.dataset.oldValue = this.value; this.value='';"
+              onblur="if(this.value=='') this.value='0.00';">
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">−</button>
+            <button class="btn-outline-morado btn-icon" type="button" data-target="">+</button>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-bold small">FECHA NACIMIENTO</label>
+          <input type="date" name="FECHA_NACIMIENTO" id="FECHA_NACIMIENTO" class="form-control">
+        </div>
+      </div>
+      <div class="col-12 d-flex justify-content-center mt-4">
+        <button type="button" class="btn-morado" onclick="continuar()">
+          Continuar <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Pantalla 4 (skin) -->
+    <div class="form-step" id="step4" style="display: none;">
+      <div class="d-flex align-items-center justify-content-between"
+        style="background-color: #6431F7; color: white; padding: 10px; border-radius: 6px;">
+        <button type="button" class="btn-morado-secundario invertido" onclick="atras()">
+          <i class="bi bi-arrow-left fs-3"></i>
+        </button>
+        <h2 class="titulo"></h2>
+        <div style="width:70px"></div>
+      </div>
+      <div class="col-12 mt-4">
+        <h6 class="fw-bold border-bottom-morado pb-2">SUMMARY</h6>
+      </div>
+      <!-- Campos alineados a la izquierda con ancho pequeño -->
+      <div class="mb-2 col-6 col-md-4">
+        <label class="form-label small">SUM 4</label>
+        <div class="input-group input-group-sm">
+          <input type="number" step="0.01" class="form-control text-center" name="" id="" value="0.00" readonly>
+        </div>
+      </div>
+
+      <div class="mb-2 col-6 col-md-4">
+        <label class="form-label small">SUM 6</label>
+        <div class="input-group input-group-sm">
+          <input type="number" step="0.01" class="form-control text-center" name="" id="" value="0.00" readonly>
+        </div>
+      </div>
+
+      <div class="mb-2 col-6 col-md-4">
+        <label class="form-label small">SUM 8</label>
+        <div class="input-group input-group-sm">
+          <input type="number" step="0.01" class="form-control text-center" name="" id="" value="0.00" readonly>
+        </div>
+      </div>
+
+      <div class="mb-2 col-6 col-md-4">
+        <label class="form-label fw-bold small">R1</label>
+        <div class="input-group input-group-sm">
+          <input type="number" step="0.01" class="form-control text-center" name="" id="" value="0.00" readonly>
+        </div>
+      </div>
+
+      <div class="mb-2 col-6 col-md-4">
+        <label class="form-label fw-bold small">R2</label>
+        <div class="input-group input-group-sm">
+          <input type="number" step="0.01" class="form-control text-center" name="" id="" value="0.00" readonly>
+        </div>
+      </div>
+
+      <div class="mb-2 col-6 col-md-4">
+        <label class="form-label fw-bold small">R3</label>
+        <div class="input-group input-group-sm">
+          <input type="number" step="0.01" class="form-control text-center" name="" id="" value="0.00" readonly>
+        </div>
+      </div>
+
+      <div class="mb-2 col-6 col-md-4">
+        <label class="form-label fw-bold small">SUPL</label>
+        <div class="btn-group w-100" role="group" aria-label="Seleccionar SUPL">
+          <input type="radio" class="btn-check" name="SUPL" id="si" value="si" autocomplete="off" checked>
+          <label class="btn btn-outline-dark" style="--bs-btn-active-bg:#7B2FFF; --bs-btn-active-border-color:#7B2FFF;"
+            for="si">SI</label>
+          <input type="radio" class="btn-check" name="SUPL" id="no" value="no" autocomplete="off">
+          <label class="btn btn-outline-dark" style="--bs-btn-active-bg:#7B2FFF; --bs-btn-active-border-color:#7B2FFF;"
+            for="no">NO</label>
+        </div>
+      </div>
+      <div class="col-12 d-flex justify-content-center mt-4">
+        <button type="submit" class="btn-morado"><i class="bi bi-save"></i> Guardar</button>
+      </div>
+
+    </div>
+    <!--pantalla para hacer la consultar de listar-->
+    <div class="form-step" id="listar" style="display:none;">
+      <div class="d-flex align-items-center justify-content-between"
+        style="background-color: #6431F7; color: white; padding: 10px; border-radius: 6px;">
+        <button type="button" class="btn-morado-secundario invertido" onclick="volver(1)">
+          <i class="bi bi-arrow-left fs-3"></i>
+        </button>
+        <h2 class="titulo"></h2>
+        <div style="width:70px"></div>
+      </div>
+      <div class="col-12 mt-4">
+        <h6 class="fw-bold border-bottom-morado pb-2">BUSQUEDA</h6>
+      </div>
+      <!-- Campo de Fecha -->
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label class="form-label fw-bold small">FECHAS</label>
+          <input type="text" id="FECHAC" name="FECHAC" class="form-control form-control-sm"
+            placeholder="Selecciona un rango de fechas"
+            style="width: 100%; height: 35px; font-size: 0.85rem; padding: 4px 8px; border-radius: 6px; border: 1px solid #ccc;">
+        </div>
+      </div>
+      <!-- Filtros de Categoría y Nombres en la misma fila -->
+      <div class="row mb-3">
+        <!-- Categoría a la izquierda -->
+        <div class="col-md-4">
+          <label class="form-label fw-bold small">CATEGORIA</label>
+          <div class="input-group input-group-sm">
+            <select name="CATEGORIAC" id="CATEGORIAC" class="form-select form-select-sm"
+              style="border-radius: 6px; border: 1px solid #ccc;">
+              <option value="">--Seleccionar--</option>
+            </select>
+            <button id="buscarBtn" type="button" class="btn" style="background-color: #6431F7;">
+              <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Buscar" width="20" height="20"
+                style="filter: invert(1);">
+            </button>
+          </div>
+        </div>
+        <!-- Nombres a la derecha -->
+        <div class="col-md-4 offset-md-4">
+          <label class="form-label fw-bold small">NOMBRES</label>
+          <select name="NOMBRESC" id="NOMBRESC" class="form-select form-select-sm"
+            style="width: 100%; height: 35px; font-size: 0.85rem; padding: 4px 8px; border-radius: 6px; border: 1px solid #ccc;">
+            <option value="">--Seleccionar--</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Resultados -->
+      <div style="margin-top: 15px;"></div>
+      <div id="resultados"></div>
+    </div>
+
+    <!--ventana modal-->
+    <div id="modalCargando"
+      style="display:none; position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.4); z-index: 9999; align-items: center; justify-content: center;">
+      <div
+        style="background: white; padding: 20px 30px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 250px;">
+        <div class="spinner"
+          style="border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;">
+        </div>
+        <span id="modalMensaje" style="font-weight: bold; text-align: center;">Cargando...</span>
+      </div>
+    </div>
+    <div id="spinnerBuscando" style="display:none; font-weight:bold; color:#6a1b9a; margin-top:10px;">
+      Cargando datos...
+    </div>
+
+    <div id="mensajeSinDatos" style="display:none; color:red; font-weight:bold; margin-top:10px;">
+      No se encontraron datos
+    </div>
+  </form>
+  <script>
+    //url para el guardado
+    const apiUrl = 'https://script.google.com/macros/s/AKfycbzhiLHI4GZjruRN-zkreV2gHLVCUIhgybW7OJwVB2l3kLbirJGqwg-kko74q7Doo3cYgA/exec';
+
+    /*validar limpiar de campos segun la opcion que marquen en equipos*/
+    document.querySelectorAll('input[name="EQUIPO"]').forEach(radio => {
+      radio.addEventListener('change', function () {
+        limpiarTodo();
+      });
+    });
+    function limpiarTodo() {
+      inputs.forEach(input => {
+        if (input.name === "EQUIPO") return;
+        if (input.type === "radio") {
+          input.checked = false;
+        } else if (input.type === "number") {
+          input.value = "0.00";
+        }
+      });
+    }
+
+    /*validar el enter*/
+    document.querySelectorAll("#control_idv input").forEach((input, index, inputs) => {
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          const next = inputs[index + 1];
+          if (next) {
+            next.focus();
+          } else {
+            document.querySelector("#control_idv button").focus();
+          }
+        }
+      });
+    });
+
+    /*activar el campo de rango de fechas en el mismo campo*/
+    $(document).ready(function () {
+      // Rango de fechas
+      $('#FECHAC').daterangepicker({
+        opens: 'right',
+        locale: {
+          cancelLabel: 'Limpiar',
+          applyLabel: 'Aplicar',
+          format: 'YYYY-MM-DD',
+          daysOfWeek: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+          monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+        }
+      });
+
+      // Select2
+      $('#NOMBRES').select2({
+        placeholder: "--Seleccionar--",
+        allowClear: true
+      });
+
+      //buscador para el campo de nombres de la consulta
+      $('#NOMBRESC').select2({
+        placeholder: "--Seleccionar--",
+        allowClear: true
+      });
+
+      // Detectar cuando seleccionas un nombre
+      $('#NOMBRESC').on('select2:select', function (e) {
+        const nombreSeleccionado = e.params.data.id;
+        ejecutarBusqueda(nombreSeleccionado);
+      });
+
+      // Detectar cuando limpias (allowClear)
+      $('#NOMBRESC').on('select2:clear', function (e) {
+        ejecutarBusqueda("");
+      });
+    });
+
+    /*NOMBRES DE LAS VARIABLES*/
+    const vars = [
+      "VAR 1", "VAR 2", "VAR 3", "VAR 4",
+      "VAR 5", "VAR 6", "VAR 7", "VAR 8", "VAR 9", "VAR 10", "VAR 11",
+      "VAR 12", "VAR 13", "VAR 14", "VAR 15", "VAR 16", "VAR 17", "VAR 18", "VAR 19", "VAR 20", "VAR 21",
+      "VAR 22", "VAR 23", "VAR 24", "VAR 25", "VAR 26", "VAR 27", "VAR 28", "VAR 29"
+    ];
+
+    // Traer todos los input[type="number"] en el orden que están en el HTML
+    const inputs = document.querySelectorAll('input[type="number"]');
+
+    // Asignar a cada input su id, name y los botones de su grupo
+    inputs.forEach((input, i) => {
+      const variable = vars[i];
+      input.id = variable;
+      input.name = variable;
+
+      // Buscar los botones dentro del mismo grupo (.input-group)
+      const buttons = input.parentElement.querySelectorAll("button");
+      buttons.forEach(btn => {
+        btn.dataset.target = variable;
+      });
+    });
+
+    /*Variable para la sumatoria y poner los r1,r2,r3,r4,r5,r6,etc validado segun el id del div*/
+    const nombres = ["R1", "R2", "R3", "R4", "R5", "R6"];
+
+    const inputsr = document.querySelectorAll('#step4 .mb-2 input[type="number"]');
+
+    inputsr.forEach((input, index) => {
+      if (nombres[index]) {
+        input.id = nombres[index];
+        input.name = nombres[index];
+      }
+    });
+
+    //los var se van a recorer por posiciones desde la posicion 0 de hay para adelante
+    const reglasConfig = {
+      R1: { indices: [0, 1, 2], operacion: "suma" },         // VAR 1 a VAR 3
+      R2: { indices: [3, 4], operacion: "multiplicacion" },
+      R3: { indices: [5, 6], operacion: "division" },
+      R4: { indices: [7, 8, 9], operacion: "suma" },
+      R5: { indices: [10, 11, 12], operacion: "suma" },
+      R6: { indices: [13, 14, 15], operacion: "suma" }
+    };
+
+    const reglas = Object.fromEntries(
+      Object.entries(reglasConfig).map(([key, { indices, operacion }]) => [
+        key,
+        {
+          vars: indices.map(i => vars[i]).filter(Boolean),
+          operacion
+        }
+      ])
+    );
+
+    function calcular(valorR) {
+      let resultado;
+      const { vars, operacion } = valorR;
+
+      vars.forEach((varName, index) => {
+        const input = document.getElementById(varName);
+        const val = parseFloat(input.value) || 0;
+
+        if (index === 0) resultado = val;
+        else {
+          if (operacion === "suma") resultado += val;
+          else if (operacion === "resta") resultado -= val;
+          else if (operacion === "multiplicacion") resultado *= val;
+          else if (operacion === "division") resultado = val !== 0 ? resultado / val : 0;
+        }
+      });
+
+      return resultado || 0;
+    }
+
+    // Función para actualizar todos los R
+    function actualizarR() {
+      for (const r in reglas) {
+        const resultado = calcular(reglas[r]);
+        const inputR = document.getElementById(r);
+        if (inputR) inputR.value = resultado.toFixed(2);
+      }
+    }
+
+    // Escuchar cambios en todos los inputs VAR
+    const inputsVar = document.querySelectorAll('input[type="number"]');
+    inputsVar.forEach(input => {
+      input.addEventListener("input", actualizarR);
+    });
+
+    // Inicializar cálculos al cargar la página
+    actualizarR();
+
+    /*funciones para la modales de los mensajes*/
+    function mostrarModal(mensaje, color = "black") {
+      const modal = document.getElementById("modalCargando");
+      const texto = document.getElementById("modalMensaje");
+      texto.innerText = mensaje;
+      texto.style.color = color;
+      modal.style.display = "flex";
+    }
+
+    function ocultarModal() {
+      document.getElementById("modalCargando").style.display = "none";
+    }
+
+    /*sumatoria con los iconos de mas y menos*/
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("button[data-target]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const input = document.getElementById(btn.dataset.target);
+          if (btn.textContent.trim() === "+") {
+            input.stepUp();
+          } else {
+            input.stepDown();
+          }
+        });
+      });
+    });
+    /*funcion para navegar entre secciones*/
+    let currentStep = 1;
+
+    function showStep(step) {
+      document.querySelectorAll('.form-step').forEach((div, index) => {
+        div.style.display = (index + 1 === step) ? 'block' : 'none';
+      });
+      currentStep = step;
+    }
+    /*validar los var segun el equipo que escojan profesional/formativas*/
+    /*let equipoSeleccionado = "PROFESIONAL"; // valor inicial por defecto
+    // Detectar cambio de equipo
+    document.querySelectorAll('input[name="EQUIPO"]').forEach(radio => {
+      radio.addEventListener('change', function () {
+        equipoSeleccionado = this.value;
+
+        // STEP 1
+        document.getElementById("vars-profesional").style.display = equipoSeleccionado === "PROFESIONAL" ? "flex" : "none";
+        document.getElementById("peri-formativas").style.display = equipoSeleccionado === "FORMATIVAS" ? "flex" : "none";
+        // STEP 2
+        document.getElementById("vars-formativas").style.display = equipoSeleccionado === "FORMATIVAS" ? "flex" : "lokp";
+        
+
+      });
+    });*/
+    document.querySelectorAll('input[name="EQUIPO"]').forEach(radio => {
+      radio.addEventListener('change', function () {
+       
+        equipoSeleccionado = this.value;
+      });
+    });
+
+    // Mostrar SIEMPRE todas las secciones
+    document.getElementById("vars-profesional").style.display = "flex";
+    document.getElementById("peri-formativas").style.display = "flex";
+    document.getElementById("vars-formativas").style.display = "flex";
+    //BTON  de continuar a la  otra pantalla validando 
+    /*function continuar() {
+      const steps = document.querySelectorAll(".form-step");
+      let activeStepIndex = Array.from(steps).findIndex(step =>
+        step.classList.contains("active")
+      );
+
+      if (activeStepIndex !== -1) {
+        steps[activeStepIndex].classList.remove("active");
+        steps[activeStepIndex].style.display = "none";
+
+        // Si estoy en STEP 1 y el equipo NO requiere Step 2 → saltar a Step 3
+        if (activeStepIndex === 0 && equipoSeleccionado === "PROFESIONAL") {
+          steps[2].classList.add("active"); // step3
+          steps[2].style.display = "block";
+        } else {
+          // Comportamiento normal (ir al siguiente step)
+          steps[activeStepIndex + 1].classList.add("active");
+          steps[activeStepIndex + 1].style.display = "block";
+        }
+      }
+    }*/
+    // Avanzar steps SIEMPRE uno por uno
+    function continuar() {
+      const steps = document.querySelectorAll(".form-step");
+      let activeStepIndex = Array.from(steps).findIndex(step =>
+        step.classList.contains("active")
+      );
+
+      if (activeStepIndex !== -1) {
+        steps[activeStepIndex].classList.remove("active");
+        steps[activeStepIndex].style.display = "none";
+
+        // Avanza al siguiente siempre
+        if (activeStepIndex + 1 < steps.length) {
+          steps[activeStepIndex + 1].classList.add("active");
+          steps[activeStepIndex + 1].style.display = "block";
+        }
+      }
+    }
+
+
+    function atras() {
+      const steps = document.querySelectorAll(".form-step");
+      let activeStepIndex = Array.from(steps).findIndex(step =>
+        step.classList.contains("active")
+      );
+
+      if (activeStepIndex > 0) {
+        steps[activeStepIndex].classList.remove("active");
+        steps[activeStepIndex].style.display = "none";
+
+        // Si vuelvo desde Step3 y mi equipo era PROFESIONAL, regresar a Step1 (saltando step2)
+        if (activeStepIndex === 2 && equipoSeleccionado === "PROFESIONAL") {
+          steps[0].classList.add("active");
+          steps[0].style.display = "block";
+        } else {
+          steps[activeStepIndex - 1].classList.add("active");
+          steps[activeStepIndex - 1].style.display = "block";
+        }
+      }
+    }
+
+    function volver(stepNumber) {
+      if (stepNumber === 1) {
+        location.reload();
+      } else {
+        // Ocultar/mostrar secciones sin limpiar
+        document.querySelectorAll('.form-step').forEach((div, index) => {
+          div.style.display = (index + 1 === stepNumber) ? 'block' : 'none';
+        });
+
+        currentStep = stepNumber;
+      }
+    }
+
+    /*funcion para el listar*/
+    function showSection(id) {
+      // Oculta todas las secciones
+      document.querySelectorAll('.form-step').forEach(div => {
+        div.style.display = 'none';
+      });
+      // Muestra solo la sección deseada
+      const section = document.getElementById(id);
+      if (section) {
+        section.style.display = 'block';
+      }
+    }
+
+
+    /*traer categorias del sheets*/
+    const url = `${apiUrl}?tipo=categoria`;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const select = document.getElementById('CATEGORY');
+        const categorias = data.categorias;
+
+        categorias.forEach(categoria => {
+          const option = document.createElement('option');
+          option.value = categoria;
+          option.textContent = categoria;
+          select.appendChild(option);
+        });
+      })
+      .catch(error => {
+        console.error('Error al cargar categorías:', error);
+      });
+
+    /*CARGAR LA CATEGORIA PARA LA BUSQUEDA*/
+    const urlC = `${apiUrl}?tipo=categoria`;
+    fetch(urlC)
+      .then(response => response.json())
+      .then(data => {
+        const select = document.getElementById('CATEGORIAC');
+        const categorias = data.categorias;
+
+        categorias.forEach(categoria => {
+          const option = document.createElement('option');
+          option.value = categoria;
+          option.textContent = categoria;
+          select.appendChild(option);
+        });
+      })
+      .catch(error => {
+        console.error('Error al cargar categorías:', error);
+      });
+
+
+    /*traer los nombres segun la categoria*/
+    function cargarNombresPorCategoria(categoria) {
+      const select = document.getElementById("NOMBRES");
+      const spinner = document.getElementById("spinnerNombres");
+
+      if (!categoria) {
+        select.innerHTML = '<option value="">Seleccione...</option>';
+        select.disabled = true;
+        spinner.classList.add("d-none");
+        return;
+      }
+
+      // Bloquear select y mostrar spinner
+      select.disabled = true;
+      spinner.classList.remove("d-none");
+
+      fetch(`${apiUrl}?tipo=nombres&categoria=${encodeURIComponent(categoria)}`)
+        .then(res => res.json())
+        .then(data => {
+          select.innerHTML = '<option value="">Seleccione...</option>';
+          data.nombres.forEach(nombre => {
+            const option = document.createElement("option");
+            option.value = nombre;
+            option.textContent = nombre;
+            select.appendChild(option);
+          });
+          // Desbloquear select y ocultar spinner
+          select.disabled = false;
+          spinner.classList.add("d-none");
+        })
+        .catch(err => {
+          console.error('Error al cargar nombres:', err);
+          select.innerHTML = '<option value="">Error al cargar</option>';
+          spinner.classList.add("d-none");
+        });
+    }
+    /*traer los nombres segun la categoria pero para la consulta*/
+    function cargarNombresPorCategoriaC(categoria) {
+      const select = document.getElementById("NOMBRESC");
+
+      if (!categoria) {
+        select.innerHTML = '<option value="">Seleccione...</option>';
+        select.disabled = true;
+        return;
+      }
+
+      select.disabled = true;
+
+      fetch(`${apiUrl}?tipo=nombres&categoria=${encodeURIComponent(categoria)}`)
+        .then(res => res.json())
+        .then(data => {
+          // agregamos la opción "TODOS"
+          select.innerHTML = '<option value="TODOS">-- TODOS --</option>';
+
+          data.nombres.forEach(nombre => {
+            const option = document.createElement("option");
+            option.value = nombre;
+            option.textContent = nombre;
+            select.appendChild(option);
+          });
+
+          select.disabled = false;
+        })
+        .catch(err => {
+          console.error('Error al cargar nombres:', err);
+          select.innerHTML = '<option value="">Error al cargar</option>';
+        });
+    }
+    /*traer la marcacion de los jugadores*/
+    $(document).ready(function () {
+      $('#NOMBRES').on('select2:select', function (e) {
+
+        const nombreSeleccionado = e.params.data.id;
+        const demarcacionInput = document.getElementById("DEMARCACION");
+
+        if (!nombreSeleccionado) {
+          demarcacionInput.value = "";
+          return;
+        }
+
+        mostrarModal("Buscando información...");
+
+        const urlDemarcacion = `${apiUrl}?tipo=marcacion&nombres=${encodeURIComponent(nombreSeleccionado)}`;
+
+        fetch(urlDemarcacion)
+          .then(res => res.json())
+          .then(data => {
+
+            demarcacionInput.value = data.nombres?.[0] || "No encontrado";
+
+            mostrarModal("Cargando datos del Jugador...");
+
+            const urlBusqueda = `${apiUrl}?tipo=busqueda_nombres&nombre=${encodeURIComponent(nombreSeleccionado)}`;
+            return fetch(urlBusqueda);
+          })
+          .then(res => res.json())
+          .then(data2 => {
+            //console.log("Datos de busqueda_nombres:", data2);
+            const inputs = document.querySelectorAll("input.form-control.text-center");
+            //var 1
+            /*inputs[0].value = data2[8] ?? "";
+            inputs[0].dispatchEvent(new Event("input"));
+            //var 2
+            inputs[1].value = data2[9] ?? "";
+            inputs[1].dispatchEvent(new Event("input"));
+            //var 3
+            inputs[2].value = data2[10] ?? "";
+            inputs[2].dispatchEvent(new Event("input"));
+            //var 4
+            inputs[3].value = data2[11] ?? "";
+            inputs[3].dispatchEvent(new Event("input"));
+            //var 5
+            inputs[4].value = data2[13] ?? "";
+            inputs[4].dispatchEvent(new Event("input"));
+            //var 6
+            inputs[5].value = data2[14] ?? "";
+            inputs[5].dispatchEvent(new Event("input"));
+            //var 7
+            inputs[6].value = data2[15] ?? "";
+            inputs[6].dispatchEvent(new Event("input"));
+            // var 8
+            inputs[7].value = data2[16] ?? "";
+            inputs[7].dispatchEvent(new Event("input"));
+            //var 9
+            inputs[8].value = data2[17] ?? "";
+            inputs[8].dispatchEvent(new Event("input"));
+            // var 10
+            inputs[9].value = data2[18] ?? "";
+            inputs[9].dispatchEvent(new Event("input"));
+            // var 11
+            inputs[10].value = data2[19] ?? "";
+            inputs[10].dispatchEvent(new Event("input"));
+            //var 12
+            inputs[11].value = data2[21] ?? "";
+            inputs[11].dispatchEvent(new Event("input"));
+            //var 13
+            inputs[12].value = data2[22] ?? "";
+            inputs[12].dispatchEvent(new Event("input"));
+            //var 14
+            inputs[13].value = data2[23] ?? "";
+            inputs[13].dispatchEvent(new Event("input"));
+            //var 15
+            inputs[14].value = data2[24] ?? "";
+            inputs[14].dispatchEvent(new Event("input"));
+            //var 16
+            inputs[15].value = data2[25] ?? "";
+            inputs[15].dispatchEvent(new Event("input"));
+            //var 17
+            inputs[16].value = data2[26] ?? "";
+            inputs[16].dispatchEvent(new Event("input"));
+            //var 18
+            inputs[17].value = data2[27] ?? "";
+            inputs[17].dispatchEvent(new Event("input"));
+            //var 19
+            inputs[18].value = data2[28] ?? "";
+            inputs[18].dispatchEvent(new Event("input"));
+            //var 20
+            inputs[19].value = data2[29] ?? "";
+            inputs[19].dispatchEvent(new Event("input"));
+            //var 21
+            inputs[20].value = data2[30] ?? "";
+            inputs[20].dispatchEvent(new Event("input"));
+            //SKIN
+            //var 22
+            inputs[21].value = data2[32] ?? "";
+            inputs[21].dispatchEvent(new Event("input"));
+            //var 23
+            inputs[22].value = data2[33] ?? "";
+            inputs[22].dispatchEvent(new Event("input"));
+            // var 24
+            inputs[23].value = data2[34] ?? "";
+            inputs[23].dispatchEvent(new Event("input"));
+            //var 25
+            inputs[24].value = data2[35] ?? "";
+            inputs[24].dispatchEvent(new Event("input"));
+            //var 26
+            inputs[25].value = data2[36] ?? "";
+            inputs[25].dispatchEvent(new Event("input"));
+            //var 27
+            inputs[26].value = data2[37] ?? "";
+            inputs[26].dispatchEvent(new Event("input"));
+            //var 28
+            inputs[27].value = data2[38] ?? "";
+            inputs[27].dispatchEvent(new Event("input"));
+            //var 29
+            inputs[28].value = data2[39] ?? "";
+            inputs[28].dispatchEvent(new Event("input"));
+            // FECHA DE NACIMIENTO
+            const fechaISO = data2[41];
+            const fechaFormateada = fechaISO?.split("T")[0] ?? "";
+
+            document.getElementById("FECHA_NACIMIENTO").value = fechaFormateada;*/
+
+            const asignaciones = [
+              8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19,
+              21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+              32, 33, 34, 35, 36, 37, 38, 39
+            ];
+
+            asignaciones.forEach((indiceData, indiceInput) => {
+              if (inputs[indiceInput]) {
+                inputs[indiceInput].value = data2[indiceData] ?? "";
+                inputs[indiceInput].dispatchEvent(new Event("input"));
+              }
+            });
+
+            const fechaISO = data2[41];
+            document.getElementById("FECHA_NACIMIENTO").value =
+              fechaISO?.split("T")[0] ?? "";
+            ocultarModal();
+
+          })
+          .catch(err => {
+
+            console.error("Error:", err);
+            mostrarModal("Error al cargar datos", "red");
+            setTimeout(() => ocultarModal(), 2000);
+          });
+      });
+    });
+
+    // Escucha el cambio del select de categoría
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("CATEGORY").addEventListener("change", function () {
+        const categoriaSeleccionada = this.value;
+        cargarNombresPorCategoria(categoriaSeleccionada);
+      });
+    });
+    /*CAMBIO PARA LA CONSULTA*/
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("CATEGORIAC").addEventListener("change", function () {
+        const categoriaSeleccionada = this.value;
+        cargarNombresPorCategoriaC(categoriaSeleccionada);
+      });
+    });
+    /*POST AL SHEETS*/
+    document.getElementById('control_idv').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const form = e.target;
+      mostrarModal('Procesando... por favor espera', 'blue');
+      const formData = new FormData(form);
+
+      fetch(apiUrl, {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          ocultarModal();
+          if (data.result === "success") {
+            alert("¡Registro exitoso!");
+            window.location.reload(true);
+          } else {
+            alert("Algo salió mal. Intenta nuevamente.");
+          }
+        })
+        .catch(error => {
+          ocultarModal();
+          alert("Error en la conexión o envío.");
+        });
+    });
+    /* API PARA HACER LA BUSQUEDA */
+    const camposMostrar = ["FECHA", "NOMBRES", "R1", "R2", "R3", "R4", "R5", "R6", "TOTAL"];
+
+    function ejecutarBusqueda() {
+      const fechaRange = document.getElementById('FECHAC').value;
+      const categoria = document.getElementById('CATEGORIAC').value;
+      const nombre = document.getElementById('NOMBRESC').value;
+
+      let fechaInicio = '';
+      let fechaFin = '';
+
+      if (fechaRange.includes(' - ')) {
+        const fechas = fechaRange.split(' - ');
+        fechaInicio = fechas[0].trim();
+        fechaFin = fechas[1].trim();
+      } else {
+        fechaInicio = fechaRange.trim();
+        fechaFin = fechaRange.trim();
+      }
+
+      let url = `${apiUrl}?tipo=busqueda&fecha_inicio=${encodeURIComponent(fechaInicio)}&fecha_fin=${encodeURIComponent(fechaFin)}&categoria=${encodeURIComponent(categoria)}`;
+
+      if (nombre && nombre.toLowerCase() !== "todos") {
+        url += `&nombre=${encodeURIComponent(nombre)}`;
+      }
+
+      const resultadosDiv = document.getElementById('resultados');
+      resultadosDiv.innerHTML = `
+      <div class="d-flex flex-column justify-content-center align-items-center" style="height:200px;">
+        <div class="spinner-border text-primary mb-3" role="status" style="width: 4rem; height: 4rem;">
+          <span class="visually-hidden">Buscando Información...</span>
+        </div>
+        <div class="fw-bold text-primary">Buscando Información...</div>
+      </div>`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          resultadosDiv.innerHTML = '';
+
+          if (!data || data.length === 0) {
+            resultadosDiv.innerHTML = '<p class="text-danger">No se encontraron resultados</p>';
+            return;
+          }
+
+          // Calcular totales
+          const totales = data.map(row => {
+            const r1 = Number(row.datos[44] || 0);
+            const r2 = Number(row.datos[45] || 0);
+            const r3 = Number(row.datos[46] || 0);
+            const r4 = Number(row.datos[47] || 0);
+            const r5 = Number(row.datos[48] || 0);
+            const r6 = Number(row.datos[49] || 0);
+            return r1 + r2 + r3 + r4 + r5 + r6;
+          });
+
+          const maxTotal = Math.max(...totales);
+
+          const table = document.createElement('table');
+          table.className = 'table table-striped table-bordered table-sm';
+
+          // Encabezado
+          const thead = document.createElement('thead');
+          const trHead = document.createElement('tr');
+          camposMostrar.forEach(campo => {
+            const th = document.createElement('th');
+            th.textContent = campo;
+            th.classList.add("text-nowrap");
+            trHead.appendChild(th);
+          });
+          thead.appendChild(trHead);
+          table.appendChild(thead);
+
+          // Cuerpo
+          const tbody = document.createElement('tbody');
+          data.forEach((row, index) => {
+            const tr = document.createElement('tr');
+
+            const valores = {
+              "FECHA": row.fecha || "",
+              "NOMBRES": row.datos[4] || "",
+              "R1": Number(row.datos[44] || 0),
+              "R2": Number(row.datos[45] || 0),
+              "R3": Number(row.datos[46] || 0),
+              "R4": Number(row.datos[47] || 0),
+              "R5": Number(row.datos[48] || 0),
+              "R6": Number(row.datos[49] || 0)
+            };
+
+            let total = totales[index];
+            if (!Number.isInteger(total)) {
+              total = total.toFixed(2);
+            }
+
+            valores["TOTAL"] = total;
+
+            camposMostrar.forEach(campo => {
+              const td = document.createElement('td');
+
+              if (campo === "TOTAL") {
+                const grafico = document.createElement('div');
+                grafico.style.width = '200px';
+                grafico.style.height = '30px';
+                grafico.style.background = '#e0e0e0';
+                grafico.style.position = 'relative';
+                grafico.title = `Total: ${total}`;
+                grafico.style.borderRadius = '4px';
+                grafico.style.overflow = 'hidden';
+
+                const barra = document.createElement('div');
+                barra.style.height = '100%';
+                barra.style.width = `${(total / maxTotal) * 100}%`;
+                barra.style.background = '#6431F7';
+
+                const texto = document.createElement('span');
+                texto.innerText = total; // aquí va el número
+                texto.style.position = 'absolute';
+                texto.style.top = '50%';
+                texto.style.left = '50%';
+                texto.style.transform = 'translate(-50%, -50%)';
+                texto.style.color = 'black';
+                texto.style.fontSize = '12px';
+                texto.style.fontWeight = 'bold';
+                texto.style.pointerEvents = 'none';
+
+                grafico.appendChild(barra);
+                grafico.appendChild(texto);
+
+                td.appendChild(grafico);
+                td.style.textAlign = 'center';
+              } else {
+                td.textContent = valores[campo] ?? '';
+
+                if (["R1", "R2", "R3", "R4", "R5", "R6"].includes(campo)) {
+                  const val = Number(valores[campo]);
+                  td.style.color = "black";
+                  if (val >= 0 && val <= 33) td.style.backgroundColor = "yellow";
+                  else if (val >= 34 && val <= 66) td.style.backgroundColor = "green";
+                  else if (val >= 67) td.style.backgroundColor = "red";
+                }
+              }
+
+              tr.appendChild(td);
+            });
+
+            tbody.appendChild(tr);
+          });
+
+          table.appendChild(tbody);
+          /*dar formato para pantalla pequeña de celular en filas y ya no en tabla*/
+          const tableWrapper = document.createElement('div');
+          tableWrapper.className = "table-responsive d-none d-md-block";
+          tableWrapper.appendChild(table);
+
+          const cardsWrapper = document.createElement('div');
+          cardsWrapper.className = "d-block d-md-none";
+
+          data.forEach((row, index) => {
+            const valores = {
+              "FECHA": row.fecha || "",
+              "NOMBRES": row.datos[4] || "",
+              "R1": Number(row.datos[44] || 0),
+              "R2": Number(row.datos[45] || 0),
+              "R3": Number(row.datos[46] || 0),
+              "R4": Number(row.datos[47] || 0),
+              "R5": Number(row.datos[48] || 0),
+              "R6": Number(row.datos[49] || 0)
+            };
+
+            const total = totales[index];
+            valores["TOTAL"] = total;
+
+            const card = document.createElement('div');
+            card.className = "card mb-2 shadow-sm";
+
+            const cardBody = document.createElement('div');
+            cardBody.className = "card-body p-2";
+
+            camposMostrar.forEach(campo => {
+              if (campo === "TOTAL") {
+                // Contenedor TOTAL con barra + número al lado
+                const totalWrapper = document.createElement('div');
+                totalWrapper.className = "d-flex align-items-center mb-2";
+
+                const label = document.createElement('strong');
+                label.textContent = "TOTAL:";
+                label.className = "me-2";
+
+                const valor = document.createElement('span');
+                valor.textContent = total;
+                valor.className = "fw-bold me-2";
+
+                const progress = document.createElement('div');
+                progress.className = "progress flex-grow-1";
+                progress.style.height = "12px";
+                progress.style.borderRadius = "6px";
+
+                const progressBar = document.createElement('div');
+                progressBar.className = "progress-bar";
+                progressBar.style.width = `${(total / maxTotal) * 100}%`;
+                progressBar.style.backgroundColor = "#6431F7";
+
+                progress.appendChild(progressBar);
+
+                totalWrapper.appendChild(label);
+                totalWrapper.appendChild(valor);
+                totalWrapper.appendChild(progress);
+
+                cardBody.appendChild(totalWrapper);
+
+              } else {
+                const p = document.createElement('p');
+                p.className = "mb-1";
+                p.innerHTML = `<strong>${campo}:</strong> ${valores[campo] ?? ''}`;
+
+                if (["R1", "R2", "R3", "R4", "R5", "R6"].includes(campo)) {
+                  const val = Number(valores[campo]);
+                  p.style.color = "black";
+                  p.style.padding = "2px 6px";
+                  p.style.borderRadius = "4px";
+                  if (val >= 0 && val <= 33) p.style.backgroundColor = "yellow";
+                  else if (val >= 34 && val <= 66) p.style.backgroundColor = "green";
+                  else if (val >= 67) p.style.backgroundColor = "red";
+                }
+
+                cardBody.appendChild(p);
+              }
+            });
+
+            card.appendChild(cardBody);
+            cardsWrapper.appendChild(card);
+          });
+
+          resultadosDiv.appendChild(tableWrapper);
+          resultadosDiv.appendChild(cardsWrapper);
+        })
+        .catch(err => {
+          console.error('Error al cargar los datos:', err);
+          resultadosDiv.innerHTML = '<p class="text-danger">Error al cargar los datos</p>';
+        });
+    }
+    // Evento click en botón buscar
+    document.getElementById('buscarBtn').addEventListener('click', ejecutarBusqueda);
+    // Evento cambio en select de nombres
+    document.getElementById('NOMBRESC').addEventListener('change', ejecutarBusqueda);
+    // cambio de evento en la categoria
+    document.getElementById('CATEGORIAC').addEventListener('change', ejecutarBusqueda);
+  </script>
+</body>
+
+</html>

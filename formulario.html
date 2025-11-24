@@ -1,0 +1,1166 @@
+<html>
+  <head>
+    <style>
+      td {
+        font-family: verdana, arial;
+        font-size: 7pt;
+      }
+      .error {
+        <!-- border: 2px solid #000000; -->
+        <!-- padding-left: 5px; -->
+        <!-- padding-right: 5px; -->
+		
+		 <!-- border: 2px solid #000000; -->
+        <!-- padding-left: 5px; -->
+        <!-- padding-right: 5px;-->
+		 border: 3px solid #000000;
+  border-collapse: collapse;
+      }
+      .coloralex {
+        background-color: #BFBBBA;
+		
+		  background:#FF0000;
+        -webkit-print-color-adjust:exact;
+      }
+      .quitarbordes {
+        border-style: none;
+        border: 1px solid black;
+      }
+      .colormarron {
+        border: 2px solid #808080;
+
+      }
+      .borderderecha {
+        border-left: 1px #808080  solid;
+      }  
+      #apartado1{
+   box-shadow:  0px 0px 25px blue;
+      }  
+      #alexchasi{
+        background-color: rgb(92, 146, 146);
+
+      }
+      #al{
+   border:2px solid #808080;
+      }
+      #linealex{
+  border-top: 1px solid #808080;
+}
+ .colorp{
+        background:#1256b9;
+        -webkit-print-color-adjust:exact;
+        color: white;
+      }
+
+      .colors{
+        background:#6f9ddf;
+        -webkit-print-color-adjust:exact;
+      }
+	  
+    .ad{
+  width: 200px;
+
+
+    }
+	  
+    </style>
+  </head>
+  <body>
+    <form method="POST" action="https://script.google.com/macros/s/AKfycbzFGN-azG_5yafpio-Uay-gu_vFKrZnqgHH-Eyxnext97zhLNkie3MRN28pbbKH5VHO/exec">
+    <center>
+      <table
+        border="1"
+        style="border-collapse: collapse"
+        width="100%"
+        style="text-align: justify"
+
+        >
+        <tr>
+          <td colspan="20" align="left" ><b>La información solicitada debe ser completada con letra imprenta, de manera íntegra, verídica y sin tachones ni enmendaduras.</b></td>
+        </tr>
+        <tr>
+          <td colspan="20" align="center" class="colorp"><b>DATOS DE VINCULACION</b></td>
+        </tr>
+        <tr>
+          <td colspan="5">Fecha de ingreso(dd/mm/año)</td>
+          <td colspan="5">Fecha de actualización(dd/mm/año)</td>
+          <td colspan="5">Cargo que actualmente desempeña</td>
+        </tr>
+        <tr>
+          <td colspan="5"><input type="date" name="fecha_ingreso" style="width: 100%;"></td>
+          <td colspan="5"><input type="date" name="fecha_actualizacion" style="width: 100%;"></td>
+          <td colspan="5"><input type="text" name="cargo_actual" style="width: 100%;"></td>
+        </tr>
+      </table>
+    <!--DATOS PERSONALES-->
+      <table
+        border="1"
+        style="border-collapse: collapse"
+        width="100%"
+        style="text-align: justify"
+
+        >
+        <tr>
+          <td colspan="25" align="left" class="colorp"><b>I. DATOS PERSONALES</b></td>
+        </tr>
+        <tr>
+          <td colspan="5">Primer apellido:</td>
+          <td colspan="5">Segundo apellido:</td>
+          <td colspan="5">Nombre completos:</td>
+          <td colspan="5">Tipo de identificación(marque con una "x")</td>
+          <td colspan="5">Número de identificación:</td>
+        </tr>
+        <tr>
+          <td colspan="5"><input type="text" name="primer_apellido" style="width: 100%;"></td>
+          <td colspan="5"><input type="text" name="segundo_apellido" style="width: 100%;"></td>
+          <td colspan="5"><input type="text" name="nombres_completos" style="width: 100%;"></td>
+          <td colspan="5">
+            <center>
+            <label><input type="checkbox" name="tipo_documento" value="cedula"> Cédula</label>
+            <label style="margin-left: 15px;"><input type="checkbox" name="tipo_documento" value="pasaporte"> Pasaporte</label>
+            </center>
+          </td>
+          <td colspan="5"><input type="text" name="numero_identificacion" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td colspan="5">Nacionalidad:</td>
+          <td colspan="5">Lugar de nacimiento:</td>
+          <td colspan="5">Fecha de nacimiento(dd/mm/año)</td>
+          <td colspan="10">Estado civil(marque con una "x")</td>    
+        </tr>
+        <tr>
+          <td colspan="5"><input type="text" name="nacionalidad" style="width: 100%;"></td>
+          <td colspan="5"><input type="text" name="lugar_nacimiento" style="width: 100%;"></td>
+          <td colspan="5"><input type="date" name="dia_nacimiento" style="width: 100%;"></td>
+          <td colspan="10">
+            <label><input type="checkbox" name="estado_civil" value="soltero"> Soltero(a)</label>
+            <label style="margin-left: 10px;"><input type="checkbox" name="estado_civil" value="casado"> Casado(a)</label>
+            <label style="margin-left: 10px;"><input type="checkbox" name="estado_civil" value="divorciado"> Divorciado(a)</label>
+            <label style="margin-left: 10px;"><input type="checkbox" name="estado_civil" value="viudo"> Viudo(a)</label>
+            <label style="margin-left: 10px;"><input type="checkbox" name="estado_civil" value="union_libre"> Unión Libre</label>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="15">Sexo(marque con una "x")</td>
+        </tr>
+        <tr>
+          <td colspan="15">
+              <label><input type="checkbox" name="tipo_genero" value="femenino"> Femenino</label>
+              <label style="margin-left: 15px;"><input type="checkbox" name="tipo_genero" value="masculino"> Masculino</label>
+          </td>
+        </tr>
+      </table>
+      <!--informacion de residencia-->
+      <table
+      border="1"
+      style="border-collapse: collapse"
+      width="100%"
+      style="text-align: justify"
+
+      >
+      <tr>
+        <td colspan="35"  class="colorp"><b>II. INFORMACIÓN DE RESIDENCIA</b></td>
+      </tr>
+      <tr>
+        <td colspan="5">País:</td>
+        <td colspan="5">Provincia:</td>
+        <td colspan="5">Cantón</td>
+        <td colspan="5">Dirección domicilio(poner número de vivienda):</td>
+        <td colspan="5">Teléfono domicilio:</td>
+        <td colspan="5">Teléfono celular:</td>
+        <td colspan="5">Correo electrónico personal:</td>
+      </tr>
+      <tr>
+        <td colspan="5"><input type="text" name="pais" style="width: 100%;"></td>
+        <td colspan="5"><input type="text" name="provincia" style="width: 100%;"></td>
+        <td colspan="5"><input type="text" name="canton" style="width: 100%;"></td>
+        <td colspan="5"><input type="text" name="dir_domicilio" style="width: 100%;"></td>
+        <td colspan="5"><input type="text" name="telef_domicilio" style="width: 100%;"></td>
+        <td colspan="5"><input type="text" name="telef_celular" style="width: 100%;"></td>
+        <td colspan="5"><input type="text" name="correo_electronico" style="width: 100%;"></td>
+      </tr>
+    </table>
+    <!--informacion del conyugue-->
+    <table
+      border="1"
+      style="border-collapse: collapse"
+      width="100%"
+      style="text-align: justify"
+
+      >
+      <tr>
+        <td colspan="35"  class="colorp"><b>III. INFORMACIÓN DEL CÓNYUGE O CONVIVIENTE</b></td>
+      </tr>
+      <tr>
+        <td colspan="5">Primer apellido:</td>
+        <td colspan="5">Segundo Apellido:</td>
+        <td colspan="5">Nombres completos:</td>
+        <td colspan="5">Tipo de identificación(marque con una "x")</td>
+        <td colspan="5">Número de identificación:</td>
+      </tr>
+      <tr>
+        <td colspan="5"><input type="text" name="primer_apellido_conyu" style="width: 100%;"></td>
+        <td colspan="5"><input type="text" name="segundo_apellido_conyu" style="width: 100%;"></td>
+        <td colspan="5"><input type="text" name="nombres_completos_conyu" style="width: 100%;"></td>
+        <td colspan="5">
+          <center>
+          <label><input type="checkbox" name="tipo_doc_conyu" value="cedula"> Cédula</label>
+          <label style="margin-left: 15px;"><input type="checkbox" name="tipo_doc_conyu" value="pasaporte"> Pasaporte</label>
+          </center>
+        </td>
+        <td colspan="5"><input type="text" name="numero_identificacion_conyu" style="width: 100%;"></td>
+      </tr>
+      <tr>
+        <td colspan="15">Lugar de trabajo:</td>
+        <td colspan="10">Cargo:</td>
+      </tr>
+      <tr>
+        <td colspan="15"><input type="text" name="lugar_trabajo_conyu" style="width: 100%;"></td>
+        <td colspan="10"><input type="text" name="cargo_conyu" style="width: 100%;"></td>
+      </tr>
+    </table>
+    <!--informacion complemenmtaria-->
+    <table
+    border="1"
+    style="border-collapse: collapse"
+    width="100%"
+    style="text-align: justify"
+
+    >
+    <tr>
+      <td colspan="35"  class="colorp"><b>IV. INFORMACIÓN COMPLEMENTARIA</b></td>
+    </tr>
+    <tr>
+      <td colspan="35"  class="colors"><b>Contacto en caso de emergencia</b></td>
+    </tr>
+    <tr>
+      <td colspan="5">Primer apellido:</td>
+      <td colspan="5">Segundo Apellido:</td>
+      <td colspan="5">Nombres completos:</td>
+      <td colspan="5">Parentesco:</td>
+      <td colspan="5">Teléfono celular:</td>
+    </tr>
+    <tr>
+      <td colspan="5"><input type="text" name="primer_apellido_emerg" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="segundo_apellido_emerg" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="nombres_completos_emerg" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="parentesco_emerg" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="telef_celular_emerg" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="35"  class="colors"><b>Hijos menores de 18 años</b></td>
+    </tr>
+    <tr>
+      <td colspan="5">Número de identificación:</td>
+      <td colspan="5">Apellidos y nombres:</td>
+      <td colspan="5">Fecha de nacimiento(dd/mm/año):</td>
+      <td colspan="5">Lugar de nacimiento:</td>
+      <td colspan="3">Edad:</td>
+    </tr>
+    <tr>
+      <td colspan="5"><input type="text" name="numero_identificacion_1" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="nombres_completos_1" style="width: 100%;"></td>
+      <td colspan="5"><input type="date" name="fecha_nacimiento_1" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="lugar_nacimiento_1" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="edad_1" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="5"><input type="text" name="numero_identificacion_2" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="nombres_completos_2" style="width: 100%;"></td>
+      <td colspan="5"><input type="date" name="fecha_nacimiento_2" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="lugar_nacimiento_2" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="edad_2" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="5"><input type="text" name="numero_identificacion_3" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="nombres_completos_3" style="width: 100%;"></td>
+      <td colspan="5"><input type="date" name="fecha_nacimiento_3" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="lugar_nacimiento_3" style="width: 100%;"></td>
+      <td colspan="5"><input type="text" name="edad_3" style="width: 100%;"></td>
+    </tr>
+  </tr>
+  </table>
+  <!--actividad economica adicional-->
+  <table
+  border="1"
+  style="border-collapse: collapse"
+  width="100%"
+  style="text-align: justify"
+
+  >
+  <tr>
+    <td colspan="35"  class="colorp"><b>V. ACTIVIDAD ECONÓMICA ADICIONAL(en el caso de que realice actividades adicionales)</b></td>
+  </tr>
+  <tr>
+    <td colspan="35"  class="colors"><b>a) Empleado</b></td>
+  </tr>
+  <tr>
+    <td colspan="25">¿Usted desempeña en los últimos tres años funciones o cargos públicos destacados en el Ecuador o en el Extranjero; o funciones prominentes en una organización internacional?</td>
+    <td colspan="5">
+      <label><input type="checkbox" name="pregunta_actividad_empleado" value="si"> SI</label>
+      </td>
+      <td colspan="5">
+      <label style="margin-left: 15px;"><input type="checkbox" name="pregunta_actividad_empleado" value="no"> NO</label>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="35">En el caso de haber respondido afirmativamente, por favor llenar la siguiente información:</td>
+  </tr>
+  <tr>
+    <td colspan="20">Cargo:</td>
+    <td colspan="5">Fecha del nombramiento de designación:</td>
+    <td colspan="5">¿A la presente fecha se encuentra en funciones?</td>
+    <td colspan="5">Fecha de culminación del cargo(De no estar en funciones):</td>
+  </tr>
+  <tr>
+    <td colspan="20"><input type="text" name="cargo_emple" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" name="fecha_nombra" style="width: 100%;"></td>
+    <td colspan="5">
+      <label><input type="checkbox" name="funciones_nm" value="si"> SI</label>
+      <label style="margin-left: 15px;"><input type="checkbox" name="funciones_nm" value="no"> NO</label>
+    </td>
+    <td colspan="5"><input type="date" name="fecha_nombra_culm" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="35"  class="colors"><b>b) Familiares</b></td>
+  </tr>
+  <tr>
+    <td colspan="25">¿Usted tiene algún familiar o persona con vínculo cercano (como socio) que ha desempeñado en los ultimos tres años funciones o cargos públicos destacados
+      en el Ecuador o en el Extranjero; o funciones prominentes en una organización internacional?</td>
+    <td colspan="5">
+      <label><input type="checkbox" name="pregunta_actividad_familiares" value="si"> SI</label>
+      </td>
+      <td colspan="5">
+      <label style="margin-left: 15px;"><input type="checkbox" name="pregunta_actividad_familiares" value="no"> NO</label>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="35">En el caso de haber respondido afirmativamente, por favor llenar la siguiente información:</td>
+  </tr>
+  <tr>
+    <td colspan="15">Apellidos y nombres</td>
+    <td colspan="10">Institución y cargo</td>
+    <td colspan="10">Parentesco:</td>
+  </tr>
+  <tr>
+    <td colspan="15"><input type="text" name="nombres_completos_familiar_1" style="width: 100%;"></td>
+    <td colspan="10"><input type="text" name="insti_cargo_familiar_1" style="width: 100%;"></td>
+    <td colspan="10"><input type="text" name="parentesco_familiar_1" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="15"><input type="text" name="nombres_completos_familiar_2" style="width: 100%;"></td>
+    <td colspan="10"><input type="text" name="insti_cargo_familiar_2" style="width: 100%;"></td>
+    <td colspan="10"><input type="text" name="parentesco_familiar_2" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="15"><input type="text" name="nombres_completos_familiar_3" style="width: 100%;"></td>
+    <td colspan="10"><input type="text" name="insti_cargo_familiar_3" style="width: 100%;"></td>
+    <td colspan="10"><input type="text" name="parentesco_familiar_3" style="width: 100%;"></td>
+  </tr>
+  </table>
+  <!--formacion academica-->
+  <table border="1" style="border-collapse: collapse" width="100%" style="text-align: justify">
+    <tr>
+      <td colspan="35" class="colorp"><b>VII. FORMACIÓN ACADEMICA</b></td>
+    </tr>
+    <tr>
+      <td colspan="35" class="colors"><b>a) Instrucción formal</b></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center">Año:</td>
+      <td colspan="10" align="center">Ciudad - País:</td>
+      <td colspa="10" align="center">Instituto / Universidad</td>
+      <td colspan="10" align="center">Título obtenido:</td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="anio_academ_1" style="width: 100%;"></td>
+      <td colspan="10" align="center"><input type="text" name="ciudad_academ_1" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="institucion_academ_1" style="width: 100%;"></td>
+      <td colspan="10" align="center"><input type="text" name="titulo_academ_1" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="anio_academ_2" style="width: 100%;"></td>
+      <td colspan="10" align="center"><input type="text" name="ciudad_academ_2" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="institucion_academ_2" style="width: 100%;"></td>
+      <td colspan="10" align="center"><input type="text" name="titulo_academ_2" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="anio_academ_3" style="width: 100%;"></td>
+      <td colspan="10" align="center"><input type="text" name="ciudad_academ_3" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="institucion_academ_3" style="width: 100%;"></td>
+      <td colspan="10" align="center"><input type="text" name="titulo_academ_3" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="anio_academ_4" style="width: 100%;"></td>
+      <td colspan="10" align="center"><input type="text" name="ciudad_academ_4" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="institucion_academ_4" style="width: 100%;"></td>
+      <td colspan="10" align="center"><input type="text" name="titulo_academ_4" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="anio_academ_5" style="width: 100%;"></td>
+      <td colspan="10" align="center"><input type="text" name="ciudad_academ_5" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="institucion_academ_5" style="width: 100%;"></td>
+      <td colspan="10" align="center"><input type="text" name="titulo_academ_5" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="35" class="colors"><b>b) Capacitaciones</b></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center">Año:</td>
+      <td colspan="20" align="center">Tema:</td>
+      <td colspa="10" align="center">Instituto / Universidad</td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="anio_capacitaciones_1" style="width: 100%;"></td>
+      <td colspan="20" align="center"><input type="text" name="tema_capacitaciones_1" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="institucion_capacitaciones_1" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="anio_capacitaciones_2" style="width: 100%;"></td>
+      <td colspan="20" align="center"><input type="text" name="tema_capacitaciones_2" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="institucion_capacitaciones_2" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="anio_capacitaciones_3" style="width: 100%;"></td>
+      <td colspan="20" align="center"><input type="text" name="tema_capacitaciones_3" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="institucion_capacitaciones_3" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="35" class="colors"><b>b) Competencias</b></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center">Idiomas:</td>
+      <td colspan="20" align="center">Nivel:</td>
+      <td colspa="10" align="center">Aptitudes y conocimiento</td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="idiomas_1" style="width: 100%;"></td>
+      <td colspan="20" align="center"><input type="text" name="nivel_1" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="conocimiento_1" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="idiomas_2" style="width: 100%;"></td>
+      <td colspan="20" align="center"><input type="text" name="nivel_2" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="conocimiento_2" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="idiomas_3" style="width: 100%;"></td>
+      <td colspan="20" align="center"><input type="text" name="nivel_3" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="conocimiento_3" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center"><input type="text" name="idiomas_4" style="width: 100%;"></td>
+      <td colspan="20" align="center"><input type="text" name="nivel_4" style="width: 100%;"></td>
+      <td colspa="10" align="center"><input type="text" name="conocimiento_4" style="width: 100%;"></td>
+    </tr>
+  </table>
+  <!--informacion de experiencia laboral-->
+  <table
+  border="1"
+  style="border-collapse: collapse"
+  width="100%"
+  style="text-align: justify"
+
+  >
+  <tr>
+    <td colspan="20"  class="colorp"><b>VIII. EXPERIENCIA LABORAL</b></td>
+  </tr>
+  <tr>
+    <td colspan="5">Nombre de la empresa o persona natural con la que trabajó o prestó servicios</td>
+    <td colspan="5">Cargo:</td>
+    <td colspan="5">Fecha de inicio(dd/mm/año)</td>
+    <td colspan="5">Fecha de terminación(dd/mm/año)</td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="empresa_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="cargo_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" name="fecha_inicio_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" name="fecha_fin_1" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="empresa_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="cargo_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" name="fecha_inicio_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" name="fecha_fin_2" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="empresa_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="cargo_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" name="fecha_inicio_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" name="fecha_fin_3" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="empresa_4" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="cargo_4" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" name="fecha_inicio_4" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" name="fecha_fin_4" style="width: 100%;"></td>
+  </tr>
+  
+ 
+  </table>
+  <!--informacion economica-->
+  <table
+  border="1"
+  style="border-collapse: collapse"
+  width="100%"
+  style="text-align: justify"
+
+  >
+  <tr>
+    <td colspan="25"  class="colorp"><b>IX. INFORMACIÓN ECONÓMICA</b></td>
+  </tr>
+  <tr>
+    <!-- INGRESOS -->
+    <td colspan="10" style="vertical-align: top;">
+      <table border="1" style="width: 100%;">
+        <tr>
+          <td colspan="2" style="text-align: center; font-weight: bold;" class="colors">INGRESOS MENSUALES</td>
+        </tr>
+        <tr>
+          <td style="width: 70%;">Descripción</td>
+          <td style="width: 30%;">Valor (USD)</td>
+        </tr>
+        <tr>
+          <td>Remuneración por relación de dependencia</td>
+          <td><input type="text" name="ingresos_1" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td>Ingresos cónyugue:</td>
+          <td><input type="text" name="ingresos_conyu_1" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td>Ingresos por arriendos</td>
+          <td><input type="text" name="ingresos_arriendos" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td>Utilidad de negocio propio</td>
+          <td><input type="text" name="ingresos_propio" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="des_otros_1" style="width: 100%;"></td>
+          <td><input type="text" name="otros_1" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="des_otros_2" style="width: 100%;"></td>
+          <td><input type="text" name="otros_2" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="des_otros_3" style="width: 100%;"></td>
+          <td><input type="text" name="otros_3" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="des_otros_4" style="width: 100%;"></td>
+          <td><input type="text" name="otros_4" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><strong>Total Ingresos</strong></td>
+          <td><input type="text" name="total_ingresos" style="width: 100%;"></td>
+        </tr>
+      </table>
+    </td>
+  
+    <!-- ESPACIO SEPARADOR -->
+    <td colspan="1" style="width: 2%;">&nbsp;</td>
+  
+    <!-- GASTOS -->
+    <td colspan="10" style="vertical-align: top;">
+      <table border="1" style="width: 100%;">
+        <tr>
+          <td colspan="2" style="text-align: center; font-weight: bold;" class="colors">GASTOS MENSUALES</td>
+        </tr>
+        <tr>
+          <td style="width: 70%;">Descripción</td>
+          <td style="width: 30%;">Valor (USD)</td>
+        </tr>
+        <tr>
+          <td>Alimentación</td>
+          <td><input type="text" name="gastos_alimentacion" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td>Salud</td>
+          <td><input type="text" name="gastos_salud" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td>Educación</td>
+          <td><input type="text" name="gastos_educacion" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td>Vestimenta</td>
+          <td><input type="text" name="gastos_vestimenta" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td>Arriendo</td>
+          <td><input type="text" name="gastos_arriendo" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td>Servicios básicos</td>
+          <td><input type="text" name="gastos_basicos" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td>Transporte</td>
+          <td><input type="text" name="gastos_transporte" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td>Otros</td>
+          <td><input type="text" name="gastos_otros" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><strong>Total Gastos</strong></td>
+          <td><input type="text" name="gastos_total" style="width: 100%;"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="20" style="text-align: center; font-weight: bold; padding-top: 10px;">
+      DETALLE ACTIVO
+    </td>
+  </tr>
+  <tr>
+    <!-- Vehículos -->
+    <td colspan="10" style="vertical-align: top;">
+      <table border="1" style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td colspan="5" style="text-align: center; font-weight: bold;" class="colors">Vehículos</td>
+        </tr>
+        <tr>
+          <td>Valor</td>
+          <td>Detalle (Año/Modelo)</td>
+          <td>Placa</td>
+          <td>Prendado</td>
+          <td>Descripción</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="vehiculo_valor_1" style="width: 100%;"></td>
+          <td><input type="text" name="vehiculo_detalle_1" style="width: 100%;"></td>
+          <td>
+            <input type="text" name="vehiculo_placa_1" style="width: 100%;">
+          </td>
+          <td>
+            <label><input type="checkbox" name="vehiculo_prendado_1" value="si"> SI</label>
+            <label style="margin-left: 15px;"><input type="checkbox" name="vehiculo_prendado_1" value="no"> NO</label>
+          </td>
+          <td><input type="text" name="vehiculo_desc_1" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="vehiculo_valor_2" style="width: 100%;"></td>
+          <td><input type="text" name="vehiculo_detalle_2" style="width: 100%;"></td>
+          <td>
+            <input type="text" name="vehiculo_placa_2" style="width: 100%;">
+          </td>
+          <td>
+            <label><input type="checkbox" name="vehiculo_prendado_2" value="si"> SI</label>
+            <label style="margin-left: 15px;"><input type="checkbox" name="vehiculo_prendado_2" value="no"> NO</label>
+          </td>
+          <td><input type="text" name="vehiculo_desc_2" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="vehiculo_valor_3" style="width: 100%;"></td>
+          <td><input type="text" name="vehiculo_detalle_3" style="width: 100%;"></td>
+          <td>
+            <input type="text" name="vehiculo_placa_3" style="width: 100%;">
+          </td>
+          <td>
+            <label><input type="checkbox" name="vehiculo_prendado_3" value="si"> SI</label>
+            <label style="margin-left: 15px;"><input type="checkbox" name="vehiculo_prendado_3" value="no"> NO</label>
+          </td>
+          <td><input type="text" name="vehiculo_desc_3" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="vehiculo_valor_4" style="width: 100%;"></td>
+          <td><input type="text" name="vehiculo_detalle_4" style="width: 100%;"></td>
+          <td>
+            <input type="text" name="vehiculo_placa_4" style="width: 100%;">
+          </td>
+          <td>
+            <label><input type="checkbox" name="vehiculo_prendado_4" value="si"> SI</label>
+            <label style="margin-left: 15px;"><input type="checkbox" name="vehiculo_prendado_4" value="no"> NO</label>
+          </td>
+          <td><input type="text" name="vehiculo_desc_4" style="width: 100%;"></td>
+        </tr>
+      </table>
+    </td>
+  
+    <!-- Bienes Inmuebles -->
+    <td colspan="10" style="vertical-align: top;">
+      <table border="1" style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td colspan="5" style="text-align: center; font-weight: bold;" class="colors">Bienes Inmuebles</td>
+        </tr>
+        <tr>
+          <td>Valor</td>
+          <td>Dirección</td>
+          <td>Hipotecado</td>
+          <td>Institución</td>
+          <td>Descripción</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="inmueble_valor_1" style="width: 100%;"></td>
+          <td><input type="text" name="inmueble_direccion_1" style="width: 100%;"></td>
+          <td>
+            <label><input type="checkbox" name="inmueble_hipotecado_1" value="si"> SI</label>
+            <label style="margin-left: 15px;"><input type="checkbox" name="inmueble_hipotecado_1" value="no"> NO</label>
+          </td>
+          <td><input type="text" name="inmueble_institucion_1" style="width: 100%;"></td>
+          <td><input type="text" name="inmueble_desc_1" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="inmueble_valor_2" style="width: 100%;"></td>
+          <td><input type="text" name="inmueble_direccion_2" style="width: 100%;"></td>
+          <td>
+            <label><input type="checkbox" name="inmueble_hipotecado_2" value="si"> SI</label>
+            <label style="margin-left: 15px;"><input type="checkbox" name="inmueble_hipotecado_2" value="no"> NO</label>
+          </td>
+          <td><input type="text" name="inmueble_institucion_2" style="width: 100%;"></td>
+          <td><input type="text" name="inmueble_desc_2" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="inmueble_valor_3" style="width: 100%;"></td>
+          <td><input type="text" name="inmueble_direccion_3" style="width: 100%;"></td>
+          <td>
+            <label><input type="checkbox" name="inmueble_hipotecado_3" value="si"> SI</label>
+            <label style="margin-left: 15px;"><input type="checkbox" name="inmueble_hipotecado_3" value="no"> NO</label>
+          </td>
+          <td><input type="text" name="inmueble_institucion_3" style="width: 100%;"></td>
+          <td><input type="text" name="inmueble_desc_3" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="inmueble_valor_4" style="width: 100%;"></td>
+          <td><input type="text" name="inmueble_direccion_4" style="width: 100%;"></td>
+          <td>
+            <label><input type="checkbox" name="inmueble_hipotecado_4" value="si"> SI</label>
+            <label style="margin-left: 15px;"><input type="checkbox" name="inmueble_hipotecado_4" value="no"> NO</label>
+          </td>
+          <td><input type="text" name="inmueble_institucion_4" style="width: 100%;"></td>
+          <td><input type="text" name="inmueble_desc_4" style="width: 100%;"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <!--cuentas en bancos en inversiones-->
+  <tr>
+    <!-- bancos -->
+    <td colspan="10" style="vertical-align: top;">
+      <table border="1" style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td colspan="5" style="text-align: center; font-weight: bold;" class="colors">Cuentas corrientes y ahorros</td>
+        </tr>
+        <tr>
+          <td>Intitución Finaciera</td>
+          <td>Tipo de cuenta</td>
+          <td>Número de cuenta</td>
+          <td>País apertura</td>
+         
+        </tr>
+        <tr>
+          <td><input type="text" name="bancos_institucion_1" style="width: 100%;"></td>
+          <td><input type="text" name="bancos_cuenta_1" style="width: 100%;"></td>
+          <td>
+            <input type="text" name="bancos_numero_1" style="width: 100%;">
+          </td>
+          <td><input type="text" name="bancos_apertura_1" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="bancos_institucion_2" style="width: 100%;"></td>
+          <td><input type="text" name="bancos_cuenta_2" style="width: 100%;"></td>
+          <td>
+            <input type="text" name="bancos_numero_2" style="width: 100%;">
+          </td>
+          <td><input type="text" name="bancos_apertura_2" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="bancos_institucion_3" style="width: 100%;"></td>
+          <td><input type="text" name="bancos_cuenta_3" style="width: 100%;"></td>
+          <td>
+            <input type="text" name="bancos_numero_3" style="width: 100%;">
+          </td>
+          <td><input type="text" name="bancos_apertura_3" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="bancos_institucion_4" style="width: 100%;"></td>
+          <td><input type="text" name="bancos_cuenta_4" style="width: 100%;"></td>
+          <td>
+            <input type="text" name="bancos_numero_4" style="width: 100%;">
+          </td>
+          <td><input type="text" name="bancos_apertura_4" style="width: 100%;"></td>
+        </tr>
+      </table>
+    </td>
+  
+    <!-- inversiones bancos -->
+    <td colspan="10" style="vertical-align: top;">
+      <table border="1" style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td colspan="5" style="text-align: center; font-weight: bold;" class="colors">Inversiones</td>
+        </tr>
+        <tr>
+          <td>Institución Financiera</td>
+          <td>Tipo</td>
+          <td>Plazo</td>
+          <td>Valor</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="inver_institucion_1" style="width: 100%;"></td>
+          <td><input type="text" name="inver_tipo_1" style="width: 100%;"></td>
+          <td><input type="text" name="inver_plazo_1" style="width: 100%;"></td>
+          <td><input type="text" name="inver_valor_1" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="inver_institucion_2" style="width: 100%;"></td>
+          <td><input type="text" name="inver_tipo_2" style="width: 100%;"></td>
+          <td><input type="text" name="inver_plazo_2" style="width: 100%;"></td>
+          <td><input type="text" name="inver_valor_2" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="inver_institucion_3" style="width: 100%;"></td>
+          <td><input type="text" name="inver_tipo_3" style="width: 100%;"></td>
+          <td><input type="text" name="inver_plazo_3" style="width: 100%;"></td>
+          <td><input type="text" name="inver_valor_3" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="inver_institucion_4" style="width: 100%;"></td>
+          <td><input type="text" name="inver_tipo_4" style="width: 100%;"></td>
+          <td><input type="text" name="inver_plazo_4" style="width: 100%;"></td>
+          <td><input type="text" name="inver_valor_4" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: center; font-weight: bold;"><b>TOTAL ACTIVOS</b></td>
+          <td colspan="2"><input type="text" name="total_activos" style="width: 100%;" value="0.00"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+  <!--DETALLE PASIVOS-->
+  <table
+  border="1"
+  style="border-collapse: collapse"
+  width="100%"
+  style="text-align: justify"
+
+  >
+  <tr>
+    <td colspan="25"  style="text-align: center; font-weight: bold;"><b>DETALLE PASIVOS</b></td>
+  </tr>
+  <tr>
+    <td colspan="25" class="colors" style="text-align: center; font-weight: bold;"><b>Tarjertas de crédito</b></td>
+  </tr>
+  <tr>
+    <td colspan="5" style="text-align: center;">Institución Financiera</td>
+    <td colspan="5" style="text-align: center;">Tipo de tarjeta</td>
+    <td colspan="5" style="text-align: center;">Fecha de vencimiento(mm/año)</td>
+    <td colspan="5" style="text-align: center;">Consumo mensual</td>
+    <td colspan="5" style="text-align: center;">Saldo a pagar</td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="tarjetas_institucion_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_tipo_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="month" id="tarjetas_vencimiento_1" name="tarjetas_vencimiento_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_consumo_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_saldo_1" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="tarjetas_institucion_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_tipo_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="month" id="tarjetas_vencimiento_2" name="tarjetas_vencimiento_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_consumo_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_saldo_2" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="tarjetas_institucion_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_tipo_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="month" id="tarjetas_vencimiento_3" name="tarjetas_vencimiento_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_consumo_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_saldo_3" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="tarjetas_institucion_4" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_tipo_4" style="width: 100%;"></td>
+    <td colspan="5"><input type="month" id="tarjetas_vencimiento_4" name="tarjetas_vencimiento_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_consumo_4" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="tarjetas_saldo_4" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="25" class="colors" style="text-align: center; font-weight: bold;"><b>Préstamos</b></td>
+  </tr>
+  <tr>
+    <td colspan="5" style="text-align: center;">Institución Financiera</td>
+    <td colspan="5" style="text-align: center;">Plazo</td>
+    <td colspan="5" style="text-align: center;">Fecha de vencimiento(dd/mm/año)</td>
+    <td colspan="5" style="text-align: center;">Cuota mensual</td>
+    <td colspan="5" style="text-align: center;">Saldo a pagar</td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="prestamos_institucion_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_plazo_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" id="prestamo_vencimiento_1" name="prestamo_vencimiento_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_cuota_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_apagar_1" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="prestamos_institucion_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_plazo_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" id="prestamo_vencimiento_2" name="prestamo_vencimiento_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_cuota_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_apagar_2" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="prestamos_institucion_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_plazo_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" id="prestamo_vencimiento_3" name="prestamo_vencimiento_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_cuota_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_apagar_3" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="prestamos_institucion_4" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_plazo_4" style="width: 100%;"></td>
+    <td colspan="5"><input type="date" id="prestamo_vencimiento_4" name="prestamo_vencimiento_4" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_cuota_4" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="prestamo_apagar_4" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="15">&nbsp;</td>
+    <td colspan="5" style="text-align: center; font-weight: bold;">TOTAL PASIVOS</td>
+    <td colspan="5"><input type="text" name="total_pasivos" style="width: 100%;text-align: center;" value="0.00"></td>
+  </tr>
+  <tr>
+    <td colspan="15">&nbsp;</td>
+    <td colspan="5" style="text-align: center; font-weight: bold;">TOTAL PATRIMONIO</td>
+    <td colspan="5"><input type="text" name="total_patrimonio" style="width: 100%;text-align: center;" value="0.00"></td>
+  </tr>
+  </table>
+  <!--REFERENCIAS PERSONALES-->
+  <table
+  border="1"
+  style="border-collapse: collapse"
+  width="100%"
+  style="text-align: justify"
+
+  >
+  <tr>
+    <td colspan="30"  style="text-align: center; font-weight: bold;" class="colorp"><b>X. REFERENCIAS PERSONALES</b></td>
+  </tr>
+  <tr>
+    <td colspan="5" style="text-align: center;">Nombres y apellidos</td>
+    <td colspan="5" style="text-align: center;">Parentesco</td>
+    <td colspan="5" style="text-align: center;">Dirección</td>
+    <td colspan="5" style="text-align: center;">Lugar de trabajo</td>
+    <td colspan="5" style="text-align: center;">Teléfono fijo</td>
+    <td colspan="5" style="text-align: center;">Teléfono celular</td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="referencias_nombres_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencias_parentesco_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" id="referencias_direccion_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencias_lugar_trabajo_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencia_telefono_1" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencia_celular_1" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="referencias_nombres_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencias_parentesco_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" id="referencias_direccion_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencias_lugar_trabajo_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencia_telefono_2" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencia_celular_2" style="width: 100%;"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><input type="text" name="referencias_nombres_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencias_parentesco_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" id="referencias_direccion_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencias_lugar_trabajo_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencia_telefono_3" style="width: 100%;"></td>
+    <td colspan="5"><input type="text" name="referencia_celular_3" style="width: 100%;"></td>
+  </tr>
+  </table>
+ <!--DECLARACION-->
+ <table
+ border="1"
+ style="border-collapse: collapse"
+ width="100%"
+ style="text-align: justify"
+
+ >
+ <tr>
+   <td colspan="30"  style="text-align: center; font-weight: bold;" class="colorp">DECLARACIÓN</td>
+ </tr>
+
+ <tr>
+   <td colspan="30"><br>CONOCEDOR(A) DE LAS PENAS DE PERJURIO DECLARO BAJO JURAMENTO QUE LA INFORMACIÓN ARRIBA INDICADA ES CORRECTA Y VERDADERA, ENTIENDO QUE LA MISMA SERÁ
+    LEÍDA/REVISADA POR LAS AUTORIDADES COMPETENTES QUIENES LA PODRÁN CONSIDERAR PARA TODOS LOS EFECTOS LEGALES QUE CONSIDEREN NECESARIOS. SE AUTORIZA AL CLUB
+    PROFESIONAL INDEPENDIENTE DEL VALLE, A REALIZAR EL ANÁLISIS Y VERIFICACIONES QUE CONSIDEREN PERTINENTES A TRAVÉS DE LOS MEDIOS NECESARIOS, E INFORMAR DE MANERA
+    INMEDIATA Y DOCUMENTADA A LA AUTORIDAD COMPETENTE EN CASOS DE INVESTIGACIÓN O CUANDO SE DETECTARE INUSUALIDADES O TRANSACCIONES SOSPECHOSAS. GARANTIZA LA
+    VERACIDAD DE LA INFORMACIÓN PROPORCIONADA Y RENUNCIA A EJECUTAR CUALQUIER PRETENSIÓN TANTO EN EL ÁMBITO CIVIL COMO PENAL POR ESTOS HECHOS, ACOGIENDOSE A
+    SANCIONES QUE POR INFORMACIÓN FALSA ESTABLEZCAN LAS LEYES ECUATORIANAS.</td>
+ </tr>
+ </table><br><br><br><br>
+ <!--firmas-->
+    
+    <table
+    border="0"
+    style="border-collapse: collapse"
+    width="100%"
+    style="text-align: justify"
+   
+    >
+    <tr>
+      <td colspan="30" style="text-align: center;">__________________________________________________</td>
+    </tr>
+    <tr>
+      <td colspan="30" style="text-align: center;"><b>FIRMA DEL EMPLEADO</b></td>
+    </tr>
+    <tr>
+      <td colspan="30">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="5" style="text-align: center;">Ciudad</td>
+      <td colspan="15"><input type="text" name="cuidadnn" style="width: 100%;"></td>
+      <td colspan="5" style="text-align: center;">Fecha</td>
+      <td colspan="10"><input type="date" name="fech_firma" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="30"><b>EMPLEADO DEL DEPARTAMENTO DE RECURSOS HUMANOS QUE VERIFICÓ LA INFORMACIÓN</b></td>
+    </tr>
+    <tr>
+      <td colspan="10">Apellidos y nombres</td>
+    </tr>
+    <tr>
+      <td colspan="10"><input type="text" name="nombres_recursos" style="width: 100%;"></td>
+    </tr>
+    <tr>
+      <td colspan="30">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="30">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="30">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="30" style="text-align: center;">__________________________________________________</td>
+    </tr>
+    <tr>
+      <td colspan="30" style="text-align: center;"><b>FIRMA EMPLEADO RESPONSABLE</b></td>
+    </tr>
+    <tr>
+      <td colspan="30">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="30">&nbsp;</td>
+    </tr>
+    </table>
+    <table border="0" style="border-collapse: collapse; width: 100%; text-align: justify;">
+      <tr>
+        <td colspan="25">
+          *Esta información es solicitada acorde a lo establecido en las Normas de Prevención de Lavado de Activos y Financiamiento de delitos y necesidades de la empresa para cumplir con sus políticas de vinculación, las mismas que deberá ser conservada por diez (10) años acorde a la referida Norma.
+        </td>
+      </tr>
+      <tr>
+        <td colspan="25" style="text-align: center; font-weight: bold;" class="colorp">
+          <b>DOCUMENTOS ADJUNTOS</b>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="25">
+          <center>
+          <table border="1" style="width: 50%; border-collapse: collapse;">
+            <tr>
+              <td style="text-align: center;">Documento</td>
+              <td style="text-align: center;">Verificación</td>
+              <td style="text-align: center;">Observación</td>
+            </tr>
+            <tr>
+              <td>a) Copia de cédula del empleado</td>
+              <td><input type="checkbox" name="verificado_1" value=""></td>
+              <td><input type="text" name="observacion_1" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>b) Copia de cédula de cónyuge (si aplica)</td>
+              <td><input type="checkbox" name="verificado_2" value=""></td>
+              <td><input type="text" name="observacion_2" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>c) Copia de la papeleta de votación del empleado</td>
+              <td><input type="checkbox" name="verificado_3" value=""></td>
+              <td><input type="text" name="observacion_3" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>d) Copia de la papeleta de votación del cónyuge (si aplica)</td>
+              <td><input type="checkbox" name="verificado_4" value=""></td>
+              <td><input type="text" name="observacion_4" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>e) Hoja de vida</td>
+              <td><input type="checkbox" name="verificado_5" value=""></td>
+              <td><input type="text" name="observacion_5" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>f) Certificados laborales (3 últimos/si aplica)</td>
+              <td><input type="checkbox" name="verificado_6" value=""></td>
+              <td><input type="text" name="observacion_6" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>g) Referencias Laborales (si aplica)</td>
+              <td><input type="checkbox" name="verificado_7" value=""></td>
+              <td><input type="text" name="observacion_7" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>h) 2 Referencias Personales</td>
+              <td><input type="checkbox" name="verificado_8" value=""></td>
+              <td><input type="text" name="observacion_8" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>i) Planilla de Servicio Básico</td>
+              <td><input type="checkbox" name="verificado_8" value=""></td>
+              <td><input type="text" name="observacion_8" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>j) Formulario 107 empleador anterior</td>
+              <td><input type="checkbox" name="verificado_9" value=""></td>
+              <td><input type="text" name="observacion_9" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>k) 1 foto tamaño carné actualizada</td>
+              <td><input type="checkbox" name="verificado_10" value=""></td>
+              <td><input type="text" name="observacion_10" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>l) Partida de matrimonio o acta juramentada en caso de unión libre</td>
+              <td><input type="checkbox" name="verificado_11" value=""></td>
+              <td><input type="text" name="observacion_11" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>m) Copia de certificados de cursos realizados</td>
+              <td><input type="checkbox" name="verificado_12" value=""></td>
+              <td><input type="text" name="observacion_12" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>n) Certificado de estudios (cursando)</td>
+              <td><input type="checkbox" name="verificado_13" value=""></td>
+              <td><input type="text" name="observacion_13" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>o) Copia título bachillerato</td>
+              <td><input type="checkbox" name="verificado_14" value=""></td>
+              <td><input type="text" name="observacion_14" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>p) Copia título universitario</td>
+              <td><input type="checkbox" name="verificado_15" value=""></td>
+              <td><input type="text" name="observacion_15" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td>q) Declaración de bienes simple</td>
+              <td><input type="checkbox" name="verificado_16" value=""></td>
+              <td><input type="text" name="observacion_16" style="width: 100%;"></td>
+            </tr>
+          </table>
+          </center>
+        </td>
+      </tr>
+    </table> 
+  <button type="submit">Enviar</button>
+  </center>
+</form>
+  </body>
+</html>

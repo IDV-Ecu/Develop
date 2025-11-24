@@ -1,0 +1,865 @@
+<html>
+
+<head>
+  <style>
+    td {
+      font-family: verdana, arial;
+      font-size: 7pt;
+    }
+
+    .colorp {
+      background: #e389fa;
+      -webkit-print-color-adjust: exact;
+      color: white;
+    }
+
+    .colors {
+      background: #f4e9b2;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .ad {
+      width: 100px;
+
+
+    }
+
+    .tabla-imagenes {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .tabla-imagenes td {
+      border: 1px solid black;
+      width: 50%;
+      height: 200px;
+      text-align: center;
+      vertical-align: middle;
+      position: relative;
+      cursor: pointer;
+    }
+
+
+    .tabla-imagenes img {
+      width: 100%;
+      /* ocupa todo el ancho del td */
+      height: 100%;
+      /* ocupa todo el alto del td */
+      object-fit: cover;
+      /* recorta sin deformar */
+      border: 1px solid #999;
+      display: block;
+      background-color: #f0f0f0;
+    }
+
+    .tabla-imagenes input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+    }
+
+    .contenedor-principal {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #f1f1f1;
+      z-index: 1;
+      font-weight: normal;
+      /* Elimina la negrita */
+      font-size: 14px;
+      /* Ajusta el tamaño de la fuente a tu preferencia */
+      text-align: left;
+      /* Alinea el texto a la izquierda */
+    }
+
+
+    select {
+      width: 90%;
+    }
+
+    .btn-todo {
+      background-color: #88aaff;
+      padding: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="materialesid" method="POST" enctype="multipart/form-data">
+    <center>
+      <table border="" style="border-collapse: collapse; width: 100%; text-align: justify; height: 100%;">
+        <tr>
+          <td style="text-align: center; font-weight: bold; vertical-align: top;">
+            <table border="1" style="border-collapse: collapse; width: 100%;">
+              <tr class="colorp">
+                <td colspan="8"><b>DATOS MATERIALES IDV</b></td>
+              </tr>
+              <tr>
+                <td><b>FECHA</b></td>
+                <td><input type="date" name="FECHA" id="fecha"></td>
+                <td><b>HORA</b></td>
+                <td><input type="time" id="HORA" name="HORA"></td>
+                <td><b>SEDE</b></td>
+                <td><input type="text" name="SEDE" id="SEDE" style="width: 100%;"></td>
+                <td><b>PROVINCIA</b></td>
+                <td><input type="text" name="PROVINCIA" id="PROVINCIA" style="width: 100%;"></td>
+              </tr>
+              <tr>
+                <td><b>MATERIAL IDV</b></td>
+                <td>
+                  <!--<input type="text" name="MATERIAL IDV" id="MATERIAL IDV" style="width: 100%;">-->
+                  <select name="MATERIAL IDV" id="MATERIAL IDV" style="display: inline-block; margin-right: 10px;">
+                    <option value="">--Seleccionar--</option>
+                  </select>
+                </td>
+                <td><b>TIPO MATERIAL</b></td>
+                <td>
+                  <!--<input type="text" name="TIPO MATERIAL" id="TIPO MATERIAL" style="width: 100%;">-->
+                  <select name="TIPO MATERIAL" id="TIPO MATERIAL" style="display: inline-block; margin-right: 10px;">
+                    <option value="">--Seleccionar--</option>
+                  </select>
+                </td>
+                <td><b>DETALLE MATERIAL</b></td>
+                <td>
+                  <!--<input type="text" name="DETALLE MATERIAL" id="DETALLE MATERIAL" style="width: 100%;">-->
+                  <select name="DETALLE MATERIAL" id="DETALLE MATERIAL"
+                    style="display: inline-block; margin-right: 10px;">
+                    <option value="">--Seleccionar--</option>
+                  </select>
+                </td>
+                <td><b>EXTRA</b></td>
+                <td>
+                  <!--<input type="text" name="EXTRA" id="EXTRA" style="width: 100%;">-->
+                  <select name="EXTRA" id="EXTRA" style="display: inline-block; margin-right: 10px;">
+                    <option value="">--Seleccionar--</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="8">&nbsp;</td>
+              </tr>
+              <tr class="colorp">
+                <td colspan="8"><b>DATOS LUGAR DE ENTREGA</b></td>
+              </tr>
+              <tr>
+                <td><b>CANCHA</b></td>
+                <td colspan="2">
+                  <select name="CANCHA" id="CANCHA" style="display: inline-block; margin-right: 10px;">
+                    <option value="">--Seleccionar--</option>
+                  </select>
+                  <!--<input type="text" name="CANCHA" id="CANCHA" style="width: 100%;">-->
+                </td>
+                <td><b>ESTADO CANCHA</b></td>
+                <td><input type="text" name="ESTADO CANCHA" id="ESTADO CANCHA" style="width: 100%;"></td>
+                <td><b>TIPO CANCHA</b></td>
+                <td colspan="2">
+                  <!--<input type="text" name="TIPO CANCHA" id="TIPO CANCHA" style="width: 100%;">-->
+                  <select name="TIPO CANCHA" id="TIPO CANCHA" style="display: inline-block; margin-right: 10px;">
+                    <option value="">--Seleccionar--</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><b>FACTURA</b></td>
+                <td colspan="3">
+                  <!--<input type="text" name="FACTURA" id="FACTURA" style="width: 100%;">-->
+                  <select name="FACTURA" id="FACTURA" style="display: inline-block; margin-right: 10px;">
+                    <option value="">--Seleccionar--</option>
+                  </select>
+                </td>
+                <td><b>TIPO FACTURA</b></td>
+                <td colspan="3">
+                  <!--<input type="text" name="TIPO FACTURA" id="TIPO FACTURA" style="width: 100%;">-->
+                  <select name="TIPO FACTURA" id="TIPO FACTURA" style="display: inline-block; margin-right: 10px;">
+                    <option value="">--Seleccionar--</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="8">&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="8" style="text-align: center; font-weight: bold; vertical-align: top; width: 50%;">
+                  <div style="max-height: 650px; overflow-y: auto; margin-top: 10px;">
+                    <table border="1" id="tablaResultado" style="width: 100%;">
+                      <!-- Aquí van los datos dinámicos -->
+                    </table>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td style="text-align: center; font-weight: bold; vertical-align: top;">
+            <table style="min-height: 400px; width: 100%;">
+              <thead>
+                <tr class="colors">
+                  <th colspan="2">
+                    <select onchange="cargarMateriales(this.value, 0)" name="MATERIALES_1" id="MATERIALES_1">
+                      <option value="">--Seleccionar--</option>
+                    </select>
+                  </th>
+                  <th colspan="2">
+                    <select onchange="cargarMateriales(this.value, 1)" name="MATERIALES_2" id="MATERIALES_2">
+                      <option value="">--Seleccionar--</option>
+                    </select>
+                  </th>
+                  <th colspan="2">
+                    <select onchange="cargarMateriales(this.value, 2)" name="MATERIALES_3" id="MATERIALES_3">
+                      <option value="">--Seleccionar--</option>
+                    </select>
+                  </th>
+                  <th colspan="2">
+                    <select onchange="cargarMateriales(this.value, 3)" name="MATERIALES_4" id="MATERIALES_4">
+                      <option value="">--Seleccionar--</option>
+                    </select>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+                <!-- filas dinámicas -->
+              </tbody>
+              <tfoot>
+                <tr class="colors">
+                  <td>AÑADIR</td>
+                  <td><button type="button" onclick="seleccionarFila(this)">✔</button></td>
+                  <td>AÑADIR</td>
+                  <td><button type="button" onclick="seleccionarFila(this)">✔</button></td>
+                  <td>AÑADIR</td>
+                  <td><button type="button" onclick="seleccionarFila(this)">✔</button></td>
+                  <td>AÑADIR</td>
+                  <td><button type="button" onclick="seleccionarFila(this)">✔</button></td>
+                </tr>
+              </tfoot>
+
+
+
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="mensaje" style="margin-top: 10px; font-weight: bold;"></div>
+          </td>
+          <td>
+            <div style="display: flex; justify-content: space-between; padding: 10px;">
+              <button onclick="borrarTodo()">Borrar Todo</button>
+
+              <!--<button onclick="guardarTodo()">Guardar Todo</button>-->
+              <button type="submit"
+                style="background-color: #007BFF;color: white;border: none;padding: 10px 20px;font-size: 16px;border-radius: 8px;cursor: pointer;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                Enviar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <br><br><br><br>
+    </center>
+  </form>
+  <div id="resultados"></div>
+
+  <script>
+
+
+    //hacer el post mediante java script
+    document.getElementById('materialesid').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+      const mensajeDiv = document.getElementById('mensaje');
+
+      // Mostrar "Procesando..." en pantalla
+      mensajeDiv.style.color = "blue";
+      mensajeDiv.innerText = "⏳ Procesando... por favor espera";
+
+      fetch('https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Limpiar mensaje "Procesando..."
+          mensajeDiv.innerText = "";
+
+          if (data.result === "success") {
+            alert(" ¡Registro exitoso! Fila número: " + data.row);
+            form.reset();
+          } else {
+            alert(" Algo salió mal. Intenta nuevamente.");
+          }
+        })
+        .catch(error => {
+          mensajeDiv.innerText = "";
+          alert(" Error en la conexión o envío.");
+        });
+    });
+
+
+    /*const tablaResultado = document.getElementById("tablaResultado");
+
+    const materiales = ["PROVINCIA", "ENTREGADO", "MARCA", "RETIRADO", "TIEMPO ALMACENADO", "DETALLE", "REVISADO", "MINUTO RESERVADO", "ACEPTADO"];
+
+    // Crear encabezado de la tabla al cargar
+    function crearEncabezado() {
+      const header = tablaResultado.createTHead();
+      const row = header.insertRow(0);
+      const thCiudad = document.createElement("td");
+      thCiudad.innerText = "MATERIAL";
+      row.appendChild(thCiudad);
+      materiales.forEach(categoria => {
+        const th = document.createElement("td");
+        th.innerText = categoria;
+        row.appendChild(th);
+      });
+
+      const thEliminar = document.createElement("td");
+      thEliminar.innerText = "";
+      row.appendChild(thEliminar);
+    }
+
+    crearEncabezado();*/
+
+    const tablaResultado = document.getElementById("tablaResultado");
+
+    const materiales = [
+      "PROVINCIA", "ENTREGADO", "MARCA", "RETIRADO",
+      "TIEMPO ALMACENADO", "DETALLE", "REVISADO",
+      "MINUTO RESERVADO", "ACEPTADO"
+    ];
+
+    // Crear encabezado de la tabla al cargar
+    function crearEncabezado() {
+      const thead = tablaResultado.createTHead();
+      const row = thead.insertRow(0);
+
+      const thCiudad = document.createElement("th");
+      thCiudad.innerText = "MATERIAL";
+      row.appendChild(thCiudad);
+
+      materiales.forEach(categoria => {
+        const th = document.createElement("th");
+        th.innerText = categoria;
+        row.appendChild(th);
+      });
+
+      const thEliminar = document.createElement("th");
+      thEliminar.innerText = ""; // columna vacía, por ejemplo, para botón eliminar
+      row.appendChild(thEliminar);
+    }
+
+    crearEncabezado();
+
+
+    let filaBotonesAñadir; // Variable global para que no se repita
+
+    async function agregarMaterial(ciudadNombre) {
+      const existe = Array.from(tablaResultado.rows).some((row, index) =>
+        index !== 0 && row.cells[0].innerText === ciudadNombre
+      );
+
+      if (!existe) {
+        const fila = tablaResultado.insertRow(filaBotonesAñadir ? tablaResultado.rows.length - 1 : undefined);
+        const celdaCiudad = fila.insertCell(0);
+        celdaCiudad.innerText = ciudadNombre;
+
+        try {
+          const url = `https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec?func=matProvincia&material=${encodeURIComponent(ciudadNombre)}`;
+
+          const response = await fetch(url);
+          const data = await response.json();
+
+          const provincia = data.provincia || "Desconocida";
+
+          const celdaProvincia = fila.insertCell(1);
+          const inputProvincia = document.createElement("input");
+          inputProvincia.type = "text";
+          inputProvincia.name = `PROVINCIA[]`;
+          inputProvincia.value = provincia;
+          inputProvincia.readOnly = true;
+          inputProvincia.style.width = "100%";
+          celdaProvincia.appendChild(inputProvincia);
+
+          materiales.slice(1).forEach((categoria, colIndex) => {
+            const celda = fila.insertCell();
+
+            if (categoria === "TIEMPO ALMACENADO" || categoria === "MINUTO RESERVADO") {
+              const input = document.createElement("input");
+              input.type = "text";
+              input.name = `${categoria}[]`;
+              input.placeholder = categoria.replace("_", " ").toLowerCase();
+              input.style.width = "75%";
+              celda.appendChild(input);
+            } else if (categoria === "MARCA") {
+              const select = document.createElement("select");
+              select.name = `${categoria}[]`;
+              select.style.width = "100%";
+
+              const opcionDefault = document.createElement("option");
+              opcionDefault.value = "";
+              opcionDefault.text = "Seleccionar";
+              opcionDefault.disabled = true;
+              opcionDefault.selected = true;
+              select.appendChild(opcionDefault);
+
+              const opciones = ["Auspicio", "KFC", "Marathon", "Milo", "Guayaquil"];
+              opciones.forEach(opcion => {
+                const option = document.createElement("option");
+                option.value = opcion;
+                option.text = opcion;
+                select.appendChild(option);
+              });
+
+              celda.appendChild(select);
+            } else {
+              const input = document.createElement("input");
+              input.type = "checkbox";
+              input.name = `${categoria}[]`;
+              input.value = ciudadNombre;
+              input.classList.add(`chk-columna-${colIndex}`);
+              celda.appendChild(input);
+            }
+          });
+
+          const celdaEliminar = fila.insertCell();
+          const botonEliminar = document.createElement("span");
+          botonEliminar.innerText = "×";
+          botonEliminar.style.color = "red";
+          botonEliminar.style.fontSize = "20px";
+          botonEliminar.style.cursor = "pointer";
+          botonEliminar.style.padding = "0 10px";
+          botonEliminar.onclick = function () {
+            fila.remove();
+          };
+          celdaEliminar.appendChild(botonEliminar);
+
+          if (!filaBotonesAñadir) {
+            filaBotonesAñadir = tablaResultado.insertRow();
+            filaBotonesAñadir.classList.add("colors");
+
+            const celdaVaciaInicio = filaBotonesAñadir.insertCell(0);
+            celdaVaciaInicio.innerText = "";
+            const celdaVaciaProvincia = filaBotonesAñadir.insertCell(1);
+            celdaVaciaProvincia.innerText = "";
+
+            materiales.slice(1).forEach((categoria, colIndex) => {
+              const celda = filaBotonesAñadir.insertCell();
+              if (categoria !== "TIEMPO ALMACENADO" && categoria !== "MINUTO RESERVADO" && categoria !== "MARCA") {
+                const boton = document.createElement("button");
+                boton.type = "button";
+                boton.innerText = "✔";
+                boton.onclick = function () {
+                  seleccionarColumna(colIndex);
+                };
+                celda.appendChild(boton);
+              } else {
+                celda.innerText = "";
+              }
+            });
+
+            filaBotonesAñadir.insertCell(); // Espacio para columna de eliminar
+          }
+        } catch (error) {
+          console.error('Error al procesar la solicitud:', error);
+        }
+      }
+    }
+
+    // Función para seleccionar todos los checkboxes de una columna
+    function seleccionarColumna(colIndex) {
+      const checkboxes = document.querySelectorAll(`.chk-columna-${colIndex}`);
+      checkboxes.forEach(chk => chk.checked = true);
+    }
+
+    function manejarCheckbox(checkbox, nombreCiudad) {
+      if (checkbox.checked) {
+        agregarMaterial(nombreCiudad);
+      }
+    }
+
+    function seleccionarFila(boton) {
+      const columnaIndex = boton.parentNode.cellIndex;
+      const tabla = boton.closest("table");
+      const filas = tabla.rows;
+
+      for (let i = 1; i < filas.length - 1; i++) {
+        const fila = filas[i];
+
+        const celdaCiudad = fila.cells[columnaIndex - 1];
+        const celdaCheckbox = fila.cells[columnaIndex];
+
+        if (celdaCheckbox) {
+          const checkbox = celdaCheckbox.querySelector("input[type='checkbox']");
+          if (checkbox && !checkbox.checked) {
+            checkbox.checked = true;
+
+            if (celdaCiudad) {
+              agregarMaterial(celdaCiudad.innerText.trim());
+            }
+          }
+        }
+      }
+    }
+
+
+    function borrarTodo() {
+      while (tablaResultado.rows.length > 1) {
+        tablaResultado.deleteRow(1);
+      }
+    }
+
+
+
+
+    //filtrar la ciudades
+    function filtrarCiudades() {
+      var provinciaSeleccionada = document.getElementById('provinciaSelect').value;
+      var filas = document.querySelectorAll('tr[data-provincia]');
+
+      filas.forEach(function (fila) {
+        if (provinciaSeleccionada === "" || fila.dataset.provincia === provinciaSeleccionada) {
+          fila.style.display = '';
+        } else {
+          fila.style.display = 'none';
+        }
+      });
+    }
+    //filtrar las ciudades por la provincia
+    function mostrarCiudadesPorProvincia() {
+      const seleccion = document.getElementById('provinciaSelect').value;
+
+      // Ocultamos todas las celdas primero
+      const todasLasCeldas = document.querySelectorAll('td');
+      todasLasCeldas.forEach(td => {
+        td.style.display = 'none';
+      });
+
+      // Luego mostramos solo las de la provincia elegida
+      if (seleccion) {
+        const celdasProvincia = document.querySelectorAll(`td.${seleccion}`);
+        celdasProvincia.forEach(td => {
+          td.style.display = '';
+        });
+      }
+    }
+
+    //funcion par armar la tabla de la ciudades y validar por categoria
+
+    const totalFilas = 28;
+    const totalColumnas = 4;
+    const tbody = document.getElementById("tbody");
+
+    // Crear 12 filas con 8 celdas (2 por columna)
+    for (let i = 0; i < totalFilas; i++) {
+      const fila = document.createElement("tr");
+      for (let j = 0; j < totalColumnas; j++) {
+        const celdaCiudad = document.createElement("td");
+        celdaCiudad.id = `ciudad-${i}-${j}`;
+        const celdaCheck = document.createElement("td");
+        celdaCheck.id = `check-${i}-${j}`;
+        fila.appendChild(celdaCiudad);
+        fila.appendChild(celdaCheck);
+      }
+      tbody.appendChild(fila);
+    }
+
+
+
+
+    async function cargarMateriales(categoria, columna) {
+      // Limpiar antes de cargar
+      for (let i = 0; i < totalFilas; i++) {
+        document.getElementById(`ciudad-${i}-${columna}`).innerHTML = "";
+        document.getElementById(`check-${i}-${columna}`).innerHTML = "";
+      }
+
+      if (!categoria) return;
+
+      try {
+        const response = await fetch(`https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec?func=matCategorias&categoria=${encodeURIComponent(categoria)}`);
+
+        if (!response.ok) {
+          return;
+        }
+
+        const materiales = await response.json();
+        if (!Array.isArray(materiales)) {
+          console.error("Respuesta inesperada:", materiales);
+          return;
+        }
+
+        // Asignar el name dinámicamente según columna
+        let sedePrefix = '';
+        if (columna === 0) {
+          sedePrefix = 'MAT_1[]';
+        } else if (columna === 1) {
+          sedePrefix = 'MAT_2[]';
+        } else if (columna === 2) {
+          sedePrefix = 'MAT_3[]';
+        } else if (columna === 3) {
+          sedePrefix = 'MAT_4[]';
+        }
+
+        // Rellenar las celdas
+        materiales.forEach((material, index) => {
+          if (index < totalFilas) {
+            const celdaCiudad = document.getElementById(`ciudad-${index}-${columna}`);
+            const celdaCheck = document.getElementById(`check-${index}-${columna}`);
+            const materialValue = material ? material.toString().trim() : "";
+
+            celdaCiudad.innerText = material;
+            celdaCheck.innerHTML = `
+          <input type="checkbox" 
+                 name="${sedePrefix}" 
+                 class="chk-col-${columna}" 
+                 value="${materialValue}" 
+                 onchange="manejarCheckbox(this, '${material}')">
+        `;
+          }
+        });
+
+      } catch (error) {
+        console.error("Error cargando materiales:", error);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      //funcion para traer materiales
+      const urlCategorias = 'https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec?func=materiales';
+
+      fetch(urlCategorias)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('MATERIAL IDV');
+          if (!select) return console.error("Elemento MATERIAL IDV no encontrado");
+
+          data.forEach(categoria => {
+            const option = document.createElement('option');
+            option.value = categoria;
+            option.textContent = categoria;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar materiales:', error);
+        });
+
+      //funcion para traer el tipo de material
+      const urlTipoCategorias = 'https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec?func=tipomateriales';
+
+      fetch(urlTipoCategorias)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('TIPO MATERIAL');
+          if (!select) return console.error("Elemento TIPO MATERIAL no encontrado");
+
+          data.forEach(categorial => {
+            const option = document.createElement('option');
+            option.value = categorial;
+            option.textContent = categorial;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de materiales:', error);
+        });
+
+      //traer el detalle del material
+
+      const urlDetalleCategorias = 'https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec?func=detallemateriales';
+
+      fetch(urlDetalleCategorias)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('DETALLE MATERIAL');
+          if (!select) return console.error("Elemento DETALLE MATERIAL no encontrado");
+
+          data.forEach(categoriaD => {
+            const option = document.createElement('option');
+            option.value = categoriaD;
+            option.textContent = categoriaD;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de materiales:', error);
+        });
+      //traer los extras
+
+
+      const urlExtras = 'https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec?func=extras';
+
+      fetch(urlExtras)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('EXTRA');
+          if (!select) return console.error("Elemento EXTRA no encontrado");
+
+          data.forEach(extras => {
+            const option = document.createElement('option');
+            option.value = extras;
+            option.textContent = extras;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de extras:', error);
+        });
+      //traer las canchas
+      const urlCanchas = 'https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec?func=cancha';
+
+      fetch(urlCanchas)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('CANCHA');
+          if (!select) return console.error("Elemento CANCHA no encontrado");
+
+          data.forEach(cancha => {
+            const option = document.createElement('option');
+            option.value = cancha;
+            option.textContent = cancha;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de cancha:', error);
+        });
+      //traer el tipo de cancha
+      const urlTCanchas = 'https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec?func=tipocancha';
+
+      fetch(urlTCanchas)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('TIPO CANCHA');
+          if (!select) return console.error("Elemento TIPO CANCHA no encontrado");
+
+          data.forEach(Tcancha => {
+            const option = document.createElement('option');
+            option.value = Tcancha;
+            option.textContent = Tcancha;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de cancha:', error);
+        });
+      //traer las facturas
+      const urlFacturas = 'https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec?func=factura';
+
+      fetch(urlFacturas)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('FACTURA');
+          if (!select) return console.error("Elemento TIPO FACTURA no encontrado");
+
+          data.forEach(facturas => {
+            const option = document.createElement('option');
+            option.value = facturas;
+            option.textContent = facturas;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de facturas:', error);
+        });
+      //traer tipo de facturas
+      const urltFacturas = 'https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec?func=tipofactura';
+
+      fetch(urltFacturas)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('TIPO FACTURA');
+          if (!select) return console.error("Elemento TIPO FACTURA no encontrado");
+
+          data.forEach(Tfacturas => {
+            const option = document.createElement('option');
+            option.value = Tfacturas;
+            option.textContent = Tfacturas;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de facturas:', error);
+        });
+      //traer las provincias
+      const urlcategorias = 'https://script.google.com/macros/s/AKfycbzvSQdYnTEzaRXtXxC4MqEWcHxibaFwBTRUrEmjzQTLmLcx-rJWOX3tYRI0bxljf_hWsQ/exec?func=categorias';
+
+      fetch(urlcategorias)
+        .then(response => response.json())
+        .then(data => {
+          const ids = ['MATERIALES_1', 'MATERIALES_2', 'MATERIALES_3', 'MATERIALES_4'];
+
+          ids.forEach(id => {
+            const select = document.getElementById(id);
+            if (!select) {
+              console.error(`Elemento ${id} no encontrado`);
+              return;
+            }
+
+            // Limpiar opciones anteriores
+            select.innerHTML = '';
+
+            // Agregar opción en blanco inicial
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.textContent = '--Seleccionar--';
+            select.appendChild(defaultOption);
+
+            // Agregar categorías
+            data.forEach(categoria => {
+              const option = document.createElement('option');
+              option.value = categoria;
+              option.textContent = categoria;
+              select.appendChild(option.cloneNode(true));
+            });
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar categorías:', error);
+        });
+    });
+
+    function toggleChecks(columna) {
+      const checkboxes = document.querySelectorAll(`.chk-col-${columna}`);
+      const todosMarcados = [...checkboxes].every(chk => chk.checked);
+      checkboxes.forEach(chk => chk.checked = !todosMarcados);
+    }
+
+    function obtenerHoraEcuador(utcTimeString) {
+      const fechaUTC = new Date(utcTimeString);
+      const horaEcuador = new Date(fechaUTC.getTime() - 8 * 60 * 60 * 1000);
+      const horas = horaEcuador.getUTCHours().toString().padStart(2, '0');
+      const minutos = horaEcuador.getUTCMinutes().toString().padStart(2, '0');
+
+      return `${horas}:${minutos}`; // Devolvemos la hora en formato "hh:mm"
+    }
+
+  </script>
+</body>
+
+</html>

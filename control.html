@@ -1,0 +1,227 @@
+<html>
+
+<head>
+  <style>
+    td {
+      font-family: verdana, arial;
+      font-size: 7pt;
+    }
+
+    .colorp {
+      background: #e389fa;
+      -webkit-print-color-adjust: exact;
+      color: white;
+    }
+
+    .colors {
+      background: #f4e9b2;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .ad {
+      width: 100px;
+
+
+    }
+
+    .tabla-imagenes {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .tabla-imagenes td {
+      border: 1px solid black;
+      width: 50%;
+      height: 200px;
+      text-align: center;
+      vertical-align: middle;
+      position: relative;
+      cursor: pointer;
+    }
+
+
+    .tabla-imagenes img {
+      width: 100%;
+      /* ocupa todo el ancho del td */
+      height: 100%;
+      /* ocupa todo el alto del td */
+      object-fit: cover;
+      /* recorta sin deformar */
+      border: 1px solid #999;
+      display: block;
+      background-color: #f0f0f0;
+    }
+
+    .tabla-imagenes input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+    }
+
+    .contenedor-principal {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #f1f1f1;
+      z-index: 1;
+      font-weight: normal;
+      font-size: 14px;
+      text-align: left;
+      padding: 8px;
+    }
+
+    select {
+      width: 90%;
+    }
+
+    .btn-todo {
+      background-color: #88aaff;
+      padding: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #tablaSecundaria {
+      border: none !important;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    #tablaSecundaria th,
+    #tablaSecundaria td {
+      border: none !important;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    #tbody,
+    #tbody th,
+    #tbody td {
+      border: none !important;
+      border-collapse: collapse;
+    }
+
+    .td-vacia {
+      visibility: hidden;
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="idpreguntas" method="POST" enctype="multipart/form-data">
+    <table style=" width: 100%; text-align: justify; height: 100%;">
+      <tr>
+        <td style="text-align: center; font-weight: bold; vertical-align: top;">
+          <table style=" width: 100%;">
+            <tr class="colorp">
+              <td colspan="4"><b>CONTROL</b></td>
+            </tr>
+            <tr>
+              <td><b>FECHA</b></td>
+              <td><input type="date" name="FECHA" id="fecha"></td>
+              <td><b>NOMBRE DE LA PERSONA</b></td>
+              <td>
+                <select name="NOMBRE" id="NOMBRE" style="display: inline-block; margin-right: 10px;">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="4">
+                <div>
+                  <table id="tablaResultado">
+                    <tr>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td align="left">
+                        <label>OBSERVACION:</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <textarea id="OBSERVACION" name="OBSERVACION" rows="9" cols="100"></textarea><br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left">
+                        <label>RECOMENDACION:</label>
+                      </td>
+                      </tr>
+                      <tr>
+                      <td>
+                        <textarea id="RECOMENDACION" name="RECOMENDACION" rows="9" cols="100"></textarea><br>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <div style="max-height: 700px; overflow: auto; border: 0px solid #ccc;">
+            <table id="tablaSecundaria" style="width: 100%;">
+              <!--datos dinamicamente presentrados-->
+            </table>
+          </div>
+        </td>
+        <td style="text-align: center; font-weight: bold; vertical-align: top;">
+          <table style=" width: 100%;">
+            <tr>
+              <td>AREA</td>
+              <td>EVENTO</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="mensaje" style="margin-top: 10px; font-weight: bold;"></div>
+        </td>
+        <td>
+          <div style="display: flex; justify-content: space-between; padding: 10px;">
+            <button onclick="borrarTodo()">Borrar Todo</button>
+
+            <!--<button onclick="guardarTodo()">Guardar Todo</button>-->
+            <button type="submit"
+              style="background-color: #007BFF;color: white;border: none;padding: 10px 20px;font-size: 16px;border-radius: 8px;cursor: pointer;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              Enviar
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br><br><br><br>
+  </form>
+  <div id="resultados"></div>
+  <script>
+
+  </script>
+</body>
+
+</html>

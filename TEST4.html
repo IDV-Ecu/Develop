@@ -1,0 +1,1347 @@
+<html>
+
+<head>
+  <style>
+    /*TABLA COLABORADORES*/
+
+    #tablaColaboradores {
+      width: 100%;
+      max-width: 900px;
+      /* Limita el ancho total de la tabla */
+      table-layout: fixed;
+      border-collapse: collapse;
+      font-size: 14px;
+      /* Reduce el tamaño del texto */
+    }
+
+    #tablaColaboradores th,
+    #tablaColaboradores td {
+      border: 0px solid #ccc;
+      padding: 2px;
+      text-align: center;
+      vertical-align: middle;
+      word-wrap: break-word;
+      font-size: 8.5px;
+    }
+
+    #tablaColaboradores img {
+      max-width: 80px;
+      max-height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    td {
+      font-family: verdana, arial;
+      font-size: 7.5pt;
+    }
+
+    .colorp {
+      background: #6431F7;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      /* estándar */
+      color: white;
+    }
+
+    .colors {
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      /* estándar */
+    }
+
+    .ad {
+      width: 100px;
+    }
+
+    .tabla-imagenes {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .tabla-imagenes td {
+      border: 0px solid black;
+      width: 50%;
+      height: 200px;
+      text-align: center;
+      vertical-align: middle;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .tabla-imagenes img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 1px solid #999;
+      display: block;
+      background-color: #f0f0f0;
+    }
+
+    .tabla-imagenes input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+    }
+
+    .contenedor-principal {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    th,
+    td {
+      border: none;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 1;
+      font-weight: normal;
+      font-size: 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    select {
+      width: 90%;
+    }
+
+    .btn-todo {
+      background-color: #88aaff;
+      padding: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .scroll-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .scroll-table thead,
+    .scroll-table tfoot {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    .scroll-table tbody {
+      display: block;
+      max-height: 400px;
+      overflow: auto;
+      width: 100%;
+    }
+
+    .scroll-table tbody tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    .tabla-borde-externo {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #000;
+    }
+
+    .tabla-borde-externo td,
+    .tabla-borde-externo th {
+      border: none;
+    }
+
+    #tablaResultado {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    #tablaResultado th,
+    #tablaResultado td {
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+      padding: 5px;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    #tablaResultado tr {
+      border-top: none;
+      border-bottom: none;
+    }
+
+    #tablaResultado thead tr {
+      border-bottom: 0px solid black;
+    }
+
+    /*SEGUNDA TABLA*/
+    #seleccionar {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    #seleccionar th,
+    #seleccionar td {
+      border-left: 1px solid black;
+      border-right: 0px solid black;
+      padding: 5px;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    #seleccionar tr {
+      border-top: none;
+      border-bottom: none;
+    }
+
+    #seleccionar thead tr {
+      border-bottom: 0px solid black;
+    }
+
+    tfoot tr {
+      position: sticky;
+      bottom: 0;
+      background-color: rgb(255, 255, 255);
+      /* importante para que no se superponga feo */
+      z-index: 2;
+    }
+
+    /*DISEÑO Y EFECTO PARA LOS BOTONES*/
+    .btn-estilo {
+      border: 0;
+      border-radius: 12px;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.5;
+      outline: transparent;
+      padding: 0 1.5rem;
+      text-align: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease-in-out;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to bottom right, #007BFF, #0056b3);
+    }
+
+    .btn-warning {
+      background: linear-gradient(to bottom right, #6c757d, #495057);
+    }
+
+    .btn-estilo:hover,
+    .btn-estilo:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.4),
+        -.125rem -.125rem 1rem rgba(0, 0, 0, 0.08),
+        .125rem .125rem 1rem rgba(0, 0, 0, 0.08);
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  <!-- Librerias para control de campo hora -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+
+<body>
+  <form id="materialesid" method="POST" enctype="multipart/form-data">
+    <table style="text-align: justify; height: 100%;">
+      <tr>
+        <td style="text-align: center; font-weight: bold; vertical-align: top;">
+          <table style="border-collapse: collapse; width: 100%;">
+            <tr class="colorp">
+              <td colspan="10"><b>IDV</b></td>
+            </tr>
+            <tr>
+              <td><b>FECHA</b></td>
+              <td><input type="date" name="FECHA" id="fecha"></td>
+              <!--<td><b>HORA</b></td>
+              <td><input type="time" id="HORA" name="HORA"></td>-->
+              <td><b>HORA</b></td>
+              <td><input type="text" id="HORA" name="HORA" placeholder="Selecciona hora"></td>
+              <td><b>LUGAR DE JUEGO</b></td>
+              <td><input type="text" name="SEDE" id="SEDE" style="width: 100%;"></td>
+
+              <td><b>RESULTADO</b></td>
+              <td><input type="text" name="PROVINCIA" id="PROVINCIA" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td><b>COMPETICION</b></td>
+              <td>
+                <select name="MATERIAL IDV" id="MATERIAL IDV" style="display: inline-block; margin-right: 10px;">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+              <td><b>CATEGORIA</b></td>
+              <td>
+                <select name="TIPO MATERIAL" id="TIPO MATERIAL" style="display: inline-block; margin-right: 10px;">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+              <td><b>LOCALIA</b></td>
+              <td>
+                <select name="DETALLE MATERIAL" id="DETALLE MATERIAL"
+                  style="display: inline-block; margin-right: 10px;">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+              <td><b>SISTEMA INICIO</b></td>
+              <td>
+                <select name="EXTRA" id="EXTRA" style="display: inline-block; margin-right: 10px;">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+
+              <td><b>SISTEMA FINAL</b></td>
+              <td>
+                <select name="EXTRA_" id="EXTRA_" style="display: inline-block; margin-right: 10px;">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><b>MCB</b></td>
+              <td><input type="text" name="MCB" id="MCB" style="width: 100%;"></td>
+              <td><b>MSB</b></td>
+              <td><input type="text" name="MSB" id="MSB" style="width: 100%;"></td>
+              <td><b>ABP</b></td>
+              <td><input type="text" name="ABP" id="ABP" style="width: 100%;"></td>
+              <td><b>OBSERVACION</b></td>
+              <td><input type="text" name="OBSERVACION" id="OBSERVACION" style="width: 100%;"></td>
+            </tr>
+            <tr>
+              <td colspan="10">&nbsp;</td>
+            </tr>
+            <tr class="colorp">
+              <td colspan="10"><b>RIVAL</b></td>
+            </tr>
+            <tr>
+              <td><b>OPONENTE</b></td>
+              <td colspan="2">
+                <select name="CANCHA" id="CANCHA" style="display: inline-block; margin-right: 10px;">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+
+              <td><b>SISTEMA DE JUEGO OPONENTE</b></td>
+              <td colspan="2">
+                <select name="TIPO CANCHA" id="TIPO CANCHA" style="display: inline-block; margin-right: 10px;">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><b>RESULTADO IDV</b></td>
+              <td colspan="2">
+                <select name="FACTURA" id="FACTURA" style="display: inline-block; margin-right: 10px;">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+
+              <td><b>NIVEL OPONENTE</b></td>
+              <td colspan="2">
+                <select name="TIPO FACTURA" id="TIPO FACTURA" style="display: inline-block; margin-right: 10px;">
+                  <option value="">--Seleccionar--</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="10">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="10" style="text-align: center; font-weight: bold; vertical-align: top; width: 50%;">
+                <div style="max-height: 700px; overflow-y: auto; margin-top: 10px;">
+                  <table class="tabla-borde-externo" id="tablaResultado" style="width: 100%;">
+                    <!-- Aquí van los datos dinámicos -->
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <!--<td style="text-align: center; font-weight: bold; vertical-align: top; border-left: 2px solid #6431F7;">-->
+        <td
+          style="width: 30%; text-align: center; font-weight: bold; vertical-align: top; border-left: 2px solid #6431F7;">
+          <div style="max-height: 850px; width: 100%; overflow-y: auto; box-sizing: border-box; position: relative;">
+            <div id="excluirDelPDF">
+              <table id="tablaColaboradores">
+                <thead>
+                  <tr class="colorp">
+                    <td colspan="2">
+                      <select onchange="cargarMateriales(this.value, 0)" name="MATERIALES_1" id="MATERIALES_1">
+                        <option value="">--Seleccionar--</option>
+                      </select>
+                    </td>
+                    <td colspan="2">
+                      <select onchange="cargarMateriales(this.value, 1)" name="MATERIALES_2" id="MATERIALES_2">
+                        <option value="">--Seleccionar--</option>
+                      </select>
+                    </td>
+                    <td colspan="2">
+                      <select onchange="cargarMateriales(this.value, 2)" name="MATERIALES_3" id="MATERIALES_3">
+                        <option value="">--Seleccionar--</option>
+                      </select>
+                    </td>
+                    <td colspan="2">
+                      <select onchange="cargarMateriales(this.value, 3)" name="MATERIALES_4" id="MATERIALES_4">
+                        <option value="">--Seleccionar--</option>
+                      </select>
+                    </td>
+                  </tr>
+                </thead>
+                <tbody id="tbody">
+                  <!-- filas dinámicas -->
+                </tbody>
+                <tfoot id="miTfoot">
+                  <!--filas dinamicamente creadas-->
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="mensaje" style="margin-top: 10px; font-weight: bold;"></div>
+        </td>
+        <td style="border-left: 2px solid #6431F7;">
+          <div style="display: flex; justify-content: space-between; padding: 10px;">
+            <button type="button" onclick="borrarTodo()" class="btn-estilo btn-warning">
+              Borrar Todo
+            </button>
+            <button type="submit" id="btnGuardarEvaluacion" class="btn-estilo btn-primary">
+              Enviar
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <div id="resultados"></div>
+  <script>
+    //url 
+    const urlBase = 'https://script.google.com/macros/s/AKfycbyQoi1AhTFYb6gWh2Fw8_5xwLV6wmku-vC-tsEG4G1juvWnJKP5HNvj3raSgHUMkm4/exec/exec';
+    //inizializar el campo para poder escoger la hora
+    flatpickr("#HORA", {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: "H:i",
+      time_24hr: true
+    });
+    //hacer el post mediante java script
+    document.getElementById('materialesid').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const mensajeDiv = document.getElementById('mensaje');
+      // Mostrar "Procesando..." en pantalla
+      mensajeDiv.style.color = "blue";
+      mensajeDiv.innerText = "⏳ Procesando... por favor espera";
+      // Convertir campos vacíos a "0", y el de comentario ponerlo ...
+      const inputsTexto = form.querySelectorAll('input[type="text"]');
+      inputsTexto.forEach(input => {
+        const name = input.name.toUpperCase();
+        if (name.includes("COMENTARIO")) {
+          if (input.value.trim() === "") {
+            input.value = "...";
+          }
+        } else {
+          if (input.value.trim() === "") {
+            input.value = "0";
+          }
+        }
+      });
+      const formData = new FormData(form);
+      const filas = document.querySelectorAll('#tablaResultado tr');
+      filas.forEach(fila => {
+
+        // Buscar el checkbox dentro de la fila
+        const checkbox = fila.querySelector('input[type="checkbox"]');
+        if (!checkbox) return;
+
+        if (!checkbox.checked) {
+
+          const nombreJugador = fila.cells[0].textContent.trim();
+          formData.append('NO CONVOCADO NOMBRE[]', nombreJugador);
+        }
+      });
+      fetch(urlBase, {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          mensajeDiv.innerText = "";
+
+          if (data.result === "success") {
+            alert("¡Registro exitoso!");
+            generarPDF();
+            window.location.reload(true);
+          } else {
+            alert("Algo salió mal. Intenta nuevamente.");
+          }
+        })
+        .catch(error => {
+          mensajeDiv.innerText = "";
+          alert("Error en la conexión o envío.");
+        });
+    });
+    const tablaResultado = document.getElementById("tablaResultado");
+    const materiales = ["DEMARCACION", "CONVOCADO", "NO CONVOCADO", "TITULAR", "CAMBIO", "MINUTOS", "MINUTOS CAMBIOS", "AMARILLA", "DOBLE AMARILLA", "ROJA", "MINUTOS GOLES", "ASISTENCIAS", "GOLES RECIBIDOS", "VALORACION", "COMENTARIO"];
+    // Crear encabezado de la tabla al cargar
+    function crearEncabezado() {
+      const header = tablaResultado.createTHead();
+      const row = header.insertRow(0);
+
+      const thCiudad = document.createElement("th");
+      thCiudad.innerText = "JUGADOR";
+      thCiudad.style.fontSize = "10px";
+      thCiudad.style.textAlign = "center";
+      thCiudad.style.border = "1px solid black";
+      row.appendChild(thCiudad);
+
+      materiales.forEach(categoria => {
+        const th = document.createElement("th");
+        th.innerText = categoria;
+        th.style.fontSize = "10px";
+        th.style.textAlign = "center";
+        th.style.border = "1px solid black";
+        row.appendChild(th);
+      });
+
+      const thEliminar = document.createElement("th");
+      thEliminar.innerText = "";
+      thEliminar.style.fontSize = "10px";
+      thEliminar.style.textAlign = "center";
+      thEliminar.style.border = "1px solid black";
+      row.appendChild(thEliminar);
+    }
+    crearEncabezado();
+    let filaBotonesAñadir; // Variable global para que no se repita
+
+    async function agregarMaterial(ciudadNombre) {
+      const existe = Array.from(tablaResultado.rows).some((row, index) =>
+        index !== 0 && row.cells[0].innerText === ciudadNombre
+      );
+
+      if (!existe) {
+        const fila = tablaResultado.insertRow(filaBotonesAñadir ? tablaResultado.rows.length - 1 : undefined);
+        const celdaCiudad = fila.insertCell(0);
+        celdaCiudad.innerText = ciudadNombre;
+
+        try {
+          const url = `${urlBase}?func=matProvincia&material=${encodeURIComponent(ciudadNombre)}`;
+          const response = await fetch(url);
+
+          if (!response.ok) throw new Error("Error HTTP");
+
+          const data = await response.json();
+
+          const provincia = data.provincia || "";
+
+          // Limpiar espacios extra en el nombre
+          const ciudadNormalizada = ciudadNombre.trim().replace(/\s+/g, " ");
+
+          if (!provincia.trim() || ciudadNormalizada === "" || ciudadNormalizada === "undefined") {
+            // Buscar cualquier checkbox que tenga ese valor
+            const checkboxes = document.querySelectorAll(`input[type="checkbox"]`);
+            let encontrado = false;
+
+            checkboxes.forEach(checkbox => {
+              const valor = checkbox.value.trim().replace(/\s+/g, " ");
+              if (valor === ciudadNormalizada) {
+                checkbox.checked = false;
+                encontrado = true;
+              }
+            });
+
+            fila.remove();
+
+            if (!encontrado) {
+              //console.warn("No se encontró el checkbox para:", ciudadNormalizada);
+            }
+
+            return;
+          }
+
+          const celdaProvincia = fila.insertCell(1);
+          const inputProvincia = document.createElement("input");
+          inputProvincia.type = "text";
+          inputProvincia.name = `PROVINCIA[]`;
+          inputProvincia.value = provincia;
+          inputProvincia.readOnly = true;
+          inputProvincia.style.width = "100%";
+          celdaProvincia.appendChild(inputProvincia);
+
+          // Validar si no se generó correctamente el campo o vino sin datos
+          setTimeout(() => {
+            if (!inputProvincia.value || inputProvincia.value.trim() === "") {
+              const ciudadNormalizada = ciudadNombre.trim().replace(/\s+/g, " ");
+              const checkboxes = document.querySelectorAll(`input[type="checkbox"]`);
+              let checkboxEncontrado = false;
+
+              checkboxes.forEach(checkbox => {
+                const valor = checkbox.value.trim().replace(/\s+/g, " ");
+                if (valor === ciudadNormalizada) {
+                  checkbox.checked = false;
+                  checkboxEncontrado = true;
+                }
+              });
+
+              fila.remove();
+
+              if (!checkboxEncontrado) {
+                console.warn(`Checkbox no encontrado para: ${ciudadNormalizada}`);
+              }
+            }
+          }, 5000); // medio minuto sería 30000
+
+
+
+          materiales.slice(1).forEach((categoria, colIndex) => {
+            const celda = fila.insertCell();
+
+            if (["MINUTOS", "MINUTOS CAMBIOS", "MINUTOS GOLES", "ASISTENCIAS", "GOLES RECIBIDOS", "COMENTARIO"].includes(categoria)) {
+              const input = document.createElement("input");
+              input.type = "text";
+              input.name = `${categoria}[]`;
+              input.placeholder = categoria.replace("_", " ").toLowerCase();
+              input.style.width = "75%";
+              celda.appendChild(input);
+            } else if (categoria === "NO CONVOCADO") {
+              const select = document.createElement("select");
+              select.name = `${categoria}[]`;
+              select.style.width = "100%";
+
+              const opcionDefault = document.createElement("option");
+              opcionDefault.value = "";
+              opcionDefault.text = "Seleccionar";
+              opcionDefault.disabled = true;
+              opcionDefault.selected = true;
+              select.appendChild(opcionDefault);
+
+              const opciones = ["EQUIPO SUP", "EQUIPO INF", "LESION", "SANCION", "ENFERMO", "DECISION TEC", "SELECCION", "DISCIPLINA"];
+              opciones.forEach(opcion => {
+                const option = document.createElement("option");
+                option.value = opcion;
+                option.text = opcion;
+                select.appendChild(option);
+              });
+
+              celda.appendChild(select);
+            } else if (categoria === "VALORACION") {
+              const select = document.createElement("select");
+              select.name = `${categoria}[]`;
+              select.style.width = "100%";
+
+              const opcionDefault = document.createElement("option");
+              opcionDefault.value = "0";
+              opcionDefault.text = "Seleccionar";
+              opcionDefault.disabled = false;
+              opcionDefault.selected = true;
+              select.appendChild(opcionDefault);
+
+              ["1", "2", "3", "4"].forEach(opcion => {
+                const option = document.createElement("option");
+                option.value = opcion;
+                option.text = opcion;
+                select.appendChild(option);
+              });
+
+              celda.appendChild(select);
+            } else {
+              const input = document.createElement("input");
+              input.type = "checkbox";
+              input.name = `${categoria}[]`;
+              input.value = ciudadNombre;
+              input.classList.add(`chk-columna-${colIndex}`);
+              celda.appendChild(input);
+            }
+          });
+
+          const celdaEliminar = fila.insertCell();
+          const botonEliminar = document.createElement("span");
+          botonEliminar.innerText = "BORRAR";
+          botonEliminar.style.color = "red";
+          botonEliminar.style.fontSize = "9px";
+          botonEliminar.style.cursor = "pointer";
+          botonEliminar.style.padding = "0 10px";
+          botonEliminar.onclick = function () {
+            const checkboxes = document.querySelectorAll(`input[type="checkbox"][value="${ciudadNombre}"]`);
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+            fila.remove();
+          };
+          celdaEliminar.appendChild(botonEliminar);
+
+          if (!filaBotonesAñadir) {
+            filaBotonesAñadir = tablaResultado.insertRow();
+            filaBotonesAñadir.classList.add("colors");
+
+            filaBotonesAñadir.insertCell(0).innerText = "";
+            filaBotonesAñadir.insertCell(1).innerText = "";
+
+
+            materiales.slice(1).forEach((categoria, colIndex) => {
+              const celda = filaBotonesAñadir.insertCell();
+              if (!["MINUTOS", "MINUTOS CAMBIOS", "MINUTOS GOLES", "NO CONVOCADO", "AMARILLA", "DOBLE AMARILLA", "ROJA", "ASISTENCIAS", "VALORACION", "GOLES RECIBIDOS", "COMENTARIO", "CAMBIO"].includes(categoria)) {
+                const boton = document.createElement("button");
+                boton.type = "button";
+                boton.innerText = "All";
+                boton.onclick = function () {
+                  seleccionarColumna(colIndex);
+                };
+                celda.appendChild(boton);
+              } else {
+                celda.innerText = "";
+              }
+            });
+
+            filaBotonesAñadir.insertCell();
+          }
+
+        } catch (error) {
+          console.error('Error al procesar la solicitud:', error);
+          const checkbox = document.querySelector(`input[type="checkbox"][value="${ciudadNombre}"]`);
+          if (checkbox) checkbox.checked = false;
+          alert(`No se pudo obtener información para ${ciudadNombre}. Verifica tu conexión o el servidor.`);
+          fila.remove();
+        }
+      }
+    }
+
+
+    function seleccionarColumna(colIndex) {
+      const checkboxes = document.querySelectorAll(`.chk-columna-${colIndex}`);
+      checkboxes.forEach(chk => chk.checked = true);
+    }
+
+    function manejarCheckbox(checkbox, nombreCiudad) {
+      if (checkbox.checked) {
+        agregarMaterial(nombreCiudad);
+      } else {
+        const tabla = document.getElementById('tablaResultado');
+
+        for (let i = 0; i < tabla.rows.length; i++) {
+          const fila = tabla.rows[i];
+          const celdaCiudad = fila.cells[0];
+
+          if (celdaCiudad && celdaCiudad.innerText.trim() === nombreCiudad.trim()) {
+            tabla.deleteRow(i);
+            break;
+          }
+        }
+      }
+    }
+
+    function seleccionarFila(boton) {
+      const columnaIndex = boton.parentNode.cellIndex;
+      const tabla = boton.closest("table");
+      const filas = tabla.rows;
+
+      for (let i = 1; i < filas.length - 1; i++) {
+        const fila = filas[i];
+
+        const celdaCiudad = fila.cells[columnaIndex - 1];
+        const celdaCheckbox = fila.cells[columnaIndex];
+
+        if (celdaCheckbox) {
+          const checkbox = celdaCheckbox.querySelector("input[type='checkbox']");
+          if (checkbox && !checkbox.checked) {
+            checkbox.checked = true;
+
+            if (celdaCiudad) {
+              agregarMaterial(celdaCiudad.innerText.trim());
+            }
+          }
+        }
+      }
+    }
+    function borrarTodo() {
+      window.location.reload(true);
+      /*while (tablaResultado.rows.length > 1) {
+        tablaResultado.deleteRow(1);
+      }*/
+    }
+    //filtrar la ciudades
+    function filtrarCiudades() {
+      var provinciaSeleccionada = document.getElementById('provinciaSelect').value;
+      var filas = document.querySelectorAll('tr[data-provincia]');
+
+      filas.forEach(function (fila) {
+        if (provinciaSeleccionada === "" || fila.dataset.provincia === provinciaSeleccionada) {
+          fila.style.display = '';
+        } else {
+          fila.style.display = 'none';
+        }
+      });
+    }
+    //filtrar las ciudades por la provincia
+    function mostrarCiudadesPorProvincia() {
+      const seleccion = document.getElementById('provinciaSelect').value;
+      const todasLasCeldas = document.querySelectorAll('td');
+      todasLasCeldas.forEach(td => {
+        td.style.display = 'none';
+      });
+      // Luego mostramos solo las de la provincia elegida
+      if (seleccion) {
+        const celdasProvincia = document.querySelectorAll(`td.${seleccion}`);
+        celdasProvincia.forEach(td => {
+          td.style.display = '';
+        });
+      }
+    }
+    //funcion par armar la tabla de la ciudades y validar por categoria
+
+    let tablaInicializada = false;
+
+    function construirTabla(totalFilas, totalColumnas) {
+      const tbody = document.getElementById("tbody");
+      tbody.innerHTML = "";
+
+      for (let i = 0; i < totalFilas; i++) {
+        const fila = document.createElement("tr");
+        for (let j = 0; j < totalColumnas; j++) {
+          const celdaCiudad = document.createElement("td");
+          celdaCiudad.id = `ciudad-${i}-${j}`;
+          celdaCiudad.style.textAlign = "left";
+
+          const celdaCheck = document.createElement("td");
+          celdaCheck.id = `check-${i}-${j}`;
+
+          fila.appendChild(celdaCiudad);
+          fila.appendChild(celdaCheck);
+        }
+        tbody.appendChild(fila);
+      }
+
+      tablaInicializada = true;
+      construirTfoot(totalColumnas);
+    }
+
+
+    async function cargarMateriales(categoria, columna) {
+      if (!categoria) return;
+      try {
+        const url = `${urlBase}?func=matCategorias&categoria=${encodeURIComponent(categoria)}`;
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          console.error("Error HTTP:", response.status);
+          return;
+        }
+
+        const materiales = await response.json();
+        if (!Array.isArray(materiales)) {
+          console.error("Respuesta inesperada:", materiales);
+          return;
+        }
+
+        const totalFilas = materiales.length;
+        const totalColumnas = 4;
+        const tbody = document.getElementById("tbody");
+        const filasActuales = tbody.rows.length;
+
+        if (!tablaInicializada) {
+          construirTabla(totalFilas, totalColumnas);
+        } else if (totalFilas > filasActuales) {
+          for (let i = filasActuales; i < totalFilas; i++) {
+            const fila = document.createElement("tr");
+            for (let j = 0; j < totalColumnas; j++) {
+              const celdaCiudad = document.createElement("td");
+              celdaCiudad.id = `ciudad-${i}-${j}`;
+              celdaCiudad.style.textAlign = "left";
+
+              const celdaCheck = document.createElement("td");
+              celdaCheck.id = `check-${i}-${j}`;
+
+              fila.appendChild(celdaCiudad);
+              fila.appendChild(celdaCheck);
+            }
+            tbody.appendChild(fila);
+          }
+        }
+
+        const sedePrefix = 'MAT_1[]';
+
+        materiales.forEach((material, index) => {
+          const celdaCiudad = document.getElementById(`ciudad-${index}-${columna}`);
+          const celdaCheck = document.getElementById(`check-${index}-${columna}`);
+          const materialValue = material ? material.toString().trim() : "";
+
+          if (celdaCiudad && celdaCheck) {
+            celdaCiudad.innerText = material;
+            celdaCheck.innerHTML = `
+          <input type="checkbox" 
+                 name="${sedePrefix}" 
+                 class="chk-col-${columna}" 
+                 value="${materialValue}" 
+                 onchange="manejarCheckbox(this, '${material}')">
+        `;
+          }
+        });
+
+      } catch (error) {
+        console.error("Error cargando materiales:", error);
+      }
+    }
+
+
+    function construirTfoot(totalColumnas) {
+      const tfoot = document.getElementById("miTfoot");
+      tfoot.innerHTML = "";
+      const filaFooter = document.createElement("tr");
+
+      for (let j = 0; j < totalColumnas; j++) {
+        const tdTexto = document.createElement("td");
+        tdTexto.textContent = "AGREGAR";
+
+        const tdBoton = document.createElement("td");
+        const boton = document.createElement("button");
+        boton.innerHTML = "&#10004;";
+        boton.type = "button";
+        boton.onclick = function () {
+          quitarchecks(j);
+        };
+        tdBoton.appendChild(boton);
+
+        filaFooter.appendChild(tdTexto);
+        filaFooter.appendChild(tdBoton);
+      }
+
+      tfoot.appendChild(filaFooter);
+    }
+
+    //funcion para desmarcar los checks
+    function quitarchecks(columna) {
+      const checkboxes = document.querySelectorAll(`.chk-col-${columna}`);
+      if (checkboxes.length === 0) return;
+
+      const todosMarcados = Array.from(checkboxes).every(chk => chk.checked);
+
+      checkboxes.forEach(chk => {
+        chk.checked = !todosMarcados;
+        manejarCheckbox(chk, chk.value);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      //funcion para traer materiales
+      const urlCategorias = `${urlBase}?func=materiales`;
+      fetch(urlCategorias)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('MATERIAL IDV');
+          if (!select) return console.error("Elemento MATERIAL IDV no encontrado");
+
+          data.forEach(categoria => {
+            const option = document.createElement('option');
+            option.value = categoria;
+            option.textContent = categoria;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar materiales:', error);
+        });
+
+      //funcion para traer el tipo de material
+      const urlTipoCategorias = `${urlBase}?func=tipomateriales`;
+      fetch(urlTipoCategorias)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('TIPO MATERIAL');
+          if (!select) return console.error("Elemento TIPO MATERIAL no encontrado");
+
+          data.forEach(categorial => {
+            const option = document.createElement('option');
+            option.value = categorial;
+            option.textContent = categorial;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de materiales:', error);
+        });
+
+      //traer el detalle del material
+      const urlDetalleCategorias = `${urlBase}?func=detallemateriales`;
+      fetch(urlDetalleCategorias)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('DETALLE MATERIAL');
+          if (!select) return console.error("Elemento DETALLE MATERIAL no encontrado");
+
+          data.forEach(categoriaD => {
+            const option = document.createElement('option');
+            option.value = categoriaD;
+            option.textContent = categoriaD;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de materiales:', error);
+        });
+      //traer los extras
+      const urlExtras = `${urlBase}?func=extras`;
+      fetch(urlExtras)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('EXTRA');
+          if (!select) return console.error("Elemento EXTRA no encontrado");
+
+          data.forEach(extras => {
+            const option = document.createElement('option');
+            option.value = extras;
+            option.textContent = extras;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de extras:', error);
+        });
+
+      const urlExtras_ = `${urlBase}?func=extras`;
+      fetch(urlExtras_)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('EXTRA_');
+          if (!select) return console.error("Elemento EXTRA no encontrado");
+
+          data.forEach(extras => {
+            const option = document.createElement('option');
+            option.value = extras;
+            option.textContent = extras;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de extras:', error);
+        });
+      //traer las canchas
+      const urlCanchas = `${urlBase}?func=cancha`;
+      fetch(urlCanchas)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('CANCHA');
+          if (!select) return console.error("Elemento CANCHA no encontrado");
+
+          data.forEach(cancha => {
+            const option = document.createElement('option');
+            option.value = cancha;
+            option.textContent = cancha;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de cancha:', error);
+        });
+      //traer el tipo de cancha
+      const urlTCanchas = `${urlBase}?func=tipocancha`;
+      fetch(urlTCanchas)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('TIPO CANCHA');
+          if (!select) return console.error("Elemento TIPO CANCHA no encontrado");
+
+          data.forEach(Tcancha => {
+            const option = document.createElement('option');
+            option.value = Tcancha;
+            option.textContent = Tcancha;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de cancha:', error);
+        });
+      //traer las facturas
+      const urlFacturas = `${urlBase}?func=factura`;
+      fetch(urlFacturas)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('FACTURA');
+          if (!select) return console.error("Elemento TIPO FACTURA no encontrado");
+
+          data.forEach(facturas => {
+            const option = document.createElement('option');
+            option.value = facturas;
+            option.textContent = facturas;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de facturas:', error);
+        });
+      //traer tipo de facturas
+      const urltFacturas = `${urlBase}?func=tipofactura`;
+      fetch(urltFacturas)
+        .then(response => response.json())
+        .then(data => {
+          const select = document.getElementById('TIPO FACTURA');
+          if (!select) return console.error("Elemento TIPO FACTURA no encontrado");
+
+          data.forEach(Tfacturas => {
+            const option = document.createElement('option');
+            option.value = Tfacturas;
+            option.textContent = Tfacturas;
+            select.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar tipo de facturas:', error);
+        });
+      //traer las provincias
+      const urlcategorias = `${urlBase}?func=categorias`;
+      fetch(urlcategorias)
+        .then(response => response.json())
+        .then(data => {
+          const ids = ['MATERIALES_1', 'MATERIALES_2', 'MATERIALES_3', 'MATERIALES_4'];
+
+          ids.forEach(id => {
+            const select = document.getElementById(id);
+            if (!select) {
+              console.error(`Elemento ${id} no encontrado`);
+              return;
+            }
+            // Limpiar opciones anteriores
+            select.innerHTML = '';
+            // Agregar opción en blanco inicial
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.textContent = '--Seleccionar--';
+            select.appendChild(defaultOption);
+            // Agregar categorías
+            data.forEach(categoria => {
+              const option = document.createElement('option');
+              option.value = categoria;
+              option.textContent = categoria;
+              select.appendChild(option.cloneNode(true));
+            });
+          });
+        })
+        .catch(error => {
+          console.error('Error al cargar categorías:', error);
+        });
+    });
+    function toggleChecks(columna) {
+      const checkboxes = document.querySelectorAll(`.chk-col-${columna}`);
+      const todosMarcados = [...checkboxes].every(chk => chk.checked);
+      checkboxes.forEach(chk => chk.checked = !todosMarcados);
+    }
+    function obtenerHoraEcuador(utcTimeString) {
+      const fechaUTC = new Date(utcTimeString);
+      const horaEcuador = new Date(fechaUTC.getTime() - 8 * 60 * 60 * 1000);
+      const horas = horaEcuador.getUTCHours().toString().padStart(2, '0');
+      const minutos = horaEcuador.getUTCMinutes().toString().padStart(2, '0');
+
+      return `${horas}:${minutos}`; // Devolvemos la hora en formato "hh:mm"
+    }
+
+    //crear el pdf  
+    async function generarPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ orientation: 'landscape', format: 'a4' });
+
+      const pageWidth = doc.internal.pageSize.getWidth();
+
+      //TÍTULO CENTRADo
+      doc.setFontSize(14);
+      doc.setFont(undefined, 'bold');
+      const titulo = 'FORMULARIO IDV';
+      const textWidth = doc.getTextWidth(titulo);
+      doc.text(titulo, (pageWidth - textWidth) / 2, 15);
+
+      //LÍNEA MORADA
+      doc.setDrawColor(100, 49, 247);
+      doc.setLineWidth(1);
+      doc.line(14, 18, pageWidth - 14, 18);
+
+      //CAMPOS GENERALES EN 3 COLUMNA
+      const campos = [
+        ['FECHA', 'fecha'], ['HORA', 'HORA'], ['LUGAR DE JUEGO', 'SEDE'],
+        ['RESULTADO', 'PROVINCIA'], ['COMPETICIÓN', 'MATERIAL IDV'], ['CATEGORÍA', 'TIPO MATERIAL'],
+        ['LOCALÍA', 'DETALLE MATERIAL'], ['SISTEMA INICIO', 'EXTRA'], ['SISTEMA FINAL', 'EXTRA_'],
+        ['OPONENTE', 'CANCHA'], ['SISTEMA OPONENTE', 'TIPO CANCHA'], ['RESULTADO IDV', 'FACTURA'],
+        ['NIVEL OPONENTE', 'TIPO FACTURA']
+      ];
+
+      doc.setFontSize(8);
+      const columnCount = 3;
+      const labelWidth = 30;
+      const valueWidth = 50;
+      const gapX = 12;
+      const rowHeight = 7;
+      let currentY = 25;
+
+      for (let i = 0; i < campos.length; i++) {
+        const col = i % columnCount;
+        const row = Math.floor(i / columnCount);
+        const x = 14 + col * (labelWidth + valueWidth + gapX);
+        const y = currentY + row * rowHeight;
+
+        const [label, id] = campos[i];
+        const el = document.getElementById(id);
+        const value = el?.value || '';
+
+        doc.setFont(undefined, 'bold');
+        doc.text(`${label}:`, x, y);
+
+        doc.setFont(undefined, 'normal');
+        doc.text(value, x + labelWidth + 1, y);
+      }
+
+      // === CAMPOS LARGOS ===
+      const camposLargos = [
+        ['MCB', 'MCB'],
+        ['MSB', 'MSB'],
+        ['ABP', 'ABP'],
+        ['OBSERVACIÓN', 'OBSERVACION']
+      ];
+
+      currentY += Math.ceil(campos.length / columnCount) * rowHeight + 6;
+      const contentWidth = pageWidth - 28;
+
+      camposLargos.forEach(([label, id]) => {
+        const el = document.getElementById(id);
+        const value = el?.value || '';
+
+        doc.setFont(undefined, 'bold');
+        doc.text(`${label}:`, 14, currentY);
+
+        doc.setFont(undefined, 'normal');
+        const textoFormateado = doc.splitTextToSize(value, contentWidth);
+        doc.text(textoFormateado, 14, currentY + 4);
+
+        currentY += textoFormateado.length * 4.5 + 6;
+      });
+
+      // === NUEVA PÁGINA PARA LA TABLA ===
+      doc.addPage();
+
+      const formulario = document.getElementById('materialesid');
+      const filas = formulario.querySelectorAll('#tablaResultado tr');
+
+      const encabezados = [
+        'Jugador', 'Demarcación', 'Convocado', 'No Convocado', 'Titular', 'Cambio', 'Minutos',
+        'Minutos Cambio', 'Amarilla', 'Doble Amarilla', 'Roja', 'Minutos Goles', 'Asistencias',
+        'Goles Recibidos', 'Valoración', 'Comentario'
+      ];
+
+      const datos = [];
+
+      filas.forEach((fila, i) => {
+        if (i === 0 || fila.classList.contains('colors')) return;
+
+        const celdas = fila.querySelectorAll('td');
+        const filaDatos = [];
+
+        const nombreJugador = celdas[0]?.innerText?.trim() || '';
+        const demarcacion = celdas[1]?.querySelector('input')?.value?.trim() || '';
+        filaDatos.push(nombreJugador);
+        filaDatos.push(demarcacion);
+
+        materiales.slice(1).forEach((_, idx) => {
+          const celda = celdas[idx + 2];
+          let valor = '';
+          if (celda) {
+            const input = celda.querySelector('input, select');
+            if (input) {
+              valor = input.type === 'checkbox' ? (input.checked ? 'Sí' : 'No') : input.value || '';
+            }
+          }
+          filaDatos.push(valor);
+        });
+
+        datos.push(filaDatos);
+      });
+
+      // === TABLA DE DATOS ===
+      doc.autoTable({
+        head: [encabezados],
+        body: datos,
+        startY: 20,
+        margin: { left: 10, right: 10 },
+        tableWidth: 'auto',
+        styles: {
+          fontSize: 6,
+          cellPadding: 2,
+          overflow: 'linebreak',
+          valign: 'middle',
+        },
+        headStyles: {
+          fillColor: [100, 49, 247],
+          halign: 'center',
+          fontStyle: 'bold'
+        },
+        columnStyles: {
+          0: { cellWidth: 30 },
+          1: { cellWidth: 20 },
+          14: { cellWidth: 15 },  // Valoración
+          15: { cellWidth: 50 },
+        }
+      });
+
+      doc.save('formulario_tabla_idv.pdf');
+    }
+
+    //limpiar todo el formulario
+    function limpiarFormularioYTabla(form) {
+      form.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+        input.value = '';
+      });
+
+      form.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+      });
+
+      form.querySelectorAll('select').forEach(select => {
+        select.selectedIndex = 0;
+      });
+
+      form.querySelectorAll('textarea').forEach(textarea => {
+        textarea.value = '';
+      });
+
+      const tabla = document.getElementById('tablaResultado');
+      const filas = tabla.querySelectorAll('tr');
+
+      filas.forEach((fila, index) => {
+
+        if (index === 0) return;
+        fila.querySelectorAll('input, select, textarea').forEach(el => {
+          if (el.type === 'checkbox') {
+            el.checked = false;
+          } else {
+            el.value = '';
+          }
+        });
+
+        fila.querySelectorAll('[contenteditable="true"]').forEach(celda => {
+          celda.textContent = '';
+        });
+      });
+    }
+  </script>
+</body>
+
+</html>
