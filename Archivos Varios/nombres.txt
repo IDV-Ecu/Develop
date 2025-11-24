@@ -1,0 +1,1842 @@
+
+#NEW ENTRIES AFTER CLEANING NAME CONFLICTS
+    
+    527: {
+        "corrected_name": "GONGORA PALACIOS STEVEN DANIEL",
+        "original_names": ["S GONGORA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    528: {
+        "corrected_name": "ANGULO CAICEDO JOSE ENRIQUE",
+        "original_names": ["JOSE ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    529: {
+        "corrected_name": "PIEDRA ZAPUTT IVAN MATEO",
+        "original_names": ["MATEO PIEDRA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    530: {
+        "corrected_name": "CANGA CASIERRA MARCOS FABIAN",
+        "original_names": ["MARCOS  CANGA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    531: {
+        "corrected_name": "PRECIADO QUIÑONEZ ANGELO SMIT",
+        "original_names": ["ANGELO PRECIADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    532: {
+        "corrected_name": "DELGADO VILLA PATRICKSON LUIGGY",
+        "original_names": ["PATRICKSON DELGADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    533: {
+        "corrected_name": "ESCOBAR MOYANO JOFFRE ANDRES",
+        "original_names": ["JOFFRE ESCOBAR","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    
+    
+    
+    
+
+
+    
+    
+    534: {
+        "corrected_name": "ARROYO CAICEDO JEFERSON GABRIEL",
+        "original_names": ["JEFFERSON ARROYO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    535: {
+        "corrected_name": "MERA MOREIRA EFREN ALEXANDER",
+        "original_names": ["EFREN MERA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    536: {
+        "corrected_name": "QUIÑONEZ REALPE LUIS ALBERTO",
+        "original_names": ["LUIS ALBERTO QUIÃ‘ONEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    537: {
+        "corrected_name": "MINA VALENCIA DAVID ANIBAL",
+        "original_names": ["DAVID  MINA ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    538: {
+        "corrected_name": "AYALA BRUCIL LUIS MIGUEL",
+        "original_names": ["LUIS AYALA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    539: {
+        "corrected_name": "CUERO PALACIO JUSTIN RAUL",
+        "original_names": ["JUSTIN CUERO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    540: {
+        "corrected_name": "SANCHEZ ESMERALDAS CARLOS UVILDE",
+        "original_names": ["CARLOS SANCHEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    541: {
+        "corrected_name": "CAICEDO COROZO MOISES ISAAC",
+        "original_names": ["MOISES CAICEDO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    542: {
+        "corrected_name": "ARCE MINA BILLY VLADIMIR",
+        "original_names": ["BILLY ARCE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    543: {
+        "corrected_name": "RIVERO BRAIAN ABEL",
+        "original_names": ["BRIAN RIVERO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    544: {
+        "corrected_name": "PLATA JIMENEZ GONZALO JORDY",
+        "original_names": ["GONZALO PLATA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    545: {
+        "corrected_name": "VIVAS CHARA OSCAR SANTIAGO",
+        "original_names": ["OSCAR VIVAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    546: {
+        "corrected_name": "USER SEL",
+        "original_names": ["USER SEL","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    547: {
+        "corrected_name": "BORES DIAZ EDUARDO DAVID",
+        "original_names": ["EDUARDO BORES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    548: {
+        "corrected_name": "JAIME MORAN VICENTE ANDRES",
+        "original_names": ["VICENTE JAIME","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    549: {
+        "corrected_name": "AYOVI MINA WILTER ANDRES",
+        "original_names": ["WILTER  AYOVI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    550: {
+        "corrected_name": "PACHO TENORIO WILLIAN JOEL",
+        "original_names": ["WILLIAM PACHO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    551: {
+        "corrected_name": "CUERO QUIÑONEZ CARLOS ANDRES",
+        "original_names": ["CARLOS ANDRES CUERO QUINONEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    552: {
+        "corrected_name": "PINOS HAIMAN JORGE BLADIMIR",
+        "original_names": ["JORGE PINOS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    553: {
+        "corrected_name": "RIVERA ANDRANGO BRYAN STEVEN",
+        "original_names": ["BRYAN RIVERA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    554: {
+        "corrected_name": "ORTIZ CRISTIAN JONATAN",
+        "original_names": ["CHRISTIAN ORTIZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    555: {
+        "corrected_name": "BONE SANCHEZ ADRIAN JAVIER",
+        "original_names": ["ADRIAN  BONE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    556: {
+        "corrected_name": "MEDINA ORTIZ YAIMAR ABEL", 
+        "original_names": ["YAIMAR MEDINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    557: {
+        "corrected_name": "BIELER CLAUDIO DANIEL",
+        "original_names": ["CLAUDIO BIELER","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },  
+    558: {
+        "corrected_name": "ANGULO CAICEDO CRISTOPHER ADONIS",
+        "original_names": ["CRISTOFER ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    559: {
+        "corrected_name": "MIELES AYOVI MOSIAH FERNANDO",
+        "original_names": ["MOSIAH MIELES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    560: {
+        "corrected_name": "BEGUER PERIS CARLOS",
+        "original_names": ["CARLOS BEGUER","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    561: {
+        "corrected_name": "PELLERANO CRISTIAN ALBERTO",
+        "original_names": ["CRISTIAN PELLERANO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    562: {
+        "corrected_name": "REZABALA ANZULES JORDAN LENIN",
+        "original_names": ["JORDAN REZABALA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    563: {
+        "corrected_name": "VITE UCA PEDRO JEAMPIERRE",
+        "original_names": ["PEDRO VITE UCA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    564: {
+        "corrected_name": "GARCES SALAZAR ROBERTO DANIEL",
+        "original_names": ["ROBERTO GARCES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"] 
+    },
+    565: {
+        "corrected_name": "SANCHEZ ENRIQUEZ JHON JAIRO",
+        "original_names": ["JHON JAIRO SANCHEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    566: {
+        "corrected_name": "PATRON RENZO LOPEZ",
+        "original_names": ["RENZO LOPEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    567: {
+        "corrected_name": "PELLERANO CRISTIAN ALBERTO",
+        "original_names": ["CRISTIAN PELLERANO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    568: {
+        "corrected_name": "VILLA LEON ALEXIS NAPOLEON",
+        "original_names": ["ALEXIS VILLA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    569: {
+        "corrected_name": "ESTRADA MARTINEZ MICHAEL STEVEEN",
+        "original_names": ["MICHAEL  ESTRADA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    570: {
+        "corrected_name": "SEGOVIA GONZALEZ JUAN PABLO",
+        "original_names": ["JUAN PABLO SEGOVIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    571: {
+        "corrected_name": "PLAZA CASTILLO STIVEN RICARDO",
+        "original_names": ["STIVEN PLAZA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    572: {
+        "corrected_name": "BAUMAN JONATHAN JESUS",
+        "original_names": ["JONATHAN BAUMAN","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    573: {
+        "corrected_name": "PIEDRA ORDONEZ HAMILTON EMANUEL",
+        "original_names": ["HAMILTON PIEDRA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    574: {
+        "corrected_name": "ANGULO ANGULO JOSE LUIS",
+        "original_names": ["JOSE  ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    575: {
+        "corrected_name": "GAIBOR ORELLANA FERNANDO VICENTE",
+        "original_names": ["FERNANDO GAIBOR","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    576: {
+        "corrected_name": "LOOR MACIAS LUIS EDUARDO",
+        "original_names": ["LUIS LOOR","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    577: {
+        "corrected_name": "ORTIZ LARA LUIS MATEO",
+        "original_names": ["MATEO ORTIZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    578: {
+        "corrected_name": "QUIÑONEZ ANGULO ELKIN DAVID",
+        "original_names": ["DAVID QUIÃ‘ONEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    579: {
+        "corrected_name": "D 6",
+        "original_names": ["D 6","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    580: {
+        "corrected_name": "MEJIA CARRASCO ADRIAN ALEJANDRO",
+        "original_names": ["ADRIAN MEJIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },  
+    581: {
+        "corrected_name": "CORTEZ ARROYO ANDERSON YADY",
+        "original_names": ["ANDERSON CORTEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    582: {
+        "corrected_name": "LOPEZ GARCIA JADE LILIANA", 
+        "original_names": ["JADE LOPEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    583: {
+        "corrected_name": "PERALTA BONOSO ANGELLO ALAIN",
+        "original_names": ["ANGELO PERALTA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    584: {
+        "corrected_name": "HINCAPIE REYNA PIERO MARTIN",
+        "original_names": ["MARTIN HINCAPIE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    585: {
+        "corrected_name": "SERRANO SUAREZ MARIA JULIA",
+        "original_names": ["MARIA SERRANO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    586: {
+        "corrected_name": "LOPEZ REINA JOAN ONOFRE",
+        "original_names": ["JOAN LOPEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    587: {
+        "corrected_name": "CARRILERO 1",
+        "original_names": ["CARRILERO 1","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    588: {
+        "corrected_name": "J CH",
+        "original_names": ["J CH","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    589: {
+        "corrected_name": "ANGULO SOLORZANO MARCO ANTONIO",
+        "original_names": ["MARCO ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    590: {
+        "corrected_name": "ALLAUCA GUADALUPE FRANKLIN FABIAN",
+        "original_names": ["FRANKLIN ALLAUCA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    591: {
+        "corrected_name": "D 15",
+        "original_names": ["D 15","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    592: {
+        "corrected_name": "LATERAL IZQUIERDO SUB 17",
+        "original_names": ["LATERAL IZQUIERDO SUB 17","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    593: {
+        "corrected_name": "MEJIA KLINGER CARLOS DANIEL",
+        "original_names": ["CARLOS MEJIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    594: {
+        "corrected_name": "CAGUA QUIÑONEZ FERNANDO MOISES",
+        "original_names": ["FERNANDO CAGUA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    595: {
+        "corrected_name": "GUTH TIAGO RAFAEL",
+        "original_names": ["TIAGO GUTH","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    596: {
+        "corrected_name": "SERRANO SUAREZ MARIA JULIA",
+        "original_names": ["MARIA SERRANO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    597: {
+        "corrected_name": "D 22",
+        "original_names": ["D 22","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    598: {
+        "corrected_name": "ARROYO WILA MIGUEL ANGEL",
+        "original_names": ["JEANPAUL HERRERA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    599: {
+        "corrected_name": "ANGULO BONES GINO RICARDO",
+        "original_names": ["GINO ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    600: {
+        "corrected_name": "ZAMORA CAMPAS BRAYSON JEESAEL",
+        "original_names": ["BRYSON ZAMORA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    601: {
+        "corrected_name": "MANCILLA ESPAÑA ELYI GABRIEL",
+        "original_names": ["ELYI MANCILLA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+
+
+    602: {
+        "corrected_name": "CAGUA VALENCIA MAURICIO ALEXANDER",
+        "original_names": ["MAURICIO CAGUA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    603: {
+        "corrected_name": "MINA ORTIZ GARIS ALDAIR",
+        "original_names": ["GARIS MINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    604: {
+        "corrected_name": "LATERAL DERECHO SUB 17",
+        "original_names": ["LATERAL DERECHO SUB 17","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    605: {
+        "corrected_name": "MEDINA ORTIZ YAIMAR ABEL",
+        "original_names": ["YAIMAR M. MOTO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    606: {
+        "corrected_name": "CABEZAS SIMISTERRA ROBERTO CARLOS",
+        "original_names": ["ROBERTO CABEZAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    607: {
+        "corrected_name": "PINEDA PINEDA MARIA MERCEDES",
+        "original_names": ["MARIA PINEDA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    608: {
+        "corrected_name": "D 7",
+        "original_names": ["D 7","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    609: {
+        "corrected_name": "LEITON LAMILLA DARLIN ALBERTO",
+        "original_names": ["DARLIN LEYTON","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    610: {
+        "corrected_name": "BORJA CHASING CLERENCEE RICHARD",
+        "original_names": ["CLERENCEE BORJA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    611: {
+        "corrected_name": "BRAVO CORTEZ BYRON FABIAN",
+        "original_names": ["BAYRON BRAVO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    612: {
+        "corrected_name": "MESIAS CAICEDO ELIAN DAVID",
+        "original_names": ["ELIAN MECIAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    613: {
+        "corrected_name": "ARROYO ALVARADO KENY ALEXANDER",
+        "original_names": ["KENNY ARROYO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    614: {
+        "corrected_name": "QUIÑONEZ REALPE LUIS ALBERTO",
+        "original_names": ["LUIS QUIÃ‘ONEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    615: {
+        "corrected_name": "ORDOÑEZ GUERRERO JOEL LEANDRO",
+        "original_names": ["JOEL ORDOÃ‘EZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    616: {
+        "corrected_name": "CENTRAL 1",
+        "original_names": ["CENTRAL 1","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    617: {
+        "corrected_name": "VARGAS RIZO ANAHI JEANETH",
+        "original_names": ["ANAHI VARGAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    618: {
+        "corrected_name": "REVELO VIZCAINO JOFFRE RAFAEL",
+        "original_names": ["JOFFRE REVELO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    619: {
+        "corrected_name": "DEFENSACENTRAL IZQUIERDO",
+        "original_names": ["DEFENSACENTRAL IZQUIERDO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    620: {
+        "corrected_name": "JIMENEZ TUALONGO MARCEL ALESSANDRO",
+        "original_names": ["MERCEL JIMENEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    621: {
+        "corrected_name": "MUÑOZ QUINTERO XAVI TADEO",
+        "original_names": ["XAVI MUNOZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    622: {
+        "corrected_name": "EJEMPLO EJEMPLO",
+        "original_names": ["EJEMPLO EJEMPLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    623: {
+        "corrected_name": "TENORIO ESPINOZA DYLAN ANDRES",
+        "original_names": ["DYLAN TENORIO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    624: {
+        "corrected_name": "HINESTROZA QUIÑONEZ KEVIN SANTIAGO",
+        "original_names": ["KEVIN HINESTROZA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    625: {
+        "corrected_name": "OCHOA SEMPERTEGUI YOURI JOSE",
+        "original_names": ["JOURI OCHOA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    626: {
+        "corrected_name": "INTRIAGO CEDEÑO ELIAN EDDU",
+        "original_names": ["ELIAN INTRIAGO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    627: {
+        "corrected_name": "BRIONES LEGARDA RONALD ELAIN",
+        "original_names": ["RONALD BRIONES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    628: {
+        "corrected_name": "NUÑEZ MEDINA CHRISTIAN WASHINGTON",
+        "original_names": ["CHRISTIAN WASHINGTON NUNEZ MEDINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    629: {
+        "corrected_name": "REYES CASTILLO JAIRO JOEL",
+        "original_names": ["JOEL REYES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    630: {
+        "corrected_name": "QUIÑONEZ MENDOZA OSCAR ESTEBAN",
+        "original_names": ["OSCAR QUIÃ‘ONES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    631: {
+        "corrected_name": "SIMISTERRA BOBOY RENNY HERNAN",
+        "original_names": ["RENY SIMISTERRA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    632: {
+        "corrected_name": "AYALA BRUCIL LUIS MIGUEL",
+        "original_names": ["LUIS  AYALA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    633: {
+        "corrected_name": "LOPEZ REINA JOAN ONOFRE",
+        "original_names": ["JOAN LOPEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    634: {
+        "corrected_name": "ORTIZ LANDAZURI JULIO JOAO",
+        "original_names": ["JOAO ORTIZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    635: {
+        "corrected_name": "PRECIADO QUIÑONEZ ANGELO SMIT",
+        "original_names": ["ANGELO PRECIADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    636: {
+        "corrected_name": "ANGULO SOLORZANO MARCO ANTONIO",
+        "original_names": ["MARCO ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    637: {
+        "corrected_name": "CABEZA JIMENEZ ALEJANDRO JAIR",
+        "original_names": ["ALEJANDRO CABEZA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    638: {
+        "corrected_name": "ARCE CAICEDO KENER LUIS",
+        "original_names": ["KENER   ARCE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    639: {
+        "corrected_name": "MENDEZ CARABALI JHEGSON SEBASTIAN",
+        "original_names": ["SEBASTIAN MENDEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    640: {
+        "corrected_name": "FRANCO PALMA ALAN STEVEN",
+        "original_names": ["ALAN FRANCO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    641: {
+        "corrected_name": "REALPE MONTAÑO LEONARDO JAVIER",
+        "original_names": ["LEO REALPE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    642: {
+        "corrected_name": "ASPRILLA CAICEDO GUSTAVO ADOLFO",
+        "original_names": ["GUSTAVO ADOLFO ASPRILLA CAICEDO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    643: {
+        "corrected_name": "GRUEZO ARBOLEDA CARLOS ARMANDO",
+        "original_names": ["CARLOS GRUESO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    644: {
+        "corrected_name": "ARROYO ESPINOZA DIXON JAIR",
+        "original_names": ["DIXON JAIR ARROYO ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    645: {
+        "corrected_name": "ESPINOSA BORJA ALEJANDRO GABRIEL",
+        "original_names": ["ALEJANDRO JAVIER ESPINOSA BORJA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    646: {
+        "corrected_name": "GARCIA BASSO AGUSTIN EUGENIO",
+        "original_names": ["GARCIA BASSO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    647: {
+        "corrected_name": "RECALDE BAEZ EDISSON ERNESTO",
+        "original_names": ["EDISSON RECALDE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    648: {
+        "corrected_name": "NIETO VELA DANIEL",
+        "original_names": ["DANIEL NIETO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    649: {
+        "corrected_name": "LEMOS CASTILLO ALEXI EVER",
+        "original_names": ["ALEXI EVER LEMOS CASTILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    650: {
+        "corrected_name": "LOPEZ REINA JOAN ONOFRE",
+        "original_names": ["JOHAN LOPEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    651: {
+        "corrected_name": "MERA MOREIRA EFREN ALEXANDER",
+        "original_names": ["EFREN  MERA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    652: {
+        "corrected_name": "BURBANO GUAPI ANDY DAVID",
+        "original_names": ["ANDY  BURBANO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    653: {
+        "corrected_name": "FARAVELLI LORENZO ABEL",
+        "original_names": ["LORENZO FARAVELLI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    654: {
+        "corrected_name": "HERRERA MARTINEZ ORLANDO JEAMPAUL",
+        "original_names": ["JEAN PAUL HERRERA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    655: {
+        "corrected_name": "LANDAZURI ESTACIO ANTHONY RIGOBERTO",
+        "original_names": ["ANTHONY LANDAZURI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    656: {
+        "corrected_name": "MEJIA CARRASCO ADRIAN ALEJANDRO",
+        "original_names": ["ADRIAN MEJIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    657: {
+        "corrected_name": "LEITON LAMILLA DARLIN ALBERTO",
+        "original_names": ["DARLIN LEITON","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    658: {
+        "corrected_name": "ARGANDOÑA PINARGOTE JOSE DAVID",
+        "original_names": ["JOSE ARGANDOÃ‘A","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    659: {
+        "corrected_name": "PORTILLA CAICEDO JOHAN BLADIMIR",
+        "original_names": ["JOHAN PORTILLA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    660: {
+        "corrected_name": "YOONG ROMERO WASHINGTON ANDRES",
+        "original_names": ["WASHINGTON YOONG","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    661: {
+        "corrected_name": "MENDEZ CARABALI JHEGSON SEBASTIAN",
+        "original_names": ["SEBASTIAN MENDEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    662: {
+        "corrected_name": "VARGAS LEON WILLIAN ANDRES",
+        "original_names": ["WILLIAN VARGAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    663: {
+        "corrected_name": "TORRES TEJADA GABRIEL ARTURO",
+        "original_names": ["GABRIEL TORRES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    664: {
+        "corrected_name": "VILLA LEON ALEXIS NAPOLEON",
+        "original_names": ["ALEXIS VILLA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    665: {
+        "corrected_name": "CABEZAS CASTILLO ESNAIDER ELIECER",
+        "original_names": ["ESNAIDER CABEZAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    666: {
+        "corrected_name": "GOVEA TENORIO JUAN JOSE",
+        "original_names": ["JOSE GOVEA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    667: {
+        "corrected_name": "ARROYO ALVARADO KENY ALEXANDER",
+        "original_names": ["KENNY ARROYO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    668: {
+        "corrected_name": "JARAMILLO BARRE RENNY SALEN",
+        "original_names": ["RENNY  JARAMILLO ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    669: {
+        "corrected_name": "MINA ORTIZ GARIS ALDAIR",
+        "original_names": ["GARIS MINDA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    670: {
+        "corrected_name": "REYES CASTILLO JAIRO JOEL",
+        "original_names": ["JOEL REYES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    671: {
+        "corrected_name": "CANO QUINTANA LUIS ANGEL",
+        "original_names": ["LUIS CANO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    672: {
+        "corrected_name": "ANGULO TARIRA JOHN JAIRO",
+        "original_names": ["JHON ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    673: {
+        "corrected_name": "HURTADO CHEME JOSE ANDRES",
+        "original_names": ["ANDRES HURTADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    674: {
+        "corrected_name": "NAZARENO IZQUIERDO JUAN ENRIQUE",
+        "original_names": ["JUAN NAZARENO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    675: {
+        "corrected_name": "ANGULO SOLORZANO MARCO ANTONIO",
+        "original_names": ["MARCO ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    676: {
+        "corrected_name": "CHAVEZ QUINTERO JHOANNER STALIN",
+        "original_names": ["JOHANNER CHAVEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    677: {
+        "corrected_name": "RIZOTTO VAZQUEZ MARIO ENRIQUE",
+        "original_names": ["MARIO ENRIQUE RIZZOTO VAZQUEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    678: {
+        "corrected_name": "DIAZ LAUTARO ARIEL",
+        "original_names": ["LAUTARO DIAZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    679: {
+        "corrected_name": "POMBO STREINBERGER JOAQUIN",
+        "original_names": ["JOAQUIN POMBO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    680: {
+        "corrected_name": "GUERRERO VASQUEZ FERNANDO ALEXANDER",
+        "original_names": ["FERNANDO GUERRERO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    681: {
+        "corrected_name": "PINARGOTE LARA KLEBER DAVID",
+        "original_names": ["KLEVER PINARGOTE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    682: {
+        "corrected_name": "PLAZA CASTILLO STIVEN RICARD",
+        "original_names": ["STEVEN  PLAZA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    683: {
+        "corrected_name": "CORTEZ CASIERRA GABRIEL JHON",
+        "original_names": ["GABRIEL JHON CORTEZ CASIERRA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    684: {
+        "corrected_name": "DAJOME ARBOLEDA CRISTIAN ANDRES",
+        "original_names": ["CRISTIAN DAJOME","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    685: {
+        "corrected_name": "GONGORA PALACIOS STEVEN DANIEL",
+        "original_names": ["S GONGORA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    686: {
+        "corrected_name": "MINA ORTIZ GARIS ALDAIR",
+        "original_names": ["GARIS MINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    687: {
+        "corrected_name": "MURILLO MONCADA JACOB ISRAEL",
+        "original_names": ["JACOB MURILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    688: {
+        "corrected_name": "PINOS HAIMAN JORGE BLADIMIR",
+        "original_names": ["JORGE PINOS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    689: {
+        "corrected_name": "PINARGOTE LARA KLEBER DAVID",
+        "original_names": ["KLEVER PINARGOTE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    690: {
+        "corrected_name": "RODRIGUEZ CORTEZ KEVIN JOSE",
+        "original_names": ["KEVIN RODRIGUEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    691: {
+        "corrected_name": "ALVARADO PABLO ANDRES",
+        "original_names": ["ALVARADO PABLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    692: {
+        "corrected_name": "CABEZAS BAZAN DANNY ALEJANDRO",
+        "original_names": ["DANNY CABEZAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    693: {
+        "corrected_name": "PERLAZA CAICEDO PEDRO PABLO",
+        "original_names": ["PEDRO PERLAZA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    694: {
+        "corrected_name": "HURTADO CHEME JOSE ANDRES",
+        "original_names": ["JOSE ANDRES HURTADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    695: {
+        "corrected_name": "MONTAÑO ANGULO EDSON ELI",
+        "original_names": ["EDSON MONTAÃ‘O","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    696: {
+        "corrected_name": "CAICEDO LASTRA BEDER JULIO",
+        "original_names": ["BEDER CAICEDO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    697: {
+        "corrected_name": "ARCE MINA BILLY VLADIMIR",
+        "original_names": ["BILLY  ARCE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    698: {
+        "corrected_name": "ORTIZ LARA LUIS MATEO",
+        "original_names": ["MATEO ORTIZ LARA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    699: {
+        "corrected_name": "ACOSTA MENDEZ NEICER ALDHAIR",
+        "original_names": ["NEICER ACOSTA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    700: {
+        "corrected_name": "CAZARES SEVILLANO JUAN RAMON",
+        "original_names": ["JUAN CASAREZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    701: {
+        "corrected_name": "MONTENEGRO MARTINEZ BRIAN GUILLERMO",
+        "original_names": ["BRIAN MONTENEGRO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    702: {
+        "corrected_name": "BORJA MENESES FRICSON ALEXANDER",
+        "original_names": ["FRICSON BORJA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    703: {
+        "corrected_name": "PREVITALI MARTIN NICOLAS",
+        "original_names": ["NICOLAS PREVITALI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    704: {
+        "corrected_name": "MEJIA PERLAZA FELIPE JONATHAN",
+        "original_names": ["FELIPE  MEJIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    705: {
+        "corrected_name": "ACOSTA MENDEZ NEICER ALDHAIR",
+        "original_names": ["NEICER ACOSTA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    706: {
+        "corrected_name": "PLATA JIMENEZ GONZALO JORDY",
+        "original_names": ["GONAZALO PLATA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    707: {
+        "corrected_name": "COROZO ALMAN JANNER HITCLER",
+        "original_names": ["JANNER  COROZO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    708: {
+        "corrected_name": "COROZO CAICEDO BRYAN DAVID",
+        "original_names": ["BRYAN COROZO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    709: {
+        "corrected_name": "PERALTA BONOSO ANGELLO ALAIN",
+        "original_names": ["ANGELO PERALTA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    710: {
+        "corrected_name": "PITA MINA JACSON MAURICIO",
+        "original_names": ["JACSON MAURICIO PITA MINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    711: {
+        "corrected_name": "CABEZAS BAZAN DANNY ALEJANDRO",
+        "original_names": ["DANNY CABEZAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    712: {
+        "corrected_name": "TOBAR LUNA CRISTIAN ALEJANDRO",
+        "original_names": ["CRISTIAN TOBAR","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    713: {
+        "corrected_name": "BUSTAMANTE SALVATIERRA GUSTAVO ANDRES",
+        "original_names": ["GUSTAVO BUSTAMANTE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    714: {
+        "corrected_name": "GONZALEZ RENGIFO OSCAR CONSTANTINO",
+        "original_names": ["OSCAR GONZALEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    715: {
+        "corrected_name": "CABEZAS SIMISTERRA ROBERTO CARLOS",
+        "original_names": ["ROBERTO CABEZAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    716: {
+        "corrected_name": "BOLAÑOS CASIERRA ALEXANDER DAVID",
+        "original_names": ["ALEXANDER BOLANOS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    717: {
+        "corrected_name": "MINDA GARCIA ALAN STEVE",
+        "original_names": ["ALAN MINDA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    718: {
+        "corrected_name": "MENA MONTENEGRO ANDRES DAVID",
+        "original_names": ["ANDRES MENA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    719: {
+        "corrected_name": "LEON BERMEO LUIS FERNANDO",
+        "original_names": ["LUIS FERNANDO LEON","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    720: {
+        "corrected_name": "LEITON LAMILLA DARLIN ALBERTO",
+        "original_names": ["DARLIN LEYTON","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    721: {
+        "corrected_name": "CARRASCO SANGUINO JOSE MARIA",
+        "original_names": ["JOSE MARIA CARRASCO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    722: {
+        "corrected_name": "MENA MONTENEGRO ANDRES DAVID",
+        "original_names": ["ANDRES MENA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    723: {
+        "corrected_name": "MAIDANA ENZO DAMIÁN",
+        "original_names": ["ENZO  MAIDANA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    724: {
+        "corrected_name": "VALENCIA BAJAÑA ANTHONY LENIN",
+        "original_names": ["ANTONY VALENCIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    725: {
+        "corrected_name": "CHAVEZ QUINTERO JHOANNER STALIN",
+        "original_names": ["JOHANNER CHAVEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    726: {
+        "corrected_name": "PIEDRA ORDONEZ HAMILTON EMANUEL",
+        "original_names": ["HAMILTON PIEDRA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    727: {
+        "corrected_name": "JAIME MORAN VICENTE ANDRES",
+        "original_names": ["VICENTE JAIME","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    728: {
+        "corrected_name": "SEGOVIA VEGA LUIS GEOVANNY",
+        "original_names": ["LUIS SEGOVIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    729: {
+        "corrected_name": "GARCIA REALPE BRYAN JAHIR",
+        "original_names": ["BRIAN GARCIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    730: {
+        "corrected_name": "MARTINS MORENO MARCELO",
+        "original_names": ["MORENO MARTINS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    731: {
+        "corrected_name": "HERRERA MARTINEZ ORLANDO JEAMPAUL",
+        "original_names": ["JEANPAUL HERERA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    732: {
+        "corrected_name": "CHAVEZ QUINTERO JOHAO MANUEL",
+        "original_names": ["JOHAO CHAVEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    733: {
+        "corrected_name": "MEJIA CARRASCO ADRIAN ALEJANDRO",
+        "original_names": ["ADRIAN MEJIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    734: {
+        "corrected_name": "AYOVI COROZO JAIME JAVIER",
+        "original_names": ["JAIME AYOVI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    735: {
+        "corrected_name": "BARREIRO MAXIMILIANO FABIAN",
+        "original_names": ["MAXIMILIANO  BARREIRO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    736: {
+        "corrected_name": "LUGO QUIÑONEZ JOSE REINALDO",
+        "original_names": ["MOISES LUGO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    737: {
+        "corrected_name": "EXTREMO DERECHODOS",
+        "original_names": ["EXTREMO DERECHODOS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    738: {
+        "corrected_name": "LANDAZURI DEMERA MATHIAS GABRIEL",
+        "original_names": ["MATHIAS LANDAZURI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    739: {
+        "corrected_name": "ARROYO ALVARADO KENY ALEXANDER",
+        "original_names": ["KENNY ARROYO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    740: {
+        "corrected_name": "FELIPE PRUEBA",
+        "original_names": ["FELIPE PRUEBA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    741: {
+        "corrected_name": "48311GPS IDV",
+        "original_names": ["48311GPS IDV","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    742: {
+        "corrected_name": "CABEZAS SIMISTERRA ROBERTO CARLOS",
+        "original_names": ["ROBERTO CABEZAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    743: {
+        "corrected_name": "GONGORA PALACIOS STEVEN DANIEL",
+        "original_names": ["S GONGORA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    744: {
+        "corrected_name": "77130GPS IDV",
+        "original_names": ["77130GPS IDV","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    745: {
+        "corrected_name": "DELANTERO SUB 17",
+        "original_names": ["DELANTERO SUB 17","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    746: {
+        "corrected_name": "CORTEZ CAICEDO STEVEN JAIR",
+        "original_names": ["ESTEBAN CORTEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    747: {
+        "corrected_name": "ZURITA ESCOBAR JEAN PIERRE",
+        "original_names": ["JEAN ZURITA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    748: {
+        "corrected_name": "CUERO PALACIO JUSTIN RAUL",
+        "original_names": ["JUSTIN CUERO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    749: {
+        "corrected_name": "HURTADO CHEME JOSE ANDRES",
+        "original_names": ["JOSÃ‰ HURTADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    750: {
+        "corrected_name": "MONTEZUMA PERALTA JORDAN STEVEN",
+        "original_names": ["JORDAN MONTEZUMA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    751: {
+        "corrected_name": "75871GPS IDV",
+        "original_names": ["75871GPS IDV","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    752: {
+        "corrected_name": "MUÑOZ QUINTERO XAVI TADEO",
+        "original_names": ["XAVI MUNOZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    753: {
+        "corrected_name": "ANGULO BONES GINO RICARDO",
+        "original_names": ["GINO ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    754: {
+        "corrected_name": "NUNEZ LARA CRISTOPHER DAVID",
+        "original_names": ["CRISTOPHER NUÃ‘EZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    755: {
+        "corrected_name": "ZAMBRANO MUJICA YOSNEIDY EVANGELISTA",
+        "original_names": ["YOSNEIDY ZAMBRANO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    756: {
+        "corrected_name": "ALVARADO ALAVA ANTHONY ALEXISL",
+        "original_names": ["ANTHONY ALVARADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    757: {
+        "corrected_name": "VALENCIA CASTILLO JUAN GABRIEL",
+        "original_names": ["JUAN VALENCIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    758: {
+        "corrected_name": "MOROCHO BASURTO JONATHAN ALDAIR",
+        "original_names": ["JHONATAN MOROCHO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    759: {
+        "corrected_name": "BAZAN SOLIS  JENRY STEVEN",
+        "original_names": ["JENRY BAZAN","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    760: {
+        "corrected_name": "CAGUA QUIÑONEZ FERNANDO MOISES",
+        "original_names": ["FERNANDO CAGUA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    761: {
+        "corrected_name": "CENTRAL SUB 17",
+        "original_names": ["CENTRAL SUB 17","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    762: {
+        "corrected_name": "D 23",
+        "original_names": ["D 23","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    763: {
+        "corrected_name": "AYOVI BORJA TRIFILO ARCENIO",
+        "original_names": ["TRIFILIO AYOVI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    764: {
+        "corrected_name": "DEFENSALATERAL DERECHODOS",
+        "original_names": ["DEFENSALATERAL DERECHODOS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    765: {
+        "corrected_name": "D 18",
+        "original_names": ["D 18","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    766: {
+        "corrected_name": "BEDOYA PALACIOS YEFFERSON ARIEL",
+        "original_names": ["ARIEL BEDOYA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    767: {
+        "corrected_name": "CELIS INFANTE ANGIE NICOLL",
+        "original_names": ["NICOLL CELLIS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    768: {
+        "corrected_name": "READAP UNO",
+        "original_names": ["READAP UNO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    769: {
+        "corrected_name": "BUITRON SOLANO MATHIAS NICOLAS",
+        "original_names": ["MATIAS BUITRÃ“N","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    770: {
+        "corrected_name": "MEDINA ORTIZ YAIMAR ABEL",
+        "original_names": ["YAIMAR MEDINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+
+
+
+    771: {
+        "corrected_name": "GONZALEZ CAMPELLO JUAN FERNANDO",
+        "original_names": ["JUAN GONZALEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    772: {
+        "corrected_name": "ORDOÑEZ GUERRERO JOEL LEANDRO",
+        "original_names": ["JOEL ORDOÃ‘EZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    773: {
+        "corrected_name": "HINESTROZA ADVINCULA LUIS MIGUEL",
+        "original_names": ["LUIS HINESTROZA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    774: {
+        "corrected_name": "JAIME MORAN VICENTE ANDRES",
+        "original_names": ["VICENTE JAIME","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    775: {
+        "corrected_name": "ESTRADA CAMACHO JHONNIER SLAICK",
+        "original_names": ["JONNIER ESTRADA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    776: {
+        "corrected_name": "D 8",
+        "original_names": ["D 8","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    777: {
+        "corrected_name": "MINA QUIROZ SAMMY ALEJANDRA",
+        "original_names": ["SAMY MINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    778: {
+        "corrected_name": "MENDEZ DIAZ ANDRES ALEXIS",
+        "original_names": ["ANDRES MENDEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    779: {
+        "corrected_name": "DAVIS MOREIRA IVIS ALAN",
+        "original_names": ["ALAN DAVIS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    780: {
+        "corrected_name": "DELANTEROS 2",
+        "original_names": ["DELANTEROS 2","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    781: {
+        "corrected_name": "BRIONES BONILLA CHRIS ALBERTO",
+        "original_names": ["CHRIS BRIONES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    782: {
+        "corrected_name": "ANGULO CAICEDO CRISTOPHER ADONIS",
+        "original_names": ["CRISTOPHER ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    783: {
+        "corrected_name": "CUERO PALACIO JUSTIN RAUL",
+        "original_names": ["JUSTIN CUERO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    784: {
+        "corrected_name": "ORDOÑEZ GUERRERO JOEL LEANDRO",
+        "original_names": ["ALAN MINDA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    785: {
+        "corrected_name": "MONTAÑO ARROYO KELVIN JEREMIA",
+        "original_names": ["KELVIN MONTA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    786: {
+        "corrected_name": "NARANJO ORTIZ KATHERINE ANAHI",
+        "original_names": ["ANAHI NARANJO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    787: {
+        "corrected_name": "ACOSTA MENDEZ NEICER ALDHAIR",
+        "original_names": ["NEICER ACOSTA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    788: {
+        "corrected_name": "OLVERA REYES MAYRA FABIOLA",
+        "original_names": ["MAYRA OLVERA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    789: {
+        "corrected_name": "ESTUPIÑAN CASTILLO DARLI JOSUE",
+        "original_names": ["DARLI ESTUPIÃ‘AN","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    790: {
+        "corrected_name": "FLORES BAREN AMMY NICOLLE",
+        "original_names": ["AMMY FLORES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    791: {
+        "corrected_name": "ARROYO VERNAZA JEAN PIERRE",
+        "original_names": ["JEAN PIERE VERNAZA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    792: {
+        "corrected_name": "ROSILLO VIVERO PAULINA DEYANEIRA",
+        "original_names": ["PAULINA ROSILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    793: {
+        "corrected_name": "DUEÑAS SAENZ ANA MARIA",
+        "original_names": ["ANA DUEÃ‘AS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    794: {
+        "corrected_name": "ANGULO AVILA EDWIN ALEXANDER",
+        "original_names": ["ANGULO EDWIN","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    795: {
+        "corrected_name": "ORDÓÑEZ COROZO DEINNER ELIUT",
+        "original_names": ["DEINNER ORDOÃ‘EZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    796: {
+        "corrected_name": "SANCHEZ ESMERALDAS CARLOS UVILDE",
+        "original_names": ["CARLOS SANCHEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    797: {
+        "corrected_name": "PERALTA BONOSO ANGELLO ALAIN",
+        "original_names": ["ANGELLO PRUEBA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    798: {
+        "corrected_name": "HURTADO CHEME JOSE ANDRES",
+        "original_names": ["ANDRES HURTADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    799: {
+        "corrected_name": "QUIÑONEZ ISACC",
+        "original_names": ["ISACC QUIÃ‘ONEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    800: {
+        "corrected_name": "D 11",
+        "original_names": ["D 11","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+
+
+
+
+
+    801: {
+        "corrected_name": "EXTREMO SUB 17",
+        "original_names": ["EXTREMO SUB 17","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    802: {
+        "corrected_name": "ROJAS VIVEROS NICOLAS ALEJANDRO",
+        "original_names": ["NICOLÃS ROJAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    803: {
+        "corrected_name": "D 16",
+        "original_names": ["D 16","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    804: {
+        "corrected_name": "SORNOZA MOREIRA JUNIOR NAZARENO",
+        "original_names": ["JUNIOR NAZARAENO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    805: {
+        "corrected_name": "MEDIOCENTRO 2",
+        "original_names": ["MEDIOCENTRO 2","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    806: {
+        "corrected_name": "ARGANDOÑA ALVAREZ AXEL ARMANDO",
+        "original_names": ["AXEL ARGANDOÃ‘A","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    807: {
+        "corrected_name": "77073GPS IDV",
+        "original_names": ["77073GPS IDV","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    808: {
+        "corrected_name": "HINESTROZA ADVINCULA LUIS MIGUEL",
+        "original_names": ["LUIS HINESTROZA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    809: {
+        "corrected_name": "CICCIOLI ULISES ALBANO",
+        "original_names": ["ULISES CICCIOLI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    810: {
+        "corrected_name": "PAEZ MARTINEZ SARA CRISTINA",
+        "original_names": ["SARA CRISTINA PAEZ MARTINEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    811: {
+        "corrected_name": "CASTILLO PEREZ ANDERSON PAUL",
+        "original_names": ["ANDERSON CASTILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    812: {
+        "corrected_name": "COLLAHUAZO VACA JAIR ANTONIO",
+        "original_names": ["JAIR COLLAHUAZO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    813: {
+        "corrected_name": "VERGARA MORA JEFFRY JAHIR",
+        "original_names": ["JEFFRY VERGARA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    814: {
+        "corrected_name": "TOBAR CRISTIAN ALEJANDRO",
+        "original_names": ["ALEJANDRO TOBAR","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    815: {
+        "corrected_name": "READAP DOS",
+        "original_names": ["READAP DOS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    816: {
+        "corrected_name": "D 5",
+        "original_names": ["D 5","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    817: {
+        "corrected_name": "D 21",
+        "original_names": ["D 21","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    818: {
+        "corrected_name": "NN MM",
+        "original_names": ["NN MM","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    819: {
+        "corrected_name": "NOE NAZARENO DAVID JOEL",
+        "original_names": ["DAVID NAZARENO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    820: {
+        "corrected_name": "CHAVEZ QUINTERO JHOANNER STALIN",
+        "original_names": ["JHOANNER CHAVEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    821: {
+        "corrected_name": "MINA ORTIZ GARIS ALDAIR",
+        "original_names": ["GARIS MINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    822: {
+        "corrected_name": "CAICEDO OROBIO MIGUEL YORDAN",
+        "original_names": ["MIGUEL CAICEDO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    823: {
+        "corrected_name": "PALACIOS MARCILLO CARLOS WLADIMIR",
+        "original_names": ["CARLOS PALACIOS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    824: {
+        "corrected_name": "AQUERO SUB 17",
+        "original_names": ["AQUERO SUB 17","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    825: {
+        "corrected_name": "VALENCIA BAJAÑA ANTHONY LENIN",
+        "original_names": ["ANTHONY VALENCIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    826: {
+        "corrected_name": "VALENCIA BAJAÑA ANTHONY LENIN",
+        "original_names": ["ANTONY VALENCIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    827: {
+        "corrected_name": "GRACIA MINOTA ERIKA ELIZABETH",
+        "original_names": ["ERIKA GRACIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    828: {
+        "corrected_name": "D 1",
+        "original_names": ["D 1","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    829: {
+        "corrected_name": "QUIÑONEZ HURTADO JOHN JAIRO",
+        "original_names": ["JHON QUINONEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    830: {
+        "corrected_name": "VERA ARIAS GABRIEL JEREMY",
+        "original_names": ["JEREMY VERA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+
+
+
+    831: {
+        "corrected_name": "AYOVI ARROYO NIXON BYRON",
+        "original_names": ["NIXON AYOVI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    832: {
+        "corrected_name": "PAEZ ANDRADE RAY KENDRY",
+        "original_names": ["RAY PAEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    833: {
+        "corrected_name": "FARFAN BRAVO JEREMY FERNANDO",
+        "original_names": ["JEREMY FARFAN","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    834: {
+        "corrected_name": "JARAMILLO LASTRA MARCELO ALEXANDER",
+        "original_names": ["MARCELO JARAMILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    835: {
+        "corrected_name": "AYOVI AYOVI MICHAEL DAVID",
+        "original_names": ["MAIKEL AYOVI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    836: {
+        "corrected_name": "CABEZAS SIMISTERRA ROBERTO CARLOS",
+        "original_names": ["ROBERTO CABEZAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    837: {
+        "corrected_name": "QUIÑONEZ PERLAZA JERSON ELIAS",
+        "original_names": ["JERSON QUIÃ‘ONEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    838: {
+        "corrected_name": "ARROYO CAICEDO JEFERSON GABRIEL",
+        "original_names": ["JEFFERSON ARROYO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    839: {
+        "corrected_name": "DELANTERO REFERENCIA",
+        "original_names": ["DELANTERO REFERENCIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    840: {
+        "corrected_name": "MEJIA CARRASCO ADRIAN ALEJANDRO",
+        "original_names": ["ADRIAN MEJIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    841: {
+        "corrected_name": "DEFENSALATERAL IZQUIERDO",
+        "original_names": ["DEFENSALATERAL IZQUIERDO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    842: {
+        "corrected_name": "PINARGOTE LARA KLEBER DAVID",
+        "original_names": ["KLEBER PINARGOTE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    843: {
+        "corrected_name": "MINDA GARCIA ALAN STEVE",
+        "original_names": ["ALAN MINDA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    844: {
+        "corrected_name": "QUIÑONEZ VALENCIA DENZEL WASHINGTON",
+        "original_names": ["DENZEL QUIÃ‘ONEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    845: {
+        "corrected_name": "REALPE MONTAÑO LEONARDO JAVIER",
+        "original_names": ["LEO REALPE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    846: {
+        "corrected_name": "LOOR VELEZ EDGAR ANDRES",
+        "original_names": ["EDGAR LOOR","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    847: {
+        "corrected_name": "QUIÑONEZ ANGULO ELKIN DAVID",
+        "original_names": ["ELKIN QUIÃ‘ONEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    848: {
+        "corrected_name": "EXTREMO IZQUIERDO",
+        "original_names": ["EXTREMO IZQUIERDO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    849: {
+        "corrected_name": "82435GPS IDV",
+        "original_names": ["82435GPS IDV","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    850: {
+        "corrected_name": "MEDIO CENTRO SUB 17",
+        "original_names": ["MEDIO CENTRO SUB 17","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    851: {
+        "corrected_name": "PINARGOTE LARA KLEBER DAVID",
+        "original_names": ["KLEVER PINARGOTE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    852: {
+        "corrected_name": "MINA ORTIZ GARIS ALDAIR",
+        "original_names": ["GARIS MINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    853: {
+        "corrected_name": "CASTILLO PEREZ ANDERSON PAUL",
+        "original_names": ["ANDERSON CASTILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    854: {
+        "corrected_name": "79178GPS IDV",
+        "original_names": ["79178GPS IDV","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    855: {
+        "corrected_name": "MEDINA MERCADO SINDY SILVANA",
+        "original_names": ["CINDY MEDINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    856: {
+        "corrected_name": "QUIÑONEZ VILLON SABINO REGINALDO",
+        "original_names": ["SABINO QUIÃ‘ONEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    857: {
+        "corrected_name": "ARROYO WILA MIGUEL ANGEL",
+        "original_names": ["MIGUEL ARROYO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    858: {
+        "corrected_name": "QUIÑONEZ ESTUPIÑAN YERMAN",
+        "original_names": ["YERMAN QUINONEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    859: {
+        "corrected_name": "MEDIOCENTRO DERECHO",
+        "original_names": ["MEDIOCENTRO DERECHO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    860: {
+        "corrected_name": "RICAURTE LOPEZ NICOLLE DE LA PAZ",
+        "original_names": ["NICOLE RICAURTE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    861: {
+        "corrected_name": "73855GPS IDV",
+        "original_names": ["73855GPS IDV","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    862: {
+        "corrected_name": "LEITON LAMILLA DARLIN ALBERTO",
+        "original_names": ["LEYTON PRUEBA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    863: {
+        "corrected_name": "RECHE ABRIL DE LOS MILAGROS",
+        "original_names": ["ABRIL RECHE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    864: {
+        "corrected_name": "ANGULO TARIRA JOHN JAIRO",
+        "original_names": ["JHON ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    865: {
+        "corrected_name": "OCHOA SEMPERTEGUI YOURI JOSE",
+        "original_names": ["JOURI OCHOA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    866: {
+        "corrected_name": "ORDOÑEZ COROZO DEINNER ELIUT",
+        "original_names": ["DEINER ORDOÃ‘EZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    867: {
+        "corrected_name": "D 2",
+        "original_names": ["D 2","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    868: {
+       } "corrected_name": "CAICEDO CAICEDO CARINA ELIZABETH",
+        "original_names": ["CARINA CAICEDO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    869: {
+        "corrected_name": "MIÑO MARTINEZ ROSA MISTICA",
+        "original_names": ["ROSA MIÃ‘O","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    870: {
+        "corrected_name": "REYES CASTILLO JAIRO JOEL",
+        "original_names": ["JOEL REYES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+
+
+
+    871: {
+        "corrected_name": "VILLA CASTILLO KAREN ALEJANDRA",
+        "original_names": ["KAREN VILLA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    872: {
+        "corrected_name": "90933GPS IDV",
+        "original_names": ["90933GPS IDV","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    873: {
+        "corrected_name": "DE LA CRUZ VALVERDE JONATHAN OSWALDO",
+        "original_names": ["JONATHAN DE LA CRUZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    874: {
+        "corrected_name": "ZURITA ESCOBAR JEAN PIERRE",
+        "original_names": ["JEAN PIERRE ZURITA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    875: {
+        "corrected_name": "79725GPS IDV",
+        "original_names": ["79725GPS IDV","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    876: {
+        "corrected_name": "GARCIA PADILLA DARY JESUS",
+        "original_names": ["JESUS GARCIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    877: {
+        "corrected_name": "INTERIOR SUB 17",
+        "original_names": ["INTERIOR SUB 17","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    878: {
+        "corrected_name": "D 9",
+        "original_names": ["D 9","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    879: {
+        "corrected_name": "ORTIZ LARA LUIS MATEO",
+        "original_names": ["MATEO ORTIZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    880: {
+        "corrected_name": "DELANTERO MEDIAPUNTA",
+        "original_names": ["DELANTERO MEDIAPUNTA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    881: {
+        "corrected_name": "79731GPS IDV",
+        "original_names": ["79731GPS IDV","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    882: {
+        "corrected_name": "D 10",
+        "original_names": ["D 10","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    883: {
+        "corrected_name": "MACHADO FELIPE DOUGLAS",
+        "original_names": ["FELIPE MACHADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    884: {
+        "corrected_name": "QUIÑONEZ CABEZA RAMSSES GABRIEL",
+        "original_names": ["RAMSSES QUIÃ‘ONES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    885: {
+        "corrected_name": "LLLL LLLLL",
+        "original_names": ["LLLL LLLLL","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    886: {
+        "corrected_name": "ORDOÑEZ MINA LOGAR LENIN",
+        "original_names": ["LOGAR ORDOÃ‘EZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    887: {
+        "corrected_name": "CHONILLO CRUZ YORDDY NAEL",
+        "original_names": ["YORDDY CHONILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    888: {
+        "corrected_name": "CHAVEZ QUINTERO JHOANNER STALIN",
+        "original_names": ["JOHANNER CHAVEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    889: {
+        "corrected_name": "MENA MONTENEGRO ANDRES DAVID",
+        "original_names": ["ANDRES MENA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    890: {
+        "corrected_name": "REYES CASTILLO JAIRO JOEL",
+        "original_names": ["JOEL REYES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    891: {
+        "corrected_name": "MEDIOCENTRO DERECHODOS",
+        "original_names": ["MEDIOCENTRO DERECHODOS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    892: {
+        "corrected_name": "ANGULO TARIRA JOHN JAIRO",
+        "original_names": ["JHON JAIRO ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    893: {
+        "corrected_name": "COROZO MARTINEZ KERLLY JAZMIN",
+        "original_names": ["KERLLY COROZO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    894: {
+        "corrected_name": "LOOR MACIAS LUIS EDUARDO",
+        "original_names": ["LUIS LOOR","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    895: {
+        "corrected_name": "ARROYO ALVARADO KENY ALEXANDER",
+        "original_names": ["KENNY ARROYO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    896: {
+        "corrected_name": "ARGANDOÑA PINARGOTE JOSE DAVID",
+        "original_names": ["JOSE ARGANDOÃ‘A","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    897: {
+        "corrected_name": "SANCHEZ VALENCIA JAVIER ALEXANDER",
+        "original_names": ["JAVIER SANCHEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    898: {
+        "corrected_name": "D 24",
+        "original_names": ["D 24","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    899: {
+        "corrected_name": "CHONILLO CRUZ YORDDY NAEL",
+        "original_names": ["YORDDY CHONILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    900: {
+        "corrected_name": "CABEZAS SIMISTERRA ROBERTO CARLOS",
+        "original_names": ["ROBERTO CABEZAS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+
+
+
+    901: {
+        "corrected_name": "LEMOS MEDINA ELKIN NEYSER",
+        "original_names": ["ELKIN LEMOS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    902: {
+        "corrected_name": "D 13",
+        "original_names": ["D 13","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    903: {
+        "corrected_name": "D 3",
+        "original_names": ["D 3","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    904: {
+        "corrected_name": "D 4",
+        "original_names": ["D 4","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    905: {
+        "corrected_name": "DEFENSALATERAL DERECHO",
+        "original_names": ["DEFENSALATERAL DERECHO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    906: {
+        "corrected_name": "CAICEDO AYOVI MAIKEL JOSUE",
+        "original_names": ["MAIKEL CAICEDO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    907: {
+        "corrected_name": "VILLASANA VILLARROEL HILARIS DE LOS ANGELES",
+        "original_names": ["HILARIS VILLASANA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    908: {
+        "corrected_name": "MARTILLO YANCE JOEL STEVEN",
+        "original_names": ["JOEL MARTILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    909: {
+        "corrected_name": "DELANTEROS 1",
+        "original_names": ["DELANTEROS 1","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    910: {
+        "corrected_name": "HERRERA MARTINEZ ORLANDO JEAMPAUL",
+        "original_names": ["JEAM PAUL HERRERA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    911: {
+        "corrected_name": "MINA ORTIZ GARIS ALDAIR",
+        "original_names": ["GARIS MINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    912: {
+        "corrected_name": "VALENCIA BAJAÑA ANTHONY LENIN",
+        "original_names": ["ANTHONY VALENCIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    913: {
+        "corrected_name": "DELGADO TADEO HANSSEL SAHID",
+        "original_names": ["HANSSEL DELGADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    914: {
+        "corrected_name": "LOPEZ REINA JOAN ONOFRE",
+        "original_names": ["JOAN LOPEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    915: {
+        "corrected_name": "MARTILLO YANCE JOEL STEVEN",
+        "original_names": ["JOEL MARTILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    916: {
+        "corrected_name": "MEDIOCENTRO IZQUIERDO",
+        "original_names": ["MEDIOCENTRO IZQUIERDO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    917: {
+        "corrected_name": "VELA VALENCIA PABLO ALESSANDRO",
+        "original_names": ["VELA PABLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    918: {
+        "corrected_name": "TORRES NAZARENO LIBERMAN BRYAN",
+        "original_names": ["LIBERMAN TORRES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    919: {
+        "corrected_name": "MINA ORTIZ GARIS ALDAIR",
+        "original_names": ["ALDAIR MINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    920: {
+        "corrected_name": "CHILAN GAME KEVIN ALEXANDER",
+        "original_names": ["KEVIN CHILAN","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    921: {
+        "corrected_name": "VALENCIA BAJAÑA ANTHONY LENIN",
+        "original_names": ["ANTHONY VALENCIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    922: {
+        "corrected_name": "CENTRAL SUB 17",
+        "original_names": ["CENTRAL SUB 17","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    923: {
+        "corrected_name": "SOSA VIVAS VALENTINA",
+        "original_names": ["VALENTINA SOSA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    924: {
+        "corrected_name": "MINA ORTIZ GARIS ALDAIR",
+        "original_names": ["GARIS MINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    925: {
+        "corrected_name": "FARFAN BRAVO JEREMY FERNANDO",
+        "original_names": ["JERMY FARFAN","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    926: {
+        "corrected_name": "LEITON LAMILLA DARLIN ALBERTO",
+        "original_names": ["DARLITON LEITON","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    927: {
+        "corrected_name": "EXTREMO SUB 17",
+        "original_names": ["EXTREMO SUB 17","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    928: {
+        "corrected_name": "DELGADO VILLA PATRICKSON LUIGGY",
+        "original_names": ["S GONGORA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    929: {
+        "corrected_name": "GONGORA PALACIOS STEVEN DANIEL",
+        "original_names": ["PATRICKSON DELGADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    930: {
+        "corrected_name": "D 12",
+        "original_names": ["D 12","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    931: {
+        "corrected_name": "CAICEDO AYOVI JESSY TEOTISTA,
+        "original_names": ["JESSY CAICEDO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    932: {
+        "corrected_name": "MINDA GARCIA ALAN STEVE",
+        "original_names": ["ALAN MINDA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    933: {
+        "corrected_name": "IDV USER",
+        "original_names": ["IDV USER","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    934: {
+        "corrected_name": "MEDINA ORTIZ YAIMAR ABEL",
+        "original_names": ["YAIMAR MEDINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    935: {
+        "corrected_name": "ARROYO PINEDA JONATHAN RONALDO",
+        "original_names": ["RONALDO ARROYO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    936: {
+        "corrected_name": "LANDAZURI ESTACIO ANTHONY RIGOBERTO",
+        "original_names": ["ANTHONY LANDAZURI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    937: {
+        "corrected_name": "MEDIOCENTRO 1",
+        "original_names": ["MEDIOCENTRO 1","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    938: {
+        "corrected_name": "VILLA LEON ALEXIS NAPOLEON",
+        "original_names": ["ALEXIS VILLA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    939: {
+        "corrected_name": "NAZARENO VALDEZ DIOGO LIZANDRO",
+        "original_names": ["DIOGO NAZARENO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    940: {
+        "corrected_name": "CHONILLO CRUZ YORDDY NAEL",
+        "original_names": ["YORDDY CHONILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+
+
+
+
+    941: {
+        "corrected_name": "MARTILLO ESTRELLA ALEX ENRIQUE",
+        "original_names": ["ALEX MARTILLO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    942: {
+        "corrected_name": "D 19",
+        "original_names": ["D 19","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    943: {
+        "corrected_name": "GONGORA PALACIOS STEVEN DANIEL",
+        "original_names": ["STEVEN GONGORA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    944: {
+        "corrected_name": "ACOSTA MENDEZ NEICER ALDHAIR",
+        "original_names": ["NEICER ACOSTA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    945: {
+        "corrected_name": "READAP TRES",
+        "original_names": ["READAP TRES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    946: {
+        "corrected_name": "D 17",
+        "original_names": ["D 17","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    947: {
+        "corrected_name": "CASTRO VEINTIMILLA SAUL HENRY",
+        "original_names": ["SAUL CASTRO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    948: {
+        "corrected_name": "ENGELS CHARCOPA",
+        "original_names": ["ENGELS CHARCOPA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    949: {
+        "corrected_name": "ENGELS CHARCOPA",
+        "original_names": ["ENGELS CHARCOPA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    950: {
+        "corrected_name": "CUERO PALACIO JUSTIN RAUL",
+        "original_names": ["JOSTIN CUERO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    951: {
+        "corrected_name": "MINA ORTIZ GARIS ALDAIR",
+        "original_names": ["ALDAIR MINA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    952: {
+        "corrected_name": "ANGULO ARELLANO ARIEL SANTIAGO",
+        "original_names": ["ARIEL ÃNGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    953: {
+        "corrected_name": "VALENCIA MARTINEZ KARINA",
+        "original_names": ["KARINA VALENCIA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    954: {
+        "corrected_name": "AYOVI AYOVI MICHAEL DAVID",
+        "original_names": ["MAICOL AYOVI","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    955: {
+        "corrected_name": "GUTH TIAGO RAFAEL",
+        "original_names": ["TIAGO GUTH","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    956: {
+        "corrected_name": "CAGUA VALENCIA MILTON JAHIR",
+        "original_names": ["JAHIR CAGUA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    957: {
+        "corrected_name": "VIDAL ISAZA INGRID JULIETH",
+        "original_names": ["INGRID VIDAL","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    958: {
+        "corrected_name": "ALDANA TAMAYO CECIL DE LA CARIDAD",
+        "original_names": ["CECIL DE LA CARIDAD ALDANA TAMAYO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    959: {
+        "corrected_name": "VITE UCA PEDRO JEAMPIERRE",
+        "original_names": ["PEDRO VITE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    960: {
+        "corrected_name": "PINARGOTE RIOS SEBASTIAN ENRIQUE",
+        "original_names": ["SEBASTIÃN PINARGOTE","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    961: {
+        "corrected_name": "DELGADO VILLA PATRICKSON LUIGGY",
+        "original_names": ["PATRICKSON DELGADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    962: {
+        "corrected_name": "D 20",
+        "original_names": ["D 20","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    963: {
+        "corrected_name": "SANCHEZ BRAVO MARLON VALENTIN",
+        "original_names": ["MARLON SÃNCHEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    964: {
+        "corrected_name": "DELGADO VILLA PATRICKSON LUIGGY",
+        "original_names": ["PATRICKSON DELGADO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    965: {
+        "corrected_name": "DEFENSACENTRAL DERECHO",
+        "original_names": ["DEFENSACENTRAL DERECHO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    966: {
+        "corrected_name": "DIAZ CERVANTES MATTHEW ALEXEY",
+        "original_names": ["MATTHEW DIAZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    967: {
+        "corrected_name": "BRIONES BONILLA CHRIS ALBERTO",
+        "original_names": ["CHRIS BRIONES","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    968: {
+        "corrected_name": "D 14",
+        "original_names": ["D 14","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    969: {
+        "corrected_name": "SANCHEZ ROSALES JUAN GILBERT",
+        "original_names": ["JUAN SANCHEZ","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    970: {
+        "corrected_name": "EXTREMO DERECHO",
+        "original_names": ["EXTREMO DERECHO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    971: {
+        "corrected_name": "ESTUPIÑAN CASTILLO DARLI JOSUE",
+        "original_names": ["DARLIN ESTUPIÃ‘AN","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    972: {
+        "corrected_name": "79114GPS IDV",
+        "original_names": ["79114GPS IDV","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    973: {
+        "corrected_name": "ENGELS CHARCOPA",
+        "original_names": ["ENGELS CHARCOPA","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    974: {
+        "corrected_name": "ANGULO BONE GINO RICARDO",
+        "original_names": ["GINO ANGULO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    975: {
+        "corrected_name": "DEFENSACENTRAL DERECHODOS",
+        "original_names": ["DEFENSACENTRAL DERECHODOS","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    },
+    976: {
+        "corrected_name": "ARROYO ALVARADO KENY ALEXANDER",
+        "original_names": ["KENNY ARROYO","OPC2","OPC3","OPC4","OPC5","OPC6","OPC7","OPC8","OPC9","OPC10"]
+    }
+
+
+
+
+
+
+
+
