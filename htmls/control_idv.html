@@ -873,11 +873,11 @@
     //los var se van a recorer por posiciones desde la posicion 0 de hay para adelante
     const reglasConfig = {
       R1: { indices: [0, 1, 2], operacion: "suma" },         // VAR 1 a VAR 3
-      R2: { indices: [3, 4], operacion: "multiplicacion" },
-      R3: { indices: [5, 6], operacion: "division" },
-      R4: { indices: [7, 8, 9], operacion: "suma" },
-      R5: { indices: [10, 11, 12], operacion: "suma" },
-      R6: { indices: [13, 14, 15], operacion: "suma" }
+      R2: { indices: [3, 4], operacion: "multiplicacion" },  // VAR 4  Y VAR 5
+      R3: { indices: [5, 6], operacion: "suma" },      // VAR 6 Y VAR 7
+      R4: { indices: [7, 8, 9], operacion: "suma" },       //VAR 8 , VAR 9 , VAR 10
+      R5: { indices: [10, 11, 12], operacion: "suma" },   //VAR 11, VAR 12 , VAR 13
+      R6: { indices: [13, 14, 15, 16, 17], operacion: "suma" }  //VAR 14, VAR 15, VAR 16
     };
 
     const reglas = Object.fromEntries(
@@ -976,12 +976,11 @@
         // STEP 2
         document.getElementById("vars-formativas").style.display = equipoSeleccionado === "FORMATIVAS" ? "flex" : "lokp";
         
-
       });
     });*/
     document.querySelectorAll('input[name="EQUIPO"]').forEach(radio => {
       radio.addEventListener('change', function () {
-       
+
         equipoSeleccionado = this.value;
       });
     });
@@ -1031,8 +1030,8 @@
       }
     }
 
-
-    function atras() {
+    /*funcion para validar por equipo*/
+    /*function atras() {
       const steps = document.querySelectorAll(".form-step");
       let activeStepIndex = Array.from(steps).findIndex(step =>
         step.classList.contains("active")
@@ -1050,6 +1049,22 @@
           steps[activeStepIndex - 1].classList.add("active");
           steps[activeStepIndex - 1].style.display = "block";
         }
+      }
+    }*/
+    function atras() {
+      const steps = document.querySelectorAll(".form-step");
+      let activeStepIndex = Array.from(steps).findIndex(step =>
+        step.classList.contains("active")
+      );
+
+      if (activeStepIndex > 0) {
+        // Ocultar paso actual
+        steps[activeStepIndex].classList.remove("active");
+        steps[activeStepIndex].style.display = "none";
+
+        // Mostrar paso anterior
+        steps[activeStepIndex - 1].classList.add("active");
+        steps[activeStepIndex - 1].style.display = "block";
       }
     }
 
@@ -1187,7 +1202,7 @@
           select.innerHTML = '<option value="">Error al cargar</option>';
         });
     }
-    /*traer la marcacion de los jugadores*/
+
     $(document).ready(function () {
       $('#NOMBRES').on('select2:select', function (e) {
 
@@ -1218,99 +1233,6 @@
           .then(data2 => {
             //console.log("Datos de busqueda_nombres:", data2);
             const inputs = document.querySelectorAll("input.form-control.text-center");
-            //var 1
-            /*inputs[0].value = data2[8] ?? "";
-            inputs[0].dispatchEvent(new Event("input"));
-            //var 2
-            inputs[1].value = data2[9] ?? "";
-            inputs[1].dispatchEvent(new Event("input"));
-            //var 3
-            inputs[2].value = data2[10] ?? "";
-            inputs[2].dispatchEvent(new Event("input"));
-            //var 4
-            inputs[3].value = data2[11] ?? "";
-            inputs[3].dispatchEvent(new Event("input"));
-            //var 5
-            inputs[4].value = data2[13] ?? "";
-            inputs[4].dispatchEvent(new Event("input"));
-            //var 6
-            inputs[5].value = data2[14] ?? "";
-            inputs[5].dispatchEvent(new Event("input"));
-            //var 7
-            inputs[6].value = data2[15] ?? "";
-            inputs[6].dispatchEvent(new Event("input"));
-            // var 8
-            inputs[7].value = data2[16] ?? "";
-            inputs[7].dispatchEvent(new Event("input"));
-            //var 9
-            inputs[8].value = data2[17] ?? "";
-            inputs[8].dispatchEvent(new Event("input"));
-            // var 10
-            inputs[9].value = data2[18] ?? "";
-            inputs[9].dispatchEvent(new Event("input"));
-            // var 11
-            inputs[10].value = data2[19] ?? "";
-            inputs[10].dispatchEvent(new Event("input"));
-            //var 12
-            inputs[11].value = data2[21] ?? "";
-            inputs[11].dispatchEvent(new Event("input"));
-            //var 13
-            inputs[12].value = data2[22] ?? "";
-            inputs[12].dispatchEvent(new Event("input"));
-            //var 14
-            inputs[13].value = data2[23] ?? "";
-            inputs[13].dispatchEvent(new Event("input"));
-            //var 15
-            inputs[14].value = data2[24] ?? "";
-            inputs[14].dispatchEvent(new Event("input"));
-            //var 16
-            inputs[15].value = data2[25] ?? "";
-            inputs[15].dispatchEvent(new Event("input"));
-            //var 17
-            inputs[16].value = data2[26] ?? "";
-            inputs[16].dispatchEvent(new Event("input"));
-            //var 18
-            inputs[17].value = data2[27] ?? "";
-            inputs[17].dispatchEvent(new Event("input"));
-            //var 19
-            inputs[18].value = data2[28] ?? "";
-            inputs[18].dispatchEvent(new Event("input"));
-            //var 20
-            inputs[19].value = data2[29] ?? "";
-            inputs[19].dispatchEvent(new Event("input"));
-            //var 21
-            inputs[20].value = data2[30] ?? "";
-            inputs[20].dispatchEvent(new Event("input"));
-            //SKIN
-            //var 22
-            inputs[21].value = data2[32] ?? "";
-            inputs[21].dispatchEvent(new Event("input"));
-            //var 23
-            inputs[22].value = data2[33] ?? "";
-            inputs[22].dispatchEvent(new Event("input"));
-            // var 24
-            inputs[23].value = data2[34] ?? "";
-            inputs[23].dispatchEvent(new Event("input"));
-            //var 25
-            inputs[24].value = data2[35] ?? "";
-            inputs[24].dispatchEvent(new Event("input"));
-            //var 26
-            inputs[25].value = data2[36] ?? "";
-            inputs[25].dispatchEvent(new Event("input"));
-            //var 27
-            inputs[26].value = data2[37] ?? "";
-            inputs[26].dispatchEvent(new Event("input"));
-            //var 28
-            inputs[27].value = data2[38] ?? "";
-            inputs[27].dispatchEvent(new Event("input"));
-            //var 29
-            inputs[28].value = data2[39] ?? "";
-            inputs[28].dispatchEvent(new Event("input"));
-            // FECHA DE NACIMIENTO
-            const fechaISO = data2[41];
-            const fechaFormateada = fechaISO?.split("T")[0] ?? "";
-
-            document.getElementById("FECHA_NACIMIENTO").value = fechaFormateada;*/
 
             const asignaciones = [
               8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19,
