@@ -7,7 +7,7 @@
 
     
     <application
-        android:label="control_idv"
+        android:label="ControApp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

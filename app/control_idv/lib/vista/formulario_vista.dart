@@ -19,7 +19,7 @@ class _FormularioViewState extends State<FormularioView> {
   @override
   void initState() {
     super.initState();
-    
+
     final controller = Provider.of<FormularioController>(context, listen: false);
 
     // Solo cuando haya internet
@@ -80,7 +80,7 @@ class _FormularioViewState extends State<FormularioView> {
                     Expanded(child: _campoFecha(context)),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
                 const Text("EQUIPO",
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 const SizedBox(height: 8),
@@ -92,7 +92,7 @@ class _FormularioViewState extends State<FormularioView> {
                   ],
                 ),
 
-                const SizedBox(height: 25),
+                const SizedBox(height: 15),
                 const Text("Categoría",
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 const SizedBox(height: 5),
@@ -115,7 +115,7 @@ class _FormularioViewState extends State<FormularioView> {
                   onChanged: controller.cambiarCategoria,
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
                 const Text("Nombre",
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 const SizedBox(height: 5),
@@ -145,7 +145,7 @@ class _FormularioViewState extends State<FormularioView> {
                   },
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 Visibility(
                   visible: false,
                   child: TextField(
@@ -169,7 +169,7 @@ class _FormularioViewState extends State<FormularioView> {
                 const Divider(),
 
                 _filaVars(controller, ["VAR1", "VAR2", "VAR3", "VAR4"]),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
 
                 const Text("DIAM",
                     style: TextStyle(
@@ -183,7 +183,7 @@ class _FormularioViewState extends State<FormularioView> {
 
                 _filaVars(controller, ["VAR9", "VAR10", "VAR11"]),
 
-                const SizedBox(height: 30),
+                const SizedBox(height: 5),
 
                 Align(
                   alignment: Alignment.centerRight,

@@ -39,7 +39,7 @@ class PantallaSummary extends StatelessWidget {
                     color: Color(0xFF7B2AFF))),
             const Divider(),
 
-            const SizedBox(height: 15),
+            const SizedBox(height: 5),
             // R1 – R6 (tus tarjetas)
             _cardResultado("R1", c.r1),
             _cardResultado("R2", c.r2),
@@ -48,14 +48,13 @@ class PantallaSummary extends StatelessWidget {
             _cardResultado("R5", c.r5),
             _cardResultado("R6", c.r6),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
 
             const Text("SUPL",
                 style: TextStyle(
-                    color: Color(0xFF7B2AFF),
                     fontSize: 16,
                     fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
+            const SizedBox(height: 7),
 
             Row(
               children: [
@@ -204,7 +203,7 @@ class PantallaSummary extends StatelessWidget {
           top: 0,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 6),
-            color: Colors.white, // mismo fondo que la pantalla
+            color: Colors.white,
             child: Text(
               titulo,
               style: const TextStyle(
