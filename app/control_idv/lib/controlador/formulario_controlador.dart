@@ -76,7 +76,7 @@ class FormularioController extends ChangeNotifier {
     },
     "R2": {
       "indices": ["VAR4", "VAR5"],
-      "op": "resta",
+      "op": "multiplicacion",
     },
     "R3": {
       "indices": ["VAR6", "VAR7"],
@@ -96,7 +96,7 @@ class FormularioController extends ChangeNotifier {
     },
   };
   // OPERAR
-  double _operar(List<String> indices, String op) {
+  /*double _operar(List<String> indices, String op) {
     double resultado = 0.0;
     for (var key in indices) {
       final double valor = (vars[key]?.valor ?? 0).toDouble();
@@ -107,7 +107,48 @@ class FormularioController extends ChangeNotifier {
       }
     }
     return resultado;
+  }*/
+  double _operar(List<String> indices, String op) {
+    if (indices.isEmpty) return 0.0;
+
+    double resultado;
+
+    if (op == "multiplicacion" || op == "division") {
+      resultado = (vars[indices.first]?.valor ?? 0).toDouble();
+    } else {
+      resultado = 0.0;
+    }
+
+    for (int i = (op == "multiplicacion" || op == "division") ? 1 : 0;
+    i < indices.length;
+    i++) {
+      final double valor = (vars[indices[i]]?.valor ?? 0).toDouble();
+
+      switch (op) {
+        case "suma":
+          resultado += valor;
+          break;
+
+        case "resta":
+          resultado -= valor;
+          break;
+
+        case "multiplicacion":
+          resultado *= valor;
+          break;
+
+        case "division":
+          if (valor == 0) {
+            continue;
+          }
+          resultado /= valor;
+          break;
+      }
+    }
+
+    return resultado;
   }
+
   // CALCULAR R1 - R6
   void procesarReglas() {
     r1 = _operar(List<String>.from(reglas["R1"]["indices"]), reglas["R1"]["op"]);
@@ -269,9 +310,7 @@ class FormularioController extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
 
     try {
-      print("Sincronizando categorías...");
-
-      // 1. Cargar categorías
+      //Cargar categorías
       final urlCategorias = Uri.parse("$apiUrl?tipo=categoria");
       final resCategorias = await http.get(urlCategorias);
       final dataCategorias = jsonDecode(resCategorias.body);
@@ -279,11 +318,9 @@ class FormularioController extends ChangeNotifier {
       categorias = List<String>.from(dataCategorias["categorias"]);
       await prefs.setStringList("cache_categorias", categorias);
 
-      print("Categorías sincronizadas");
 
-      // 2. Recorrer categorías y traer nombres
+      // Recorrer categorías y traer nombres
       for (String cat in categorias) {
-        print("Cargando nombres de $cat...");
 
         final urlNombres = Uri.parse("$apiUrl?tipo=nombres&categoria=$cat");
         final resNombres = await http.get(urlNombres);
@@ -292,13 +329,9 @@ class FormularioController extends ChangeNotifier {
         final nombresCat = List<String>.from(dataNombres["nombres"]);
         await prefs.setStringList("cache_nombres_$cat", nombresCat);
 
-        print("Nombres de $cat sincronizados");
 
-        // 3. Por cada nombre → cargar demarcación + datos
+        //cada nombre + cargar demarcación + datos
         for (String nombre in nombresCat) {
-          print("Cargando demarcación de $nombre...");
-
-          // === DEMARCACIÓN ===
           final urlDem = Uri.parse("$apiUrl?tipo=marcacion&nombres=$nombre");
           final resDem = await http.get(urlDem);
           final dataDem = jsonDecode(resDem.body);
@@ -310,13 +343,7 @@ class FormularioController extends ChangeNotifier {
 
           await prefs.setString("cache_demarcacion_$nombre", demarcacion);
 
-          print("Demarcación de $nombre lista");
-
-
-          // === DATOS DEL JUGADOR COMPLETOS ===
-          print("Cargando datos del jugador $nombre...");
-
-          final urlJugador = Uri.parse("$apiUrl?tipo=busqueda_nombres&nombre=$nombre");
+          /*final urlJugador = Uri.parse("$apiUrl?tipo=busqueda_nombres&nombre=$nombre");
           final resJugador = await http.get(urlJugador);
 
           if (resJugador.statusCode == 200) {
@@ -324,11 +351,9 @@ class FormularioController extends ChangeNotifier {
             print("Datos de $nombre guardados");
           } else {
             print("No se pudo cargar datos de $nombre");
-          }
+          }*/
         }
       }
-
-      print("SINCRONIZACIÓN COMPLETA");
     } catch (e) {
       print("Error en sincronización total: $e");
     }
