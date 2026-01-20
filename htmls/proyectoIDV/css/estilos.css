@@ -1,0 +1,136 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+/*color de fondo*/
+body {
+    background: linear-gradient(180deg, #ffffff, #fcfcff);
+    /*background: linear-gradient(180deg, #ffffff, #1f2038);*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+/*contenedor de la pantalla*/
+.contenedor {
+    width: 95%;
+    min-height: 90vh;
+    border-radius: 18px;
+    padding:  10px;
+    
+}
+/*titulo del formulario*/
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    background: linear-gradient(90deg, #38089d, #38089d);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin-bottom: 35px;
+}
+
+.logo {
+    height: 48px;
+    width: auto;
+    position: absolute;
+    right: 75px;
+}
+
+
+.titulo h1 {
+    color: white;
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: 6px;
+}
+
+/* GRID DE BOTONES */
+.grid-botones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* BOTONES */
+.btn {
+    min-height: 160px;
+    padding: 18px 10px 20px;
+    gap: 16px;
+    background: #ffffff;
+    border: 2px solid #38089d;
+    border-radius: 14px;
+    color: #3a3a55;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    border-left: 6px solid #38089d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ICONOS */
+.icono {
+    width: 90px;
+    height: auto;
+    transition: 0.3s ease;
+    filter: none;
+
+}
+/*cambio de color del icono*/
+.btn:hover .icono,
+.btn:active .icono,
+.btn.activo .icono {
+    filter: brightness(0) invert(1);
+    background: transparent;
+}
+/*cambio de diseño*/
+.btn:hover {
+    background: #38089d;
+    color: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(132, 79, 245, 0.35);
+}
+/*btn al dar click*/
+.btn:active {
+    background: #38089d;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .grid-botones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logo {
+        height: 38px;
+        right: 50px;
+    }
+
+    .titulo h1 {
+        font-size: 1.3rem;
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-botones {
+        grid-template-columns: 1fr;
+    }
+
+
+}
