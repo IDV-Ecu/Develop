@@ -1,5 +1,5 @@
 //bandera para activar las imagenes
-const mostrarImagenes = 0;
+const mostrarImagenes = 1;
 
 const botones = {
     btn1: {
