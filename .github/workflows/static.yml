@@ -4,8 +4,8 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting thed default branch
   push:
-    #branches: ["main"]
-    branches: ["APLICACIÓN"]
+    branches: ["main"]
+    #branches: ["APLICACIÓN"]
 
   # Allows you to run this workflow manually frojm the Actions tab
   workflow_dispatch:
