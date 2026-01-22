@@ -1,5 +1,5 @@
 //bandera para activar las imagenes
-const mostrarImagenes = 0;
+const mostrarImagenes = 1;
 
 const botones = {
     btn1: {
@@ -76,12 +76,21 @@ const links = {
 };
 
 // Recorremos el objeto y asignamos el evento
-Object.keys(links).forEach(id => {
-    const boton = document.getElementById(id);
+const modalCerrar = document.getElementById("modalCerrarSesion");
 
-    if (boton) {
-        boton.addEventListener("click", () => {
-            window.open(links[id], "_blank");
-        });
-    }
-});
+function abrirModalCerrar() {
+    modalCerrar.style.display = "flex";
+}
+
+function cerrarModalCerrar() {
+    modalCerrar.style.display = "none";
+}
+
+function confirmarCerrarSesion() {
+    window.location.href = "index.html"; // login
+}
+
+
+
+
+

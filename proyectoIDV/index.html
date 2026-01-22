@@ -1,37 +1,37 @@
-<!--creado por:Edison Tene-->
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <title>Formulario IDV</title>
-    <!-- diseño de la pagina -->
+    <title>Acceso Scouting</title>
     <link rel="stylesheet" href="css/estilos.css">
-    <link href="img/icono.png" rel="icon">
 </head>
 
-<body>
+<body class="login-body">
 
-    <div class="contenedor">
-        <header class="titulo">
-            <img src="img/escudoIdv.png" alt="Logo equipo" class="logo">
-            <h1>S C O U T I N G</h1>
-        </header>
+    <div class="login-card login-card-horizontal">
+        <div class="login-logo">
+            <img src="img/icono.png" alt="Independiente del Valle">
+            <span>Independiente del Valle</span>
+        </div>
+        <div class="login-form">
+            <h1>SCOUTING</h1>
+            <p>Acceso al sistema</p>
 
-        <div class="grid-botones">
-            <button class="btn" id="btn1"></button>
-            <button class="btn" id="btn2"></button>
-            <button class="btn" id="btn3"></button>
-            <button class="btn" id="btn4"></button>
-            <button class="btn" id="btn5"></button>
-            <button class="btn" id="btn6"></button>
-            <button class="btn" id="btn7"></button>
-            <button class="btn" id="btn8"></button>
+            <input type="text" id="usuario" placeholder="Usuario">
+            <input type="password" id="password" placeholder="Contraseña">
+
+            <button id="btnLogin">Ingresar</button>
+        </div>
+    </div>
+    <div class="modal" id="modalMensaje">
+        <div class="modal-content">
+            <h2></h2>
+            <p id="textoModal"></p>
+            <button onclick="cerrarModal()">Aceptar</button>
         </div>
     </div>
 
-    <!-- javaScript -->
-    <script src="js/script.js"></script>
+    <script src="js/ingreso.js"></script>
 </body>
-
 </html>
