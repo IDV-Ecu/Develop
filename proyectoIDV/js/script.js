@@ -45,12 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         boton.innerHTML = "";
 
-        //creamos el texto en cada boton
         const span = document.createElement("span");
         span.textContent = botones[id].texto;
 
-        //con la bandera activamos la imagen con 1 y si no en 0 solo aparece el texto
-        if (mostrarImagenes === 1) {
+        if (mostrarImagenes === 1 && botones[id].imagen) {
             const img = document.createElement("img");
             img.src = botones[id].imagen;
             img.className = "icono";
@@ -59,6 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         boton.appendChild(span);
+
+        boton.addEventListener("click", () => {
+            const url = links[id];
+            if (url) {
+                window.open(url, "_blank");
+            }
+        });
     });
 
 });
