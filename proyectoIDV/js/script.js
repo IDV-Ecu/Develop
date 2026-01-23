@@ -1,3 +1,4 @@
+//elaborado por:Edison Tene
 //bandera para activar las imagenes
 const mostrarImagenes = 1;
 
@@ -87,10 +88,32 @@ function cerrarModalCerrar() {
 }
 
 function confirmarCerrarSesion() {
-    window.location.href = "index.html"; // login
+    sessionStorage.clear(); 
+    window.location.replace("index.html");
 }
 
+/*cerrar session por inactividad */
+const TIEMPO_INACTIVIDAD = 5 * 60 * 1000;
+let temporizadorInactividad;
 
 
+function reiniciarInactividad() {
+    clearTimeout(temporizadorInactividad);
 
+    temporizadorInactividad = setTimeout(() => {
+        cerrarSesionPorInactividad();
+    }, TIEMPO_INACTIVIDAD);
+}
+// cerrar sesión automático
+function cerrarSesionPorInactividad() {
+    sessionStorage.clear();
+    window.location.replace("index.html");
+}
 
+// eventos que indican actividad
+["mousemove", "keydown", "click", "scroll", "touchstart"].forEach(evento => {
+    document.addEventListener(evento, reiniciarInactividad);
+});
+
+// iniciar contador al cargar
+reiniciarInactividad();

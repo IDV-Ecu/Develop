@@ -1,4 +1,4 @@
-/* RESET */
+/*elaborado por:Edison Tene*/
 * {
     margin: 0;
     padding: 0;
@@ -118,19 +118,40 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+
 
 }
 
 /* ICONOS */
 .icono {
-    width: 90px;
+    width: 50px;
     height: auto;
-    transition: 0.3s ease;
-    filter: none;
-
+    transition: transform 0.35s ease, filter 0.35s ease;
 }
+
+.btnMenu:hover .icono {
+    transform: scale(1.12) rotate(-4deg);
+    filter: brightness(0) invert(1);
+}
+
+.btnMenu span {
+    transition: letter-spacing 0.3s ease, transform 0.3s ease;
+}
+
+.btnMenu:hover span {
+    letter-spacing: 1px;
+    transform: translateY(2px);
+}
+
+
+.btnMenu:active {
+    transform: scale(0.97);
+    box-shadow: 0 8px 18px rgba(56, 8, 157, 0.4);
+}
+
 /*cambio de color del icono*/
-.btnMenu:hover .icono,
 .btnMenu:active .icono,
 .btnMenu.activo .icono {
     filter: brightness(0) invert(1);
@@ -138,17 +159,15 @@ body {
 }
 /*cambio de diseño*/
 .btnMenu:hover {
-    background: #38089d;
+    background: linear-gradient(135deg, #38089d, #5f2eea);
     color: #ffffff;
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(132, 79, 245, 0.35);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 
+        0 18px 40px rgba(56, 8, 157, 0.45),
+        inset 0 0 0 1px rgba(255,255,255,0.15);
+    border-left-color: #ffffff;
 }
-/*btn al dar click*/
-.btnMenu:active {
-    background: #38089d;
-    color: #ffffff;
-    transform: translateY(-2px);
-}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .grid-botones {
@@ -157,7 +176,7 @@ body {
 
     .logo {
         height: 38px;
-        right: 50px;
+        left: 30px;
     }
 
     .titulo h1 {
