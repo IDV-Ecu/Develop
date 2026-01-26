@@ -68,17 +68,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+/*validar el boton de descargar los logs solo para usuario administrador */
+document.addEventListener("DOMContentLoaded", () => {
+    const rol = sessionStorage.getItem("rol");
+    const btnLogs = document.getElementById("btnDescargarLogs");
+
+    if (rol === "admin") {
+        btnLogs.style.display = "inline-flex";
+    }
+});
+
+document.getElementById("btnDescargarLogs")
+    ?.addEventListener("click", abrirModalLogs);
+
+
+/*modal para descargar los logs */
+function abrirModalLogs() {
+    document.getElementById("modalLogs").style.display = "flex";
+}
+
+function cerrarModalLogs() {
+    document.getElementById("modalLogs").style.display = "none";
+}
+
+function confirmarDescargaLogs() {
+    cerrarModalLogs();
+    descargarLogs();
+}
+
 
 // links a los botones por su id para redireccionar a diferentes paginas
 const links = {
-    btn1: "https://drive.google.com/drive/folders/1G7foOv8dD8V6Q1NKoXb3M1FliWNdt4kN",
-    btn2: "https://drive.google.com/drive/folders/188_XwW-ViAipf1uuk7j2-LJbE6_D1wR8",
-    btn3: "",
-    btn4: "",
-    btn5: "",
-    btn6: "",
-    btn7: "",
-    btn8: ""
+    btn1: "https://drive.google.com/drive/folders/1YrnXw0h0j0dRZu3rSK6SZT9ph6pIKzxd?usp=drive_link",
+    btn2: "https://drive.google.com/drive/folders/1YrnXw0h0j0dRZu3rSK6SZT9ph6pIKzxd?usp=drive_link",
+    btn3: "https://drive.google.com/drive/folders/1YrnXw0h0j0dRZu3rSK6SZT9ph6pIKzxd?usp=drive_link",
+    btn4: "https://drive.google.com/drive/folders/1YrnXw0h0j0dRZu3rSK6SZT9ph6pIKzxd?usp=drive_link",
+    btn5: "https://drive.google.com/drive/folders/1YrnXw0h0j0dRZu3rSK6SZT9ph6pIKzxd?usp=drive_link",
+    btn6: "https://drive.google.com/drive/folders/1YrnXw0h0j0dRZu3rSK6SZT9ph6pIKzxd?usp=drive_link",
+    btn7: "https://drive.google.com/drive/folders/1YrnXw0h0j0dRZu3rSK6SZT9ph6pIKzxd?usp=drive_link",
+    btn8: "https://drive.google.com/drive/folders/1YrnXw0h0j0dRZu3rSK6SZT9ph6pIKzxd?usp=drive_link"
 };
 
 // Recorremos el objeto y asignamos el evento
@@ -92,10 +120,17 @@ function cerrarModalCerrar() {
     modalCerrar.style.display = "none";
 }
 
-function confirmarCerrarSesion() {
+/*function confirmarCerrarSesion() {
     sessionStorage.clear(); 
     window.location.replace("index.html");
+}*/
+
+async function confirmarCerrarSesion() {
+    await registrarLog("Cierre de sesión manual");
+    sessionStorage.clear();
+    window.location.replace("index.html");
 }
+
 
 /*cerrar session por inactividad */
 const TIEMPO_INACTIVIDAD = 5 * 60 * 1000;
@@ -110,10 +145,16 @@ function reiniciarInactividad() {
     }, TIEMPO_INACTIVIDAD);
 }
 // cerrar sesión automático
-function cerrarSesionPorInactividad() {
+/*function cerrarSesionPorInactividad() {
+    sessionStorage.clear();
+    window.location.replace("index.html");
+}*/
+async function cerrarSesionPorInactividad() {
+    await registrarLog("Cierre de sesión por inactividad");
     sessionStorage.clear();
     window.location.replace("index.html");
 }
+
 
 // eventos que indican actividad
 ["mousemove", "keydown", "click", "scroll", "touchstart"].forEach(evento => {

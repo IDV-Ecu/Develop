@@ -1,4 +1,3 @@
-<!--elaborado por:Edison Tene-->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -29,6 +28,11 @@
             <img src="img/escudoIdv.png" alt="Logo equipo" class="logo">
             <h1>S C O U T I N G</h1>
 
+            <!--boton de descargar logs-->
+            <button id="btnDescargarLogs" class="btn-logs" title="Descargar logs" style="display:none;">
+                <i class="bi bi-download"></i>
+            </button>
+
             <button class="btn-logout" onclick="abrirModalCerrar()">
                 <i class="bi bi-box-arrow-right"></i>
             </button>
@@ -58,9 +62,21 @@
             </div>
         </div>
     </div>
+    <!--modal para confirmar el descargar logs-->
+    <div class="modal modal-salir" id="modalLogs">
+        <div class="modal-content modal-content-salir">
+            <h2>Descargar logs</h2>
+            <p>¿Desea descargar el archivo de registros del sistema?</p>
 
+            <div class="modal-acciones">
+                <button class="btn-secundario" onclick="cerrarModalLogs()">Cancelar</button>
+                <button onclick="confirmarDescargaLogs()">Descargar</button>
+            </div>
+        </div>
+    </div>
 
     <!-- javaScript -->
+    <script src="js/logs.js"></script>
     <script src="js/script.js"></script>
 </body>
 

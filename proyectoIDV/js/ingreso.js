@@ -14,7 +14,9 @@ document.addEventListener("keydown", (e) => {
 });
 
 
-document.getElementById("btnLogin").addEventListener("click", () => {
+//document.getElementById("btnLogin").addEventListener("click", () => {
+document.getElementById("btnLogin").addEventListener("click", async () => {
+
 
     const usuario = document.getElementById("usuario").value.trim();
     const password = document.getElementById("password").value.trim();
@@ -32,11 +34,15 @@ document.getElementById("btnLogin").addEventListener("click", () => {
     );
 
     if (usuarioValido) {
+
         sessionStorage.setItem("login", "ok");
         sessionStorage.setItem("usuario", usuarioValido.usuario);
         sessionStorage.setItem("rol", usuarioValido.rol);
 
+        await registrarLog("Inicio de sesión");
+
         window.location.replace("menu.html");
+
     } else {
         mostrarModal(
             "Acceso denegado",
@@ -45,31 +51,7 @@ document.getElementById("btnLogin").addEventListener("click", () => {
     }
 });
 
-/*document.getElementById("btnLogin").addEventListener("click", () => {
 
-    const usuario = document.getElementById("usuario").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    if (usuario === "" || password === "") {
-        mostrarModal(
-            "Información incompleta",
-            "Por favor, ingrese su usuario y contraseña para continuar."
-        );
-        return;
-    }
-
-    // valida usuario y clave
-    if (usuario === "admin" && password === "123IDV") {
-    //if (password === "123IDV") {
-        sessionStorage.setItem("login", "ok");
-        window.location.replace("menu.html");
-    } else {
-        mostrarModal(
-            "Acceso denegado",
-            "Las credenciales ingresadas no son válidas. Verifique la información e intente nuevamente."
-        );
-    }
-});*/
 
 
 function mostrarModal(titulo, mensaje) {

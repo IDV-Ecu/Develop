@@ -442,6 +442,20 @@ body {
   background: #38089d;
   box-shadow: 0 10px 25px rgba(114, 9, 183, 0.4);
 }
+/*boton de descargar*/
+.btn-logs {
+    background: #38089d;
+    color: #fff;
+    border: none;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.btn-logs:hover {
+    background: #1a252f;
+}
 
 
 /* RESPONSIVE */
