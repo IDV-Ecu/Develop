@@ -1,7 +1,7 @@
 const USUARIOS = [
     {
         usuario: "admin",
-        clave: "123IDV",
+        clave: "admin",
         rol: "admin"
     },
     {
