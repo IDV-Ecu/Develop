@@ -5,7 +5,7 @@ const USUARIOS = [
         rol: "admin"
     },
     {
-        usuario: "scouting",
+        usuario: "usario",
         clave: "123",
         rol: "usuario"
     }
