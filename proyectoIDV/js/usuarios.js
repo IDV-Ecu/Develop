@@ -1,12 +1,12 @@
 const USUARIOS = [
     {
         usuario: "admin",
-        clave: "123IDV",
+        clave: "admin",
         rol: "admin"
     },
     {
         usuario: "scouting",
-        clave: "123456",
+        clave: "123",
         rol: "usuario"
     }
 
