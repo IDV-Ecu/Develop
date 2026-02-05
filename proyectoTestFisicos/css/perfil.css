@@ -34,6 +34,7 @@ th.test-info {
   display: none !important;
 }
 
+
 /* CONTENEDOR */
 .contenedor-perfil {
     width: 95%;
@@ -214,9 +215,193 @@ th.test-info {
     opacity: 0;
 }
 /*estilo para la valoracion tabla*/
-.tabla-valoracion {
+/*.tabla-valoracion {
     margin-top: 40px;
+}*/
+.tabla-valoracion table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  border: none;
 }
+
+.tabla-valoracion th,
+.tabla-valoracion td {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+/* Quitar borde exterior completo */
+.tabla-valoracion table tr:first-child th {
+  border-top: none;
+}
+.tabla-valoracion table tr:last-child td {
+  border-bottom: none;
+}
+.tabla-valoracion table th:first-child,
+.tabla-valoracion table td:first-child {
+  border-left: none;
+}
+.tabla-valoracion table th:last-child,
+.tabla-valoracion table td:last-child {
+  border-right: none;
+}
+
+/* Separadores más suaves entre filas */
+.tabla-valoracion tbody tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Inputs más limpios */
+.tabla-valoracion input,
+.tabla-valoracion select {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+/* Hover sutil (opcional pero bonito) */
+.tabla-valoracion tbody tr:hover {
+  background-color: rgba(56, 8, 157, 0.03);
+}
+
+.tabla-valoracion thead th {
+  background: #fff !important;
+  font-weight: normal;
+}
+
+
+.tabla-valoracion .titulo-valoracion {
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+}
+
+.tabla-valoracion table thead tr:first-child th.titulo-valoracion {
+  background-color: #38089d !important;
+  color: #ffffff !important;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+/* Centrar todo el contenido*/
+.tabla-valoracion .test-info {
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+/* Imagen centrada*/
+.tabla-valoracion .test-info img {
+  display: block;
+  margin: 8px auto;
+  max-width: 120px;
+  height: auto;
+}
+
+/* Texto descripción */
+.tabla-valoracion .test-info strong,
+.tabla-valoracion .test-info div {
+  display: block;
+  text-align: center;
+}
+
+/* Link de video centrado */
+.tabla-valoracion .test-info a {
+  display: inline-block;
+  margin: 6px 0;
+}
+
+
+.tabla-valoracion select {
+  width: 100%;
+  font-size: 13px;
+  padding: 2px 4px;
+}
+
+/* CONTENEDOR */
+.filtro-objetivo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.filtro-objetivo label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+}
+
+/* SELECT2 BASE */
+.select2-container--default .select2-selection--multiple {
+  min-height: 44px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 4px 6px;
+  background-color: #fff;
+}
+
+/* FOCO (cuando haces click) */
+.select2-container--default.select2-container--focus
+.select2-selection--multiple {
+  border-color: #38089d;
+  box-shadow: 0 0 0 2px rgba(56, 8, 157, 0.15);
+}
+
+/* TAGS (objetivos seleccionados) */
+.select2-container--default .select2-selection--multiple
+.select2-selection__choice {
+  background-color: #38089d;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 13px;
+}
+
+/* TEXTO DEL TAG */
+.select2-container--default .select2-selection__choice__display {
+  color: #1f1e1e;
+}
+
+/* BOTÓN X */
+.select2-container--default .select2-selection__choice__remove {
+  color: #fff;
+  margin-right: 6px;
+}
+.select2-container--default .select2-selection__choice__remove:hover {
+  color: #ffdddd;
+}
+
+/* PLACEHOLDER */
+.select2-container--default
+.select2-search--inline .select2-search__field {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* DROPDOWN */
+.select2-dropdown {
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+/* OPCIONES */
+.select2-results__option {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+/* OPCIÓN ACTIVA */
+.select2-results__option--highlighted {
+  background-color: #38089d !important;
+  color: #fff;
+}
+
+
 
 .titulo-tabla {
     text-align: center;
@@ -348,6 +533,22 @@ input, select {
   margin: 0 auto 15px;
 }
 
+
+/* Select2 SOLO visual, sin romper */
+.select2-container--default .select2-selection--multiple {
+  min-height: 32px;
+  border: 1px solid #000;
+  border-radius: 0;
+  font-size: 13px;
+}
+
+.select2-selection__choice {
+  background: #e5e5e5 !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
+}
+
+
 @keyframes spin-global {
   to { transform: rotate(360deg); }
 }
@@ -366,3 +567,5 @@ input, select {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+

@@ -11,6 +11,7 @@ function cargaLista() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  cargarTitulosTablas();
   cargarObjetivos();
   cargarJugadores();
   inicializarFotoJugador();
@@ -25,6 +26,24 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .finally(cargaLista);
 });
+
+/**titulos de la tablas */
+const TITULOS_TABLAS = {
+  1: "FUERZA",
+  2: "ENERGIA",
+  3: "VALORACIÓN 3"
+};
+
+function cargarTitulosTablas() {
+  document.querySelectorAll(".tabla-valoracion").forEach(tabla => {
+    const num = tabla.dataset.tabla;
+    const titulo = TITULOS_TABLAS[num] || "VALORACIÓN";
+    const th = tabla.querySelector(".titulo-valoracion");
+
+    if (th) th.textContent = titulo;
+  });
+}
+
 
 
 function inicializarTabla(tabla) {
@@ -171,7 +190,7 @@ function limpiarTabla(tabla) {
 }
 
 
-function cargarObjetivos() {
+/*function cargarObjetivos() {
   fetch(`${URL_API}?endpoint=objetivos`)
     .then(r => r.json())
     .then(data => {
@@ -187,7 +206,59 @@ function cargarObjetivos() {
     })
     .finally(cargaLista);
 
+}*/
+
+/*funcion con select multiple para objetivos*/
+function cargarObjetivos() {
+  fetch(`${URL_API}?endpoint=objetivos`)
+    .then(r => r.json())
+    .then(data => {
+      const select = document.getElementById("selectTest");
+
+      /* destruir select2 si ya existe */
+      if ($.fn.select2 && $(select).hasClass("select2-hidden-accessible")) {
+        $(select).select2('destroy');
+      }
+
+      select.innerHTML = "";
+
+      data.forEach(o => {
+        const opt = document.createElement("option");
+        opt.value = o.id_objetivo;
+        opt.textContent = o.objetivo;
+        select.appendChild(opt);
+      });
+
+      /* inicializar select2 SIN bootstrap */
+      $(select).select2({
+        placeholder: "-- Seleccione --",
+        width: '100%',
+        closeOnSelect: false
+      });
+    })
+    .finally(cargaLista);
 }
+
+
+function obtenerObjetivosSeleccionados() {
+  return $('#selectTest').select2('data').map(o => o.text);
+}
+
+
+
+function formatearFecha(fechaISO) {
+  if (!fechaISO) return "";
+
+  const d = new Date(fechaISO);
+
+  const dia = String(d.getDate()).padStart(2, "0");
+  const mes = String(d.getMonth() + 1).padStart(2, "0");
+  const anio = d.getFullYear();
+
+  return `${dia}/${mes}/${anio}`;
+}
+
+
 
 function cargarJugadores() {
   fetch(`${URL_API}?endpoint=jugadores`)
@@ -204,6 +275,10 @@ function cargarJugadores() {
 
         opt.dataset.categoria = j.categoria || "";
         opt.dataset.fase = j.fase || "";
+        opt.dataset.fecha_nacimiento = j.fecha_nacimiento || "";
+        opt.dataset.demarcacion = j.demarcacion || "";
+        opt.dataset.peso = j.peso || "";
+
 
         if (j.foto_url) {
           opt.dataset.foto = convertirDriveURL(j.foto_url);
@@ -222,6 +297,10 @@ function inicializarFotoJugador() {
   const inputCategoria = document.getElementById("categoria");
   const inputFase = document.getElementById("fase");
 
+  const inputfecha_nacimiento = document.getElementById("fecha_nacimiento");
+  const inputdemarcacion = document.getElementById("demarcacion");
+  const inputpeso = document.getElementById("peso");
+
   select.addEventListener("change", () => {
     const opt = select.selectedOptions[0];
     if (!opt) return;
@@ -229,6 +308,10 @@ function inicializarFotoJugador() {
 
     inputCategoria.value = opt.dataset.categoria || "";
     inputFase.value = opt.dataset.fase || "";
+
+    inputfecha_nacimiento.value = formatearFecha(opt.dataset.fecha_nacimiento);
+    inputdemarcacion.value = opt.dataset.demarcacion || "";
+    inputpeso.value = opt.dataset.peso || "";
 
 
     if (!opt.dataset.foto) {
@@ -258,8 +341,13 @@ function limpiarFormulario() {
   img.src = "";
   cont.classList.add("oculto");
 
-  const selectObjetivo = document.getElementById("selectTest");
-  if (selectObjetivo) selectObjetivo.value = "";
+  /*const selectObjetivo = document.getElementById("selectTest");
+  if (selectObjetivo) selectObjetivo.value = "";*/
+  const selectObjetivo = $('#selectTest');
+  if (selectObjetivo.length) {
+    selectObjetivo.val(null).trigger('change');
+  }
+
 
   /* recorrer TODAS las tablas */
   document.querySelectorAll(".tabla-valoracion").forEach(tabla => {
@@ -345,6 +433,9 @@ function guardarPerfil() {
       nombre_jugador: jugadorSelect.selectedOptions[0]?.text || "",
       foto_url: document.getElementById("fotoJugador").src || "",
       categoria: document.getElementById("categoria")?.value || "",
+      fecha_nacimiento: document.getElementById("fecha_nacimiento")?.value || "",
+      demarcacion: document.getElementById("demarcacion")?.value || "",
+      peso: document.getElementById("peso")?.value || "",
       fase: document.getElementById("fase")?.value || ""
     });
   });
@@ -391,7 +482,16 @@ async function generarPDF(payload) {
     pdf.line(x, y1, x, y2);
   };
 
-  const j = payload[0];
+  //const j = payload[0];
+  const j = {
+    ...payload[0],
+    categoria: payload[0].categoria || document.getElementById("categoria")?.value || "",
+    fecha_nacimiento: payload[0].fecha_nacimiento || document.getElementById("fecha_nacimiento")?.value || "",
+    demarcacion: payload[0].demarcacion || document.getElementById("demarcacion")?.value || "",
+    peso: payload[0].peso || document.getElementById("peso")?.value || "",
+    fase: payload[0].fase || document.getElementById("fase")?.value || ""
+  };
+
   let y = 15;
 
   /* HEADER */
@@ -433,17 +533,47 @@ async function generarPDF(payload) {
   dibujarHeader();
   y = 30;
 
+  const colIzq = 14;
+  const colDer = 110;
+
+
+
+
   /* DATOS */
   pdf.setFontSize(16);
   pdf.text("PERFIL DE TESTS FÍSICOS", 105, y, { align: "center" });
   y += 8;
 
+  let yDatos = y;
+
   pdf.setFontSize(10);
-  pdf.text(`Jugador: ${j.nombre_jugador}`, 14, y); y += 5;
-  pdf.text(`Grupo: ${j.grupo_test}`, 14, y); y += 5;
-  pdf.text(`Categoría: ${j.categoria}`, 14, y); y += 5;
-  pdf.text(`Fase: ${j.fase}`, 14, y);
-  y += 8;
+  pdf.text(`Categoría: ${j.categoria}`, colDer, yDatos); yDatos += 5;
+  pdf.text(`Jugador: ${j.nombre_jugador}`, colDer, yDatos); yDatos += 5;
+  pdf.text(`Fecha Nac.: ${j.fecha_nacimiento || ""}`, colDer, yDatos); yDatos += 5;
+  pdf.text(`Demarcación: ${j.demarcacion || ""}`, colDer, yDatos); yDatos += 5;
+  pdf.text(`Peso: ${j.peso || ""}`, colDer, yDatos);
+
+
+  y = yDatos + 8;
+
+  const objetivos = $('#selectTest').select2('data').map(o => o.text);
+
+  let yObj = 38;
+
+  pdf.setFontSize(10);
+  pdf.setFont("helvetica", "bold");
+  pdf.text("Objetivos:", colIzq, yObj);
+  yObj += 5;
+
+  pdf.setFont("helvetica", "normal");
+
+  objetivos.forEach(obj => {
+    const lineas = pdf.splitTextToSize(`- ${obj}`, 80);
+    pdf.text(lineas, colIzq, yObj);
+    yObj += lineas.length * 5;
+  });
+
+
 
   /* AGRUPAR TABLAS */
   const tablas = {};
@@ -457,6 +587,9 @@ async function generarPDF(payload) {
     const datos = tablas[num];
     if (!datos.length) return;
 
+    //const nombreTabla = datos[0].tabla_nombre;
+    const nombreTabla = TITULOS_TABLAS[num] || "VALORACIÓN";
+
     /* CONFIG TABLA (COMPACTA) */
     const TOTAL_COLUMNAS = 4;
     const startX = 14;
@@ -465,10 +598,23 @@ async function generarPDF(payload) {
     const rowH = 6;
     const videoH = 18;
 
+
     /* TITULO */
     pdf.setFontSize(12);
-    pdf.text(TITULO_VALORACION, 105, y, { align: "center" });
+    pdf.setFont("helvetica", "bold");
+    pdf.setTextColor(0, 0, 0); 
+
+    pdf.text(
+      nombreTabla,
+      105,
+      y,
+      { align: "center" }
+    );
+
+    pdf.setTextColor(...COLOR_TEXTO);
     y += 6;
+
+
 
     /* NUMEROS */
     pdf.setFontSize(9);
