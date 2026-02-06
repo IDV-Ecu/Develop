@@ -457,6 +457,25 @@ function guardarPerfil() {
     });
 }
 
+/**cargatr */
+function cargarImagenBase64(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      resolve(canvas.toDataURL("image/png"));
+    };
+    img.onerror = reject;
+    img.src = url;
+  });
+}
+
+
 
 async function generarPDF(payload) {
 
@@ -494,6 +513,9 @@ async function generarPDF(payload) {
 
   let y = 15;
 
+  const logoBase64 = await cargarImagenBase64("img/escudoIdv.png");
+
+
   /* HEADER */
   const dibujarHeader = () => {
     // Fondo azul
@@ -503,6 +525,18 @@ async function generarPDF(payload) {
     // Triángulo negro
     pdf.setFillColor(0, 0, 0);
     pdf.triangle(160, 0, 210, 0, 210, 20, "F");
+
+
+    // LOGO
+    pdf.addImage(
+      logoBase64,
+      "PNG",
+      165,   // X (lado derecho)
+      3,     // Y
+      28,    // ancho
+      14     // alto
+    );
+
 
     /* TITULO */
     pdf.setTextColor(255, 255, 255);
@@ -602,7 +636,7 @@ async function generarPDF(payload) {
     /* TITULO */
     pdf.setFontSize(12);
     pdf.setFont("helvetica", "bold");
-    pdf.setTextColor(0, 0, 0); 
+    pdf.setTextColor(0, 0, 0);
 
     pdf.text(
       nombreTabla,
