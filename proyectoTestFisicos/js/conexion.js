@@ -531,10 +531,10 @@ async function generarPDF(payload) {
     pdf.addImage(
       logoBase64,
       "PNG",
-      165,   // X (lado derecho)
-      3,     // Y
-      28,    // ancho
-      14     // alto
+      188,   // X (lado derecho)
+      1,     // Y
+      18,    // ancho
+      18     // alto
     );
 
 
