@@ -524,6 +524,8 @@ async function generarPDF(payload) {
       console.warn("No se pudo cargar la foto del jugador");
     }
   }
+  console.log("foto_url:", j.foto_url);
+
 
   let y = 15;
 
