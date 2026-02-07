@@ -1,5 +1,9 @@
 const URL_API = "https://script.google.com/macros/s/AKfycbxO1BPbz-3tmEWQvWVTVlme7mXR08NP-lEVFN9xVLVT2_coZq9ql5GVK6AXOzNPHesyAg/exec";
 
+//const URL_API = "https://script.google.com/macros/s/AKfycbwUB8i31eOqVZCzTUT9uhIE5qdUDzZErYDLxQP6yNZryl165rnbdDy0iKaokomaO_B2/exec";
+
+//const URL_API = "https://script.google.com/macros/s/AKfycbwEvqZdJ6ZyPjGEgEHrApodD2kBK1uehcCSj0eNvbQw5pkw20D7-rZap8TRjOoldDTk/exec";
+
 let testsData = [];
 let cargasPendientes = 3;
 
@@ -482,9 +486,7 @@ async function generarPDF(payload) {
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF("p", "mm", "a4");
 
-  /* CONFIG */
-  const TITULO_VALORACION = "VALORACIÓN";
-
+  /* ================= CONFIG ================= */
   const COLOR_MORADO = [90, 0, 120];
   const COLOR_VERTICAL = [200, 200, 200];
   const COLOR_TEXTO = [0, 0, 0];
@@ -501,7 +503,7 @@ async function generarPDF(payload) {
     pdf.line(x, y1, x, y2);
   };
 
-  //const j = payload[0];
+  /* ================= DATOS ================= */
   const j = {
     ...payload[0],
     categoria: payload[0].categoria || document.getElementById("categoria")?.value || "",
@@ -511,51 +513,44 @@ async function generarPDF(payload) {
     fase: payload[0].fase || document.getElementById("fase")?.value || ""
   };
 
-  let y = 15;
-
+  /* ================= IMÁGENES ================= */
   const logoBase64 = await cargarImagenBase64("img/escudoIdv.png");
 
+  let fotoJugadorBase64 = null;
+  if (j.foto_url) {
+    try {
+      fotoJugadorBase64 = await cargarImagenBase64(j.foto_url);
+    } catch (e) {
+      console.warn("No se pudo cargar la foto del jugador");
+    }
+  }
 
-  /* HEADER */
+  let y = 15;
+
+  /* ================= HEADER ================= */
   const dibujarHeader = () => {
-    // Fondo azul
     pdf.setFillColor(0, 0, 200);
     pdf.rect(0, 0, 210, 20, "F");
 
-    // Triángulo negro
     pdf.setFillColor(0, 0, 0);
     pdf.triangle(160, 0, 210, 0, 210, 20, "F");
 
+    pdf.addImage(logoBase64, "PNG", 188, 1, 18, 18);
 
-    // LOGO
-    pdf.addImage(
-      logoBase64,
-      "PNG",
-      188,   // X (lado derecho)
-      1,     // Y
-      18,    // ancho
-      18     // alto
-    );
-
-
-    /* TITULO */
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(13);
     pdf.setFont("helvetica", "bold");
     pdf.text("INDEPENDIENTE DEL VALLE", 10, 9);
 
-    /* FECHA (MAS SUAVE) */
     pdf.setFontSize(9);
     pdf.setFont("helvetica", "normal");
     pdf.setTextColor(220, 220, 220);
     pdf.text(j.fecha, 10, 15);
 
-    // Reset color texto
     pdf.setTextColor(...COLOR_TEXTO);
   };
 
-
-  /* FOOTER */
+  /* ================= FOOTER ================= */
   const dibujarFooter = () => {
     pdf.setFillColor(0, 0, 200);
     pdf.rect(0, 287, 210, 10, "F");
@@ -570,13 +565,28 @@ async function generarPDF(payload) {
   const colIzq = 14;
   const colDer = 110;
 
-
-
-
-  /* DATOS */
+  /* ================= TÍTULO ================= */
   pdf.setFontSize(16);
   pdf.text("PERFIL DE TESTS FÍSICOS", 105, y, { align: "center" });
   y += 8;
+
+  /* ================= FOTO + DATOS ================= */
+  const fotoSize = 30;
+  const fotoX = colDer - fotoSize - 8;
+  const fotoY = y;
+
+  if (fotoJugadorBase64) {
+    pdf.setDrawColor(...COLOR_MORADO);
+    pdf.setLineWidth(0.6);
+    pdf.rect(fotoX - 1, fotoY - 1, fotoSize + 2, fotoSize + 2);
+
+    pdf.addImage(fotoJugadorBase64, "JPEG", fotoX, fotoY, fotoSize, fotoSize);
+  } else {
+    pdf.setFontSize(8);
+    pdf.setTextColor(150);
+    pdf.text("SIN FOTO", fotoX + fotoSize / 2, fotoY + fotoSize / 2, { align: "center" });
+    pdf.setTextColor(0);
+  }
 
   let yDatos = y;
 
@@ -587,29 +597,27 @@ async function generarPDF(payload) {
   pdf.text(`Demarcación: ${j.demarcacion || ""}`, colDer, yDatos); yDatos += 5;
   pdf.text(`Peso: ${j.peso || ""}`, colDer, yDatos);
 
+  y = Math.max(yDatos, fotoY + fotoSize) + 8;
 
-  y = yDatos + 8;
-
+  /* ================= OBJETIVOS ================= */
   const objetivos = $('#selectTest').select2('data').map(o => o.text);
 
-  let yObj = 38;
-
+  let yObj = y;
   pdf.setFontSize(10);
   pdf.setFont("helvetica", "bold");
   pdf.text("Objetivos:", colIzq, yObj);
   yObj += 5;
 
   pdf.setFont("helvetica", "normal");
-
   objetivos.forEach(obj => {
     const lineas = pdf.splitTextToSize(`- ${obj}`, 80);
     pdf.text(lineas, colIzq, yObj);
     yObj += lineas.length * 5;
   });
 
+  y = yObj + 5;
 
-
-  /* AGRUPAR TABLAS */
+  /* ================= TABLAS ================= */
   const tablas = {};
   payload.forEach(p => {
     if (!tablas[p.tabla]) tablas[p.tabla] = [];
@@ -621,10 +629,8 @@ async function generarPDF(payload) {
     const datos = tablas[num];
     if (!datos.length) return;
 
-    //const nombreTabla = datos[0].tabla_nombre;
     const nombreTabla = TITULOS_TABLAS[num] || "VALORACIÓN";
 
-    /* CONFIG TABLA (COMPACTA) */
     const TOTAL_COLUMNAS = 4;
     const startX = 14;
     const labelW = 24;
@@ -632,29 +638,14 @@ async function generarPDF(payload) {
     const rowH = 6;
     const videoH = 18;
 
-
-    /* TITULO */
     pdf.setFontSize(12);
     pdf.setFont("helvetica", "bold");
-    pdf.setTextColor(0, 0, 0);
-
-    pdf.text(
-      nombreTabla,
-      105,
-      y,
-      { align: "center" }
-    );
-
-    pdf.setTextColor(...COLOR_TEXTO);
+    pdf.text(nombreTabla, 105, y, { align: "center" });
     y += 6;
 
-
-
-    /* NUMEROS */
     pdf.setFontSize(9);
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
-      pdf.text(
-        String(i + 1),
+      pdf.text(String(i + 1),
         startX + labelW + colW * i + colW / 2,
         y + 4,
         { align: "center" }
@@ -665,12 +656,10 @@ async function generarPDF(payload) {
     const tablaTop = y;
     y += rowH;
 
-    /* NOMBRE TEST */
     pdf.setFontSize(7);
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       const test = datos[i];
-      pdf.text(
-        test ? test.nombre_test : "",
+      pdf.text(test ? test.nombre_test : "",
         startX + labelW + colW * i + colW / 2,
         y + 4,
         { align: "center", maxWidth: colW - 4 }
@@ -680,7 +669,6 @@ async function generarPDF(payload) {
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
     y += rowH;
 
-    /* VIDEO */
     y += videoH;
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
 
@@ -688,25 +676,22 @@ async function generarPDF(payload) {
       const test = datos[i];
       if (test?.video_url) {
         pdf.setTextColor(0, 0, 255);
-        pdf.textWithLink(
-          "Ver video",
+        pdf.textWithLink("Ver video",
           startX + labelW + colW * i + colW / 2,
           y - videoH / 2,
           { align: "center", url: test.video_url }
         );
-        pdf.setTextColor(...COLOR_TEXTO);
+        pdf.setTextColor(0);
       }
     }
 
-    /* FILAS */
     ["series", "rec", "vel", "carga"].forEach(f => {
       pdf.setFontSize(8);
       pdf.text(f.toUpperCase(), startX + 2, y + 4);
 
       for (let i = 0; i < TOTAL_COLUMNAS; i++) {
         const test = datos[i];
-        pdf.text(
-          test ? String(test[f] || "") : "",
+        pdf.text(test ? String(test[f] || "") : "",
           startX + labelW + colW * i + colW / 2,
           y + 4,
           { align: "center" }
@@ -720,19 +705,15 @@ async function generarPDF(payload) {
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
     const tablaBottom = y;
 
-    /* GR CENTRADO */
     pdf.setFontSize(10);
-    pdf.text(
-      `GR${num}`,
+    pdf.text(`GR${num}`,
       startX + labelW / 2,
       tablaTop + (tablaBottom - tablaTop) / 2,
       { align: "center" }
     );
 
-    /* LINEAS VERTICALES */
     lineaVertical(startX, tablaTop, tablaBottom);
     lineaVertical(startX + labelW, tablaTop, tablaBottom);
-
     for (let i = 0; i <= TOTAL_COLUMNAS; i++) {
       lineaVertical(startX + labelW + colW * i, tablaTop, tablaBottom);
     }
@@ -741,6 +722,5 @@ async function generarPDF(payload) {
   });
 
   dibujarFooter();
-
   pdf.save("perfil_test_fisicos.pdf");
 }
