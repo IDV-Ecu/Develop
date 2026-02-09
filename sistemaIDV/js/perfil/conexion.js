@@ -282,7 +282,7 @@ function cargarJugadores() {
         opt.dataset.peso = j.peso || "";
         opt.dataset.pie = j.pie || "";
 
-        // Guardamos solo el nombre del jugador, sin ruta
+        // Guardamos solo el nombre del jugador, sin codificar ni ruta
         const nombreJugador = j.nombre_jugador?.trim();
         if (nombreJugador) {
           opt.dataset.foto = nombreJugador;
@@ -326,7 +326,7 @@ function inicializarFotoJugador() {
       return;
     }
 
-    const nombre = opt.dataset.foto;
+    const nombre = opt.dataset.foto; // nombre puro, sin codificar
     let encontrado = false;
 
     const probarFormato = (i) => {
@@ -336,6 +336,7 @@ function inicializarFotoJugador() {
         return;
       }
 
+      // Codificamos aquí solo al construir la ruta final
       const ruta = `img/jugadores/${encodeURIComponent(nombre)}.${formatos[i]}`;
       const test = new Image();
 
