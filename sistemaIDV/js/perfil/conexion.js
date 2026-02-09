@@ -254,6 +254,14 @@ function formatearFecha(fechaISO) {
 }
 
 
+function normalizarNombre(nombre) {
+  return nombre
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "_");
+}
+
 
 function cargarJugadores() {
   fetch(`${URL_API}?endpoint=jugadores`)
@@ -275,23 +283,78 @@ function cargarJugadores() {
         opt.dataset.peso = j.peso || "";
         opt.dataset.pie = j.pie || "";
 
-
-        /*if (j.foto_url) {
-          opt.dataset.foto = convertirDriveURL(j.foto_url);
-        }*/
         const nombreJugador = j.nombre_jugador?.trim();
-
         if (nombreJugador) {
-          opt.dataset.foto = encodeURI(`img/jugadores/${nombreJugador}.jpg`);
+          opt.dataset.foto = normalizarNombre(nombreJugador);
         }
-
 
         select.appendChild(opt);
       });
     })
     .finally(cargaLista);
 }
+
+
 function inicializarFotoJugador() {
+  const select = document.getElementById("selectJugador");
+  const img = document.getElementById("fotoJugador");
+  const cont = document.getElementById("contenedorFoto");
+
+  const inputCategoria = document.getElementById("categoria");
+  const inputFase = document.getElementById("fase");
+  const inputfecha_nacimiento = document.getElementById("fecha_nacimiento");
+  const inputdemarcacion = document.getElementById("demarcacion");
+  const inputpeso = document.getElementById("peso");
+  const inputpie = document.getElementById("pie");
+
+  const formatos = ["jpg", "png", "webp"];
+
+  select.addEventListener("change", () => {
+    const opt = select.selectedOptions[0];
+    if (!opt) return;
+
+    inputCategoria.value = opt.dataset.categoria || "";
+    inputFase.value = opt.dataset.fase || "";
+    inputfecha_nacimiento.value = formatearFecha(opt.dataset.fecha_nacimiento);
+    inputdemarcacion.value = opt.dataset.demarcacion || "";
+    inputpeso.value = opt.dataset.peso || "";
+    inputpie.value = opt.dataset.pie || "";
+
+    if (!opt.dataset.foto) {
+      img.src = "";
+      cont.classList.add("oculto");
+      return;
+    }
+
+    const base = opt.dataset.foto;
+
+    const probarFormato = (i) => {
+      if (i >= formatos.length) {
+        img.src = "";
+        cont.classList.add("oculto");
+        return;
+      }
+
+      const ruta = `img/jugadores/${base}.${formatos[i]}`;
+      const test = new Image();
+
+      test.onload = () => {
+        img.src = ruta;
+        cont.classList.remove("oculto");
+      };
+
+      test.onerror = () => {
+        probarFormato(i + 1);
+      };
+
+      test.src = ruta;
+    };
+
+    probarFormato(0);
+  });
+}
+
+/*function inicializarFotoJugador() {
   const select = document.getElementById("selectJugador");
   const img = document.getElementById("fotoJugador");
   const cont = document.getElementById("contenedorFoto");
@@ -328,12 +391,10 @@ function inicializarFotoJugador() {
         img.src = "img/jugadores/default.jpg";
       };
       cont.classList.remove("oculto");
-      /*img.src = opt.dataset.foto;
-      cont.classList.remove("oculto");*/
     }
   });
 
-}
+}*/
 function convertirDriveURL(url) {
   const m = url?.match(/\/d\/([^\/]+)/);
   return m ? `https://drive.google.com/thumbnail?id=${m[1]}&sz=w400` : null;
