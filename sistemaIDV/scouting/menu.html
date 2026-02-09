@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario IDV</title>
+    <!-- diseño de la pagina -->
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link href="../img/icono.png" rel="icon">
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/bootstrap-icons.css">
+
+    <script>
+        if (sessionStorage.getItem("login") !== "ok") {
+            window.location.replace("../index.html");
+        }
+        history.pushState(null, null, location.href);
+
+        window.addEventListener("popstate", () => {
+            history.pushState(null, null, location.href);
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="contenedor">
+        <header class="titulo">
+            <img src="../img/escudoIdv.png" alt="Logo equipo" class="logo">
+            <h1>S C O U T I N G</h1>
+
+            <!--boton de descargar logs-->
+            <button id="btnDescargarLogs" class="btn-logs" title="Descargar logs" style="display:none;">
+                <i class="bi bi-download"></i>
+            </button>
+
+            <button class="btn-logout" onclick="abrirModalCerrar()">
+                <i class="bi bi-box-arrow-right"></i>
+            </button>
+        </header>
+        <div class="grid-botones">
+            <button class="btnMenu" id="btn1"></button>
+            <button class="btnMenu" id="btn2"></button>
+            <button class="btnMenu" id="btn3"></button>
+            <button class="btnMenu" id="btn4"></button>
+            <button class="btnMenu" id="btn5"></button>
+            <button class="btnMenu" id="btn6"></button>
+            <button class="btnMenu" id="btn7"></button>
+            <button class="btnMenu" id="btn8"></button>
+            <button class="btnMenu" id="btn9"></button>
+            <button class="btnMenu" id="btn10"></button>
+            <button class="btnMenu" id="btn11"></button>
+            <button class="btnMenu" id="btn12"></button>
+            <button class="btnMenu" id="btn13"></button>
+            <button class="btnMenu" id="btn14"></button>
+            <button class="btnMenu" id="btn15"></button>
+        </div>
+    </div>
+    <!-- MODAL CERRAR SESIÓN -->
+    <div class="modal modal-salir" id="modalCerrarSesion">
+        <div class="modal-content modal-content-salir">
+            <h2>Cerrar sesión</h2>
+            <p>¿Está seguro que desea cerrar sesión?</p>
+
+            <div class="modal-acciones">
+                <button class="btn-secundario" onclick="cerrarModalCerrar()">Cancelar</button>
+                <button onclick="confirmarCerrarSesion()">Salir</button>
+            </div>
+        </div>
+    </div>
+    <!--modal para confirmar el descargar logs-->
+    <div class="modal modal-salir" id="modalLogs">
+        <div class="modal-content modal-content-salir">
+            <h2>Descargar logs</h2>
+            <p>¿Desea descargar el archivo de registros del sistema?</p>
+
+            <div class="modal-acciones">
+                <button class="btn-secundario" onclick="cerrarModalLogs()">Cancelar</button>
+                <button onclick="confirmarDescargaLogs()">Descargar</button>
+            </div>
+        </div>
+    </div>
+    <!--modal para clave de acceso a ciertos botones-->
+    <div id="modalPassword" class="modal-general">
+        <div class="modal-box">
+            <h2>Acceso restringido</h2>
+            <p>Ingrese la contraseña para continuar</p>
+            <input type="password" id="inputPassword" placeholder="Contraseña" class="input-modal">
+            <p id="errorPassword" class="error-password">
+                Contraseña incorrecta.....!!!!!!!!!!!!!!
+            </p>
+            <div class="modal-actions">
+                <button class="btn-secundario" onclick="cerrarModalPassword()">Cancelar</button>
+                <button class="btn-principal" onclick="validarPassword()">Ingresar</button>
+            </div>
+        </div>
+    </div>
+    <!-- javaScript -->
+    <script src="../js/logs.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/scouting/scripts.js"></script>
+</body>
+
+</html>
