@@ -254,12 +254,14 @@ function formatearFecha(fechaISO) {
 }
 
 
+// Función para normalizar nombres y que coincidan con los archivos
 function normalizarNombre(nombre) {
-  return nombre
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, "_");
+  if (!nombre) return "";
+  // Quita acentos y caracteres especiales
+  nombre = nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  // Reemplaza múltiples espacios por uno solo y quita espacios al inicio/final
+  nombre = nombre.replace(/\s+/g, " ").trim();
+  return nombre;
 }
 
 function cargarJugadores() {
@@ -282,8 +284,8 @@ function cargarJugadores() {
         opt.dataset.peso = j.peso || "";
         opt.dataset.pie = j.pie || "";
 
-        // Guardamos solo el nombre del jugador, sin codificar ni ruta
-        const nombreJugador = j.nombre_jugador?.trim();
+        // Normalizamos el nombre para usarlo como nombre de archivo
+        const nombreJugador = normalizarNombre(j.nombre_jugador);
         if (nombreJugador) {
           opt.dataset.foto = nombreJugador;
         }
@@ -326,7 +328,7 @@ function inicializarFotoJugador() {
       return;
     }
 
-    const nombre = opt.dataset.foto; // nombre puro, sin codificar
+    const nombre = opt.dataset.foto;
     let encontrado = false;
 
     const probarFormato = (i) => {
@@ -336,7 +338,7 @@ function inicializarFotoJugador() {
         return;
       }
 
-      // Codificamos aquí solo al construir la ruta final
+      // Construimos la ruta final con encodeURIComponent
       const ruta = `img/jugadores/${encodeURIComponent(nombre)}.${formatos[i]}`;
       const test = new Image();
 
@@ -357,6 +359,7 @@ function inicializarFotoJugador() {
     probarFormato(0);
   });
 }
+
 
 /*function cargarJugadores() {
   fetch(`${URL_API}?endpoint=jugadores`)
