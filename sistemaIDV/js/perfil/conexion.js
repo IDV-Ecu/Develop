@@ -325,7 +325,7 @@ function inicializarFotoJugador() {
     } else {
       img.src = opt.dataset.foto;
       img.onerror = () => {
-        img.src = "img/jugadores/default.png";
+        img.src = "img/jugadores/default.jpg";
       };
       cont.classList.remove("oculto");
       /*img.src = opt.dataset.foto;
