@@ -283,9 +283,14 @@ function cargarJugadores() {
         opt.dataset.peso = j.peso || "";
         opt.dataset.pie = j.pie || "";
 
-        const nombreJugador = j.nombre_jugador?.trim();
+        /*const nombreJugador = j.nombre_jugador?.trim();
         if (nombreJugador) {
           opt.dataset.foto = normalizarNombre(nombreJugador);
+        }*/
+        const nombreJugador = j.nombre_jugador?.trim();
+
+        if (nombreJugador) {
+          opt.dataset.foto = encodeURI(`img/jugadores/${nombreJugador}`);
         }
 
         select.appendChild(opt);
@@ -296,6 +301,68 @@ function cargarJugadores() {
 
 
 function inicializarFotoJugador() {
+  const select = document.getElementById("selectJugador");
+  const img = document.getElementById("fotoJugador");
+  const cont = document.getElementById("contenedorFoto");
+
+  const inputCategoria = document.getElementById("categoria");
+  const inputFase = document.getElementById("fase");
+  const inputfecha_nacimiento = document.getElementById("fecha_nacimiento");
+  const inputdemarcacion = document.getElementById("demarcacion");
+  const inputpeso = document.getElementById("peso");
+  const inputpie = document.getElementById("pie");
+
+  const formatos = ["jpg", "png", "webp"];
+
+  select.addEventListener("change", () => {
+    const opt = select.selectedOptions[0];
+    if (!opt) return;
+
+    inputCategoria.value = opt.dataset.categoria || "";
+    inputFase.value = opt.dataset.fase || "";
+    inputfecha_nacimiento.value = formatearFecha(opt.dataset.fecha_nacimiento);
+    inputdemarcacion.value = opt.dataset.demarcacion || "";
+    inputpeso.value = opt.dataset.peso || "";
+    inputpie.value = opt.dataset.pie || "";
+
+    if (!opt.dataset.foto) {
+      img.src = "";
+      cont.classList.add("oculto");
+      return;
+    }
+
+    const nombre = encodeURI(opt.dataset.foto);
+    let encontrado = false;
+
+    const probarFormato = (i) => {
+      if (i >= formatos.length) {
+        img.src = "";
+        cont.classList.add("oculto");
+        return;
+      }
+
+      const ruta = `img/jugadores/${nombre}.${formatos[i]}`;
+      const test = new Image();
+
+      test.onload = () => {
+        if (encontrado) return;
+        encontrado = true;
+        img.src = ruta;
+        cont.classList.remove("oculto");
+      };
+
+      test.onerror = () => {
+        if (!encontrado) probarFormato(i + 1);
+      };
+
+      test.src = ruta;
+    };
+
+    probarFormato(0);
+  });
+}
+
+/*function inicializarFotoJugador() {
   const select = document.getElementById("selectJugador");
   const img = document.getElementById("fotoJugador");
   const cont = document.getElementById("contenedorFoto");
@@ -352,7 +419,7 @@ function inicializarFotoJugador() {
 
     probarFormato(0);
   });
-}
+}*/
 
 /*function inicializarFotoJugador() {
   const select = document.getElementById("selectJugador");
