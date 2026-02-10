@@ -582,7 +582,7 @@ async function generarPDF(payload) {
     pie: payload[0].pie || document.getElementById("pie")?.value || ""
   };
 
-  
+
   let y = 15;
   const logoPDF = await cargarImagenParaPDF("../img/escudoIdv.png");
 
@@ -714,7 +714,7 @@ async function generarPDF(payload) {
     tablas[p.tabla].push(p);
   });
 
- for (const num of Object.keys(tablas)) {
+  for (const num of Object.keys(tablas)) {
 
 
     const datos = tablas[num];
@@ -727,7 +727,10 @@ async function generarPDF(payload) {
     const labelW = 24;
     const colW = (182 - labelW) / TOTAL_COLUMNAS;
     const rowH = 6;
-    const videoH = 18;
+    const videoH = 8;      // SOLO el texto "Ver video"
+    const imgTestH = 22;   // imagen del test
+    const imgTestW = 22;
+
 
     pdf.setFontSize(12);
     pdf.setFont("helvetica", "bold");
@@ -759,58 +762,59 @@ async function generarPDF(payload) {
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
     y += rowH;
 
-    y += videoH;
-    lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
-
-    const imgTestH = 22;   // alto de la imagen del test
-    const imgTestW = 22;   // ancho de la imagen del test
-
-
+    // ===== FILA VIDEO =====
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       const test = datos[i];
+
       if (test?.video_url) {
         pdf.setTextColor(0, 0, 255);
         pdf.textWithLink(
           "Ver video",
           startX + labelW + colW * i + colW / 2,
-          y - videoH / 2,
+          y + 5,
           { align: "center", url: test.video_url }
         );
         pdf.setTextColor(...COLOR_TEXTO);
       }
     }
 
-   
-
-    for (let i = 0; i < TOTAL_COLUMNAS; i++) {
-      const test = datos[i];
-
-      if (test?.imagen_url) {
-
-        const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
+    y += videoH;
+    lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
 
 
-        if (imgTestPDF) {
-          const xImg =
-            startX +
-            labelW +
-            colW * i +
-            colW / 2 -
-            imgTestW / 2;
 
-          const yImg = y - imgTestH + 2;
+   // ===== FILA IMAGEN TEST =====
+for (let i = 0; i < TOTAL_COLUMNAS; i++) {
+  const test = datos[i];
 
-          pdf.addImage(
-            imgTestPDF,
-            "PNG",
-            xImg,
-            yImg,
-            imgTestW,
-            imgTestH
-          );
-        }
-      }
+  if (test?.imagen_url) {
+    const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
+
+    if (imgTestPDF) {
+      const xImg =
+        startX +
+        labelW +
+        colW * i +
+        colW / 2 -
+        imgTestW / 2;
+
+      const yImg = y + 2;
+
+      pdf.addImage(
+        imgTestPDF,
+        "PNG",
+        xImg,
+        yImg,
+        imgTestW,
+        imgTestH
+      );
     }
+  }
+}
+
+y += imgTestH + 4;
+lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
+
 
 
     for (const f of ["series", "rec", "vel", "carga"]) {
