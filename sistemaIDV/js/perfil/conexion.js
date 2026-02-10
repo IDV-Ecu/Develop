@@ -263,6 +263,7 @@ function normalizarNombre(nombre) {
   nombre = nombre.replace(/\s+/g, " ").trim();
   return nombre;
 }
+
 // ===========================
 // Función para cargar jugadores
 // ===========================
@@ -286,10 +287,8 @@ function cargarJugadores() {
         opt.dataset.peso = j.peso || "";
         opt.dataset.pie = j.pie || "";
 
-        // Usamos el nombre tal como está, con mayúsculas y espacios
-        if (j.nombre_jugador?.trim()) {
-          opt.dataset.foto = j.nombre_jugador.trim();
-        }
+        // Guardamos el nombre del jugador para filtrar la imagen
+        opt.dataset.foto = j.nombre_jugador?.trim() || "";
 
         select.appendChild(opt);
       });
@@ -298,7 +297,7 @@ function cargarJugadores() {
 }
 
 // ===========================
-// Función para inicializar foto
+// Función para inicializar foto usando nombre y probando formatos
 // ===========================
 function inicializarFotoJugador() {
   const select = document.getElementById("selectJugador");
@@ -312,7 +311,7 @@ function inicializarFotoJugador() {
   const inputpeso = document.getElementById("peso");
   const inputpie = document.getElementById("pie");
 
-  const formatos = ["jpg", "png", "webp", "jpeg"];
+  const formatos = ["jpg", "jpeg", "png", "webp"];
 
   select.addEventListener("change", () => {
     const opt = select.selectedOptions[0];
@@ -326,15 +325,14 @@ function inicializarFotoJugador() {
     inputpeso.value = opt.dataset.peso || "";
     inputpie.value = opt.dataset.pie || "";
 
-    // Si no hay foto
-    if (!opt.dataset.foto) {
+    const nombre = opt.dataset.foto;
+    if (!nombre) {
       img.src = "";
       cont.classList.add("oculto");
       console.log("No hay foto disponible para este jugador.");
       return;
     }
 
-    const nombre = opt.dataset.foto;
     let encontrado = false;
 
     const probarFormato = (i) => {
@@ -345,7 +343,7 @@ function inicializarFotoJugador() {
         return;
       }
 
-      // Ruta usando encodeURIComponent para espacios y caracteres especiales
+      // Construimos la ruta usando encodeURIComponent para manejar espacios
       const ruta = `/sistemaIDV/img/jugadores/${encodeURIComponent(nombre)}.${formatos[i]}?v=${Date.now()}`;
       console.log("Probando imagen:", ruta);
 
