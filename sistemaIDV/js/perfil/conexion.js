@@ -263,6 +263,9 @@ function normalizarNombre(nombre) {
   nombre = nombre.replace(/\s+/g, " ").trim();
   return nombre;
 }
+// ===========================
+// Función para cargar jugadores
+// ===========================
 function cargarJugadores() {
   fetch(`${URL_API}?endpoint=jugadores`)
     .then(r => r.json())
@@ -275,6 +278,7 @@ function cargarJugadores() {
         opt.value = j.id_jugador;
         opt.textContent = j.nombre_jugador?.trim() || "";
 
+        // Datos extra
         opt.dataset.categoria = j.categoria || "";
         opt.dataset.fase = j.fase || "";
         opt.dataset.fecha_nacimiento = j.fecha_nacimiento || "";
@@ -282,10 +286,9 @@ function cargarJugadores() {
         opt.dataset.peso = j.peso || "";
         opt.dataset.pie = j.pie || "";
 
-        // Normalizamos el nombre para usarlo como nombre de archivo
-        const nombreJugador = normalizarNombre(j.nombre_jugador);
-        if (nombreJugador) {
-          opt.dataset.foto = nombreJugador;
+        // Usamos el nombre tal como está, con mayúsculas y espacios
+        if (j.nombre_jugador?.trim()) {
+          opt.dataset.foto = j.nombre_jugador.trim();
         }
 
         select.appendChild(opt);
@@ -294,17 +297,9 @@ function cargarJugadores() {
     .finally(cargaLista);
 }
 
-// Normalización de nombre de jugador
-function normalizarNombre(nombre) {
-  if (!nombre) return "";
-  return nombre
-    .normalize("NFD") // quita acentos
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, "_") // espacios por _
-    .replace(/[^\w.-]/g, "") // caracteres inválidos
-    .toLowerCase(); // minúsculas
-}
-
+// ===========================
+// Función para inicializar foto
+// ===========================
 function inicializarFotoJugador() {
   const select = document.getElementById("selectJugador");
   const img = document.getElementById("fotoJugador");
@@ -323,6 +318,7 @@ function inicializarFotoJugador() {
     const opt = select.selectedOptions[0];
     if (!opt) return;
 
+    // Actualizamos inputs
     inputCategoria.value = opt.dataset.categoria || "";
     inputFase.value = opt.dataset.fase || "";
     inputfecha_nacimiento.value = formatearFecha(opt.dataset.fecha_nacimiento);
@@ -330,6 +326,7 @@ function inicializarFotoJugador() {
     inputpeso.value = opt.dataset.peso || "";
     inputpie.value = opt.dataset.pie || "";
 
+    // Si no hay foto
     if (!opt.dataset.foto) {
       img.src = "";
       cont.classList.add("oculto");
@@ -348,16 +345,18 @@ function inicializarFotoJugador() {
         return;
       }
 
+      // Ruta usando encodeURIComponent para espacios y caracteres especiales
       const ruta = `/sistemaIDV/img/jugadores/${encodeURIComponent(nombre)}.${formatos[i]}?v=${Date.now()}`;
       console.log("Probando imagen:", ruta);
 
       const test = new Image();
       test.onload = () => {
-        if (encontrado) return;
-        encontrado = true;
-        img.src = ruta;
-        cont.classList.remove("oculto");
-        console.log("Imagen cargada:", ruta);
+        if (!encontrado) {
+          encontrado = true;
+          img.src = ruta;
+          cont.classList.remove("oculto");
+          console.log("Imagen cargada:", ruta);
+        }
       };
       test.onerror = () => {
         console.warn("No existe:", ruta);
