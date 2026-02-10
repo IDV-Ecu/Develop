@@ -533,6 +533,7 @@ function cargarImagenBase64(url) {
 }
 
 async function generarPDF(payload) {
+
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF("p", "mm", "a4");
 
@@ -566,7 +567,6 @@ async function generarPDF(payload) {
 
   let y = 15;
 
-  // Cargar logo y foto del jugador
   const logoBase64 = await cargarImagenBase64("https://idv-ecu.github.io/sistemaIDV/img/escudoIdv.png");
   const fotoJugadorBase64 = await cargarImagenBase64(j.foto_url || "https://via.placeholder.com/40x50");
 
@@ -611,9 +611,12 @@ async function generarPDF(payload) {
   dibujarHeader();
   y = 30;
 
-  // Objetivos a la izquierda
+  // =============================
+  // OBJETIVOS
+  // =============================
   const colObjetivos = 14;
   let yObj = y;
+
   const objetivos = $('#selectTest').select2('data').map(o => o.text);
 
   pdf.setTextColor(0, 0, 0);
@@ -623,42 +626,34 @@ async function generarPDF(payload) {
   yObj += 4;
 
   pdf.setFont("helvetica", "normal");
+
   objetivos.forEach(obj => {
     const lineas = pdf.splitTextToSize(`- ${obj}`, 90);
     pdf.text(lineas, colObjetivos, yObj);
     yObj += lineas.length * 4;
   });
 
-  // Foto del jugador y datos al lado derecho
   // =============================
-// =============================
-// FOTO PEQUEÑA DEFINITIVA
-// =============================
+  // FOTO
+  // =============================
+  const anchoFoto = 25;
+  const altoFoto = 35;
+  const xFoto = 150;
+  const yFoto = 30;
 
-const anchoFoto = 25;   // ahora sí pequeña
-const altoFoto = 35;    // proporcional
+  pdf.setDrawColor(90, 0, 120);
+  pdf.setLineWidth(0.5);
+  pdf.rect(xFoto - 1.5, yFoto - 1.5, anchoFoto + 3, altoFoto + 3);
 
-const xFoto = 150;      // más a la derecha
-const yFoto = 30;       // alineada arriba
+  pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
 
-// Marco fino
-pdf.setDrawColor(90, 0, 120);
-pdf.setLineWidth(0.5);
-pdf.rect(xFoto - 1.5, yFoto - 1.5, anchoFoto + 3, altoFoto + 3);
+  // =============================
+  // DATOS
+  // =============================
+  const xDatos = 150;
+  let yDatos = yFoto + altoFoto + 6;
 
-// Imagen
-pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
-
-// =============================
-// DATOS A LA DERECHA
-// =============================
-
-const xDatos = 150;
-let yDatos = yFoto + altoFoto + 6;  // ahora los datos van debajo de la foto
-
-pdf.setFontSize(6);
-
-
+  pdf.setFontSize(6);
 
   const escribirDato = (label, value) => {
     pdf.setFont("helvetica", "bold");
@@ -677,16 +672,21 @@ pdf.setFontSize(6);
 
   y = Math.max(yObj, yDatos) + 8;
 
-  // Tablas
+  // =============================
+  // TABLAS
+  // =============================
   const tablas = {};
+
   payload.forEach(p => {
     if (!tablas[p.tabla]) tablas[p.tabla] = [];
     tablas[p.tabla].push(p);
   });
 
   Object.keys(tablas).forEach(num => {
+
     const datos = tablas[num];
     if (!datos.length) return;
+
     const nombreTabla = TITULOS_TABLAS[num] || "VALORACIÓN";
 
     const TOTAL_COLUMNAS = 4;
@@ -707,6 +707,7 @@ pdf.setFontSize(6);
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       pdf.text(String(i + 1), startX + labelW + colW * i + colW / 2, y + 4, { align: "center" });
     }
+
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
     const tablaTop = y;
     y += rowH;
@@ -714,8 +715,14 @@ pdf.setFontSize(6);
     pdf.setFontSize(7);
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       const test = datos[i];
-      pdf.text(test?.bloquec || "", startX + labelW + colW * i + colW / 2, y + 4, { align: "center", maxWidth: colW - 4 });
+      pdf.text(
+        test?.bloquec || "",
+        startX + labelW + colW * i + colW / 2,
+        y + 4,
+        { align: "center", maxWidth: colW - 4 }
+      );
     }
+
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
     y += rowH;
 
@@ -726,7 +733,12 @@ pdf.setFontSize(6);
       const test = datos[i];
       if (test?.video_url) {
         pdf.setTextColor(0, 0, 255);
-        pdf.textWithLink("Ver video", startX + labelW + colW * i + colW / 2, y - videoH / 2, { align: "center", url: test.video_url });
+        pdf.textWithLink(
+          "Ver video",
+          startX + labelW + colW * i + colW / 2,
+          y - videoH / 2,
+          { align: "center", url: test.video_url }
+        );
         pdf.setTextColor(...COLOR_TEXTO);
       }
     }
@@ -734,10 +746,17 @@ pdf.setFontSize(6);
     ["series", "rec", "vel", "carga"].forEach(f => {
       pdf.setFontSize(8);
       pdf.text(f.toUpperCase(), startX + 2, y + 4);
+
       for (let i = 0; i < TOTAL_COLUMNAS; i++) {
         const test = datos[i];
-        pdf.text(test ? String(test[f] || "") : "", startX + labelW + colW * i + colW / 2, y + 4, { align: "center" });
+        pdf.text(
+          test ? String(test[f] || "") : "",
+          startX + labelW + colW * i + colW / 2,
+          y + 4,
+          { align: "center" }
+        );
       }
+
       lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
       y += rowH;
     });
@@ -746,10 +765,16 @@ pdf.setFontSize(6);
     const tablaBottom = y;
 
     pdf.setFontSize(10);
-    pdf.text(`GR${num}`, startX + labelW / 2, tablaTop + (tablaBottom - tablaTop) / 2, { align: "center" });
+    pdf.text(
+      `GR${num}`,
+      startX + labelW / 2,
+      tablaTop + (tablaBottom - tablaTop) / 2,
+      { align: "center" }
+    );
 
     lineaVertical(startX, tablaTop, tablaBottom);
     lineaVertical(startX + labelW, tablaTop, tablaBottom);
+
     for (let i = 0; i <= TOTAL_COLUMNAS; i++) {
       lineaVertical(startX + labelW + colW * i, tablaTop, tablaBottom);
     }
@@ -760,3 +785,4 @@ pdf.setFontSize(6);
   dibujarFooter();
   pdf.save("perfil_test_fisicos.pdf");
 }
+
