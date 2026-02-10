@@ -162,7 +162,7 @@ function cargarBloqueC(tabla, col, nombreTest, bloqueA, bloqueB) {
 }
 
 
-function cargarInfo(tabla, col, t) {
+/*function cargarInfo(tabla, col, t) {
   let html = "";
 
   const celda = tabla.querySelector(`.test-info[data-col="${col}"]`);
@@ -179,7 +179,8 @@ function cargarInfo(tabla, col, t) {
   }
 
   if (t.imagen_url) {
-    const img = convertirDriveURL(t.imagen_url);
+    //const img = convertirDriveURL(t.imagen_url);
+    const img = t.imagen_url;
     if (img) {
       html += `
         <div class="test-imagen">
@@ -190,7 +191,35 @@ function cargarInfo(tabla, col, t) {
   }
 
   celda.innerHTML = html;
+}*/
+
+function cargarInfo(tabla, col, t) {
+  let html = "";
+
+  const celda = tabla.querySelector(`.test-info[data-col="${col}"]`);
+
+  celda.dataset.video = t.video_url || "";
+  celda.dataset.imagen = t.imagen_url || "";
+
+  if (t.descripcion) {
+    html += `<div><strong>Desc:</strong> ${t.descripcion}</div>`;
+  }
+
+  if (t.video_url) {
+    html += `<a href="${t.video_url}" target="_blank">Video</a>`;
+  }
+
+  if (t.imagen_url) {
+    html += `
+      <div class="test-imagen">
+        <img src="${t.imagen_url}" alt="Imagen del test" loading="lazy">
+      </div>
+    `;
+  }
+
+  celda.innerHTML = html;
 }
+
 
 
 
@@ -254,19 +283,15 @@ function formatearFecha(fechaISO) {
 }
 
 
-// Función para normalizar nombres y que coincidan con los archivos
+// Función para normalizar nombres
 function normalizarNombre(nombre) {
   if (!nombre) return "";
-  // Quita acentos y caracteres especiales
   nombre = nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  // Reemplaza múltiples espacios por uno solo y quita espacios al inicio/final
   nombre = nombre.replace(/\s+/g, " ").trim();
   return nombre;
 }
 
-// ===========================
 // Cargar jugadores en el select
-// ===========================
 function cargarJugadores() {
   fetch(`${URL_API}?endpoint=jugadores`)
     .then(r => r.json())
@@ -286,8 +311,6 @@ function cargarJugadores() {
         opt.dataset.demarcacion = j.demarcacion || "";
         opt.dataset.peso = j.peso || "";
         opt.dataset.pie = j.pie || "";
-
-        // ⚡ Ahora usamos la URL directa de la foto
         opt.dataset.foto = j.foto_url || "";
 
         select.appendChild(opt);
@@ -296,9 +319,7 @@ function cargarJugadores() {
     .finally(cargaLista);
 }
 
-// ===========================
 // Inicializar foto usando la URL directa de la API
-// ===========================
 function inicializarFotoJugador() {
   const select = document.getElementById("selectJugador");
   const img = document.getElementById("fotoJugador");
@@ -311,7 +332,7 @@ function inicializarFotoJugador() {
   const inputpeso = document.getElementById("peso");
   const inputpie = document.getElementById("pie");
 
-  const placeholder = "/sistemaIDV/img/jugadores/placeholder.png"; // imagen por defecto
+  //const placeholder = "/sistemaIDV/img/jugadores/placeholder.png";
 
   select.addEventListener("change", () => {
     const opt = select.selectedOptions[0];
@@ -492,23 +513,7 @@ function guardarPerfil() {
     });
 }
 
-/**cargatr */
-/*function cargarImagenBase64(url) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0);
-      resolve(canvas.toDataURL("image/png"));
-    };
-    img.onerror = reject;
-    img.src = url;
-  });
-}*/
+
 function cargarImagenBase64(url) {
   return new Promise((resolve) => {
     const img = new Image();
@@ -532,21 +537,6 @@ function cargarImagenBase64(url) {
   });
 }
 
-/*async function cargarImagenParaPDF(url) {
-
-  if (/^https?:\/\//i.test(url)) {
-    return url;
-  }
-
-  const res = await fetch(url);
-  const blob = await res.blob();
-
-  return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result);
-    reader.readAsDataURL(blob);
-  });
-}*/
 
 
 async function cargarImagenParaPDF(url) {
@@ -564,7 +554,7 @@ async function cargarImagenParaPDF(url) {
 
     return await new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result); 
+      reader.onloadend = () => resolve(reader.result);
       reader.onerror = reject;
       reader.readAsDataURL(blob);
     });
@@ -612,11 +602,7 @@ async function generarPDF(payload) {
   };
 
   let y = 15;
-  const logoPDF = await cargarImagenParaPDF("../img/escudoIdv.png"); 
-
-  //const fotoJugadorBase64 = await cargarImagenBase64(j.foto_url || "https://via.placeholder.com/40x50");
-  
-
+  const logoPDF = await cargarImagenParaPDF("../img/escudoIdv.png");
 
   /*  HEADER  */
   const dibujarHeader = () => {
@@ -680,34 +666,31 @@ async function generarPDF(payload) {
   });
 
   /*  FOTO PEQUEÑA  */
-const anchoFoto = 20;
-const altoFoto = 28;
-const xFoto = 120;
-const yFoto = 30;
+  const anchoFoto = 20;
+  const altoFoto = 20;
+  const xFoto = 120;
+  const yFoto = 30;
 
-// marco
-pdf.setDrawColor(90, 0, 120);
-pdf.setLineWidth(0.4);
-pdf.rect(xFoto - 1, yFoto - 1, anchoFoto + 2, altoFoto + 2);
+  // marco
+  pdf.setDrawColor(90, 0, 120);
+  pdf.setLineWidth(0.4);
+  pdf.rect(xFoto - 1, yFoto - 1, anchoFoto + 2, altoFoto + 2);
 
-// cargar imagen jugador
-const fotoJugadorPDF = await cargarImagenParaPDF(
-  j.foto_url || "https://via.placeholder.com/40x50"
-);
-
-if (fotoJugadorPDF) {
-  pdf.addImage(
-    fotoJugadorPDF,
-    "PNG", // usa PNG para evitar errores
-    xFoto,
-    yFoto,
-    anchoFoto,
-    altoFoto
+  // cargar imagen jugador
+  const fotoJugadorPDF = await cargarImagenParaPDF(
+    j.foto_url || "https://via.placeholder.com/40x50"
   );
-}
 
- 
-
+  if (fotoJugadorPDF) {
+    pdf.addImage(
+      fotoJugadorPDF,
+      "PNG", 
+      xFoto,
+      yFoto,
+      anchoFoto,
+      altoFoto
+    );
+  }
 
   /*  DATOS  */
   const xDatos = xFoto + anchoFoto + 8;
@@ -736,7 +719,7 @@ if (fotoJugadorPDF) {
   escribirDato("Jugador:", j.nombre_jugador, true);
   escribirDato("Fecha Nac.:", j.fecha_nacimiento);
   escribirDato("Demarcación:", j.demarcacion);
-  escribirDato("Peso:", j.peso ? `${j.peso} kg` : "");
+  escribirDato("Peso:", j.peso ? `${j.peso}` : "");
   escribirDato("Pie Dominante:", j.pie);
 
   y = Math.max(yObj, yFoto + altoFoto) + 10;
@@ -796,6 +779,10 @@ if (fotoJugadorPDF) {
     y += videoH;
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
 
+    const imgTestH = 22;   // alto de la imagen del test
+    const imgTestW = 22;   // ancho de la imagen del test
+
+
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       const test = datos[i];
       if (test?.video_url) {
@@ -809,6 +796,42 @@ if (fotoJugadorPDF) {
         pdf.setTextColor(...COLOR_TEXTO);
       }
     }
+
+    /*imagen  */
+    // ⬇️ espacio para la imagen del test
+y += imgTestH;
+lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
+
+for (let i = 0; i < TOTAL_COLUMNAS; i++) {
+  const test = datos[i];
+
+  if (test?.imagen_url) {
+    const imgTestPDF =  cargarImagenParaPDF(
+      test.imagen_url
+    );
+
+    if (imgTestPDF) {
+      const xImg =
+        startX +
+        labelW +
+        colW * i +
+        colW / 2 -
+        imgTestW / 2;
+
+      const yImg = y - imgTestH + 2;
+
+      pdf.addImage(
+        imgTestPDF,
+        "PNG",
+        xImg,
+        yImg,
+        imgTestW,
+        imgTestH
+      );
+    }
+  }
+}
+
 
     ["series", "rec", "vel", "carga"].forEach(f => {
       pdf.setFontSize(8);
