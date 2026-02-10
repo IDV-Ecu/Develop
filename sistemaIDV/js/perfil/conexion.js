@@ -631,33 +631,33 @@ async function generarPDF(payload) {
 
   // Foto del jugador y datos al lado derecho
   // =============================
-// FOTO MÁS PEQUEÑA Y AJUSTADA
+// =============================
+// FOTO PEQUEÑA DEFINITIVA
 // =============================
 
-const anchoFoto = 32;   // más pequeña
-const altoFoto = 42;    // proporcional
+const anchoFoto = 25;   // ahora sí pequeña
+const altoFoto = 35;    // proporcional
 
-const xFoto = 135;      // más a la derecha
-const yFoto = 32;       // misma altura
+const xFoto = 150;      // más a la derecha
+const yFoto = 30;       // alineada arriba
 
-// Marco morado más fino
+// Marco fino
 pdf.setDrawColor(90, 0, 120);
-pdf.setLineWidth(0.6);
-pdf.rect(xFoto - 2, yFoto - 2, anchoFoto + 4, altoFoto + 4);
+pdf.setLineWidth(0.5);
+pdf.rect(xFoto - 1.5, yFoto - 1.5, anchoFoto + 3, altoFoto + 3);
 
 // Imagen
 pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
-
-
 
 // =============================
 // DATOS A LA DERECHA
 // =============================
 
-const xDatos = 175;   // columna fija derecha
-let yDatos = yFoto + 5;
+const xDatos = 150;
+let yDatos = yFoto + altoFoto + 6;  // ahora los datos van debajo de la foto
 
 pdf.setFontSize(6);
+
 
 
   const escribirDato = (label, value) => {
