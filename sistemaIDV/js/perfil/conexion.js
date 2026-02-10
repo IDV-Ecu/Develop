@@ -546,6 +546,7 @@ async function cargarImagenParaPDF(url) {
 }
 
 
+
 async function generarPDF(payload) {
 
   const { jsPDF } = window.jspdf;
@@ -622,7 +623,39 @@ async function generarPDF(payload) {
     pdf.setDrawColor(...COLOR_MORADO);
     pdf.rect(119, 29, 22, 22);
     pdf.addImage(fotoJugadorPDF, "PNG", 120, 30, 20, 20);
-  }
+    }
+
+    /*  DATOS  */
+  const xDatos = xFoto + anchoFoto + 8;
+  let yDatos = yFoto;
+
+  pdf.setFontSize(6);
+
+  const escribirDato = (label, value, multiline = false) => {
+    pdf.setFont("helvetica", "bold");
+    pdf.text(label, xDatos, yDatos);
+
+    pdf.setFont("helvetica", "normal");
+
+    if (multiline) {
+      const lineas = pdf.splitTextToSize(value || "", 30);
+      const lineasFinal = lineas.slice(0, 2);
+      pdf.text(lineasFinal, xDatos + 22, yDatos);
+      yDatos += lineasFinal.length * 4;
+    } else {
+      pdf.text(value || "", xDatos + 22, yDatos);
+      yDatos += 5;
+    }
+  };
+
+  escribirDato("Categoría:", j.categoria);
+  escribirDato("Jugador:", j.nombre_jugador, true);
+  escribirDato("Fecha Nac.:", j.fecha_nacimiento);
+  escribirDato("Demarcación:", j.demarcacion);
+  escribirDato("Peso:", j.peso ? `${j.peso}` : "");
+  escribirDato("Pie Dominante:", j.pie);
+
+  y = Math.max(yObj, yFoto + altoFoto) + 10;
 
   /* ================= TABLAS ================= */
   const tablas = {};
