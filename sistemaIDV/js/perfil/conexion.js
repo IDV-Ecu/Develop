@@ -481,7 +481,9 @@ function guardarPerfil() {
         `.tabla-valoracion[data-tabla="${tabla}"] .test-info[data-col="${col}"]`
       )?.dataset.video || "",
 
-
+      imagen_url: document.querySelector(
+        `.tabla-valoracion[data-tabla="${tabla}"] .test-info[data-col="${col}"] img`
+      )?.src || "",
 
 
       id_jugador: jugadorSelect.value,
@@ -514,28 +516,6 @@ function guardarPerfil() {
 }
 
 
-function cargarImagenBase64(url) {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      canvas.width = img.width;
-      canvas.height = img.height;
-      canvas.getContext("2d").drawImage(img, 0, 0);
-      resolve(canvas.toDataURL("image/png"));
-    };
-    img.onerror = () => {
-      console.warn("No se pudo cargar la imagen:", url);
-      // Imagen vacía de 1x1 px para no romper el PDF
-      const canvas = document.createElement("canvas");
-      canvas.width = 1;
-      canvas.height = 1;
-      resolve(canvas.toDataURL("image/png"));
-    };
-    img.src = url;
-  });
-}
 
 
 
@@ -684,7 +664,7 @@ async function generarPDF(payload) {
   if (fotoJugadorPDF) {
     pdf.addImage(
       fotoJugadorPDF,
-      "PNG", 
+      "PNG",
       xFoto,
       yFoto,
       anchoFoto,
@@ -732,7 +712,8 @@ async function generarPDF(payload) {
     tablas[p.tabla].push(p);
   });
 
-  Object.keys(tablas).forEach(num => {
+ for (const num of Object.keys(tablas)) {
+
 
     const datos = tablas[num];
     if (!datos.length) return;
@@ -797,40 +778,38 @@ async function generarPDF(payload) {
       }
     }
 
-    /*imagen  */
-    // ⬇️ espacio para la imagen del test
-y += imgTestH;
-lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
+    y += imgTestH;
+    lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
 
-for (let i = 0; i < TOTAL_COLUMNAS; i++) {
-  const test = datos[i];
+    for (let i = 0; i < TOTAL_COLUMNAS; i++) {
+      const test = datos[i];
 
-  if (test?.imagen_url) {
-    const imgTestPDF =  cargarImagenParaPDF(
-      test.imagen_url
-    );
+      if (test?.imagen_url) {
 
-    if (imgTestPDF) {
-      const xImg =
-        startX +
-        labelW +
-        colW * i +
-        colW / 2 -
-        imgTestW / 2;
+        const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
 
-      const yImg = y - imgTestH + 2;
 
-      pdf.addImage(
-        imgTestPDF,
-        "PNG",
-        xImg,
-        yImg,
-        imgTestW,
-        imgTestH
-      );
+        if (imgTestPDF) {
+          const xImg =
+            startX +
+            labelW +
+            colW * i +
+            colW / 2 -
+            imgTestW / 2;
+
+          const yImg = y - imgTestH + 2;
+
+          pdf.addImage(
+            imgTestPDF,
+            "PNG",
+            xImg,
+            yImg,
+            imgTestW,
+            imgTestH
+          );
+        }
+      }
     }
-  }
-}
 
 
     ["series", "rec", "vel", "carga"].forEach(f => {
@@ -870,7 +849,7 @@ for (let i = 0; i < TOTAL_COLUMNAS; i++) {
     }
 
     y += 6;
-  });
+  };
 
   dibujarFooter();
   pdf.save("perfil_test_fisicos.pdf");
