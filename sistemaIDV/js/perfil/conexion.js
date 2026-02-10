@@ -762,36 +762,31 @@ async function generarPDF(payload) {
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
     y += rowH;
 
-  
-        // ===== FILA VIDEO =====
+      // ===== FILA VIDEO E IMAGEN (Mismo bloque) =====
+    const yInicioBloqueImagen = y; // Guardamos donde empieza para las líneas verticales
+
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       const test = datos[i];
+
+      // 1. Dibujar Texto "Ver video"
       if (test?.video_url) {
         pdf.setTextColor(0, 0, 255);
-        // Ajustamos la posición vertical del link para que esté centrado en su fila
         pdf.textWithLink(
           "Ver video",
           startX + labelW + colW * i + colW / 2,
-          y + 4, 
+          y + 4,
           { align: "center", url: test.video_url }
         );
         pdf.setTextColor(...COLOR_TEXTO);
       }
-    }
 
-    // Actualizamos 'y' para que la siguiente fila (la imagen) empiece debajo del texto
-    y += videoH; 
-    lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
-
-    // ===== FILA IMAGEN TEST =====
-    for (let i = 0; i < TOTAL_COLUMNAS; i++) {
-      const test = datos[i];
+      // 2. Dibujar Imagen justo debajo (sin línea intermedia)
       if (test?.imagen_url) {
         const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
         if (imgTestPDF) {
           const xImg = startX + labelW + colW * i + colW / 2 - imgTestW / 2;
-          // El yImg ahora empieza justo después de la línea horizontal del video
-          const yImg = y + 1; 
+          // Ajustamos yImg para que empiece un poco después del texto "Ver video"
+          const yImg = y + 6; 
 
           pdf.addImage(
             imgTestPDF,
@@ -805,8 +800,10 @@ async function generarPDF(payload) {
       }
     }
 
-    // IMPORTANTE: Sumamos el alto de la imagen a 'y' ANTES de dibujar la siguiente línea
-    y += imgTestH + 2; 
+    // Actualizamos 'y' sumando el espacio del video y de la imagen de una sola vez
+    y += videoH + imgTestH; 
+    
+    // Dibujamos la línea horizontal SOLAMENTE al final de la imagen
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
 
 
