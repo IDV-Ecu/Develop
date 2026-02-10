@@ -265,7 +265,7 @@ function normalizarNombre(nombre) {
 }
 
 // ===========================
-// Función para cargar jugadores
+// Cargar jugadores en el select
 // ===========================
 function cargarJugadores() {
   fetch(`${URL_API}?endpoint=jugadores`)
@@ -287,8 +287,8 @@ function cargarJugadores() {
         opt.dataset.peso = j.peso || "";
         opt.dataset.pie = j.pie || "";
 
-        // Guardamos el nombre del jugador para filtrar la imagen
-        opt.dataset.foto = j.nombre_jugador?.trim() || "";
+        // ⚡ Ahora usamos la URL directa de la foto
+        opt.dataset.foto = j.foto_url || "";
 
         select.appendChild(opt);
       });
@@ -297,7 +297,7 @@ function cargarJugadores() {
 }
 
 // ===========================
-// Función para inicializar foto usando nombre y probando formatos
+// Inicializar foto usando la URL directa de la API
 // ===========================
 function inicializarFotoJugador() {
   const select = document.getElementById("selectJugador");
@@ -311,7 +311,7 @@ function inicializarFotoJugador() {
   const inputpeso = document.getElementById("peso");
   const inputpie = document.getElementById("pie");
 
-  const formatos = ["jpg", "jpeg", "png", "webp"];
+  const placeholder = "/sistemaIDV/img/jugadores/placeholder.png"; // imagen por defecto
 
   select.addEventListener("change", () => {
     const opt = select.selectedOptions[0];
@@ -325,45 +325,17 @@ function inicializarFotoJugador() {
     inputpeso.value = opt.dataset.peso || "";
     inputpie.value = opt.dataset.pie || "";
 
-    const nombre = opt.dataset.foto;
-    if (!nombre) {
-      img.src = "";
-      cont.classList.add("oculto");
-      console.log("No hay foto disponible para este jugador.");
-      return;
+    const fotoURL = opt.dataset.foto;
+
+    if (fotoURL) {
+      img.src = fotoURL;
+      cont.classList.remove("oculto");
+      console.log("Imagen cargada:", fotoURL);
+    } else {
+      img.src = placeholder;
+      cont.classList.remove("oculto");
+      console.warn("No hay foto disponible para este jugador.");
     }
-
-    let encontrado = false;
-
-    const probarFormato = (i) => {
-      if (i >= formatos.length) {
-        img.src = "";
-        cont.classList.add("oculto");
-        console.warn("No se encontró ninguna imagen para:", nombre);
-        return;
-      }
-
-      // Construimos la ruta usando encodeURIComponent para manejar espacios
-      const ruta = `/sistemaIDV/img/jugadores/${encodeURIComponent(nombre)}.${formatos[i]}?v=${Date.now()}`;
-      console.log("Probando imagen:", ruta);
-
-      const test = new Image();
-      test.onload = () => {
-        if (!encontrado) {
-          encontrado = true;
-          img.src = ruta;
-          cont.classList.remove("oculto");
-          console.log("Imagen cargada:", ruta);
-        }
-      };
-      test.onerror = () => {
-        console.warn("No existe:", ruta);
-        probarFormato(i + 1);
-      };
-      test.src = ruta;
-    };
-
-    probarFormato(0);
   });
 }
 
