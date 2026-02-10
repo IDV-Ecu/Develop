@@ -560,7 +560,7 @@ async function generarPDF(payload) {
 
   const lineaHorizontal = (x1, x2, y) => {
     pdf.setDrawColor(...COLOR_MORADO);
-    pdf.setLineWidth(0.4);
+    pdf.setLineWidth(0.15);
     pdf.line(x1, y, x2, y);
   };
 
@@ -728,14 +728,14 @@ async function generarPDF(payload) {
     const imgTestW = 18;
 
 
-    pdf.setFontSize(10);
+    pdf.setFontSize(7);
     pdf.setFont("helvetica", "bold");
     pdf.setTextColor(0, 0, 0);
     pdf.text(nombreTabla, 105, y, { align: "center" });
     pdf.setTextColor(...COLOR_TEXTO);
     y += 5;
 
-    pdf.setFontSize(9);
+    pdf.setFontSize(7);
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       pdf.text(String(i + 1), startX + labelW + colW * i + colW / 2, y + 4, { align: "center" });
     }
@@ -794,14 +794,11 @@ async function generarPDF(payload) {
         }
       }
     }
-
     // Actualizamos 'y' sumando el espacio del video y de la imagen de una sola vez
     y += videoH + imgTestH;
 
     // Dibujamos la línea horizontal SOLAMENTE al final de la imagen
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
-
-
 
     for (const f of ["series", "rec", "vel", "carga"]) {
 
@@ -825,19 +822,19 @@ async function generarPDF(payload) {
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
     const tablaBottom = y;
 
-    pdf.setFontSize(10);
+    pdf.setFontSize(8);
     pdf.text(
-      `GR${num}`,
+      nombreTabla,
       startX + labelW / 2,
       tablaTop + (tablaBottom - tablaTop) / 2,
       { align: "center" }
     );
 
-    lineaVertical(startX, tablaTop, tablaBottom);
-    lineaVertical(startX + labelW, tablaTop, tablaBottom);
+    //lineaVertical(startX, tablaTop, tablaBottom);
+    //lineaVertical(startX + labelW, tablaTop, tablaBottom);
 
     for (let i = 0; i <= TOTAL_COLUMNAS; i++) {
-      lineaVertical(startX + labelW + colW * i, tablaTop, tablaBottom);
+      //lineaVertical(startX + labelW + colW * i, tablaTop, tablaBottom);
     }
 
     y += 6;
