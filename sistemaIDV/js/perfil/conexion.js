@@ -309,7 +309,7 @@ function inicializarFotoJugador() {
   const inputpeso = document.getElementById("peso");
   const inputpie = document.getElementById("pie");
 
-  const formatos = ["jpg", "png", "webp"];
+  const formatos = ["jpg", "png", "webp", "jpeg"];
 
   select.addEventListener("change", () => {
     const opt = select.selectedOptions[0];
