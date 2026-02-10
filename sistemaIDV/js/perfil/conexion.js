@@ -532,7 +532,7 @@ function cargarImagenBase64(url) {
   });
 }
 
-async function cargarImagenParaPDF(url) {
+/*async function cargarImagenParaPDF(url) {
 
   if (/^https?:\/\//i.test(url)) {
     return url;
@@ -546,20 +546,35 @@ async function cargarImagenParaPDF(url) {
     reader.onloadend = () => resolve(reader.result);
     reader.readAsDataURL(blob);
   });
+}*/
+
+
+async function cargarImagenParaPDF(url) {
+  try {
+    const response = await fetch(url, {
+      mode: "cors",
+      cache: "no-cache"
+    });
+
+    if (!response.ok) {
+      throw new Error("No se pudo cargar la imagen");
+    }
+
+    const blob = await response.blob();
+
+    return await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result); 
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+
+  } catch (error) {
+    console.warn("Error cargando imagen:", url, error);
+    return null;
+  }
 }
 
-function cargarImagenComoElemento(url) {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.onload = () => resolve(img);
-    img.onerror = () => {
-      console.warn("No se pudo cargar imagen jugador:", url);
-      resolve(null);
-    };
-    img.src = url;
-  });
-}
 
 
 
@@ -597,27 +612,10 @@ async function generarPDF(payload) {
   };
 
   let y = 15;
-  const logoPDF = await cargarImagenParaPDF("../img/escudoIdv.png");
+  const logoPDF = await cargarImagenParaPDF("../img/escudoIdv.png"); 
 
   //const fotoJugadorBase64 = await cargarImagenBase64(j.foto_url || "https://via.placeholder.com/40x50");
-  /*const fotoJugadorPDF = await cargarImagenParaPDF(
-    j.foto_url || "https://via.placeholder.com/40x50"
-  );*/
-  const imgJugador = await cargarImagenComoElemento(
-    j.foto_url || "https://via.placeholder.com/40x50"
-  );
-
-  if (imgJugador) {
-    pdf.addImage(
-      imgJugador,   // 👈 ELEMENTO IMG, NO URL
-      "JPEG",
-      xFoto,
-      yFoto,
-      anchoFoto,
-      altoFoto
-    );
-  }
-
+  
 
 
   /*  HEADER  */
@@ -681,18 +679,34 @@ async function generarPDF(payload) {
     yObj += lineas.length * 4;
   });
 
-  /*  FOTO PEQUEÑA ¿ */
-  const anchoFoto = 20;
-  const altoFoto = 28;
-  const xFoto = 120;
-  const yFoto = 30;
+  /*  FOTO PEQUEÑA  */
+const anchoFoto = 20;
+const altoFoto = 28;
+const xFoto = 120;
+const yFoto = 30;
 
-  pdf.setDrawColor(90, 0, 120);
-  pdf.setLineWidth(0.4);
-  pdf.rect(xFoto - 1, yFoto - 1, anchoFoto + 2, altoFoto + 2);
+// marco
+pdf.setDrawColor(90, 0, 120);
+pdf.setLineWidth(0.4);
+pdf.rect(xFoto - 1, yFoto - 1, anchoFoto + 2, altoFoto + 2);
 
-  //pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
-  pdf.addImage(fotoJugadorPDF, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
+// cargar imagen jugador
+const fotoJugadorPDF = await cargarImagenParaPDF(
+  j.foto_url || "https://via.placeholder.com/40x50"
+);
+
+if (fotoJugadorPDF) {
+  pdf.addImage(
+    fotoJugadorPDF,
+    "PNG", // usa PNG para evitar errores
+    xFoto,
+    yFoto,
+    anchoFoto,
+    altoFoto
+  );
+}
+
+ 
 
 
   /*  DATOS  */
