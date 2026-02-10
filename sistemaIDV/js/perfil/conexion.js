@@ -330,7 +330,7 @@ function inicializarFotoJugador() {
     if (fotoURL) {
       img.src = fotoURL;
       cont.classList.remove("oculto");
-      
+
     } else {
       img.src = placeholder;
       cont.classList.remove("oculto");
@@ -532,6 +532,23 @@ function cargarImagenBase64(url) {
   });
 }
 
+async function cargarImagenParaPDF(url) {
+
+  if (/^https?:\/\//i.test(url)) {
+    return url;
+  }
+
+  const res = await fetch(url);
+  const blob = await res.blob();
+
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+}
+
+
 async function generarPDF(payload) {
 
   const { jsPDF } = window.jspdf;
@@ -567,10 +584,16 @@ async function generarPDF(payload) {
 
   let y = 15;
 
-  const logoBase64 = await cargarImagenBase64("https://idv-ecu.github.io/sistemaIDV/img/escudoIdv.png");
-  const fotoJugadorBase64 = await cargarImagenBase64(j.foto_url || "https://via.placeholder.com/40x50");
+  //const logoBase64 = await cargarImagenBase64("https://idv-ecu.github.io/sistemaIDV/img/escudoIdv.png");
+  const logoPDF = await cargarImagenParaPDF("./img/escudoIdv.png");
 
-  /* ================= HEADER ================= */
+  //const fotoJugadorBase64 = await cargarImagenBase64(j.foto_url || "https://via.placeholder.com/40x50");
+  const fotoJugadorPDF = await cargarImagenParaPDF(
+    j.foto_url || "https://via.placeholder.com/40x50"
+  );
+
+
+  /*  HEADER  */
   const dibujarHeader = () => {
     pdf.setFillColor(0, 0, 200);
     pdf.rect(0, 0, 210, 22, "F");
@@ -578,7 +601,7 @@ async function generarPDF(payload) {
     pdf.setFillColor(0, 0, 0);
     pdf.triangle(160, 0, 210, 0, 210, 20, "F");
 
-    pdf.addImage(logoBase64, "PNG", 188, 1, 18, 18);
+    pdf.addImage(logoPDF, "PNG", 188, 1, 18, 18);
 
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(14);
@@ -611,7 +634,7 @@ async function generarPDF(payload) {
   dibujarHeader();
   y = 30;
 
-  /* ================= OBJETIVOS ================= */
+  /*  OBJETIVOS  */
   const colObjetivos = 14;
   let yObj = y;
 
@@ -631,7 +654,7 @@ async function generarPDF(payload) {
     yObj += lineas.length * 4;
   });
 
-  /* ================= FOTO PEQUEÑA ================= */
+  /*  FOTO PEQUEÑA ¿ */
   const anchoFoto = 20;
   const altoFoto = 28;
   const xFoto = 120;
@@ -641,9 +664,11 @@ async function generarPDF(payload) {
   pdf.setLineWidth(0.4);
   pdf.rect(xFoto - 1, yFoto - 1, anchoFoto + 2, altoFoto + 2);
 
-  pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
+  //pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
+  pdf.addImage(fotoJugadorPDF, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
 
-  /* ================= DATOS ================= */
+
+  /*  DATOS  */
   const xDatos = xFoto + anchoFoto + 8;
   let yDatos = yFoto;
 
@@ -667,7 +692,7 @@ async function generarPDF(payload) {
   };
 
   escribirDato("Categoría:", j.categoria);
-  escribirDato("Jugador:", j.nombre_jugador, true); // 👈 ahora máximo 2 líneas
+  escribirDato("Jugador:", j.nombre_jugador, true);
   escribirDato("Fecha Nac.:", j.fecha_nacimiento);
   escribirDato("Demarcación:", j.demarcacion);
   escribirDato("Peso:", j.peso ? `${j.peso} kg` : "");
@@ -675,7 +700,7 @@ async function generarPDF(payload) {
 
   y = Math.max(yObj, yFoto + altoFoto) + 10;
 
-  /* ================= TABLAS ================= */
+  /*  TABLAS  */
   const tablas = {};
 
   payload.forEach(p => {
