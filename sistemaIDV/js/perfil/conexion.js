@@ -339,7 +339,9 @@ function inicializarFotoJugador() {
       }
 
       // Construimos la ruta final con encodeURIComponent
-      const ruta = `img/jugadores/${encodeURIComponent(nombre)}.${formatos[i]}`;
+      //const ruta = `img/jugadores/${encodeURIComponent(nombre)}.${formatos[i]}`;
+      const ruta = `sistemaIDV/img/jugadores/${encodeURIComponent(nombre)}.${formatos[i]}`;
+
       const test = new Image();
 
       test.onload = () => {
