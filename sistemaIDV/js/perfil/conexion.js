@@ -654,8 +654,7 @@ async function generarPDF(payload) {
   const yFoto = 30;
 
   // marco
-  pdf.setDrawColor(90, 0, 120);
-  pdf.setLineWidth(0.4);
+  
   pdf.rect(xFoto - 1, yFoto - 1, anchoFoto + 2, altoFoto + 2);
 
   // cargar imagen jugador
