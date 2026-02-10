@@ -585,7 +585,7 @@ async function generarPDF(payload) {
   let y = 15;
 
   //const logoBase64 = await cargarImagenBase64("https://idv-ecu.github.io/sistemaIDV/img/escudoIdv.png");
-  const logoPDF = await cargarImagenParaPDF("./img/escudoIdv.png");
+  const logoPDF = await cargarImagenParaPDF("../img/escudoIdv.png"); 
 
   //const fotoJugadorBase64 = await cargarImagenBase64(j.foto_url || "https://via.placeholder.com/40x50");
   const fotoJugadorPDF = await cargarImagenParaPDF(
