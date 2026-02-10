@@ -263,12 +263,10 @@ function normalizarNombre(nombre) {
   nombre = nombre.replace(/\s+/g, " ").trim();
   return nombre;
 }
-
 function cargarJugadores() {
   fetch(`${URL_API}?endpoint=jugadores`)
     .then(r => r.json())
     .then(data => {
-
       const select = document.getElementById("selectJugador");
       select.innerHTML = '<option value="">-- Seleccione jugador --</option>';
 
@@ -296,6 +294,16 @@ function cargarJugadores() {
     .finally(cargaLista);
 }
 
+// Normalización de nombre de jugador
+function normalizarNombre(nombre) {
+  if (!nombre) return "";
+  return nombre
+    .normalize("NFD") // quita acentos
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "_") // espacios por _
+    .replace(/[^\w.-]/g, "") // caracteres inválidos
+    .toLowerCase(); // minúsculas
+}
 
 function inicializarFotoJugador() {
   const select = document.getElementById("selectJugador");
@@ -325,6 +333,7 @@ function inicializarFotoJugador() {
     if (!opt.dataset.foto) {
       img.src = "";
       cont.classList.add("oculto");
+      console.log("No hay foto disponible para este jugador.");
       return;
     }
 
@@ -335,32 +344,32 @@ function inicializarFotoJugador() {
       if (i >= formatos.length) {
         img.src = "";
         cont.classList.add("oculto");
+        console.warn("No se encontró ninguna imagen para:", nombre);
         return;
       }
 
-      // Construimos la ruta final con encodeURIComponent
-      //const ruta = `img/jugadores/${encodeURIComponent(nombre)}.${formatos[i]}`;
-      const ruta = `sistemaIDV/img/jugadores/${encodeURIComponent(nombre)}.${formatos[i]}`;
+      const ruta = `/sistemaIDV/img/jugadores/${encodeURIComponent(nombre)}.${formatos[i]}?v=${Date.now()}`;
+      console.log("Probando imagen:", ruta);
 
       const test = new Image();
-
       test.onload = () => {
         if (encontrado) return;
         encontrado = true;
         img.src = ruta;
         cont.classList.remove("oculto");
+        console.log("Imagen cargada:", ruta);
       };
-
       test.onerror = () => {
-        if (!encontrado) probarFormato(i + 1);
+        console.warn("No existe:", ruta);
+        probarFormato(i + 1);
       };
-
       test.src = ruta;
     };
 
     probarFormato(0);
   });
 }
+
 
 
 /*function cargarJugadores() {
