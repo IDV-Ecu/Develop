@@ -762,58 +762,52 @@ async function generarPDF(payload) {
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
     y += rowH;
 
-    // ===== FILA VIDEO =====
+  
+        // ===== FILA VIDEO =====
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       const test = datos[i];
-
       if (test?.video_url) {
         pdf.setTextColor(0, 0, 255);
+        // Ajustamos la posición vertical del link para que esté centrado en su fila
         pdf.textWithLink(
           "Ver video",
           startX + labelW + colW * i + colW / 2,
-          y + 5,
+          y + 4, 
           { align: "center", url: test.video_url }
         );
         pdf.setTextColor(...COLOR_TEXTO);
       }
     }
 
-    y += videoH;
+    // Actualizamos 'y' para que la siguiente fila (la imagen) empiece debajo del texto
+    y += videoH; 
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
 
+    // ===== FILA IMAGEN TEST =====
+    for (let i = 0; i < TOTAL_COLUMNAS; i++) {
+      const test = datos[i];
+      if (test?.imagen_url) {
+        const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
+        if (imgTestPDF) {
+          const xImg = startX + labelW + colW * i + colW / 2 - imgTestW / 2;
+          // El yImg ahora empieza justo después de la línea horizontal del video
+          const yImg = y + 1; 
 
-
-   // ===== FILA IMAGEN TEST =====
-for (let i = 0; i < TOTAL_COLUMNAS; i++) {
-  const test = datos[i];
-
-  if (test?.imagen_url) {
-    const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
-
-    if (imgTestPDF) {
-      const xImg =
-        startX +
-        labelW +
-        colW * i +
-        colW / 2 -
-        imgTestW / 2;
-
-      const yImg = y + 2;
-
-      pdf.addImage(
-        imgTestPDF,
-        "PNG",
-        xImg,
-        yImg,
-        imgTestW,
-        imgTestH
-      );
+          pdf.addImage(
+            imgTestPDF,
+            "PNG",
+            xImg,
+            yImg,
+            imgTestW,
+            imgTestH
+          );
+        }
+      }
     }
-  }
-}
 
-y += imgTestH + 4;
-lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
+    // IMPORTANTE: Sumamos el alto de la imagen a 'y' ANTES de dibujar la siguiente línea
+    y += imgTestH + 2; 
+    lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
 
 
 
