@@ -634,24 +634,23 @@ async function generarPDF(payload) {
   });
 
   // =============================
-  // FOTO
+  // FOTO (izquierda)
   // =============================
   const anchoFoto = 25;
   const altoFoto = 35;
-  const xFoto = 150;
+  const xFoto = 120;
   const yFoto = 30;
 
   pdf.setDrawColor(90, 0, 120);
   pdf.setLineWidth(0.5);
   pdf.rect(xFoto - 1.5, yFoto - 1.5, anchoFoto + 3, altoFoto + 3);
-
   pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
 
   // =============================
-  // DATOS
+  // DATOS (al lado derecho de la foto)
   // =============================
-  const xDatos = 150;
-  let yDatos = yFoto + altoFoto + 6;
+  const xDatos = xFoto + anchoFoto + 10;
+  let yDatos = yFoto;
 
   pdf.setFontSize(6);
 
@@ -659,8 +658,8 @@ async function generarPDF(payload) {
     pdf.setFont("helvetica", "bold");
     pdf.text(label, xDatos, yDatos);
     pdf.setFont("helvetica", "normal");
-    pdf.text(value || "", xDatos + 25, yDatos);
-    yDatos += 4;
+    pdf.text(value || "", xDatos + 22, yDatos);
+    yDatos += 5;
   };
 
   escribirDato("Categoría:", j.categoria);
@@ -670,7 +669,8 @@ async function generarPDF(payload) {
   escribirDato("Peso:", j.peso ? `${j.peso} kg` : "");
   escribirDato("Pie Dominante:", j.pie);
 
-  y = Math.max(yObj, yDatos) + 8;
+  // Las tablas comienzan debajo de la foto
+  y = Math.max(yObj, yFoto + altoFoto) + 10;
 
   // =============================
   // TABLAS
