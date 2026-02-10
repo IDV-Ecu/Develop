@@ -532,16 +532,11 @@ function cargarImagenBase64(url) {
   });
 }
 
-
-
 async function generarPDF(payload) {
-
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF("p", "mm", "a4");
 
-  /* parametros */
   const TITULOA = "ANALITICA";
-  //const TITULOA = sessionStorage.getItem("area")?.toUpperCase() || "SISTEMA";
   const PIEPAGINA = "Quito-Ecuador IDV";
   const COLOR_MORADO = [90, 0, 120];
   const COLOR_VERTICAL = [200, 200, 200];
@@ -571,32 +566,19 @@ async function generarPDF(payload) {
 
   let y = 15;
 
-  //const logoBase64 = await cargarImagenBase64("img/escudoIdv.png");
-
-  // URL segura para el logo
-const logoBase64 = await cargarImagenBase64("https://idv-ecu.github.io/sistemaIDV/img/escudoIdv.png");
-
-// Foto del jugador
-const fotoJugadorBase64 = await cargarImagenBase64(j.foto_url);
-
+  // Cargar logo y foto del jugador
+  const logoBase64 = await cargarImagenBase64("https://idv-ecu.github.io/sistemaIDV/img/escudoIdv.png");
+  const fotoJugadorBase64 = await cargarImagenBase64(j.foto_url || "https://via.placeholder.com/40x50");
 
   /* HEADER */
   const dibujarHeader = () => {
-    // Fondo azul
     pdf.setFillColor(0, 0, 200);
     pdf.rect(0, 0, 210, 22, "F");
 
-    // Triángulo negro
     pdf.setFillColor(0, 0, 0);
     pdf.triangle(160, 0, 210, 0, 210, 20, "F");
 
-
-    // LOGO
-    //pdf.addImage(logoBase64, "PNG", 188, 1, 18, 18);
-    pdf.addImage(logoBase64, "PNG", 188, 1, 18, 18);  // Header
-pdf.addImage(fotoJugadorBase64, "JPEG", 14, y, 30, 40); // Jugador al lado de datos
-
-
+    pdf.addImage(logoBase64, "PNG", 188, 1, 18, 18);
 
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(14);
@@ -610,13 +592,10 @@ pdf.addImage(fotoJugadorBase64, "JPEG", 14, y, 30, 40); // Jugador al lado de da
     pdf.setFont("helvetica", "normal");
     pdf.setFontSize(6);
     pdf.setTextColor(200, 200, 200);
-    pdf.text(j.fecha, 10, 17);
-
+    pdf.text(j.fecha || "", 10, 17);
   };
 
-  /* FOOTER */
   const dibujarFooter = () => {
-
     pdf.setFillColor(0, 0, 200);
     pdf.rect(0, 287, 210, 10, "F");
 
@@ -626,94 +605,56 @@ pdf.addImage(fotoJugadorBase64, "JPEG", 14, y, 30, 40); // Jugador al lado de da
     pdf.setFont("helvetica", "normal");
     pdf.setFontSize(8);
     pdf.setTextColor(255, 255, 255);
-
     pdf.text(PIEPAGINA, 5, 293);
   };
-
 
   dibujarHeader();
   y = 30;
 
-  const colIzq = 14;
-  const xDerecha = 195;
-
-  /* DATOS */
-  const xLabel = 168;
-  const xValue = 150;
-  const maxWidthValue = 15;
-
+  // Objetivos a la izquierda
+  const colObjetivos = 14;
   let yObj = y;
-
   const objetivos = $('#selectTest').select2('data').map(o => o.text);
 
   pdf.setTextColor(0, 0, 0);
   pdf.setFontSize(4);
   pdf.setFont("helvetica", "bold");
-  pdf.text("Objetivos:", colIzq, yObj);
+  pdf.text("Objetivos:", colObjetivos, yObj);
   yObj += 4;
 
   pdf.setFont("helvetica", "normal");
   objetivos.forEach(obj => {
     const lineas = pdf.splitTextToSize(`- ${obj}`, 90);
-    pdf.text(lineas, colIzq, yObj);
+    pdf.text(lineas, colObjetivos, yObj);
     yObj += lineas.length * 4;
   });
 
-  /* DATOS DEL JUGADOR */
-  let yDatos = y;
+  // Foto del jugador y datos al lado derecho
+  const xFoto = 130, yFoto = y, anchoFoto = 40, altoFoto = 50;
+  pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
 
+  const xDatos = xFoto + anchoFoto + 5; // 5mm de separación
+  let yDatos = yFoto;
   pdf.setFontSize(5);
 
-  // Categoría
-  pdf.setFont("helvetica", "bold");
-  pdf.text("Categoría:", xLabel, yDatos);
-  pdf.setFont("helvetica", "normal");
-  pdf.text(j.categoria || "", xDerecha, yDatos, { align: "right" });
-  yDatos += 4;
+  const escribirDato = (label, value) => {
+    pdf.setFont("helvetica", "bold");
+    pdf.text(label, xDatos, yDatos);
+    pdf.setFont("helvetica", "normal");
+    pdf.text(value || "", xDatos + 25, yDatos);
+    yDatos += 4;
+  };
 
-  // Jugador
-  pdf.setFont("helvetica", "bold");
-  pdf.text("Jugador:", xLabel, yDatos);
-  pdf.setFont("helvetica", "normal");
-  const nombreJugador = pdf.splitTextToSize(
-    j.nombre_jugador || "",
-    maxWidthValue
-  );
-  pdf.text(nombreJugador, xDerecha, yDatos, { align: "right" }
-  );
-  yDatos += nombreJugador.length * 4;
+  escribirDato("Categoría:", j.categoria);
+  escribirDato("Jugador:", j.nombre_jugador);
+  escribirDato("Fecha Nac.:", j.fecha_nacimiento);
+  escribirDato("Demarcación:", j.demarcacion);
+  escribirDato("Peso:", j.peso ? `${j.peso} kg` : "");
+  escribirDato("Pie Dominante:", j.pie);
 
-  // Fecha Nacimiento
-  pdf.setFont("helvetica", "bold");
-  pdf.text("Fecha Nac.:", xLabel, yDatos);
-  pdf.setFont("helvetica", "normal");
-  pdf.text(j.fecha_nacimiento || "", xDerecha, yDatos, { align: "right" });
-  yDatos += 4;
-
-  // Demarcación
-  pdf.setFont("helvetica", "bold");
-  pdf.text("Demarcación:", xLabel, yDatos);
-  pdf.setFont("helvetica", "normal");
-  pdf.text(j.demarcacion || "", xDerecha, yDatos, { align: "right" });
-  yDatos += 4;
-
-  // Peso
-  pdf.setFont("helvetica", "bold");
-  pdf.text("Peso:", xLabel, yDatos);
-  pdf.setFont("helvetica", "normal");
-  pdf.text(j.peso ? `${j.peso} ` : "", xDerecha, yDatos, { align: "right" });
-  yDatos += 5;
-
-  // Pie
-  pdf.setFont("helvetica", "bold");
-  pdf.text("Pie Dominante:", xLabel, yDatos);
-  pdf.setFont("helvetica", "normal");
-  pdf.text(j.pie || "", xDerecha, yDatos, { align: "right" });
-  yDatos += 5;
   y = Math.max(yObj, yDatos) + 8;
 
-
-  /* AGRUPAR TABLAS */
+  // Tablas
   const tablas = {};
   payload.forEach(p => {
     if (!tablas[p.tabla]) tablas[p.tabla] = [];
@@ -724,7 +665,7 @@ pdf.addImage(fotoJugadorBase64, "JPEG", 14, y, 30, 40); // Jugador al lado de da
     const datos = tablas[num];
     if (!datos.length) return;
     const nombreTabla = TITULOS_TABLAS[num] || "VALORACIÓN";
-    /* configuracion de la tabla*/
+
     const TOTAL_COLUMNAS = 4;
     const startX = 14;
     const labelW = 24;
@@ -732,51 +673,29 @@ pdf.addImage(fotoJugadorBase64, "JPEG", 14, y, 30, 40); // Jugador al lado de da
     const rowH = 6;
     const videoH = 18;
 
-    /* TITULO */
     pdf.setFontSize(12);
     pdf.setFont("helvetica", "bold");
     pdf.setTextColor(0, 0, 0);
-
-    pdf.text(
-      nombreTabla,
-      105,
-      y,
-      { align: "center" }
-    );
-
+    pdf.text(nombreTabla, 105, y, { align: "center" });
     pdf.setTextColor(...COLOR_TEXTO);
     y += 6;
 
-    /* NUMEROS */
     pdf.setFontSize(9);
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
-      pdf.text(
-        String(i + 1),
-        startX + labelW + colW * i + colW / 2,
-        y + 4,
-        { align: "center" }
-      );
+      pdf.text(String(i + 1), startX + labelW + colW * i + colW / 2, y + 4, { align: "center" });
     }
-
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
     const tablaTop = y;
     y += rowH;
-    /* BLOQUE C */
+
     pdf.setFontSize(7);
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       const test = datos[i];
-      pdf.text(
-        test?.bloquec || "",
-        startX + labelW + colW * i + colW / 2,
-        y + 4,
-        { align: "center", maxWidth: colW - 4 }
-      );
+      pdf.text(test?.bloquec || "", startX + labelW + colW * i + colW / 2, y + 4, { align: "center", maxWidth: colW - 4 });
     }
-
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
     y += rowH;
 
-    /* VIDEO */
     y += videoH;
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
 
@@ -784,31 +703,18 @@ pdf.addImage(fotoJugadorBase64, "JPEG", 14, y, 30, 40); // Jugador al lado de da
       const test = datos[i];
       if (test?.video_url) {
         pdf.setTextColor(0, 0, 255);
-        pdf.textWithLink(
-          "Ver video",
-          startX + labelW + colW * i + colW / 2,
-          y - videoH / 2,
-          { align: "center", url: test.video_url }
-        );
+        pdf.textWithLink("Ver video", startX + labelW + colW * i + colW / 2, y - videoH / 2, { align: "center", url: test.video_url });
         pdf.setTextColor(...COLOR_TEXTO);
       }
     }
 
-    /* FILAS */
     ["series", "rec", "vel", "carga"].forEach(f => {
       pdf.setFontSize(8);
       pdf.text(f.toUpperCase(), startX + 2, y + 4);
-
       for (let i = 0; i < TOTAL_COLUMNAS; i++) {
         const test = datos[i];
-        pdf.text(
-          test ? String(test[f] || "") : "",
-          startX + labelW + colW * i + colW / 2,
-          y + 4,
-          { align: "center" }
-        );
+        pdf.text(test ? String(test[f] || "") : "", startX + labelW + colW * i + colW / 2, y + 4, { align: "center" });
       }
-
       lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
       y += rowH;
     });
@@ -817,17 +723,10 @@ pdf.addImage(fotoJugadorBase64, "JPEG", 14, y, 30, 40); // Jugador al lado de da
     const tablaBottom = y;
 
     pdf.setFontSize(10);
-    pdf.text(
-      `GR${num}`,
-      startX + labelW / 2,
-      tablaTop + (tablaBottom - tablaTop) / 2,
-      { align: "center" }
-    );
+    pdf.text(`GR${num}`, startX + labelW / 2, tablaTop + (tablaBottom - tablaTop) / 2, { align: "center" });
 
-    /* LINEAS VERTICALES */
     lineaVertical(startX, tablaTop, tablaBottom);
     lineaVertical(startX + labelW, tablaTop, tablaBottom);
-
     for (let i = 0; i <= TOTAL_COLUMNAS; i++) {
       lineaVertical(startX + labelW + colW * i, tablaTop, tablaBottom);
     }
@@ -836,6 +735,5 @@ pdf.addImage(fotoJugadorBase64, "JPEG", 14, y, 30, 40); // Jugador al lado de da
   });
 
   dibujarFooter();
-
   pdf.save("perfil_test_fisicos.pdf");
 }
