@@ -570,7 +570,7 @@ async function generarPDF(payload) {
   const logoBase64 = await cargarImagenBase64("https://idv-ecu.github.io/sistemaIDV/img/escudoIdv.png");
   const fotoJugadorBase64 = await cargarImagenBase64(j.foto_url || "https://via.placeholder.com/40x50");
 
-  /* HEADER */
+  /* ================= HEADER ================= */
   const dibujarHeader = () => {
     pdf.setFillColor(0, 0, 200);
     pdf.rect(0, 0, 210, 22, "F");
@@ -611,9 +611,7 @@ async function generarPDF(payload) {
   dibujarHeader();
   y = 30;
 
-  // =============================
-  // OBJETIVOS
-  // =============================
+  /* ================= OBJETIVOS ================= */
   const colObjetivos = 14;
   let yObj = y;
 
@@ -633,48 +631,51 @@ async function generarPDF(payload) {
     yObj += lineas.length * 4;
   });
 
-  // =============================
-  // FOTO (izquierda)
-  // =============================
-  const anchoFoto = 25;
-  const altoFoto = 35;
+  /* ================= FOTO PEQUEÑA ================= */
+  const anchoFoto = 20;
+  const altoFoto = 28;
   const xFoto = 120;
   const yFoto = 30;
 
   pdf.setDrawColor(90, 0, 120);
-  pdf.setLineWidth(0.5);
-  pdf.rect(xFoto - 1.5, yFoto - 1.5, anchoFoto + 3, altoFoto + 3);
+  pdf.setLineWidth(0.4);
+  pdf.rect(xFoto - 1, yFoto - 1, anchoFoto + 2, altoFoto + 2);
+
   pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
 
-  // =============================
-  // DATOS (al lado derecho de la foto)
-  // =============================
-  const xDatos = xFoto + anchoFoto + 10;
+  /* ================= DATOS ================= */
+  const xDatos = xFoto + anchoFoto + 8;
   let yDatos = yFoto;
 
   pdf.setFontSize(6);
 
-  const escribirDato = (label, value) => {
+  const escribirDato = (label, value, multiline = false) => {
     pdf.setFont("helvetica", "bold");
     pdf.text(label, xDatos, yDatos);
+
     pdf.setFont("helvetica", "normal");
-    pdf.text(value || "", xDatos + 22, yDatos);
-    yDatos += 5;
+
+    if (multiline) {
+      const lineas = pdf.splitTextToSize(value || "", 30);
+      const lineasFinal = lineas.slice(0, 2);
+      pdf.text(lineasFinal, xDatos + 22, yDatos);
+      yDatos += lineasFinal.length * 4;
+    } else {
+      pdf.text(value || "", xDatos + 22, yDatos);
+      yDatos += 5;
+    }
   };
 
   escribirDato("Categoría:", j.categoria);
-  escribirDato("Jugador:", j.nombre_jugador);
+  escribirDato("Jugador:", j.nombre_jugador, true); // 👈 ahora máximo 2 líneas
   escribirDato("Fecha Nac.:", j.fecha_nacimiento);
   escribirDato("Demarcación:", j.demarcacion);
   escribirDato("Peso:", j.peso ? `${j.peso} kg` : "");
   escribirDato("Pie Dominante:", j.pie);
 
-  // Las tablas comienzan debajo de la foto
   y = Math.max(yObj, yFoto + altoFoto) + 10;
 
-  // =============================
-  // TABLAS
-  // =============================
+  /* ================= TABLAS ================= */
   const tablas = {};
 
   payload.forEach(p => {
@@ -785,4 +786,5 @@ async function generarPDF(payload) {
   dibujarFooter();
   pdf.save("perfil_test_fisicos.pdf");
 }
+
 
