@@ -330,7 +330,7 @@ function inicializarFotoJugador() {
     if (fotoURL) {
       img.src = fotoURL;
       cont.classList.remove("oculto");
-      console.log("Imagen cargada:", fotoURL);
+      
     } else {
       img.src = placeholder;
       cont.classList.remove("oculto");
@@ -493,7 +493,7 @@ function guardarPerfil() {
 }
 
 /**cargatr */
-function cargarImagenBase64(url) {
+/*function cargarImagenBase64(url) {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = "anonymous";
@@ -506,6 +506,28 @@ function cargarImagenBase64(url) {
       resolve(canvas.toDataURL("image/png"));
     };
     img.onerror = reject;
+    img.src = url;
+  });
+}*/
+function cargarImagenBase64(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      canvas.getContext("2d").drawImage(img, 0, 0);
+      resolve(canvas.toDataURL("image/png"));
+    };
+    img.onerror = () => {
+      console.warn("No se pudo cargar la imagen:", url);
+      // Imagen vacía de 1x1 px para no romper el PDF
+      const canvas = document.createElement("canvas");
+      canvas.width = 1;
+      canvas.height = 1;
+      resolve(canvas.toDataURL("image/png"));
+    };
     img.src = url;
   });
 }
@@ -549,7 +571,14 @@ async function generarPDF(payload) {
 
   let y = 15;
 
-  const logoBase64 = await cargarImagenBase64("img/escudoIdv.png");
+  //const logoBase64 = await cargarImagenBase64("img/escudoIdv.png");
+
+  // URL segura para el logo
+const logoBase64 = await cargarImagenBase64("https://idv-ecu.github.io/sistemaIDV/img/escudoIdv.png");
+
+// Foto del jugador
+const fotoJugadorBase64 = await cargarImagenBase64(j.foto_url);
+
 
   /* HEADER */
   const dibujarHeader = () => {
@@ -563,7 +592,10 @@ async function generarPDF(payload) {
 
 
     // LOGO
-    pdf.addImage(logoBase64, "PNG", 188, 1, 18, 18);
+    //pdf.addImage(logoBase64, "PNG", 188, 1, 18, 18);
+    pdf.addImage(logoBase64, "PNG", 188, 1, 18, 18);  // Header
+pdf.addImage(fotoJugadorBase64, "JPEG", 14, y, 30, 40); // Jugador al lado de datos
+
 
 
     pdf.setFont("helvetica", "bold");
