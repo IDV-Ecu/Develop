@@ -653,9 +653,6 @@ async function generarPDF(payload) {
   const xFoto = 120;
   const yFoto = 30;
 
-  // marco
-  
-  pdf.rect(xFoto - 1, yFoto - 1, anchoFoto + 2, altoFoto + 2);
 
   // cargar imagen jugador
   const fotoJugadorPDF = await cargarImagenParaPDF(
