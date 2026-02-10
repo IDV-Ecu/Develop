@@ -722,18 +722,18 @@ async function generarPDF(payload) {
     const startX = 14;
     const labelW = 24;
     const colW = (182 - labelW) / TOTAL_COLUMNAS;
-    const rowH = 6;
-    const videoH = 8;      // SOLO el texto "Ver video"
-    const imgTestH = 22;   // imagen del test
-    const imgTestW = 22;
+    const rowH = 5;
+    const videoH = 5;     
+    const imgTestH = 18; 
+    const imgTestW = 18;
 
 
-    pdf.setFontSize(12);
+    pdf.setFontSize(10);
     pdf.setFont("helvetica", "bold");
     pdf.setTextColor(0, 0, 0);
     pdf.text(nombreTabla, 105, y, { align: "center" });
     pdf.setTextColor(...COLOR_TEXTO);
-    y += 6;
+    y += 5;
 
     pdf.setFontSize(9);
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
@@ -755,11 +755,10 @@ async function generarPDF(payload) {
       );
     }
 
-    lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
     y += rowH;
 
-      // ===== FILA VIDEO E IMAGEN (Mismo bloque) =====
-    const yInicioBloqueImagen = y; // Guardamos donde empieza para las líneas verticales
+
+    const yInicioBloqueImagen = y; 
 
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       const test = datos[i];
@@ -782,7 +781,7 @@ async function generarPDF(payload) {
         if (imgTestPDF) {
           const xImg = startX + labelW + colW * i + colW / 2 - imgTestW / 2;
           // Ajustamos yImg para que empiece un poco después del texto "Ver video"
-          const yImg = y + 6; 
+          const yImg = y + 6;
 
           pdf.addImage(
             imgTestPDF,
@@ -797,8 +796,8 @@ async function generarPDF(payload) {
     }
 
     // Actualizamos 'y' sumando el espacio del video y de la imagen de una sola vez
-    y += videoH + imgTestH; 
-    
+    y += videoH + imgTestH;
+
     // Dibujamos la línea horizontal SOLAMENTE al final de la imagen
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
 
