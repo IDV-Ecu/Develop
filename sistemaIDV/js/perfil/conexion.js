@@ -630,12 +630,35 @@ async function generarPDF(payload) {
   });
 
   // Foto del jugador y datos al lado derecho
-  const xFoto = 130, yFoto = y, anchoFoto = 40, altoFoto = 50;
-  pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
+ // =============================
+// FOTO CENTRADA BLOQUE DERECHO
+// =============================
 
-  const xDatos = xFoto + anchoFoto + 5; // 5mm de separación
-  let yDatos = yFoto;
-  pdf.setFontSize(5);
+// Tamaño más profesional
+const anchoFoto = 55;
+const altoFoto = 65;
+
+// Posición más centrada en el espacio derecho
+const xFoto = 115;   // mueve entre 105–120 si quieres ajustar
+const yFoto = 32;    // más arriba
+
+// Marco morado IDV
+pdf.setDrawColor(90, 0, 120);
+pdf.setLineWidth(1);
+pdf.rect(xFoto - 2, yFoto - 2, anchoFoto + 4, altoFoto + 4);
+
+// Imagen
+pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
+
+// =============================
+// DATOS A LA DERECHA
+// =============================
+
+const xDatos = 175;   // columna fija derecha
+let yDatos = yFoto + 5;
+
+pdf.setFontSize(6);
+
 
   const escribirDato = (label, value) => {
     pdf.setFont("helvetica", "bold");
