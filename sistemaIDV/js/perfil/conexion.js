@@ -630,25 +630,26 @@ async function generarPDF(payload) {
   });
 
   // Foto del jugador y datos al lado derecho
- // =============================
-// FOTO CENTRADA BLOQUE DERECHO
-// =============================
 
 // Tamaño más profesional
-const anchoFoto = 55;
-const altoFoto = 65;
+// =============================
+// FOTO AJUSTADA PROPORCIONAL
+// =============================
 
-// Posición más centrada en el espacio derecho
-const xFoto = 115;   // mueve entre 105–120 si quieres ajustar
-const yFoto = 32;    // más arriba
+const anchoFoto = 40;   // más pequeña
+const altoFoto = 50;    // proporcional
 
-// Marco morado IDV
+const xFoto = 125;      // ajustada al bloque derecho
+const yFoto = 32;       // misma altura
+
+// Marco morado IDV más fino
 pdf.setDrawColor(90, 0, 120);
-pdf.setLineWidth(1);
+pdf.setLineWidth(0.8);
 pdf.rect(xFoto - 2, yFoto - 2, anchoFoto + 4, altoFoto + 4);
 
 // Imagen
 pdf.addImage(fotoJugadorBase64, "JPEG", xFoto, yFoto, anchoFoto, altoFoto);
+
 
 // =============================
 // DATOS A LA DERECHA
