@@ -511,7 +511,6 @@ function cargarImagenBase64(url) {
 }
 
 
-
 async function generarPDF(payload) {
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF("p", "mm", "a4");
@@ -534,81 +533,129 @@ async function generarPDF(payload) {
     pdf.line(x, y1, x, y2);
   };
 
-  const j = payload[0];
+  const j = {
+    ...payload[0],
+    categoria: payload[0].categoria || document.getElementById("categoria")?.value || "",
+    fecha_nacimiento: payload[0].fecha_nacimiento || document.getElementById("fecha_nacimiento")?.value || "",
+    demarcacion: payload[0].demarcacion || document.getElementById("demarcacion")?.value || "",
+    peso: payload[0].peso || document.getElementById("peso")?.value || "",
+    fase: payload[0].fase || document.getElementById("fase")?.value || "",
+    pie: payload[0].pie || document.getElementById("pie")?.value || ""
+  };
 
-  // ===========================
-  // HEADER
-  // ===========================
-  pdf.setFillColor(0, 0, 200);
-  pdf.rect(0, 0, 210, 22, "F");
-  pdf.setFillColor(0, 0, 0);
-  pdf.triangle(160, 0, 210, 0, 210, 20, "F");
-  pdf.setFont("helvetica", "bold");
-  pdf.setFontSize(14);
-  pdf.setTextColor(255, 255, 255);
-  pdf.text("INDEPENDIENTE DEL VALLE", 10, 8);
-  pdf.setFontSize(10);
-  pdf.setTextColor(230, 230, 230);
-  pdf.text(TITULOA, 10, 13);
-  pdf.setFont("helvetica", "normal");
-  pdf.setFontSize(6);
-  pdf.setTextColor(200, 200, 200);
-  pdf.text(j.fecha || new Date().toLocaleString("es-EC"), 10, 17);
+  let y = 15;
 
-  let y = 30; // altura inicial de los datos del jugador
+  // Cargar logo del IDV
+  const logoBase64 = await cargarImagenBase64("img/escudoIdv.png");
 
-  // ===========================
-  // FOTO DEL JUGADOR
-  // ===========================
-  const anchoFoto = 35; // ancho en mm
-  const altoFoto = 35;   // alto en mm
-  const xFoto = 14;      // posición horizontal
-  const yFoto = y;
+  const dibujarHeader = () => {
+    pdf.setFillColor(0, 0, 200);
+    pdf.rect(0, 0, 210, 22, "F");
 
-  if (j.foto_url) {
-    try {
-      const fotoBase64 = await cargarImagenBase64(j.foto_url);
-      pdf.addImage(fotoBase64, "PNG", xFoto, yFoto, anchoFoto, altoFoto);
-      console.log("Foto del jugador añadida al PDF:", j.foto_url);
-    } catch (err) {
-      console.warn("No se pudo cargar la foto del jugador:", j.foto_url, err);
-    }
-  }
+    pdf.setFillColor(0, 0, 0);
+    pdf.triangle(160, 0, 210, 0, 210, 20, "F");
 
-  // ===========================
-  // DATOS DEL JUGADOR (AL LADO DE LA FOTO)
-  // ===========================
-  const xLabel = xFoto + anchoFoto + 5; // 5mm de separación
-  const xValue = 105;
-  const maxWidthValue = 90;
+    pdf.addImage(logoBase64, "PNG", 188, 1, 18, 18);
 
-  let yDatos = yFoto;
-
-  const dibujarDato = (label, value) => {
     pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(6);
-    pdf.text(`${label}:`, xLabel, yDatos);
+    pdf.setFontSize(14);
+    pdf.setTextColor(255, 255, 255);
+    pdf.text("INDEPENDIENTE DEL VALLE", 10, 8);
+
+    pdf.setFontSize(10);
+    pdf.setTextColor(230, 230, 230);
+    pdf.text(TITULOA, 10, 13);
 
     pdf.setFont("helvetica", "normal");
     pdf.setFontSize(6);
-    const lineas = pdf.splitTextToSize(value || "", maxWidthValue);
-    pdf.text(lineas, xValue, yDatos, { align: "left" });
-
-    yDatos += lineas.length * 4; // ajustamos altura para la siguiente línea
+    pdf.setTextColor(200, 200, 200);
+    pdf.text(j.fecha, 10, 17);
   };
 
-  dibujarDato("Categoría", j.categoria || "");
-  dibujarDato("Jugador", j.nombre_jugador || "");
-  dibujarDato("Fecha Nac.", j.fecha_nacimiento || "");
-  dibujarDato("Demarcación", j.demarcacion || "");
-  dibujarDato("Peso", j.peso || "");
-  dibujarDato("Pie Dominante", j.pie || "");
+  const dibujarFooter = () => {
+    pdf.setFillColor(0, 0, 200);
+    pdf.rect(0, 287, 210, 10, "F");
 
-  y = Math.max(yFoto + altoFoto, yDatos) + 8; // siguiente sección debajo de la foto/datos
+    pdf.setFillColor(0, 0, 0);
+    pdf.triangle(0, 287, 50, 297, 0, 297, "F");
 
-  // ===========================
-  // Aquí puedes seguir dibujando las tablas y footer como antes
-  // ===========================
-  // ...
-  // pdf.save("perfil_test_fisicos.pdf");
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(8);
+    pdf.setTextColor(255, 255, 255);
+    pdf.text(PIEPAGINA, 5, 293);
+  };
+
+  dibujarHeader();
+  y = 30;
+
+  // ===== CARGAR FOTO DEL JUGADOR =====
+  let fotoJugadorBase64 = null;
+  try {
+    if (payload[0].foto_url) {
+      fotoJugadorBase64 = await cargarImagenBase64(payload[0].foto_url);
+    }
+  } catch (err) {
+    console.warn("No se pudo cargar la foto del jugador:", err);
+  }
+
+  // ===== DATOS DEL JUGADOR =====
+  const xFoto = 14;
+  const yFoto = y;
+  const anchoFoto = 35;
+  const altoFoto = 35;
+
+  if (fotoJugadorBase64) {
+    pdf.addImage(fotoJugadorBase64, "PNG", xFoto, yFoto, anchoFoto, altoFoto);
+  }
+
+  const xDatos = xFoto + anchoFoto + 5;
+  let yDatos = yFoto;
+
+  pdf.setFontSize(8);
+  pdf.setFont("helvetica", "bold");
+  pdf.text("Categoría:", xDatos, yDatos);
+  pdf.setFont("helvetica", "normal");
+  pdf.text(j.categoria || "", xDatos + 35, yDatos);
+  yDatos += 5;
+
+  pdf.setFont("helvetica", "bold");
+  pdf.text("Jugador:", xDatos, yDatos);
+  pdf.setFont("helvetica", "normal");
+  pdf.text(j.nombre_jugador || "", xDatos + 35, yDatos);
+  yDatos += 5;
+
+  pdf.setFont("helvetica", "bold");
+  pdf.text("Fecha Nac.:", xDatos, yDatos);
+  pdf.setFont("helvetica", "normal");
+  pdf.text(j.fecha_nacimiento || "", xDatos + 35, yDatos);
+  yDatos += 5;
+
+  pdf.setFont("helvetica", "bold");
+  pdf.text("Demarcación:", xDatos, yDatos);
+  pdf.setFont("helvetica", "normal");
+  pdf.text(j.demarcacion || "", xDatos + 35, yDatos);
+  yDatos += 5;
+
+  pdf.setFont("helvetica", "bold");
+  pdf.text("Peso:", xDatos, yDatos);
+  pdf.setFont("helvetica", "normal");
+  pdf.text(j.peso || "", xDatos + 35, yDatos);
+  yDatos += 5;
+
+  pdf.setFont("helvetica", "bold");
+  pdf.text("Pie Dominante:", xDatos, yDatos);
+  pdf.setFont("helvetica", "normal");
+  pdf.text(j.pie || "", xDatos + 35, yDatos);
+  yDatos += 5;
+
+  y = Math.max(yDatos, yFoto + altoFoto) + 8;
+
+  // ===== AQUÍ SIGUE EL CÓDIGO DE TUS TABLAS Y FOOTER =====
+  // (Puedes pegar tu sección de tablas tal cual, después de los datos)
+
+  dibujarFooter();
+  pdf.save("perfil_test_fisicos.pdf");
 }
+
+
+
