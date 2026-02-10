@@ -548,6 +548,20 @@ async function cargarImagenParaPDF(url) {
   });
 }
 
+function cargarImagenComoElemento(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => resolve(img);
+    img.onerror = () => {
+      console.warn("No se pudo cargar imagen jugador:", url);
+      resolve(null);
+    };
+    img.src = url;
+  });
+}
+
+
 
 async function generarPDF(payload) {
 
@@ -583,14 +597,27 @@ async function generarPDF(payload) {
   };
 
   let y = 15;
-
-  //const logoBase64 = await cargarImagenBase64("https://idv-ecu.github.io/sistemaIDV/img/escudoIdv.png");
-  const logoPDF = await cargarImagenParaPDF("../img/escudoIdv.png"); 
+  const logoPDF = await cargarImagenParaPDF("../img/escudoIdv.png");
 
   //const fotoJugadorBase64 = await cargarImagenBase64(j.foto_url || "https://via.placeholder.com/40x50");
-  const fotoJugadorPDF = await cargarImagenParaPDF(
+  /*const fotoJugadorPDF = await cargarImagenParaPDF(
+    j.foto_url || "https://via.placeholder.com/40x50"
+  );*/
+  const imgJugador = await cargarImagenComoElemento(
     j.foto_url || "https://via.placeholder.com/40x50"
   );
+
+  if (imgJugador) {
+    pdf.addImage(
+      imgJugador,   // 👈 ELEMENTO IMG, NO URL
+      "JPEG",
+      xFoto,
+      yFoto,
+      anchoFoto,
+      altoFoto
+    );
+  }
+
 
 
   /*  HEADER  */
