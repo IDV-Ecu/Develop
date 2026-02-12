@@ -32,19 +32,31 @@
             <button class="btn-volver" onclick="volverMenu()">← Volver</button>
             <h1>PERFIL – TEST FÍSICOS</h1>
         </header>
-        <section class="perfil-filtros fila">
-            <div class="filtro-objetivo bs-only">
-                <label for="selectTest">Objetivos</label>
-                <select id="selectTest" multiple></select>
-            </div>
+        <section class="perfil-filtros">
+            <div class="fila-filtros">
 
+                <div class="campo campo-grande">
+                    <label for="selectTest">Objetivos</label>
+                    <select id="selectTest" multiple></select>
+                </div>
 
-            <div class="filtro-jugador-grid">
-                <label for="selectJugador">Jugador</label>
+                <div class="campo">
+                    <label for="selectDia">Día del Test</label>
+                    <select id="selectDia">
+                        <option value="">-- Seleccione día --</option>
+                        <option value="1">Día 1</option>
+                        <option value="2">Día 2</option>
+                        <option value="3">Día 3</option>
+                        <option value="4">Día 4</option>
+                    </select>
+                </div>
 
-                <select id="selectJugador">
-                    <option value="">-- Seleccione jugador --</option>
-                </select>
+                <div class="campo">
+                    <label for="selectJugador">Jugador</label>
+                    <select id="selectJugador">
+                        <option value="">-- Seleccione jugador --</option>
+                    </select>
+                </div>
 
                 <input name="categoria" id="categoria" type="hidden">
                 <input name="fase" id="fase" type="hidden">
@@ -53,13 +65,22 @@
                 <input name="peso" id="peso" type="hidden">
                 <input name="pie" id="pie" type="hidden">
 
-
-                <div class="foto-jugador-grid oculto" id="contenedorFoto">
-                    <img id="fotoJugador" alt="Jugador">
+                <div class="campo foto-campo">
+                    <div class="foto-jugador-grid oculto" id="contenedorFoto">
+                        <img id="fotoJugador" alt="Jugador">
+                    </div>
                 </div>
+
+            </div>
+
+            <div class="campo resumen-campo">
+                <label for="resumenTest">Resumen</label>
+                <textarea id="resumenTest" rows="3"
+                    placeholder="Ingrese observaciones o resumen del test..."></textarea>
             </div>
 
         </section>
+
         <section class="tabla-valoracion" data-tabla="1">
             <table>
                 <thead>
@@ -333,7 +354,7 @@
         </div>
     </div>
 
-
+    <script src="../js/aut.js"></script>
     <script src="../js/perfil/perfil.js"></script>
     <script src="../js/perfil/conexion.js"></script>
 

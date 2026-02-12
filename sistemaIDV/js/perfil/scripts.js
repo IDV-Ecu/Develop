@@ -8,19 +8,19 @@ const mostrarImagenes = 1;
 const botones = {
     btn1: {
         texto: "Power BI",
-        imagen: "../img/scouting/biN.png"
+        imagen: "../img/perfil/biN.png"
     },
     btn2: {
         texto: "Excel",
-        imagen: "../img/scouting/excel.png"
+        imagen: "../img/perfil/excel.png"
     },
     btn3: {
         texto: "Drive",
-        imagen: "../img/scouting/drive.png"
+        imagen: "../img/perfil/drive.png"
     },
     btn4: {
         texto: "Perfil",
-        imagen: "../img/scouting/formulario.png"
+        imagen: "../img/perfil/formulario.png"
     }
 };
 

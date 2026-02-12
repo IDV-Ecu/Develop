@@ -353,9 +353,8 @@ function inicializarFotoJugador() {
       cont.classList.remove("oculto");
 
     } else {
-      img.src = placeholder;
+      img.src = "";
       cont.classList.remove("oculto");
-      console.warn("No hay foto disponible para este jugador.");
     }
   });
 }
@@ -377,12 +376,32 @@ function limpiarFormulario() {
   img.src = "";
   cont.classList.add("oculto");
 
-  /*const selectObjetivo = document.getElementById("selectTest");
-  if (selectObjetivo) selectObjetivo.value = "";*/
   const selectObjetivo = $('#selectTest');
   if (selectObjetivo.length) {
     selectObjetivo.val(null).trigger('change');
   }
+
+
+  const selectDia = document.getElementById("selectDia");
+  if (selectDia) selectDia.value = "";
+
+  const resumen = document.getElementById("resumenTest");
+  if (resumen) resumen.value = "";
+
+
+  const hiddenFields = [
+    "categoria",
+    "fase",
+    "fecha_nacimiento",
+    "demarcacion",
+    "peso",
+    "pie"
+  ];
+
+  hiddenFields.forEach(id => {
+    const input = document.getElementById(id);
+    if (input) input.value = "";
+  });
 
 
   /* recorrer TODAS las tablas */
@@ -426,6 +445,10 @@ function guardarPerfil() {
   const grupo = document.querySelector(".select-gr").value;
   const jugadorSelect = document.getElementById("selectJugador");
 
+  const diaTest = document.getElementById("selectDia")?.value || "";
+  const resumenTest = document.getElementById("resumenTest")?.value || "";
+
+
   const payload = [];
 
   document.querySelectorAll(".test-select").forEach(select => {
@@ -449,6 +472,9 @@ function guardarPerfil() {
       grupo_test: grupo,
       nombre_test: t.nombre_test || "",
       descripcion: t.descripcion || "",
+
+      dia_test: diaTest,
+      resumen_test: resumenTest,
 
 
       /*cargar los bloques */
@@ -554,6 +580,7 @@ async function generarPDF(payload) {
 
   const TITULOA = "ANALITICA";
   const PIEPAGINA = "Quito-Ecuador IDV";
+  const TEXTOPIEPAGINA = "Pruebas B";
   const COLOR_MORADO = [90, 0, 120];
   const COLOR_VERTICAL = [200, 200, 200];
   const COLOR_TEXTO = [0, 0, 0];
@@ -588,28 +615,44 @@ async function generarPDF(payload) {
 
   /*  HEADER  */
   const dibujarHeader = () => {
+
+    const diaTest = payload[0]?.dia_test || "";
+
     pdf.setFillColor(0, 0, 200);
-    pdf.rect(0, 0, 210, 22, "F");
+    pdf.rect(0, 0, 210, 24, "F");
 
     pdf.setFillColor(0, 0, 0);
-    pdf.triangle(160, 0, 210, 0, 210, 20, "F");
+    pdf.triangle(170, 0, 210, 0, 210, 24, "F");
 
-    pdf.addImage(logoPDF, "PNG", 188, 1, 18, 18);
+    /*if (logoPDF) {
+      pdf.addImage(logoPDF, "PNG", 185, 3, 18, 18);
+      //pdf.addImage(logoPDF, "PNG", 186, 4, 16, 16);
+
+    }*/
 
     pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(14);
+    pdf.setFontSize(12);
     pdf.setTextColor(255, 255, 255);
-    pdf.text("INDEPENDIENTE DEL VALLE", 10, 8);
-
-    pdf.setFontSize(10);
-    pdf.setTextColor(230, 230, 230);
-    pdf.text(TITULOA, 10, 13);
+    pdf.text("INDEPENDIENTE DEL VALLE", 10, 7);
 
     pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(6);
+    pdf.setFontSize(9);
+    pdf.setTextColor(230, 230, 230);
+    pdf.text(TITULOA, 10, 12);
+
+    if (diaTest) {
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(9);
+      pdf.setTextColor(0, 200, 255); // Celeste
+      pdf.text(`DÍA DEL TEST: Día ${diaTest}`, 10, 17);
+    }
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(5);
     pdf.setTextColor(200, 200, 200);
-    pdf.text(j.fecha || "", 10, 17);
+    pdf.text(j.fecha || "", 10, 21);
   };
+
 
   const dibujarFooter = () => {
     pdf.setFillColor(0, 0, 200);
@@ -622,41 +665,64 @@ async function generarPDF(payload) {
     pdf.setFontSize(8);
     pdf.setTextColor(255, 255, 255);
     pdf.text(PIEPAGINA, 5, 293);
+
+    pdf.text(TEXTOPIEPAGINA, 205, 293, { align: "right" });
   };
 
   dibujarHeader();
   y = 30;
 
   /*  OBJETIVOS  */
-  const colObjetivos = 14;
-  let yObj = y;
+  const colIzq = 14;
+  let yActual = y;
 
-  const objetivos = $('#selectTest').select2('data').map(o => o.text);
-
+  /*cuadro de resumen */
   pdf.setTextColor(0, 0, 0);
-  pdf.setFontSize(4);
+  pdf.setFontSize(7);
   pdf.setFont("helvetica", "bold");
-  pdf.text("Objetivos:", colObjetivos, yObj);
-  yObj += 4;
+  pdf.text("Resumen:", colIzq, yActual);
+
+  yActual += 4;
 
   pdf.setFont("helvetica", "normal");
 
+  const resumenTexto = j.resumen_test || "";
+  const resumenLineas = pdf.splitTextToSize(resumenTexto, 95);
+
+  pdf.text(resumenLineas, colIzq, yActual);
+  yActual += resumenLineas.length * 3;
+
+  yActual += 4;
+
+  /**informacion de objetivos */
+  const objetivos = $('#selectTest').select2('data').map(o => o.text);
+
+  pdf.setFont("helvetica", "bold");
+  pdf.setFontSize(6);
+  pdf.setTextColor(0, 0, 0);
+  pdf.text("Objetivos:", colIzq, yActual);
+
+  yActual += 4;
+
+  pdf.setFont("helvetica", "normal");
+  pdf.setFontSize(5);
+
   objetivos.forEach(obj => {
     const lineas = pdf.splitTextToSize(`- ${obj}`, 90);
-    pdf.text(lineas, colObjetivos, yObj);
-    yObj += lineas.length * 4;
+    pdf.text(lineas, colIzq, yActual);
+    yActual += lineas.length * 3.5;
   });
 
   /*  FOTO PEQUEÑA  */
   const anchoFoto = 20;
   const altoFoto = 20;
   const xFoto = 120;
-  const yFoto = 30;
+  const yFoto = y;
 
 
   // cargar imagen jugador
   const fotoJugadorPDF = await cargarImagenParaPDF(
-    j.foto_url || "https://via.placeholder.com/40x50"
+    j.foto_url || ""
   );
 
   if (fotoJugadorPDF) {
@@ -670,37 +736,32 @@ async function generarPDF(payload) {
     );
   }
 
-  /*  DATOS  */
-  const xDatos = xFoto + anchoFoto + 8;
+  /*datos del jugador */
+  const xDatos = xFoto + anchoFoto + 6;
   let yDatos = yFoto;
 
-  pdf.setFontSize(6);
+  pdf.setFontSize(7);
 
-  const escribirDato = (label, value, multiline = false) => {
+  const escribirDato = (label, value) => {
+
     pdf.setFont("helvetica", "bold");
     pdf.text(label, xDatos, yDatos);
 
     pdf.setFont("helvetica", "normal");
+    pdf.text(value || "", xDatos + 22, yDatos);
 
-    if (multiline) {
-      const lineas = pdf.splitTextToSize(value || "", 30);
-      const lineasFinal = lineas.slice(0, 2);
-      pdf.text(lineasFinal, xDatos + 22, yDatos);
-      yDatos += lineasFinal.length * 4;
-    } else {
-      pdf.text(value || "", xDatos + 22, yDatos);
-      yDatos += 5;
-    }
+    yDatos += 3; //espacio entre lineas
   };
 
   escribirDato("Categoría:", j.categoria);
-  escribirDato("Jugador:", j.nombre_jugador, true);
+  escribirDato("Jugador:", j.nombre_jugador);
   escribirDato("Fecha Nac.:", j.fecha_nacimiento);
   escribirDato("Demarcación:", j.demarcacion);
-  escribirDato("Peso:", j.peso ? `${j.peso}` : "");
+  escribirDato("Peso:", j.peso ? `${j.peso} kg` : "");
   escribirDato("Pie Dominante:", j.pie);
 
-  y = Math.max(yObj, yFoto + altoFoto) + 10;
+
+  y = Math.max(yActual, yFoto + altoFoto) + 8;
 
   /*  TABLAS  */
   const tablas = {};
@@ -723,8 +784,8 @@ async function generarPDF(payload) {
     const labelW = 24;
     const colW = (182 - labelW) / TOTAL_COLUMNAS;
     const rowH = 5;
-    const videoH = 5;     
-    const imgTestH = 18; 
+    const videoH = 5;
+    const imgTestH = 18;
     const imgTestW = 18;
 
 
@@ -757,8 +818,7 @@ async function generarPDF(payload) {
 
     y += rowH;
 
-
-    const yInicioBloqueImagen = y; 
+    const yInicioBloqueImagen = y;
 
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       const test = datos[i];

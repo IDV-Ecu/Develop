@@ -6,11 +6,7 @@ const botones = {
     btn1: { texto: "Power BI", imagen: "img/biN.png" },
     btn2: { texto: "Excel", imagen: "img/excel.png" },
     btn3: { texto: "Drive", imagen: "img/drive.png" },
-    btn4: { texto: "Perfil", imagen: "img/perfil.png" },
-    btn5: { texto: "boton 5", imagen: "" },
-    btn6: { texto: "boton 6", imagen: "" },
-    btn7: { texto: "boton 7", imagen: "" },
-    btn8: { texto: "boton 8", imagen: "" }
+    btn4: { texto: "Perfil", imagen: "img/perfil.png" }
 };
 
 const links = {
