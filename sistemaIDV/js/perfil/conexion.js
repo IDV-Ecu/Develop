@@ -797,6 +797,9 @@ async function generarPDF(payload) {
     y += 5;
 
     pdf.setFontSize(7);
+    
+    let alturaBloqueImagen = videoH; // altura mínima (solo texto) estoooooooooooooooooooooooooooagregue
+
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       pdf.text(String(i + 1), startX + labelW + colW * i + colW / 2, y + 4, { align: "center" });
     }
@@ -836,26 +839,60 @@ async function generarPDF(payload) {
       }
 
       // 2. Dibujar Imagen justo debajo (sin línea intermedia)
-      if (test?.imagen_url) {
-        const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
-        if (imgTestPDF) {
-          const xImg = startX + labelW + colW * i + colW / 2 - imgTestW / 2;
-          // Ajustamos yImg para que empiece un poco después del texto "Ver video"
-          const yImg = y + 6;
+      // if (test?.imagen_url) {
+      //   const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
+      //   // if (imgTestPDF) {
+      //   //   const xImg = startX + labelW + colW * i + colW / 2 - imgTestW / 2;
+      //   //   // Ajustamos yImg para que empiece un poco después del texto "Ver video"
+      //   //   const yImg = y + 6;
 
-          pdf.addImage(
-            imgTestPDF,
-            "PNG",
-            xImg,
-            yImg,
-            imgTestW,
-            imgTestH
-          );
+      //   //   // pdf.addImage(
+      //   //   //   imgTestPDF,
+      //   //   //   "PNG",
+      //   //   //   xImg,
+      //   //   //   yImg,
+      //   //   //   imgTestW,
+      //   //   //   imgTestH
+      //   //   // );
+          
+      //   // }
+      // }
+
+
+
+        if (test?.imagen_url) {
+          const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
+        
+          if (imgTestPDF) {
+            const xImg =
+              startX + labelW + colW * i + colW / 2 - imgTestW / 2;
+            const yImg = y + 6;
+        
+            pdf.addImage(
+              imgTestPDF,
+              "PNG",
+              xImg,
+              yImg,
+              imgTestW,
+              imgTestH
+            );
+        
+            // ✅ LÍNEA CLAVE (NUEVA)
+            alturaBloqueImagen = Math.max(
+              alturaBloqueImagen,
+              videoH + imgTestH
+            );
+          }
         }
-      }
+
+
+
+      
     }
     // Actualizamos 'y' sumando el espacio del video y de la imagen de una sola vez
-    y += videoH + imgTestH;
+    //y += videoH + imgTestH;
+    y += alturaBloqueImagen;
+
 
     // Dibujamos la línea horizontal SOLAMENTE al final de la imagen
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
