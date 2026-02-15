@@ -624,11 +624,11 @@ async function generarPDF(payload) {
     pdf.setFillColor(0, 0, 0);
     pdf.triangle(170, 0, 210, 0, 210, 24, "F");
 
-    /*if (logoPDF) {
+    if (logoPDF) {
       pdf.addImage(logoPDF, "PNG", 185, 3, 18, 18);
       //pdf.addImage(logoPDF, "PNG", 186, 4, 16, 16);
 
-    }*/
+    }
 
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(12);
