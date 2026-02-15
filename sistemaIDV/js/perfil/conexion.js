@@ -860,30 +860,42 @@ async function generarPDF(payload) {
 
 
 
+        // === CONFIG FIJA DE IMAGEN ===
+        const IMG_W = 15;
+        const IMG_H = 15;
+        const MARGEN_SUP = 8;
+        
+        // === VIDEO + IMAGEN ===
+        if (test?.video_url) {
+          pdf.setTextColor(0, 0, 255);
+          pdf.textWithLink(
+            "Ver video",
+            startX + labelW + colW * i + colW / 2,
+            y + 4,
+            { align: "center", url: test.video_url }
+          );
+          pdf.setTextColor(...COLOR_TEXTO);
+        }
+        
         if (test?.imagen_url) {
           const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
-        
           if (imgTestPDF) {
             const xImg =
-              startX + labelW + colW * i + colW / 2 - imgTestW / 2;
-            const yImg = y + 6;
+              startX + labelW + colW * i + colW / 2 - IMG_W / 2;
+        
+            const yImg = y + MARGEN_SUP;
         
             pdf.addImage(
               imgTestPDF,
               "PNG",
               xImg,
               yImg,
-              imgTestW,
-              imgTestH
-            );
-        
-            // ✅ LÍNEA CLAVE (NUEVA)
-            alturaBloqueImagen = Math.max(
-              alturaBloqueImagen,
-              videoH + imgTestH
+              IMG_W,
+              IMG_H
             );
           }
         }
+
 
 
 
@@ -891,7 +903,9 @@ async function generarPDF(payload) {
     }
     // Actualizamos 'y' sumando el espacio del video y de la imagen de una sola vez
     //y += videoH + imgTestH;
-    y += alturaBloqueImagen;
+    //y += alturaBloqueImagen;
+      const ALTURA_BLOQUE = MARGEN_SUP + IMG_H + 4;
+      y += Math.max(videoH, ALTURA_BLOQUE);
 
 
     // Dibujamos la línea horizontal SOLAMENTE al final de la imagen
