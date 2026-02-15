@@ -862,7 +862,7 @@ async function generarPDF(payload) {
       
     }
     // Actualizamos 'y' sumando el espacio del video y de la imagen de una sola vez
-    y += videoH + imgTestH;
+    y += videoH + imgTestH + 2;
 
 
     // Dibujamos la línea horizontal SOLAMENTE al final de la imagen
