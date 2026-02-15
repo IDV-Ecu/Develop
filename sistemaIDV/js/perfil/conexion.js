@@ -838,7 +838,7 @@ async function generarPDF(payload) {
         pdf.setTextColor(...COLOR_TEXTO);
       }
 
-      2. Dibujar Imagen justo debajo (sin línea intermedia)
+      //2. Dibujar Imagen justo debajo (sin línea intermedia)
       if (test?.imagen_url) {
         const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
         if (imgTestPDF) {
