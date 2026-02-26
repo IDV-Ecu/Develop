@@ -624,11 +624,11 @@ async function generarPDF(payload) {
     pdf.setFillColor(0, 0, 0);
     pdf.triangle(170, 0, 210, 0, 210, 24, "F");
 
-    /*if (logoPDF) {
+    if (logoPDF) {
       pdf.addImage(logoPDF, "PNG", 185, 3, 18, 18);
       //pdf.addImage(logoPDF, "PNG", 186, 4, 16, 16);
 
-    }*/
+    }
 
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(12);
@@ -797,6 +797,9 @@ async function generarPDF(payload) {
     y += 5;
 
     pdf.setFontSize(7);
+    
+    let alturaBloqueImagen = videoH; // altura mínima (solo texto) estoooooooooooooooooooooooooooagregue
+
     for (let i = 0; i < TOTAL_COLUMNAS; i++) {
       pdf.text(String(i + 1), startX + labelW + colW * i + colW / 2, y + 4, { align: "center" });
     }
@@ -835,7 +838,7 @@ async function generarPDF(payload) {
         pdf.setTextColor(...COLOR_TEXTO);
       }
 
-      // 2. Dibujar Imagen justo debajo (sin línea intermedia)
+      //2. Dibujar Imagen justo debajo (sin línea intermedia)
       if (test?.imagen_url) {
         const imgTestPDF = await cargarImagenParaPDF(test.imagen_url);
         if (imgTestPDF) {
@@ -851,11 +854,16 @@ async function generarPDF(payload) {
             imgTestW,
             imgTestH
           );
+          
         }
       }
+
+
+      
     }
     // Actualizamos 'y' sumando el espacio del video y de la imagen de una sola vez
-    y += videoH + imgTestH;
+    y += videoH + imgTestH + 2;
+
 
     // Dibujamos la línea horizontal SOLAMENTE al final de la imagen
     lineaHorizontal(startX, startX + labelW + colW * TOTAL_COLUMNAS, y);
