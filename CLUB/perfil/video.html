@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Reproductor de Video</title>
+  <style>
+    body{
+      margin:0;
+      background:black;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+    video{
+      width:90%;
+      max-width:1000px;
+    }
+  </style>
+</head>
+<body>
+
+<video id="player" controls autoplay></video>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const src = params.get("src");
+
+  if(src){
+    document.getElementById("player").src = src;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Acceso</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="img/icono.png" rel="icon">
+</head>
+
+<body class="login-body">
+
+    <div class="login-card login-card-horizontal">
+        <div class="login-logo">
+            <img src="img/icono.png" alt="Independiente del Valle">
+            <span>Independiente del Valle</span>
+        </div>
+        <div class="login-form">
+            <h1>Acceso al sistema</h1>
+            <!--<p>Acceso al sistema</p>-->
+
+            <input type="text" id="usuario" placeholder="Usuario">
+            <input type="password" id="password" placeholder="Contraseña">
+
+
+            <select id="area">
+                <option value="">Seleccione un área</option>
+                <!-- <option value="Scouting">Scouting</option> -->
+                <option value="Perfil">Perfil</option>
+                <!-- <option value="Analitica">Analitica</option>
+                <option value="Football intelligence">Football intelligence</option> -->
+            </select>
+
+            <button id="btnLogin">Ingresar</button>
+        </div>
+    </div>
+    <div class="modal" id="modalMensaje">
+        <div class="modal-content">
+            <h2></h2>
+            <p id="textoModal"></p>
+            <button onclick="cerrarModal()">Aceptar</button>
+        </div>
+    </div>
+    <script src="js/usuarios.js"></script>
+    <script src="js/logs.js"></script>
+    <script src="js/ingreso.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil – Test Físicos</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/perfil.css">
+
+    <link href="../img/icono.png" rel="icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="contenedor-perfil">
+        <header class="perfil-header">
+            <button class="btn-volver" onclick="volverMenu()">← Volver</button>
+            <h1>PERFIL – TEST FÍSICOS</h1>
+        </header>
+        <section class="perfil-filtros">
+            <div class="fila-filtros">
+
+                <div class="campo campo-grande">
+                    <label for="selectTest">Objetivos</label>
+                    <select id="selectTest" multiple></select>
+                </div>
+
+                <div class="campo">
+                    <label for="selectDia">Día del Test</label>
+                    <select id="selectDia">
+                        <option value="">-- Seleccione día --</option>
+                        <option value="1">Día 1</option>
+                        <option value="2">Día 2</option>
+                        <option value="3">Día 3</option>
+                        <option value="4">Día 4</option>
+                    </select>
+                </div>
+
+                <!--<div class="campo">
+                    <label for="selectJugador">Jugador</label>
+                    <select id="selectJugador">
+                        <option value="">-- Seleccione jugador --</option>
+                    </select>
+                </div>-->
+                <div class="campo jugador-busqueda">
+                    <label for="selectJugador">Jugador</label>
+
+                    <div class="jugador-control">
+
+                        <select id="selectJugador" class="form-select">
+                            <option value="">-- Seleccione jugador --</option>
+                        </select>
+
+                        <button type="button" class="btn btn-primary btn-buscar-perfil" onclick="buscarPerfil()">
+                            <i class="bi bi-search"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <input name="categoria" id="categoria" type="hidden">
+                <input name="fase" id="fase" type="hidden">
+                <input name="fecha_nacimiento" id="fecha_nacimiento" type="hidden">
+                <input name="demarcacion" id="demarcacion" type="hidden">
+                <input name="peso" id="peso" type="hidden">
+                <input name="pie" id="pie" type="hidden">
+
+                <div class="campo foto-campo">
+                    <div class="foto-jugador-grid oculto" id="contenedorFoto">
+                        <img id="fotoJugador" alt="Jugador">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="campo resumen-campo">
+                <label for="resumenTest">Resumen</label>
+                <textarea id="resumenTest" rows="3"
+                    placeholder="Ingrese observaciones o resumen del test..."></textarea>
+            </div>
+
+        </section>
+
+        <section class="tabla-valoracion" data-tabla="1">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="5" class="titulo-valoracion"></th>
+                    </tr>
+
+                    <tr>
+                        <th rowspan="6">
+                            <select class="select-gr"></select>
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th><select class="test-select" data-col="1"></select></th>
+                        <th><select class="test-select" data-col="2"></select></th>
+                        <th><select class="test-select" data-col="3"></select></th>
+                        <th><select class="test-select" data-col="4"></select></th>
+                    </tr>
+                    <!--bloque a-->
+                    <tr>
+                        <th><select class="bloquea-select" data-col="1"></select></th>
+                        <th><select class="bloquea-select" data-col="2"></select></th>
+                        <th><select class="bloquea-select" data-col="3"></select></th>
+                        <th><select class="bloquea-select" data-col="4"></select></th>
+                    </tr>
+                    <!--bloque b-->
+                    <tr>
+                        <th><select class="bloqueb-select" data-col="1"></select></th>
+                        <th><select class="bloqueb-select" data-col="2"></select></th>
+                        <th><select class="bloqueb-select" data-col="3"></select></th>
+                        <th><select class="bloqueb-select" data-col="4"></select></th>
+                    </tr>
+                    <!--bloque c-->
+                    <tr>
+                        <th><select class="bloquec-select" data-col="1"></select></th>
+                        <th><select class="bloquec-select" data-col="2"></select></th>
+                        <th><select class="bloquec-select" data-col="3"></select></th>
+                        <th><select class="bloquec-select" data-col="4"></select></th>
+                    </tr>
+                    <tr>
+                        <th class="test-info" data-col="1"></th>
+                        <th class="test-info" data-col="2"></th>
+                        <th class="test-info" data-col="3"></th>
+                        <th class="test-info" data-col="4"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>SERIES</td>
+                        <td><input type="number" class="series" data-col="1"></td>
+                        <td><input type="number" class="series" data-col="2"></td>
+                        <td><input type="number" class="series" data-col="3"></td>
+                        <td><input type="number" class="series" data-col="4"></td>
+                    </tr>
+
+                    <tr>
+                        <td>REP</td>
+                        <td><input type="text" class="rec" data-col="1"></td>
+                        <td><input type="text" class="rec" data-col="2"></td>
+                        <td><input type="text" class="rec" data-col="3"></td>
+                        <td><input type="text" class="rec" data-col="4"></td>
+                    </tr>
+
+                    <tr>
+                        <td>VEL</td>
+                        <td><input type="text" class="vel" data-col="1"></td>
+                        <td><input type="text" class="vel" data-col="2"></td>
+                        <td><input type="text" class="vel" data-col="3"></td>
+                        <td><input type="text" class="vel" data-col="4"></td>
+                    </tr>
+
+                    <tr>
+                        <td>CARGA</td>
+                        <td><input type="text" class="carga" data-col="1"></td>
+                        <td><input type="text" class="carga" data-col="2"></td>
+                        <td><input type="text" class="carga" data-col="3"></td>
+                        <td><input type="text" class="carga" data-col="4"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <!--tabla 2-->
+        <section class="tabla-valoracion" data-tabla="2">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="5" class="titulo-valoracion"></th>
+                    </tr>
+
+                    <tr>
+                        <th rowspan="6">
+                            <select class="select-gr"></select>
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th><select class="test-select" data-col="1"></select></th>
+                        <th><select class="test-select" data-col="2"></select></th>
+                        <th><select class="test-select" data-col="3"></select></th>
+                        <th><select class="test-select" data-col="4"></select></th>
+                    </tr>
+                    <!--bloque a-->
+                    <tr>
+                        <th><select class="bloquea-select" data-col="1"></select></th>
+                        <th><select class="bloquea-select" data-col="2"></select></th>
+                        <th><select class="bloquea-select" data-col="3"></select></th>
+                        <th><select class="bloquea-select" data-col="4"></select></th>
+                    </tr>
+                    <!--bloque b-->
+                    <tr>
+                        <th><select class="bloqueb-select" data-col="1"></select></th>
+                        <th><select class="bloqueb-select" data-col="2"></select></th>
+                        <th><select class="bloqueb-select" data-col="3"></select></th>
+                        <th><select class="bloqueb-select" data-col="4"></select></th>
+                    </tr>
+                    <!--bloque c-->
+                    <tr>
+                        <th><select class="bloquec-select" data-col="1"></select></th>
+                        <th><select class="bloquec-select" data-col="2"></select></th>
+                        <th><select class="bloquec-select" data-col="3"></select></th>
+                        <th><select class="bloquec-select" data-col="4"></select></th>
+                    </tr>
+                    <tr>
+                        <th class="test-info" data-col="1"></th>
+                        <th class="test-info" data-col="2"></th>
+                        <th class="test-info" data-col="3"></th>
+                        <th class="test-info" data-col="4"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>SERIES</td>
+                        <td><input type="number" class="series" data-col="1"></td>
+                        <td><input type="number" class="series" data-col="2"></td>
+                        <td><input type="number" class="series" data-col="3"></td>
+                        <td><input type="number" class="series" data-col="4"></td>
+                    </tr>
+
+                    <tr>
+                        <td>REP</td>
+                        <td><input type="text" class="rec" data-col="1"></td>
+                        <td><input type="text" class="rec" data-col="2"></td>
+                        <td><input type="text" class="rec" data-col="3"></td>
+                        <td><input type="text" class="rec" data-col="4"></td>
+                    </tr>
+
+                    <tr>
+                        <td>VEL</td>
+                        <td><input type="text" class="vel" data-col="1"></td>
+                        <td><input type="text" class="vel" data-col="2"></td>
+                        <td><input type="text" class="vel" data-col="3"></td>
+                        <td><input type="text" class="vel" data-col="4"></td>
+                    </tr>
+
+                    <tr>
+                        <td>CARGA</td>
+                        <td><input type="text" class="carga" data-col="1"></td>
+                        <td><input type="text" class="carga" data-col="2"></td>
+                        <td><input type="text" class="carga" data-col="3"></td>
+                        <td><input type="text" class="carga" data-col="4"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <!--tabla 3-->
+        <section class="tabla-valoracion" data-tabla="3">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="5" class="titulo-valoracion"></th>
+                    </tr>
+
+                    <tr>
+                        <th rowspan="6">
+                            <select class="select-gr"></select>
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th><select class="test-select" data-col="1"></select></th>
+                        <th><select class="test-select" data-col="2"></select></th>
+                        <th><select class="test-select" data-col="3"></select></th>
+                        <th><select class="test-select" data-col="4"></select></th>
+                    </tr>
+                    <!--bloque a-->
+                    <tr>
+                        <th><select class="bloquea-select" data-col="1"></select></th>
+                        <th><select class="bloquea-select" data-col="2"></select></th>
+                        <th><select class="bloquea-select" data-col="3"></select></th>
+                        <th><select class="bloquea-select" data-col="4"></select></th>
+                    </tr>
+                    <!--bloque b-->
+                    <tr>
+                        <th><select class="bloqueb-select" data-col="1"></select></th>
+                        <th><select class="bloqueb-select" data-col="2"></select></th>
+                        <th><select class="bloqueb-select" data-col="3"></select></th>
+                        <th><select class="bloqueb-select" data-col="4"></select></th>
+                    </tr>
+                    <!--bloque c-->
+                    <tr>
+                        <th><select class="bloquec-select" data-col="1"></select></th>
+                        <th><select class="bloquec-select" data-col="2"></select></th>
+                        <th><select class="bloquec-select" data-col="3"></select></th>
+                        <th><select class="bloquec-select" data-col="4"></select></th>
+                    </tr>
+                    <tr>
+                        <th class="test-info" data-col="1"></th>
+                        <th class="test-info" data-col="2"></th>
+                        <th class="test-info" data-col="3"></th>
+                        <th class="test-info" data-col="4"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>SERIES</td>
+                        <td><input type="number" class="series" data-col="1"></td>
+                        <td><input type="number" class="series" data-col="2"></td>
+                        <td><input type="number" class="series" data-col="3"></td>
+                        <td><input type="number" class="series" data-col="4"></td>
+                    </tr>
+
+                    <tr>
+                        <td>REP</td>
+                        <td><input type="text" class="rec" data-col="1"></td>
+                        <td><input type="text" class="rec" data-col="2"></td>
+                        <td><input type="text" class="rec" data-col="3"></td>
+                        <td><input type="text" class="rec" data-col="4"></td>
+                    </tr>
+
+                    <tr>
+                        <td>VEL</td>
+                        <td><input type="text" class="vel" data-col="1"></td>
+                        <td><input type="text" class="vel" data-col="2"></td>
+                        <td><input type="text" class="vel" data-col="3"></td>
+                        <td><input type="text" class="vel" data-col="4"></td>
+                    </tr>
+
+                    <tr>
+                        <td>CARGA</td>
+                        <td><input type="text" class="carga" data-col="1"></td>
+                        <td><input type="text" class="carga" data-col="2"></td>
+                        <td><input type="text" class="carga" data-col="3"></td>
+                        <td><input type="text" class="carga" data-col="4"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="acciones-formulario">
+            <button class="btn-guardar" onclick="guardarPerfil()">
+                Guardar
+            </button>
+        </div>
+    </div>
+
+    <div id="modalGuardando" class="modal-guardando oculto">
+        <div class="modal-contenido">
+            <div class="spinner"></div>
+            <p>Guardando información…</p>
+        </div>
+    </div>
+
+    <div id="loadingGlobal" class="loading-global">
+        <div class="loading-box">
+            <div class="spinner-global"></div>
+            <p>Cargando datos…</p>
+        </div>
+    </div>
+
+    <div id="modalVideo" class="modal-video oculto">
+        <div class="modal-video-contenido">
+            <span class="cerrar-modal" onclick="cerrarModalVideo()">✖</span>
+            <video id="videoPlayer" controls></video>
+        </div>
+    </div>
+
+    <script src="../js/aut.js"></script>
+    <script src="../js/perfil/perfil.js"></script>
+    <script src="../js/perfil/conexion.js"></script>
+
+</body>
+
+</html>
