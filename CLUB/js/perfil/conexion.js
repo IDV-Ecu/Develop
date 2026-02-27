@@ -1061,7 +1061,7 @@ async function generarPDF(payload) {
           "Ver video",
           startX + labelW + colW * i + colW / 2,
           y + 4,
-          { align: "center", url: `https://idv-ecu.github.io/Develop/CLUB/perfil/video.html?src=${encodeURIComponent(test.v3)}` }
+          { align: "center", url: `https://idv-ecu.github.io/Develop/perfil/video.html?src=${encodeURIComponent(test.v3)}` }
         );
         pdf.setTextColor(...COLOR_TEXTO);
       }
